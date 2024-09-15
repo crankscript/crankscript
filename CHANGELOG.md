@@ -1,3 +1,14 @@
+## 0.0.4 (2024-09-15)
+
+
+### 🩹 Fixes
+
+- add import assertion for package.json ([78ccc71](https://github.com/crankscript/crankscript/commit/78ccc71))
+
+### ❤️  Thank You
+
+- Alberto Piu @alberteddu
+
 ## 0.0.3 (2024-09-15)
 
 
