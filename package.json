@@ -1,0 +1,13 @@
+{
+  "name": "@crankscript/source",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@nx/js": "19.7.3",
+    "@nx/workspace": "19.7.3",
+    "nx": "19.7.3"
+  }
+}
