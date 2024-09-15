@@ -1,3 +1,14 @@
+## 0.0.5 (2024-09-15)
+
+
+### 🩹 Fixes
+
+- get version from package.json ([3d7bc7f](https://github.com/crankscript/crankscript/commit/3d7bc7f))
+
+### ❤️  Thank You
+
+- Alberto Piu @alberteddu
+
 ## 0.0.4 (2024-09-15)
 
 
