@@ -2,7 +2,7 @@
 
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import packageJson from '../package.json';
+import packageJson from '../package.json' with { type: 'json' };
 
 yargs(hideBin(process.argv))
     .version(packageJson.version)
