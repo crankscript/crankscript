@@ -5,13 +5,8 @@ import packageJson from '../package.json';
 yargs(hideBin(process.argv))
     .version(packageJson.version)
     .scriptName('crankscript')
-    .command(
-        '$0',
-        'says hi',
-        () => {},
-        () => {
-            console.info('Hi! Something here soon.');
-        }
-    )
+    .command('$0', 'says hi', {}, () => {
+        console.info('Hi! Something here soon.');
+    })
     .help()
     .parse();
