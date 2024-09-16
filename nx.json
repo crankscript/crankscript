@@ -29,18 +29,13 @@
                 "production",
                 "^production"
             ]
-        },
-        "nx-release-publish": {
-            "dependsOn": ["build"],
-            "options": {
-                "packageRoot": "dist/libs/{projectName}"
-            }
         }
     },
     "release": {
         "projects": ["libs/*"],
         "version": {
-            "conventionalCommits": true
+            "conventionalCommits": true,
+            "preVersionCommand": "npx nx run-many -t build"
         },
         "changelog": {
             "workspaceChangelog": {
