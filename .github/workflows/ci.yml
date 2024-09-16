@@ -42,6 +42,6 @@ jobs:
       # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
       - run: npx nx affected -t lint test build
 
-      - run: git config --global user.email "271597+alberteddu@users.noreply.github.com"
-      - run: git config --global user.name "Alberto Piu"
+      - run: git config --global user.email "actions@github.com"
+      - run: git config --global user.name "GitHub Actions"
       - run: npx nx release --skip-publish
