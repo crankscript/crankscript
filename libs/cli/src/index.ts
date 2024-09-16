@@ -18,7 +18,7 @@ yargs(hideBin(process.argv))
     .version(packageJson.version)
     .scriptName('crankscript')
     .command('hello', 'says hello', {}, () => {
-        console.info('Hello.');
+        console.info('Hello!');
     })
     .command('$0', 'says hi', {}, () => {
         console.info('Hi! Something here soon.');
