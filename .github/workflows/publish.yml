@@ -30,9 +30,8 @@ jobs:
               run: npm install
               shell: bash
 
-            - name: Print Environment Info
-              run: npx nx report
-              shell: bash
+            - run: git config --global user.email "271597+alberteddu@users.noreply.github.com"
+            - run: git config --global user.name "Alberto Piu"
 
             - name: Publish packages
               run: npx nx release publish

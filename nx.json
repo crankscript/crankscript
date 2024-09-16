@@ -30,11 +30,24 @@
                 "production",
                 "^production"
             ]
+        },
+        "nx-release-publish": {
+            "dependsOn": ["build"],
+            "options": {
+                "packageRoot": "dist/libs/{projectName}"
+            }
         }
     },
     "release": {
+        "projects": ["libs/*"],
         "version": {
-            "preVersionCommand": "npx nx run-many -t build"
+            "conventionalCommits": true
+        },
+        "changelog": {
+            "workspaceChangelog": {
+                "file": false,
+                "createRelease": "github"
+            }
         }
     },
     "plugins": [
