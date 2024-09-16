@@ -19,7 +19,6 @@
             "{workspaceRoot}/.github/workflows/ci.yml"
         ]
     },
-    "nxCloudId": "66e716c179edf63c6a2fd775",
     "targetDefaults": {
         "@nx/js:swc": {
             "cache": true,
@@ -63,5 +62,6 @@
                 "targetName": "test"
             }
         }
-    ]
+    ],
+    "neverConnectToCloud": true
 }
