@@ -6,7 +6,9 @@
         "types": [
             "jest",
             "node"
-        ]
+        ],
+        "moduleResolution": "nodenext",
+        "allowSyntheticDefaultImports": true
     },
     "include": [
         "jest.config.ts",

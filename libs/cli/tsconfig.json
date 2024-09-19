@@ -9,10 +9,13 @@
         "noPropertyAccessFromIndexSignature": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
-        "moduleResolution": "NodeNext"
+        "moduleResolution": "nodenext",
+        "jsx": "react"
     },
     "files": [],
-    "include": [],
+    "include": [
+        "src/**/*.ts"
+    ],
     "references": [
         {
             "path": "./tsconfig.lib.json"
