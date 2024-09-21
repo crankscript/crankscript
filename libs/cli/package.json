@@ -2,7 +2,8 @@
     "name": "crankscript",
     "version": "0.0.0",
     "scripts": {
-        "dev": "tsx src/index.ts"
+        "dev": "tsx src/index.ts",
+        "post-build": "tsc-alias --project tsconfig.json"
     },
     "bin": {
         "crankscript": "./src/index.js"

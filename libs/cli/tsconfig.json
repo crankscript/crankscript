@@ -1,6 +1,7 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
+        "outDir": "../../dist/libs/cli",
         "module": "NodeNext",
         "resolveJsonModule": true,
         "forceConsistentCasingInFileNames": true,
