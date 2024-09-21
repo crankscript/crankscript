@@ -31,7 +31,7 @@ export const CheckList = ({ items }: Props) => {
                     item={{
                         ...item,
                         onFinish: () => {
-                            item.onFinish();
+                            item?.onFinish?.();
                             handleFinish(index);
                         },
                     }}

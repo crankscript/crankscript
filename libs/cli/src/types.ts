@@ -39,5 +39,5 @@ export type CheckListItem = {
     errorDescription: () => string;
     finishedDescription: () => string;
     runner: () => Promise<void> | Promise<false>;
-    onFinish: () => void;
+    onFinish?: () => void;
 };

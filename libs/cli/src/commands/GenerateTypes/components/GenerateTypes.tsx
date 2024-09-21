@@ -25,7 +25,6 @@ export const GenerateTypes = ({ version }: Props) => {
                             setTimeout(resolve, 1000)
                         );
                     },
-                    onFinish: () => {},
                 },
             ]}
         />
