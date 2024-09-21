@@ -13,7 +13,7 @@ const packageJsonContents = readFileSync(
 );
 const packageJson = JSON.parse(packageJsonContents);
 
-const [_, __, ...args] = process.argv;
+const args = process.argv.slice(2);
 
 const cli = new Cli({
     binaryLabel: 'crankscript',
