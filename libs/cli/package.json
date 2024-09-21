@@ -7,9 +7,15 @@
     "bin": {
         "crankscript": "./src/index.js"
     },
+    "license": "MIT",
     "dependencies": {
+        "@inkjs/ui": "^2.0.0",
         "@swc/helpers": "~0.5.11",
-        "yargs": "^17.7.2"
+        "clipanion": "^4.0.0-rc.4",
+        "ink": "^5.0.1",
+        "react": "^18.3.1",
+        "typanion": "^3.14.0",
+        "zod": "^3.23.8"
     },
     "type": "module",
     "main": "./src/index.js",

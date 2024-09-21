@@ -5,7 +5,15 @@
         "declaration": true,
         "types": [
             "node"
-        ]
+        ],
+        "moduleResolution": "nodenext",
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/cli/*": [
+                "src/*"
+            ]
+        }
     },
     "include": [
         "src/**/*.ts"
