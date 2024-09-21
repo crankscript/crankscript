@@ -68,7 +68,7 @@ export const Item = ({
                 }
 
                 setResultPresent(true);
-                onFinish();
+                onFinish?.();
             })
             .catch((reason) => {
                 setfailedReason(reason.message);
