@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
+import { readFileSync } from 'fs';
 import { join } from 'node:path';
 import { Cli } from 'clipanion';
-import { readFileSync } from 'fs';
-import { GenerateTypesCommand } from './commands/GenerateTypes/index.js';
-import { RootFolder } from './utils/dirname.js';
-import { DoctorCommand } from './commands/DoctorCommand.js';
+import { DoctorCommand } from '@/cli/commands/DoctorCommand.js';
+import { GenerateTypesCommand } from '@/cli/commands/GenerateTypes/GenerateTypesCommand.js';
+import { RootFolder } from '@/cli/utils/dirname.js';
 
 const packageJsonContents = readFileSync(
     join(RootFolder, 'package.json'),

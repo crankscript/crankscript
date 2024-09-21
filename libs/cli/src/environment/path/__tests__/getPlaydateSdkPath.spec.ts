@@ -1,5 +1,5 @@
-import { getPlaydateSdkPath } from '../getPlaydateSdkPath.js';
 import { PlaydateSdkPathVariableNotSetError } from '../error/PlaydateSdkPathVariableNotSetError.js';
+import { getPlaydateSdkPath } from '../getPlaydateSdkPath.js';
 
 describe('getPlaydateSdkPath', () => {
     it('should return the path if available', () => {

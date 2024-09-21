@@ -1,5 +1,5 @@
-import { EnvironmentError } from '../../error/EnvironmentError.js';
 import { ConfigurationFileValidationErrorType } from '../../../types.js';
+import { EnvironmentError } from '../../error/EnvironmentError.js';
 
 export class ConfigurationFileValidationError extends EnvironmentError {
     public constructor(

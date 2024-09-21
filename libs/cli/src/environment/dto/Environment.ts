@@ -1,5 +1,5 @@
-import { PlaydateSdkPath } from '../path/dto/PlaydateSdkPath.js';
 import { ConfigurationType } from '../configuration/ConfigurationSchema.js';
+import { PlaydateSdkPath } from '../path/dto/PlaydateSdkPath.js';
 
 export class Environment {
     configuration: ConfigurationType;

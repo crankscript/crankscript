@@ -1,11 +1,11 @@
-import React from 'react';
 import { Command, Option } from 'clipanion';
+import React from 'react';
 import * as t from 'typanion';
-import { GenerateTypes } from './components/GenerateTypes.js';
-import { PlaydateSdkVersionIdentifier } from '../../types.js';
 import { AnyStrictValidator } from 'typanion';
-import { EnvironmentAwareCommand } from '../EnvironmentAwareCommand/index.js';
-import { Environment } from '../../environment/dto/Environment.js';
+import { EnvironmentAwareCommand } from '@/cli/commands/EnvironmentAwareCommand/index.js';
+import { Environment } from '@/cli/environment/dto/Environment.js';
+import { PlaydateSdkVersionIdentifier } from '@/cli/types.js';
+import { GenerateTypes } from './components/GenerateTypes.js';
 
 export class GenerateTypesCommand extends EnvironmentAwareCommand {
     static override paths = [['generate-types']];

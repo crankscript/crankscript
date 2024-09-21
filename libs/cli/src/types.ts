@@ -1,4 +1,4 @@
-import { Environment } from './environment/dto/Environment.js';
+import { Environment } from '@/cli/environment/dto/Environment.js';
 
 export enum PlaydateSdkVersionIdentifier {
     FromConfig = 'FromConfig',

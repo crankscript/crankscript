@@ -1,8 +1,8 @@
 import React, { JSX } from 'react';
-import { RenderableCommand } from '../RenderableCommand.js';
-import { Environment } from '../../environment/dto/Environment.js';
-import { createEnvironment } from '../../environment/createEnvironment.js';
-import { HealthReport } from './components/HealthReport.js';
+import { HealthReport } from '@/cli/commands/EnvironmentAwareCommand/components/HealthReport.js';
+import { RenderableCommand } from '@/cli/commands/RenderableCommand.js';
+import { createEnvironment } from '@/cli/environment/createEnvironment.js';
+import { Environment } from '@/cli/environment/dto/Environment.js';
 
 export abstract class EnvironmentAwareCommand extends RenderableCommand {
     private environment: Environment | undefined;

@@ -4,7 +4,10 @@
         "**/*"
     ],
     "plugins": [
-        "@nx"
+        "@nx",
+        "unused-imports",
+        "@typescript-eslint",
+        "import"
     ],
     "overrides": [
         {
@@ -28,6 +31,36 @@
                                 ]
                             }
                         ]
+                    }
+                ],
+                "no-unused-vars": "off",
+                "@typescript-eslint/no-unused-vars": ["error"],
+                "unused-imports/no-unused-imports": "error",
+                "import/order": [
+                    "error",
+                    {
+                        "newlines-between": "never",
+                        "groups": [
+                            "unknown",
+                            "builtin",
+                            "external",
+                            "internal",
+                            ["sibling", "parent"],
+                            "object",
+                            "index",
+                            "type"
+                        ],
+                        "pathGroups": [
+                            {
+                                "pattern": "@/**",
+                                "group": "internal",
+                                "position": "before"
+                            }
+                        ],
+                        "alphabetize": {
+                            "order": "asc",
+                            "caseInsensitive": true
+                        }
                     }
                 ]
             }

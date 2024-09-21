@@ -1,7 +1,7 @@
-import React from 'react';
-import { Text, TextProps } from 'ink';
 import { StatusMessage, StatusMessageProps } from '@inkjs/ui';
-import { EnvironmentHealth, HealthCheckStatus } from '../../../types.js';
+import { Text, TextProps } from 'ink';
+import React from 'react';
+import { EnvironmentHealth, HealthCheckStatus } from '@/cli/types.js';
 
 interface Props {
     health: EnvironmentHealth;

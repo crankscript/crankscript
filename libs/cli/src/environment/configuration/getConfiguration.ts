@@ -1,9 +1,9 @@
-import { join } from 'node:path';
-import { CrankscriptConfigurationFileName } from '../../constants.js';
-import * as process from 'node:process';
-import { ConfigurationFileNotFoundError } from './error/ConfigurationFileNotFoundError.js';
 import { readFileSync } from 'fs';
+import { join } from 'node:path';
+import * as process from 'node:process';
 import { ConfigurationSchema } from './ConfigurationSchema.js';
+import { CrankscriptConfigurationFileName } from '../../constants.js';
+import { ConfigurationFileNotFoundError } from './error/ConfigurationFileNotFoundError.js';
 import { ConfigurationFileValidationError } from './error/ConfigurationFileValidationError.js';
 import { ConfigurationFileValidationErrorType } from '../../types.js';
 import { Configuration } from './dto/Configuration.js';

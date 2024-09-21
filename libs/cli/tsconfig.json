@@ -10,7 +10,13 @@
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
         "moduleResolution": "nodenext",
-        "jsx": "react"
+        "jsx": "react",
+        "baseUrl": ".",
+        "paths": {
+            "@/cli/*": [
+                "src/*"
+            ]
+        }
     },
     "files": [],
     "include": [

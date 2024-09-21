@@ -1,9 +1,9 @@
-import React from 'react';
-import { Text } from 'ink';
-import { RenderableCommand } from './RenderableCommand.js';
-import { createEnvironment } from '../environment/createEnvironment.js';
-import { HealthReport } from './EnvironmentAwareCommand/components/HealthReport.js';
 import { Command } from 'clipanion';
+import { Text } from 'ink';
+import React from 'react';
+import { createEnvironment } from '@/cli/environment/createEnvironment.js';
+import { HealthReport } from './EnvironmentAwareCommand/components/HealthReport.js';
+import { RenderableCommand } from './RenderableCommand.js';
 
 export class DoctorCommand extends RenderableCommand {
     static override paths = [['doctor']];

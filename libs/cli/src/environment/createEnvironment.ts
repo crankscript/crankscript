@@ -1,11 +1,11 @@
 import { EnvironmentHealthResult, HealthCheckStatus } from '../types.js';
-import { getConfiguration } from './configuration/getConfiguration.js';
-import { ConfigurationFileValidationError } from './configuration/error/ConfigurationFileValidationError.js';
 import { Configuration } from './configuration/dto/Configuration.js';
-import { getPlaydateSdkPath } from './path/getPlaydateSdkPath.js';
-import { PlaydateSdkPath } from './path/dto/PlaydateSdkPath.js';
 import { ConfigurationFileNotFoundError } from './configuration/error/ConfigurationFileNotFoundError.js';
+import { ConfigurationFileValidationError } from './configuration/error/ConfigurationFileValidationError.js';
+import { getConfiguration } from './configuration/getConfiguration.js';
 import { Environment } from './dto/Environment.js';
+import { PlaydateSdkPath } from './path/dto/PlaydateSdkPath.js';
+import { getPlaydateSdkPath } from './path/getPlaydateSdkPath.js';
 
 /**
  * Will create a configuration object from the environment.
