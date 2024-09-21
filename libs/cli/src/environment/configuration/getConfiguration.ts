@@ -28,8 +28,6 @@ export const getConfiguration = (input?: {
     try {
         parsedObject = JSON.parse(contents);
     } catch (error) {
-        const errorIsObject = !!error && typeof error === 'object';
-
         throw new ConfigurationFileValidationError(
             ConfigurationFileValidationErrorType.InvalidJson,
             !!error &&

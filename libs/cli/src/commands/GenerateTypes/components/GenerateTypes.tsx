@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Text, useInput } from 'ink';
+import React from 'react';
+import { Text } from 'ink';
 
 interface Props {
     version: string;
