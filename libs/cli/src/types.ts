@@ -2,6 +2,7 @@ import { Environment } from '@/cli/environment/dto/Environment.js';
 
 export enum PlaydateSdkVersionIdentifier {
     FromConfig = 'FromConfig',
+    Latest = 'latest',
 }
 
 export type EnvironmentHealthResult =
@@ -31,3 +32,12 @@ export enum ConfigurationFileValidationErrorType {
     InvalidJson = 'InvalidJson',
     InvalidSchema = 'InvalidSchema',
 }
+
+export type CheckListItem = {
+    runningDescription: () => string;
+    waitingDescription: () => string;
+    errorDescription: () => string;
+    finishedDescription: () => string;
+    runner: () => Promise<void> | Promise<false>;
+    onFinish?: () => void;
+};
