@@ -14,12 +14,14 @@ export class GenerateTypesCommand extends EnvironmentAwareCommand {
     });
 
     version = Option.String(
-        '-v,--version',
+        '-s,--sdk-version',
         PlaydateSdkVersionIdentifier.FromConfig,
         {
+            tolerateBoolean: false,
             description: 'The version',
             validator: t.isOneOf([
                 t.isLiteral(PlaydateSdkVersionIdentifier.FromConfig),
+                t.isLiteral(PlaydateSdkVersionIdentifier.Latest),
                 t.matchesRegExp(
                     /^[0-9]+\.[0-9]+\.[0-9]+$/
                 ) as AnyStrictValidator,
