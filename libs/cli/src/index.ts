@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --no-warnings=ExperimentalWarning
 
 import { readFileSync } from 'fs';
 import { join } from 'node:path';
