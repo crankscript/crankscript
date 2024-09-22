@@ -3,10 +3,11 @@ import { CheckListItem } from '@/cli/types.js';
 import { Item } from './Item.js';
 
 interface Props {
-    items: CheckListItem[];
+    items: CheckListItem<unknown>[];
+    onFinish?: () => void;
 }
 
-export const CheckList = ({ items }: Props) => {
+export const CheckList = ({ items, onFinish }: Props) => {
     const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
     useEffect(() => {
@@ -20,6 +21,7 @@ export const CheckList = ({ items }: Props) => {
             setCurrentIndex(index + 1);
         } else {
             setCurrentIndex(null);
+            onFinish?.();
         }
     };
 
@@ -30,8 +32,8 @@ export const CheckList = ({ items }: Props) => {
                     key={index}
                     item={{
                         ...item,
-                        onFinish: () => {
-                            item?.onFinish?.();
+                        onFinish: (result: unknown) => {
+                            item?.onFinish?.(result);
                             handleFinish(index);
                         },
                     }}

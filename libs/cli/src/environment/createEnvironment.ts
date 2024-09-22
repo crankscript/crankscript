@@ -33,9 +33,12 @@ export const createEnvironment = (input?: {
                         ? HealthCheckStatus.Unhealthy
                         : HealthCheckStatus.Healthy,
                 configurationFileValid:
-                    error instanceof ConfigurationFileValidationError
+                    error instanceof ConfigurationFileValidationError &&
+                    !(error instanceof ConfigurationFileNotFoundError)
                         ? HealthCheckStatus.Unhealthy
-                        : HealthCheckStatus.Healthy,
+                        : error instanceof ConfigurationFileValidationError
+                        ? HealthCheckStatus.Unhealthy
+                        : HealthCheckStatus.Unknown,
                 sdkPathKnown: HealthCheckStatus.Unknown,
             },
         };

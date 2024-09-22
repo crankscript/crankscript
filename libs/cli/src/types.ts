@@ -33,11 +33,12 @@ export enum ConfigurationFileValidationErrorType {
     InvalidSchema = 'InvalidSchema',
 }
 
-export type CheckListItem = {
-    runningDescription: () => string;
-    waitingDescription: () => string;
-    errorDescription: () => string;
-    finishedDescription: () => string;
-    runner: () => Promise<void> | Promise<false>;
-    onFinish?: () => void;
+export type CheckListItem<TResult> = {
+    runningDescription: string;
+    waitingDescription: string;
+    errorDescription: string;
+    finishedDescription: (result: TResult) => string;
+    runner: () => Promise<TResult> | Promise<false>;
+    onFinish?: (result: TResult) => void;
+    ready?: boolean;
 };

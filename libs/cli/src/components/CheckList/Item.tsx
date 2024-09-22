@@ -7,11 +7,11 @@ import {
     ThemeProvider,
 } from '@inkjs/ui';
 import { Text, TextProps } from 'ink';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { CheckListItem } from '@/cli/types.js';
 
-export interface ItemProps {
-    item: CheckListItem;
+export interface ItemProps<TResult> {
+    item: CheckListItem<TResult>;
     start: boolean;
 }
 
@@ -31,7 +31,7 @@ const SpinnerTheme = extendTheme(defaultTheme, {
     },
 });
 
-export const Item = ({
+export const Item = <TResult,>({
     item: {
         runningDescription,
         waitingDescription,
@@ -39,14 +39,20 @@ export const Item = ({
         finishedDescription,
         runner,
         onFinish,
+        ready,
     },
     start,
-}: ItemProps) => {
-    const [resultPresent, setResultPresent] = useState(false);
+}: ItemProps<TResult>) => {
+    const executed = useRef(false);
+    const interval = useRef<NodeJS.Timeout | null>(null);
+    const [dotCount, setDotCount] = useState(0);
+    const [result, setResult] = useState<TResult | null>(null);
     const [failedReason, setfailedReason] = useState<string | null>(null);
-    const hasResult = !failedReason && resultPresent;
-    const isRunning = !failedReason && !hasResult && start;
-    const isWaiting = !failedReason && !hasResult && !start;
+    const hasResult = !failedReason && result !== null;
+    const isRunning = !failedReason && !hasResult && start && ready !== false;
+    const isWaiting = !failedReason && !hasResult && (!start || !ready);
+    const couldStartButNotReady =
+        !failedReason && !hasResult && start && ready === false;
 
     useEffect(() => {
         if (failedReason) {
@@ -55,37 +61,57 @@ export const Item = ({
     }, [failedReason]);
 
     useEffect(() => {
-        if (!start) {
+        if (couldStartButNotReady) {
+            interval.current = setInterval(() => {
+                setDotCount((count) => (count + 1) % 4);
+            }, 250);
+        } else {
+            if (interval.current) {
+                clearInterval(interval.current);
+            }
+        }
+
+        return () => {
+            if (interval.current) {
+                clearInterval(interval.current);
+            }
+        };
+    }, [couldStartButNotReady]);
+
+    useEffect(() => {
+        if (!start || executed.current || ready === false) {
             return;
         }
 
         runner()
             .then((result) => {
+                executed.current = true;
+
                 if (result === false) {
                     setfailedReason(errorDescription);
 
                     return;
                 }
 
-                setResultPresent(true);
-                onFinish?.();
+                setResult(result);
+                onFinish?.(result);
             })
             .catch((reason) => {
                 setfailedReason(reason.message);
             });
     }, [errorDescription, onFinish, runner, start]);
 
-    let message = waitingDescription();
+    let message = waitingDescription;
     let variant: StatusMessageProps['variant'] = 'info';
 
     if (failedReason) {
-        message = failedReason;
+        message = ` ${failedReason}`;
         variant = 'error';
     } else if (isRunning) {
-        message = runningDescription();
+        message = runningDescription;
         variant = 'warning';
     } else if (hasResult) {
-        message = finishedDescription();
+        message = finishedDescription(result);
         variant = 'success';
     }
 
@@ -111,7 +137,9 @@ export const Item = ({
                         : 'green'
                 }
             >
-                {message}
+                {message}{' '}
+                {couldStartButNotReady &&
+                    `— not ready yet${'.'.repeat(dotCount)}`}
             </Text>
         </StatusMessage>
     );
