@@ -13,10 +13,13 @@
     "dependencies": {
         "@inkjs/ui": "^2.0.0",
         "@types/react": "^18.3.7",
+        "cheerio": "^1.0.0",
         "clipanion": "^4.0.0-rc.4",
         "ink": "^5.0.1",
         "ink-spinner": "^5.0.0",
+        "lua-types": "^2.13.1",
         "react": "^18.3.1",
+        "ts-morph": "^23.0.0",
         "tslib": "^2.3.0",
         "tstl": "^3.0.0",
         "tsx": "^4.19.1",
