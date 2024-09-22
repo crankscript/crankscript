@@ -1,4 +1,3 @@
-import { join } from 'node:path';
 import { load } from 'cheerio';
 import { useMemo } from 'react';
 import { Project } from 'ts-morph';
@@ -17,13 +16,9 @@ export const useGenerateTypeFile = (path: string, html: string | null) => {
                 }
 
                 const project = new Project();
-                const typeFile = project.createSourceFile(
-                    join(path, 'playdate.d.ts'),
-                    '',
-                    {
-                        overwrite: true,
-                    }
-                );
+                const typeFile = project.createSourceFile(path, '', {
+                    overwrite: true,
+                });
 
                 typeFile.addStatements(
                     '/// <reference types="lua-types/5.4" />'

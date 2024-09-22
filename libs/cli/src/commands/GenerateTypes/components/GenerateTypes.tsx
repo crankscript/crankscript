@@ -8,15 +8,16 @@ import { useQuitOnCtrlC } from '@/cli/hooks/useQuitOnCtrlC.js';
 import { CheckListItem } from '@/cli/types.js';
 
 interface Props {
+    output: string;
     version: ConfigurationType['version'];
 }
 
-export const GenerateTypes = ({ version }: Props) => {
+export const GenerateTypes = ({ output, version }: Props) => {
     useQuitOnCtrlC();
 
     const { fetchedVersion, getVersion } = useGetVersion(version);
     const { html, fetchHtml } = useFetchHtml(fetchedVersion);
-    const { generateTypeFile } = useGenerateTypeFile(process.cwd(), html);
+    const { generateTypeFile } = useGenerateTypeFile(output, html);
 
     const items = useMemo(() => {
         return [

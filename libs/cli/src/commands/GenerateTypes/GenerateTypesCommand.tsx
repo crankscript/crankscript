@@ -1,3 +1,5 @@
+import { join } from 'node:path';
+import * as process from 'node:process';
 import { Command, Option } from 'clipanion';
 import React from 'react';
 import * as t from 'typanion';
@@ -11,6 +13,11 @@ export class GenerateTypesCommand extends EnvironmentAwareCommand {
     static override paths = [['generate-types']];
     static override usage = Command.Usage({
         description: 'Generate types from the Playdate SDK documentation',
+    });
+
+    output = Option.String('-o,--output', process.cwd(), {
+        description: 'Where to generate the playdate.d.ts file',
+        validator: t.isString(),
     });
 
     version = Option.String(
@@ -30,8 +37,13 @@ export class GenerateTypesCommand extends EnvironmentAwareCommand {
     );
 
     override renderWithEnvironment(environment: Environment) {
+        const output = this.output.endsWith('playdate.d.ts')
+            ? this.output
+            : join(this.output, 'playdate.d.ts');
+
         return (
             <GenerateTypes
+                output={output}
                 version={
                     this.version === PlaydateSdkVersionIdentifier.FromConfig
                         ? environment.configuration.version
