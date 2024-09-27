@@ -1,0 +1,32 @@
+{
+    "name": "types",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/types/src",
+    "projectType": "library",
+    "release": {
+        "version": {
+            "generatorOptions": {
+                "packageRoot": "dist/{projectRoot}",
+                "currentVersionResolver": "git-tag"
+            }
+        }
+    },
+    "tags": [],
+    "targets": {
+        "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/libs/types",
+                "main": "libs/types/src/index.ts",
+                "tsConfig": "libs/types/tsconfig.lib.json",
+                "assets": ["libs/types/*.md", "libs/types/types/*.d.ts"]
+            }
+        },
+        "nx-release-publish": {
+            "options": {
+                "packageRoot": "dist/{projectRoot}"
+            }
+        }
+    }
+}
