@@ -24,7 +24,7 @@ export abstract class EnvironmentAwareCommand extends RenderableCommand {
 
         if (!environmentHealth.isHealthy) {
             this.renderElement(
-                <HealthReport health={environmentHealth.health} />
+                <HealthReport environment={environmentHealth} />
             );
 
             return;

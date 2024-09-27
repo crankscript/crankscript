@@ -29,18 +29,32 @@
                 "production",
                 "^production"
             ]
+        },
+        "@nx/js:tsc": {
+            "cache": true,
+            "dependsOn": [
+                "^build"
+            ],
+            "inputs": [
+                "production",
+                "^production"
+            ]
         }
     },
     "release": {
-        "projects": ["libs/*"],
+        "projectsRelationship": "independent",
+        "projects": [
+            "libs/*"
+        ],
         "version": {
-            "conventionalCommits": true,
-            "preVersionCommand": "npx nx run-many -t build && npx nx run-many -t post-build"
+            "preVersionCommand": "npx nx run-many -t build && npx nx run-many -t post-build",
+            "conventionalCommits": true
         },
         "changelog": {
-            "workspaceChangelog": {
-                "file": false,
-                "createRelease": "github"
+            "workspaceChangelog": false,
+            "projectChangelogs": {
+                "createRelease": "github",
+                "file": false
             }
         }
     },

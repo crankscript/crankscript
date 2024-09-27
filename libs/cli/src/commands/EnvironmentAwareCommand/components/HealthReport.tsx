@@ -1,63 +1,65 @@
 import { StatusMessage, StatusMessageProps } from '@inkjs/ui';
 import { Text, TextProps } from 'ink';
 import React from 'react';
-import { EnvironmentHealth, HealthCheckStatus } from '@/cli/types.js';
+import { PlaydateSdkPath } from '@/cli/environment/path/dto/PlaydateSdkPath.js';
+import {
+    EnvironmentHealth,
+    EnvironmentHealthResult,
+    HealthCheckStatusType,
+} from '@/cli/types.js';
 
 interface Props {
-    health: EnvironmentHealth;
+    environment: EnvironmentHealthResult;
 }
 
 const SuccessMessages = {
-    configurationFilePresent: {
-        [HealthCheckStatus.Unknown]: 'Configuration file status unknown',
-        [HealthCheckStatus.Healthy]: 'Configuration file found',
-        [HealthCheckStatus.Unhealthy]: 'Configuration file not found',
-    },
-    configurationFileValid: {
-        [HealthCheckStatus.Unknown]: 'Configuration file validity unknown',
-        [HealthCheckStatus.Healthy]: 'Configuration file is valid',
-        [HealthCheckStatus.Unhealthy]: 'Configuration file is invalid',
-    },
     sdkPathKnown: {
-        [HealthCheckStatus.Unknown]: 'SDK path status unknown',
-        [HealthCheckStatus.Healthy]: 'SDK path found',
-        [HealthCheckStatus.Unhealthy]: 'SDK path not found',
+        [HealthCheckStatusType.Unknown]: 'SDK path status unknown',
+        [HealthCheckStatusType.Healthy]: (sdkPath: PlaydateSdkPath) =>
+            `SDK path found ("${sdkPath.path}")`,
+        [HealthCheckStatusType.Unhealthy]: 'SDK path not found',
     },
-} satisfies {
-    [key in keyof EnvironmentHealth]: {
-        [HealthCheckStatus.Unknown]: string;
-        [HealthCheckStatus.Healthy]: string;
-        [HealthCheckStatus.Unhealthy]: string;
-    };
-};
+} as const;
 
 const ColorMap = {
-    [HealthCheckStatus.Healthy]: 'green',
-    [HealthCheckStatus.Unhealthy]: 'red',
-    [HealthCheckStatus.Unknown]: 'gray',
+    [HealthCheckStatusType.Healthy]: 'green',
+    [HealthCheckStatusType.Unhealthy]: 'red',
+    [HealthCheckStatusType.Unknown]: 'gray',
 } satisfies {
-    [key in HealthCheckStatus]: TextProps['color'];
+    [key in HealthCheckStatusType]: TextProps['color'];
 };
 
-export const HealthReport = ({ health }: Props) => {
+export const HealthReport = ({ environment }: Props) => {
+    const { health } = environment;
     return Object.keys(health).map((eachKey) => {
         const healthKey = eachKey as keyof EnvironmentHealth;
         const keyHealth = health[healthKey];
-        let variant: StatusMessageProps['variant'] = 'info';
 
-        if (health[healthKey] === HealthCheckStatus.Unhealthy) {
+        let variant: StatusMessageProps['variant'] = 'info';
+        let message: string =
+            SuccessMessages[healthKey][HealthCheckStatusType.Unknown];
+
+        if (
+            health[healthKey].healthStatus === HealthCheckStatusType.Unhealthy
+        ) {
+            message =
+                SuccessMessages[healthKey][HealthCheckStatusType.Unhealthy];
             variant = 'error';
         }
 
-        if (health[healthKey] === HealthCheckStatus.Healthy) {
+        if (health[healthKey].healthStatus === HealthCheckStatusType.Healthy) {
+            message = SuccessMessages[healthKey][HealthCheckStatusType.Healthy](
+                health[healthKey].argument
+            );
             variant = 'success';
         }
 
         return (
             <StatusMessage key={healthKey} variant={variant}>
-                <Text color={ColorMap[keyHealth]}>
-                    {keyHealth === HealthCheckStatus.Unhealthy && ' '}
-                    {SuccessMessages[healthKey][keyHealth]}
+                <Text color={ColorMap[keyHealth.healthStatus]}>
+                    {keyHealth.healthStatus ===
+                        HealthCheckStatusType.Unhealthy && ' '}
+                    {message}
                 </Text>
             </StatusMessage>
         );

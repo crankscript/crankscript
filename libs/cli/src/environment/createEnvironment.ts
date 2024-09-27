@@ -1,8 +1,4 @@
-import { EnvironmentHealthResult, HealthCheckStatus } from '../types.js';
-import { Configuration } from './configuration/dto/Configuration.js';
-import { ConfigurationFileNotFoundError } from './configuration/error/ConfigurationFileNotFoundError.js';
-import { ConfigurationFileValidationError } from './configuration/error/ConfigurationFileValidationError.js';
-import { getConfiguration } from './configuration/getConfiguration.js';
+import { EnvironmentHealthResult, HealthCheckStatusType } from '../types.js';
 import { Environment } from './dto/Environment.js';
 import { PlaydateSdkPath } from './path/dto/PlaydateSdkPath.js';
 import { getPlaydateSdkPath } from './path/getPlaydateSdkPath.js';
@@ -19,30 +15,7 @@ export const createEnvironment = (input?: {
     environment: Record<string, unknown>;
 }): EnvironmentHealthResult => {
     const { environment = process.env } = input ?? {};
-    let configuration: Configuration;
     let sdkPath: PlaydateSdkPath;
-
-    try {
-        configuration = getConfiguration();
-    } catch (error) {
-        return {
-            isHealthy: false,
-            health: {
-                configurationFilePresent:
-                    error instanceof ConfigurationFileNotFoundError
-                        ? HealthCheckStatus.Unhealthy
-                        : HealthCheckStatus.Healthy,
-                configurationFileValid:
-                    error instanceof ConfigurationFileValidationError &&
-                    !(error instanceof ConfigurationFileNotFoundError)
-                        ? HealthCheckStatus.Unhealthy
-                        : error instanceof ConfigurationFileValidationError
-                        ? HealthCheckStatus.Unhealthy
-                        : HealthCheckStatus.Unknown,
-                sdkPathKnown: HealthCheckStatus.Unknown,
-            },
-        };
-    }
 
     try {
         sdkPath = getPlaydateSdkPath({ environment });
@@ -50,9 +23,7 @@ export const createEnvironment = (input?: {
         return {
             isHealthy: false,
             health: {
-                configurationFilePresent: HealthCheckStatus.Healthy,
-                configurationFileValid: HealthCheckStatus.Healthy,
-                sdkPathKnown: HealthCheckStatus.Unhealthy,
+                sdkPathKnown: { healthStatus: HealthCheckStatusType.Unhealthy },
             },
         };
     }
@@ -60,13 +31,13 @@ export const createEnvironment = (input?: {
     return {
         isHealthy: true,
         environment: new Environment({
-            configuration,
             sdkPath,
         }),
         health: {
-            configurationFilePresent: HealthCheckStatus.Healthy,
-            configurationFileValid: HealthCheckStatus.Healthy,
-            sdkPathKnown: HealthCheckStatus.Healthy,
+            sdkPathKnown: {
+                healthStatus: HealthCheckStatusType.Healthy,
+                argument: sdkPath,
+            },
         },
     };
 };

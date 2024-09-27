@@ -18,7 +18,7 @@ export class DoctorCommand extends RenderableCommand {
         return (
             <>
                 <Text color="gray">Checking the environment...</Text>
-                <HealthReport health={environment.health} />
+                <HealthReport environment={environment} />
             </>
         );
     }

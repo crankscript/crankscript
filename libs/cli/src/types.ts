@@ -1,9 +1,11 @@
 import { Environment } from '@/cli/environment/dto/Environment.js';
+import { PlaydateSdkPath } from '@/cli/environment/path/dto/PlaydateSdkPath.js';
 
 export enum PlaydateSdkVersionIdentifier {
-    FromConfig = 'FromConfig',
     Latest = 'latest',
 }
+
+export type PlaydateSdkVersion = PlaydateSdkVersionIdentifier.Latest | string;
 
 export type EnvironmentHealthResult =
     | {
@@ -16,21 +18,25 @@ export type EnvironmentHealthResult =
           health: EnvironmentHealth;
       };
 
-export enum HealthCheckStatus {
+export enum HealthCheckStatusType {
     Healthy = 'Healthy',
     Unhealthy = 'Unhealthy',
     Unknown = 'Unknown',
 }
 
-export interface EnvironmentHealth {
-    configurationFilePresent: HealthCheckStatus;
-    configurationFileValid: HealthCheckStatus;
-    sdkPathKnown: HealthCheckStatus;
-}
+export type HealthCheckStatus<TArgument> =
+    | {
+          healthStatus:
+              | HealthCheckStatusType.Unknown
+              | HealthCheckStatusType.Unhealthy;
+      }
+    | {
+          healthStatus: HealthCheckStatusType.Healthy;
+          argument: TArgument;
+      };
 
-export enum ConfigurationFileValidationErrorType {
-    InvalidJson = 'InvalidJson',
-    InvalidSchema = 'InvalidSchema',
+export interface EnvironmentHealth {
+    sdkPathKnown: HealthCheckStatus<PlaydateSdkPath>;
 }
 
 export type CheckListItem<TResult> = {
@@ -42,3 +48,42 @@ export type CheckListItem<TResult> = {
     onFinish?: (result: TResult) => void;
     ready?: boolean;
 };
+
+export interface ParameterDescription {
+    name: string;
+    required: boolean;
+    type: string;
+}
+
+export interface FunctionDescription {
+    name: string;
+    namespaces: string[];
+    parameters: ParameterDescription[];
+    hasSelf: boolean;
+    docs: string;
+}
+
+export interface ConstantDescription {
+    name: string;
+    docs: string;
+    values: {
+        name: string;
+        value: number;
+        docs: string;
+    }[];
+}
+
+export interface PlaydateNamespace {
+    functions: FunctionDescription[];
+    callbacks: FunctionDescription[];
+}
+
+export interface PlaydateType {
+    methods: FunctionDescription[];
+}
+
+export interface ApiDefinitions {
+    namespaces: Record<string, PlaydateNamespace>;
+    types: Record<string, PlaydateType>;
+    constants: ConstantDescription[];
+}

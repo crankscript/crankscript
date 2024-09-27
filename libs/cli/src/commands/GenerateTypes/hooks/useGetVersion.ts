@@ -1,9 +1,12 @@
 import { useCallback, useMemo, useState } from 'react';
 import { PlaydateSdkUrl } from '@/cli/commands/GenerateTypes/constants.js';
-import { ConfigurationType } from '@/cli/environment/configuration/ConfigurationSchema.js';
-import { CheckListItem, PlaydateSdkVersionIdentifier } from '@/cli/types.js';
+import {
+    CheckListItem,
+    PlaydateSdkVersion,
+    PlaydateSdkVersionIdentifier,
+} from '@/cli/types.js';
 
-export const useGetVersion = (version: ConfigurationType['version']) => {
+export const useGetVersion = (version: PlaydateSdkVersion) => {
     const [result, setResult] = useState<string | null>(null);
     const fetchLastVersion = useCallback(async () => {
         const response = await fetch(PlaydateSdkUrl);

@@ -40,7 +40,9 @@ export const getFunctionDescriptionsFromHtml = (
         for (const title of titles) {
             try {
                 result.push({ ...parseFunctionSignature(title), docs });
-            } catch (e) {}
+            } catch (e) {
+                // skip
+            }
         }
     }
 

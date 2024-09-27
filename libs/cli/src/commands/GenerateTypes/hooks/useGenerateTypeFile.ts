@@ -1,9 +1,12 @@
-import { load } from 'cheerio';
 import { useMemo } from 'react';
 import { Project } from 'ts-morph';
-import { CheckListItem } from '@/cli/types.js';
+import { generateNamespace } from '@/cli/commands/GenerateTypes/fn/generateNamespace.js';
+import { CheckListItem, ApiDefinitions } from '@/cli/types.js';
 
-export const useGenerateTypeFile = (path: string, html: string | null) => {
+export const useGenerateTypeFile = (
+    path: string,
+    definitions: ApiDefinitions | null
+) => {
     const generateTypeFile = useMemo(() => {
         return {
             waitingDescription: 'Waiting to generate the type file...',
@@ -11,8 +14,8 @@ export const useGenerateTypeFile = (path: string, html: string | null) => {
             finishedDescription: () => 'Type file generated',
             runningDescription: 'Generating the type file...',
             runner: async () => {
-                if (!html) {
-                    throw new Error('HTML is not set');
+                if (!definitions) {
+                    throw new Error('Definitions are not set');
                 }
 
                 const project = new Project();
@@ -24,13 +27,37 @@ export const useGenerateTypeFile = (path: string, html: string | null) => {
                     '/// <reference types="lua-types/5.4" />'
                 );
 
-                const $ = load(html);
+                for (const constantDefinition of definitions.constants) {
+                    typeFile.addEnum({
+                        name: constantDefinition.name,
+                        docs: [constantDefinition.docs],
+                        isConst: true,
+                        isExported: true,
+                        members: constantDefinition.values.map((value) => ({
+                            name: value.name,
+                            docs: [value.docs],
+                            value: value.value,
+                        })),
+                    });
+                }
+
+                Object.keys(definitions.namespaces).forEach((namespace) => {
+                    const namespaceDescription =
+                        definitions.namespaces[namespace];
+                    const namespaces = namespace.split('.');
+                    generateNamespace(
+                        typeFile,
+                        namespaces[0],
+                        namespaceDescription,
+                        namespaces.slice(1)
+                    );
+                });
 
                 typeFile.saveSync();
             },
-            ready: html !== null,
+            ready: definitions !== null,
         } satisfies CheckListItem<void>;
-    }, [html]);
+    }, [definitions]);
 
     return {
         generateTypeFile,
