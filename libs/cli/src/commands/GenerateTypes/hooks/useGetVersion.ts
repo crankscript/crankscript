@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 import { PlaydateSdkUrl } from '@/cli/commands/GenerateTypes/constants.js';
+import { createTypeProvider } from '@/cli/commands/GenerateTypes/utils/createTypeProvider.js';
 import {
     CheckListItem,
     PlaydateSdkVersion,
@@ -7,6 +8,9 @@ import {
 } from '@/cli/types.js';
 
 export const useGetVersion = (version: PlaydateSdkVersion) => {
+    const [typeProvider, setTypeProvider] = useState<ReturnType<
+        typeof createTypeProvider
+    > | null>(null);
     const [result, setResult] = useState<string | null>(null);
     const fetchLastVersion = useCallback(async () => {
         const response = await fetch(PlaydateSdkUrl);
@@ -46,6 +50,8 @@ export const useGetVersion = (version: PlaydateSdkVersion) => {
 
                 await validateVersion(versionLiteral);
 
+                setTypeProvider(createTypeProvider(versionLiteral));
+
                 return versionLiteral;
             },
             onFinish: (result) => {
@@ -57,5 +63,6 @@ export const useGetVersion = (version: PlaydateSdkVersion) => {
     return {
         fetchedVersion: result,
         getVersion,
+        typeProvider,
     };
 };

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { getApiDefinitions } from '@/cli/commands/GenerateTypes/fn/getApiDefinitions.js';
-import { getFunctionDescriptionsFromHtml } from '@/cli/commands/GenerateTypes/fn/getFunctionDescriptionsFromHtml.js';
+import { getDescriptionsFromHtml } from '@/cli/commands/GenerateTypes/fn/getDescriptionsFromHtml.js';
 import { CheckListItem, ApiDefinitions } from '@/cli/types.js';
 
 export const useParseDocumentation = (html: string | null, version: string) => {
@@ -17,12 +17,12 @@ export const useParseDocumentation = (html: string | null, version: string) => {
                     throw new Error('HTML is not set');
                 }
 
-                const functions = getFunctionDescriptionsFromHtml(
+                const { functions, properties } = getDescriptionsFromHtml(
                     html,
                     version
                 );
 
-                return getApiDefinitions(functions);
+                return getApiDefinitions(functions, properties);
             },
             onFinish: (result) => {
                 setResult(result);

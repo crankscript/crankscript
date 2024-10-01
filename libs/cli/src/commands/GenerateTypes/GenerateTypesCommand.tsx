@@ -19,6 +19,10 @@ export class GenerateTypesCommand extends RenderableCommand {
         validator: t.isString(),
     });
 
+    overwriteJson = Option.Boolean('-j,--overwrite-json', false, {
+        description: 'Overwrite the JSON data file with the new data',
+    });
+
     version = Option.String({
         name: 'version',
         validator: t.isOneOf([
@@ -32,6 +36,12 @@ export class GenerateTypesCommand extends RenderableCommand {
             ? this.output
             : join(this.output, 'playdate.d.ts');
 
-        return <GenerateTypes output={output} version={this.version} />;
+        return (
+            <GenerateTypes
+                output={output}
+                version={this.version}
+                overwriteJson={this.overwriteJson}
+            />
+        );
     }
 }

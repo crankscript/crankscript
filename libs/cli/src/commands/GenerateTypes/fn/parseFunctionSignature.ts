@@ -1,11 +1,11 @@
 import { FunctionDescription } from '@/cli/types.js';
 
 export const parseFunctionSignature = (signature: string) => {
-    if (!signature.includes('(')) {
-        throw new Error('Invalid signature');
-    }
+    const normalizedSignature = signature.includes('(')
+        ? signature
+        : signature + '()';
 
-    const [fullyQualifiedName, paramString] = signature.split('(');
+    const [fullyQualifiedName, paramString] = normalizedSignature.split('(');
     const hasSelf = fullyQualifiedName.includes(':');
     const normalizedFullyQualifiedName = fullyQualifiedName.replace(':', '.');
     const segments = normalizedFullyQualifiedName.split('.');
@@ -14,11 +14,11 @@ export const parseFunctionSignature = (signature: string) => {
     const params = paramString.split(')')[0].split(',').filter(Boolean);
 
     return {
+        signature,
         name: functionName,
         namespaces,
         parameters: params.map((eachParam) => ({
-            name: eachParam.replace(/\[/g, '').replace(/\]/g, '').trim(),
-            type: 'unknown',
+            name: eachParam.replace(/\[/g, '').replace(/]/g, '').trim(),
             required: !eachParam.includes('['),
         })),
         hasSelf,

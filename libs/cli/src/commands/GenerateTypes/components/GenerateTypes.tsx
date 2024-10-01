@@ -10,18 +10,23 @@ import { CheckListItem, PlaydateSdkVersion } from '@/cli/types.js';
 interface Props {
     output: string;
     version: PlaydateSdkVersion;
+    overwriteJson: boolean;
 }
 
-export const GenerateTypes = ({ output, version }: Props) => {
+export const GenerateTypes = ({ output, version, overwriteJson }: Props) => {
     useQuitOnCtrlC();
 
-    const { fetchedVersion, getVersion } = useGetVersion(version);
+    const { typeProvider, fetchedVersion, getVersion } = useGetVersion(version);
     const { html, fetchHtml } = useFetchHtml(fetchedVersion);
     const { definitions, parseDocumentation } = useParseDocumentation(
         html,
         version
     );
-    const { generateTypeFile } = useGenerateTypeFile(output, definitions);
+    const { generateTypeFile } = useGenerateTypeFile(
+        output,
+        definitions,
+        typeProvider
+    );
 
     const items = useMemo(() => {
         return [
@@ -30,7 +35,18 @@ export const GenerateTypes = ({ output, version }: Props) => {
             parseDocumentation,
             generateTypeFile,
         ] as CheckListItem<unknown>[];
-    }, [fetchedVersion, html, definitions]);
+    }, [fetchedVersion, html, definitions, typeProvider]);
 
-    return <CheckList items={items} onFinish={process.exit} />;
+    return (
+        <CheckList
+            items={items}
+            onFinish={() => {
+                if (overwriteJson) {
+                    typeProvider?.save();
+                }
+
+                process.exit();
+            }}
+        />
+    );
 };

@@ -1,16 +1,19 @@
-import { playdateConstants } from '@/cli/commands/GenerateTypes/utils/playdateConstants.js';
 import {
     ApiDefinitions,
     FunctionDescription,
     PlaydateNamespace,
     PlaydateType,
+    PropertyDescription,
 } from '@/cli/types.js';
 
-export const getApiDefinitions = (functions: FunctionDescription[]) => {
+export const getApiDefinitions = (
+    functions: FunctionDescription[],
+    properties: PropertyDescription[]
+) => {
     const namespaces: Record<string, PlaydateNamespace> = {};
     const types: Record<string, PlaydateType> = {};
     const realNamespaces = new Set<string>();
-    const potentialNamespaces: Set<string> = new Set();
+    const potentialNamespaces = new Set<string>();
 
     functions.forEach((func) => {
         if (!func.hasSelf) {
@@ -20,10 +23,28 @@ export const getApiDefinitions = (functions: FunctionDescription[]) => {
                     ? `${currentNamespace}.${ns}`
                     : ns;
 
-                // Add to realNamespaces because there's a non-method function here
-                realNamespaces.add(currentNamespace);
+                const realNamespaceName = currentNamespace.trim();
+
+                if (!realNamespaces.has(realNamespaceName)) {
+                    realNamespaces.add(realNamespaceName);
+                }
             });
         }
+    });
+
+    properties.forEach((prop) => {
+        let currentNamespace = '';
+        prop.namespaces.forEach((ns) => {
+            currentNamespace = currentNamespace
+                ? `${currentNamespace}.${ns}`
+                : ns;
+
+            const realNamespaceName = currentNamespace.trim();
+
+            if (!realNamespaces.has(realNamespaceName)) {
+                realNamespaces.add(realNamespaceName);
+            }
+        });
     });
 
     functions.forEach((func) => {
@@ -34,7 +55,7 @@ export const getApiDefinitions = (functions: FunctionDescription[]) => {
                     ? `${currentNamespace}.${ns}`
                     : ns;
 
-                if (!realNamespaces.has(currentNamespace)) {
+                if (!potentialNamespaces.has(currentNamespace)) {
                     potentialNamespaces.add(currentNamespace);
                 }
             });
@@ -44,7 +65,8 @@ export const getApiDefinitions = (functions: FunctionDescription[]) => {
     realNamespaces.forEach((ns) => {
         namespaces[ns] = {
             functions: [],
-            callbacks: [],
+            methods: [],
+            properties: [],
         };
     });
 
@@ -53,7 +75,7 @@ export const getApiDefinitions = (functions: FunctionDescription[]) => {
 
         if (realNamespaces.has(fullNamespacePath)) {
             if (func.hasSelf) {
-                namespaces[fullNamespacePath].callbacks.push(func);
+                namespaces[fullNamespacePath].methods.push(func);
             } else {
                 namespaces[fullNamespacePath].functions.push(func);
             }
@@ -65,9 +87,16 @@ export const getApiDefinitions = (functions: FunctionDescription[]) => {
         }
     });
 
+    properties.forEach((prop) => {
+        const fullNamespacePath = prop.namespaces.join('.');
+
+        if (realNamespaces.has(fullNamespacePath)) {
+            namespaces[fullNamespacePath].properties.push(prop);
+        }
+    });
+
     return {
         namespaces,
         types,
-        constants: playdateConstants,
     } satisfies ApiDefinitions;
 };

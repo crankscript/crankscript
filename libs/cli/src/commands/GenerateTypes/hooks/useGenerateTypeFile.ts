@@ -1,11 +1,19 @@
+import { writeFileSync } from 'node:fs';
 import { useMemo } from 'react';
-import { Project } from 'ts-morph';
+import {
+    InterfaceDeclaration,
+    ModuleDeclaration,
+    Project,
+    SourceFile,
+} from 'ts-morph';
 import { generateNamespace } from '@/cli/commands/GenerateTypes/fn/generateNamespace.js';
-import { CheckListItem, ApiDefinitions } from '@/cli/types.js';
+import { createTypeProvider } from '@/cli/commands/GenerateTypes/utils/createTypeProvider.js';
+import { ApiDefinitions, CheckListItem } from '@/cli/types.js';
 
 export const useGenerateTypeFile = (
     path: string,
-    definitions: ApiDefinitions | null
+    definitions: ApiDefinitions | null,
+    typeProvider: ReturnType<typeof createTypeProvider> | null
 ) => {
     const generateTypeFile = useMemo(() => {
         return {
@@ -18,46 +26,47 @@ export const useGenerateTypeFile = (
                     throw new Error('Definitions are not set');
                 }
 
+                if (!typeProvider) {
+                    throw new Error('Type provider is not set');
+                }
+
                 const project = new Project();
                 const typeFile = project.createSourceFile(path, '', {
                     overwrite: true,
                 });
+                typeFile.addStatements(typeProvider.getGlobalStatements());
 
-                typeFile.addStatements(
-                    '/// <reference types="lua-types/5.4" />'
-                );
-
-                for (const constantDefinition of definitions.constants) {
-                    typeFile.addEnum({
-                        name: constantDefinition.name,
-                        docs: [constantDefinition.docs],
-                        isConst: true,
-                        isExported: true,
-                        members: constantDefinition.values.map((value) => ({
-                            name: value.name,
-                            docs: [value.docs],
-                            value: value.value,
-                        })),
-                    });
-                }
+                const subjects = new Map<
+                    string,
+                    SourceFile | ModuleDeclaration
+                >();
+                const typeSubjects = new Map<string, InterfaceDeclaration>();
+                subjects.set('root', typeFile);
 
                 Object.keys(definitions.namespaces).forEach((namespace) => {
                     const namespaceDescription =
                         definitions.namespaces[namespace];
                     const namespaces = namespace.split('.');
                     generateNamespace(
-                        typeFile,
-                        namespaces[0],
                         namespaceDescription,
-                        namespaces.slice(1)
+                        namespaces,
+                        subjects,
+                        typeSubjects,
+                        typeProvider,
+                        definitions.types
                     );
                 });
 
-                typeFile.saveSync();
+                writeFileSync(
+                    path,
+                    typeFile
+                        .getFullText()
+                        .replace('/** Playdate SDK */', '\n/** Playdate SDK */')
+                );
             },
-            ready: definitions !== null,
+            ready: definitions !== null && typeProvider !== null,
         } satisfies CheckListItem<void>;
-    }, [definitions]);
+    }, [definitions, typeProvider]);
 
     return {
         generateTypeFile,

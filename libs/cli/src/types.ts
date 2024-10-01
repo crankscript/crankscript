@@ -1,3 +1,8 @@
+import {
+    FunctionDeclarationStructure,
+    MethodSignatureStructure,
+    ParameterDeclarationStructure,
+} from 'ts-morph';
 import { Environment } from '@/cli/environment/dto/Environment.js';
 import { PlaydateSdkPath } from '@/cli/environment/path/dto/PlaydateSdkPath.js';
 
@@ -52,10 +57,17 @@ export type CheckListItem<TResult> = {
 export interface ParameterDescription {
     name: string;
     required: boolean;
-    type: string;
+}
+
+export interface PropertyDescription {
+    signature: string;
+    name: string;
+    namespaces: string[];
+    docs: string;
 }
 
 export interface FunctionDescription {
+    signature: string;
     name: string;
     namespaces: string[];
     parameters: ParameterDescription[];
@@ -75,7 +87,8 @@ export interface ConstantDescription {
 
 export interface PlaydateNamespace {
     functions: FunctionDescription[];
-    callbacks: FunctionDescription[];
+    methods: FunctionDescription[];
+    properties: PropertyDescription[];
 }
 
 export interface PlaydateType {
@@ -85,5 +98,36 @@ export interface PlaydateType {
 export interface ApiDefinitions {
     namespaces: Record<string, PlaydateNamespace>;
     types: Record<string, PlaydateType>;
-    constants: ConstantDescription[];
 }
+
+export interface ParameterDetails {
+    name: string;
+    type: string;
+    overrideOptions?: Partial<
+        Omit<ParameterDeclarationStructure, 'kind' | 'name' | 'type'>
+    >;
+}
+
+export interface PropertyDetails {
+    signature: string;
+    type: string;
+    isStatic?: boolean;
+    isReadOnly?: boolean;
+}
+
+export interface FunctionDetails {
+    signature: string;
+    parameters: ParameterDetails[];
+    returnType: string;
+    overrideParameters?: boolean;
+    overrideOptions?: Partial<
+        FunctionDeclarationStructure | MethodSignatureStructure
+    >;
+}
+
+export type TypeProviderData = {
+    globalStatements: string[];
+    statements: string[];
+    properties: Record<string, PropertyDetails>;
+    functions: Record<string, FunctionDetails>;
+};

@@ -20,7 +20,6 @@ export const CheckList = ({ items, onFinish }: Props) => {
         if (index + 1 < items.length) {
             setCurrentIndex(index + 1);
         } else {
-            setCurrentIndex(null);
             onFinish?.();
         }
     };
@@ -29,7 +28,7 @@ export const CheckList = ({ items, onFinish }: Props) => {
         <>
             {items.map((item, index) => (
                 <Item
-                    key={index}
+                    key={item.waitingDescription}
                     item={{
                         ...item,
                         onFinish: (result: unknown) => {

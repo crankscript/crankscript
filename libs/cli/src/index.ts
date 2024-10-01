@@ -5,7 +5,7 @@ import { join } from 'node:path';
 import { Cli } from 'clipanion';
 import { DoctorCommand } from '@/cli/commands/DoctorCommand.js';
 import { GenerateTypesCommand } from '@/cli/commands/GenerateTypes/GenerateTypesCommand.js';
-import { RootFolder } from '@/cli/utils/dirname.js';
+import { RootFolder } from '@/cli/constants.js';
 
 const packageJsonContents = readFileSync(
     join(RootFolder, 'package.json'),
