@@ -15,7 +15,8 @@
                 "*.ts",
                 "*.tsx",
                 "*.js",
-                "*.jsx"
+                "*.jsx",
+                "*.cts"
             ],
             "rules": {
                 "@nx/enforce-module-boundaries": [
@@ -68,7 +69,8 @@
         {
             "files": [
                 "*.ts",
-                "*.tsx"
+                "*.tsx",
+                "*.cts"
             ],
             "extends": [
                 "plugin:@nx/typescript"
