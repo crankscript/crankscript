@@ -1,12 +1,12 @@
 {
     "name": "@crankscript/core",
-    "version": "0.0.1",
+    "version": "0.0.2",
+    "license": "MIT",
     "scripts": {
-        "pre-build": "tstl -p tsconfig.lua.json"
+        "compile": "tstl -p tsconfig.lua.json"
     },
     "dependencies": {
-        "tslib": "^2.3.0",
-        "typescript-to-lua": "^1.27.0"
+        "tslib": "^2.3.0"
     },
     "type": "commonjs",
     "main": "./src/index"

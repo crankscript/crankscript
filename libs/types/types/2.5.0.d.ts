@@ -22,7 +22,7 @@ namespace playdate {
         PlaydateSoundLfoType,
         PlaydateSoundTwoPoleFilterType,
         PlaydateFileOpenMode,
-    } from './core';
+    } from '@crankscript/core';
     type PlaydateInputHandler = {
         AButtonDown: typeof AButtonDown;
         AButtonHeld: typeof AButtonHeld;
