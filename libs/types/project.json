@@ -20,7 +20,7 @@
                 "outputPath": "dist/libs/types",
                 "main": "libs/types/src/index.ts",
                 "tsConfig": "libs/types/tsconfig.lib.json",
-                "assets": ["libs/types/*.md", "libs/types/types/*.d.ts"]
+                "assets": ["libs/types/*.md", "libs/types/types/*.ts"]
             }
         },
         "nx-release-publish": {
