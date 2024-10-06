@@ -276,7 +276,6 @@ const plugin = {
                 ts.isIdentifier(node.expression) &&
                 node.expression.escapedText === 'require'
             ) {
-                console.log(1);
                 const normalNode = context.superTransformExpression(
                     node
                 ) as unknown as {

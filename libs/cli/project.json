@@ -24,7 +24,7 @@
                 "tsConfig": "libs/cli/tsconfig.lib.json",
                 "assets": [
                     "libs/cli/*.md",
-                    "libs/cli/assets/plugin.ts"
+                    "libs/cli/assets/*"
                 ]
             }
         },
