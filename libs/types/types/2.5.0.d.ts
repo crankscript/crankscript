@@ -6398,7 +6398,7 @@ namespace playdate {
          * @noSelf
          */
         function drawText(
-            text: number,
+            text: string,
             x: number,
             y: number,
             fontFamily: PlaydateFontFamily,

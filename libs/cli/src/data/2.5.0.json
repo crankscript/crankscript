@@ -4830,7 +4830,7 @@
             "parameters": [
                 {
                     "name": "text",
-                    "type": "number"
+                    "type": "string"
                 },
                 {
                     "name": "x",
