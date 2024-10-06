@@ -116,7 +116,6 @@ export const generateNamespace = (
         const propertyType = propertyDetails.type;
 
         module.addVariableStatement({
-            isExported: true,
             declarationKind: VariableDeclarationKind.Const,
             declarations: [
                 {

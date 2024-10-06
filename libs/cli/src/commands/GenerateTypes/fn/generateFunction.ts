@@ -19,7 +19,6 @@ export const generateFunction = (
     subject.addFunction({
         name,
         docs: [func.docs],
-        isExported: !isReserved,
         returnType: typeProvider.getFunctionReturnType(func),
         parameters: typeProvider.getParameters(func),
         ...((typeProvider.getFunctionOverrideOptions(

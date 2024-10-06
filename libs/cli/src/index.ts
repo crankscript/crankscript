@@ -6,6 +6,7 @@ import { Cli } from 'clipanion';
 import { CompileCommand } from '@/cli/commands/CompileCommand/index.js';
 import { DoctorCommand } from '@/cli/commands/DoctorCommand.js';
 import { GenerateTypesCommand } from '@/cli/commands/GenerateTypes/index.js';
+import { TranspileCommand } from '@/cli/commands/TranspileCommand/index.js';
 import { RootFolder } from '@/cli/constants.js';
 
 const packageJsonContents = readFileSync(
@@ -23,6 +24,7 @@ const cli = new Cli({
 });
 
 cli.register(DoctorCommand);
-cli.register(GenerateTypesCommand);
+cli.register(TranspileCommand);
 cli.register(CompileCommand);
+cli.register(GenerateTypesCommand);
 cli.runExit(args);
