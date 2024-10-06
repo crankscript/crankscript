@@ -4,7 +4,7 @@
         "// noinspection JSUnusedGlobalSymbols,JSDuplicatedDeclaration,ReservedWordAsName"
     ],
     "statements": [
-        "import {PlaydateColor, PlaydateButton, PlaydateLanguage, PlaydateFlip, PlaydatePolygonFill, PlaydateDitherType, PlaydateLineCapStyle, PlaydateDrawMode, PlaydateStrokeLocation, PlaydateFontVariant, PlaydateTextAlignment, PlaydateCollisionResponse, PlaydateCapitalizationBehavior, PlaydateSoundFormat, PlaydateSoundWave, PlaydateSoundLfoType, PlaydateSoundTwoPoleFilterType, PlaydateFileOpenMode} from './core';",
+        "import {PlaydateColor, PlaydateButton, PlaydateLanguage, PlaydateFlip, PlaydatePolygonFill, PlaydateDitherType, PlaydateLineCapStyle, PlaydateDrawMode, PlaydateStrokeLocation, PlaydateFontVariant, PlaydateTextAlignment, PlaydateCollisionResponse, PlaydateCapitalizationBehavior, PlaydateSoundFormat, PlaydateSoundWave, PlaydateSoundLfoType, PlaydateSoundTwoPoleFilterType, PlaydateFileOpenMode} from '@crankscript/core';",
         "type PlaydateInputHandler = { AButtonDown: typeof AButtonDown; AButtonHeld: typeof AButtonHeld; AButtonUp: typeof AButtonUp; BButtonDown: typeof BButtonDown; BButtonHeld: typeof BButtonHeld; BButtonUp: typeof BButtonUp; downButtonDown: typeof downButtonDown; downButtonUp: typeof downButtonUp; leftButtonDown: typeof leftButtonDown; leftButtonUp: typeof leftButtonUp; rightButtonDown: typeof rightButtonDown; rightButtonUp: typeof rightButtonUp; upButtonDown: typeof upButtonDown; upButtonUp: typeof upButtonUp; cranked: typeof cranked; crankDocked: typeof crankDocked; crankUndocked: typeof crankUndocked; };",
         "type PlaydateFontFamily = { [PlaydateFontVariant.Normal]: PlaydateGraphicsFont; [PlaydateFontVariant.Bold]: PlaydateGraphicsFont; [PlaydateFontVariant.Italic]: PlaydateGraphicsFont; };",
         "type PlaydateFontFamilyPaths = { [PlaydateFontVariant.Normal]: string; [PlaydateFontVariant.Bold]: string; [PlaydateFontVariant.Italic]: string; };",
@@ -224,7 +224,7 @@
                     "type": "() => void"
                 }
             ],
-            "returnType": "PlaydateMenuItem | [null, string]"
+            "returnType": "PlaydateMenuItem | LuaMultiReturn<[null, string]>"
         },
         "playdate.menu:addCheckmarkMenuItem(title, [initialValue], callback)": {
             "signature": "playdate.menu:addCheckmarkMenuItem(title, [initialValue], callback)",
@@ -245,7 +245,7 @@
                     "type": "() => void"
                 }
             ],
-            "returnType": "PlaydateMenuItem | [null, string]"
+            "returnType": "PlaydateMenuItem | LuaMultiReturn<[null, string]>"
         },
         "playdate.menu:addOptionsMenuItem(title, options, [initalValue], callback)": {
             "signature": "playdate.menu:addOptionsMenuItem(title, options, [initalValue], callback)",
@@ -270,7 +270,7 @@
                     "type": "() => void"
                 }
             ],
-            "returnType": "PlaydateMenuItem | [null, string]"
+            "returnType": "PlaydateMenuItem | LuaMultiReturn<[null, string]>"
         },
         "playdate.menu:getMenuItems()": {
             "signature": "playdate.menu:getMenuItems()",
@@ -345,7 +345,7 @@
                     "type": "string"
                 }
             ],
-            "returnType": "number | [0, string]"
+            "returnType": "number | LuaMultiReturn<[0, string]>"
         },
         "playdate.file.file:flush()": {
             "signature": "playdate.file.file:flush()",
@@ -365,7 +365,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "[string, number] | [null, string]"
+            "returnType": "LuaMultiReturn<[string, number]> | LuaMultiReturn<[null, string]>"
         },
         "playdate.file.file:seek(offset)": {
             "signature": "playdate.file.file:seek(offset)",
@@ -557,7 +557,7 @@
         "playdate.apiVersion()": {
             "signature": "playdate.apiVersion()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.metadata": {
             "signature": "playdate.metadata",
@@ -676,7 +676,7 @@
         "playdate.readAccelerometer()": {
             "signature": "playdate.readAccelerometer()",
             "parameters": [],
-            "returnType": "[number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number]>"
         },
         "playdate.accelerometerIsRunning()": {
             "signature": "playdate.accelerometerIsRunning()",
@@ -716,7 +716,7 @@
         "playdate.getButtonState()": {
             "signature": "playdate.getButtonState()",
             "parameters": [],
-            "returnType": "[number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number]>"
         },
         "playdate.setButtonQueueSize(size)": {
             "signature": "playdate.setButtonQueueSize(size)",
@@ -811,7 +811,7 @@
         "playdate.getCrankChange()": {
             "signature": "playdate.getCrankChange()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.getCrankTicks(ticksPerRevolution)": {
             "signature": "playdate.getCrankTicks(ticksPerRevolution)",
@@ -905,7 +905,7 @@
                     "type": "{year: number; month: number; day: number; weekday: number; hour: number; minute: number; second: number; millisecond: number;}"
                 }
             ],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.epochFromGMTTime(time)": {
             "signature": "playdate.epochFromGMTTime(time)",
@@ -915,7 +915,7 @@
                     "type": "{year: number; month: number; day: number; weekday: number; hour: number; minute: number; second: number; millisecond: number;}"
                 }
             ],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.timeFromEpoch(seconds, milliseconds)": {
             "signature": "playdate.timeFromEpoch(seconds, milliseconds)",
@@ -1157,12 +1157,12 @@
         "playdate.display.getSize()": {
             "signature": "playdate.display.getSize()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.display.getRect()": {
             "signature": "playdate.display.getRect()",
             "parameters": [],
-            "returnType": "[number, number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number, number]>"
         },
         "playdate.display.setScale(scale)": {
             "signature": "playdate.display.setScale(scale)",
@@ -1211,7 +1211,7 @@
         "playdate.display.getMosaic()": {
             "signature": "playdate.display.getMosaic()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.display.setOffset(x, y)": {
             "signature": "playdate.display.setOffset(x, y)",
@@ -1230,7 +1230,7 @@
         "playdate.display.getOffset()": {
             "signature": "playdate.display.getOffset()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.display.setFlipped(x, y)": {
             "signature": "playdate.display.setFlipped(x, y)",
@@ -2664,7 +2664,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.geometry.affineTransform:transformLineSegment(ls)": {
             "signature": "playdate.geometry.affineTransform:transformLineSegment(ls)",
@@ -2838,7 +2838,7 @@
         "playdate.geometry.lineSegment:unpack()": {
             "signature": "playdate.geometry.lineSegment:unpack()",
             "parameters": [],
-            "returnType": "[number, number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number, number]>"
         },
         "playdate.geometry.lineSegment:length()": {
             "signature": "playdate.geometry.lineSegment:length()",
@@ -2915,7 +2915,7 @@
                     "type": "PlaydateGeometryLineSegment"
                 }
             ],
-            "returnType": "false | [true, PlaydateGeometryPoint]"
+            "returnType": "false | LuaMultiReturn<[true, PlaydateGeometryPoint]>"
         },
         "playdate.geometry.lineSegment:intersectsPolygon(poly)": {
             "signature": "playdate.geometry.lineSegment:intersectsPolygon(poly)",
@@ -2925,7 +2925,7 @@
                     "type": "PlaydateGeometryPolygon"
                 }
             ],
-            "returnType": "[boolean, number]"
+            "returnType": "LuaMultiReturn<[boolean, number]>"
         },
         "playdate.geometry.lineSegment:intersectsRect(rect)": {
             "signature": "playdate.geometry.lineSegment:intersectsRect(rect)",
@@ -2935,7 +2935,7 @@
                     "type": "PlaydateGeometryRect"
                 }
             ],
-            "returnType": "[boolean, number]"
+            "returnType": "LuaMultiReturn<[boolean, number]>"
         },
         "playdate.geometry.lineSegment.new(x1, y1, x2, y2)": {
             "signature": "playdate.geometry.lineSegment.new(x1, y1, x2, y2)",
@@ -2995,7 +2995,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "[boolean, number]"
+            "returnType": "LuaMultiReturn<[boolean, number]>"
         },
         "playdate.geometry.point:copy()": {
             "signature": "playdate.geometry.point:copy()",
@@ -3005,7 +3005,7 @@
         "playdate.geometry.point:unpack()": {
             "signature": "playdate.geometry.point:unpack()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.geometry.point:offset(dx, dy)": {
             "signature": "playdate.geometry.point:offset(dx, dy)",
@@ -3125,7 +3125,7 @@
         "playdate.geometry.polygon:getBounds()": {
             "signature": "playdate.geometry.polygon:getBounds()",
             "parameters": [],
-            "returnType": "[number, number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number, number]>"
         },
         "playdate.geometry.polygon:getBoundsRect()": {
             "signature": "playdate.geometry.polygon:getBoundsRect()",
@@ -3259,7 +3259,7 @@
         "playdate.geometry.rect:unpack()": {
             "signature": "playdate.geometry.rect:unpack()",
             "parameters": [],
-            "returnType": "[number, number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number, number]>"
         },
         "playdate.geometry.rect:isEmpty()": {
             "signature": "playdate.geometry.rect:isEmpty()",
@@ -3495,7 +3495,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "[number, number, number, number] | [number, number, number, number][]"
+            "returnType": "LuaMultiReturn<[number, number, number, number]> | [number, number, number, number][]"
         },
         "playdate.geometry.rect.fast_union(x1, y1, w1, h1, x2, y2, w2, h2)": {
             "signature": "playdate.geometry.rect.fast_union(x1, y1, w1, h1, x2, y2, w2, h2)",
@@ -3543,7 +3543,7 @@
         "playdate.geometry.size:unpack()": {
             "signature": "playdate.geometry.size:unpack()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.geometry.size.new(width, height)": {
             "signature": "playdate.geometry.size.new(width, height)",
@@ -3567,7 +3567,7 @@
         "playdate.geometry.vector2D:unpack()": {
             "signature": "playdate.geometry.vector2D:unpack()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.geometry.vector2D:addVector(v)": {
             "signature": "playdate.geometry.vector2D:addVector(v)",
@@ -3730,7 +3730,7 @@
                     "type": "string"
                 }
             ],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.checkAlphaCollision(image1, x1, y1, flip1, image2, x2, y2, flip2)": {
             "signature": "playdate.graphics.checkAlphaCollision(image1, x1, y1, flip1, image2, x2, y2, flip2)",
@@ -4545,7 +4545,7 @@
         "playdate.graphics.getClipRect()": {
             "signature": "playdate.graphics.getClipRect()",
             "parameters": [],
-            "returnType": "[number, number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number, number]>"
         },
         "playdate.graphics.setScreenClipRect(x, y, width, height)": {
             "signature": "playdate.graphics.setScreenClipRect(x, y, width, height)",
@@ -4582,7 +4582,7 @@
         "playdate.graphics.getScreenClipRect()": {
             "signature": "playdate.graphics.getScreenClipRect()",
             "parameters": [],
-            "returnType": "[number, number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number, number]>"
         },
         "playdate.graphics.clearClipRect()": {
             "signature": "playdate.graphics.clearClipRect()",
@@ -4714,7 +4714,7 @@
         "playdate.graphics.getDrawOffset()": {
             "signature": "playdate.graphics.getDrawOffset()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.getDisplayImage()": {
             "signature": "playdate.graphics.getDisplayImage()",
@@ -4820,7 +4820,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.drawLocalizedText(key, x, y, [language, [leadingAdjustment]])": {
             "signature": "playdate.graphics.drawLocalizedText(key, x, y, [language, [leadingAdjustment]])",
@@ -4878,7 +4878,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.drawTextAligned(text, x, y, alignment, [leadingAdjustment])": {
             "signature": "playdate.graphics.drawTextAligned(text, x, y, alignment, [leadingAdjustment])",
@@ -4946,7 +4946,7 @@
                     "type": "PlaydateGraphicsFont"
                 }
             ],
-            "returnType": "[number, number, boolean]"
+            "returnType": "LuaMultiReturn<[number, number, boolean]>"
         },
         "playdate.graphics.drawTextInRect(text, rect, [leadingAdjustment, [truncationString, [alignment, [font]]]])": {
             "signature": "playdate.graphics.drawTextInRect(text, rect, [leadingAdjustment, [truncationString, [alignment, [font]]]])",
@@ -4976,7 +4976,7 @@
                     "type": "PlaydateGraphicsFont"
                 }
             ],
-            "returnType": "[number, number, boolean]"
+            "returnType": "LuaMultiReturn<[number, number, boolean]>"
         },
         "playdate.graphics.drawLocalizedTextAligned(text, x, y, alignment, [language, [leadingAdjustment]])": {
             "signature": "playdate.graphics.drawLocalizedTextAligned(text, x, y, alignment, [language, [leadingAdjustment]])",
@@ -5052,7 +5052,7 @@
                     "type": "PlaydateLanguage"
                 }
             ],
-            "returnType": "[number, number, boolean]"
+            "returnType": "LuaMultiReturn<[number, number, boolean]>"
         },
         "playdate.graphics.drawLocalizedTextInRect(text, rect, [leadingAdjustment, [truncationString, [alignment, [font, [language]]]]])": {
             "signature": "playdate.graphics.drawLocalizedTextInRect(text, rect, [leadingAdjustment, [truncationString, [alignment, [font, [language]]]]])",
@@ -5086,7 +5086,7 @@
                     "type": "PlaydateLanguage"
                 }
             ],
-            "returnType": "[number, number, boolean]"
+            "returnType": "LuaMultiReturn<[number, number, boolean]>"
         },
         "playdate.graphics.getTextSizeForMaxWidth(text, maxWidth, [leadingAdjustment, [font]]])": {
             "signature": "playdate.graphics.getTextSizeForMaxWidth(text, maxWidth, [leadingAdjustment, [font]]])",
@@ -5108,7 +5108,7 @@
                     "type": "PlaydateGraphicsFont"
                 }
             ],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.imageWithText(text, maxWidth, maxHeight, [backgroundColor, [leadingAdjustment, [truncationString, [alignment, [font]]]]])": {
             "signature": "playdate.graphics.imageWithText(text, maxWidth, maxHeight, [backgroundColor, [leadingAdjustment, [truncationString, [alignment, [font]]]]])",
@@ -5146,7 +5146,7 @@
                     "type": "PlaydateGraphicsFont"
                 }
             ],
-            "returnType": "[PlaydateGraphicsImage, boolean]"
+            "returnType": "LuaMultiReturn<[PlaydateGraphicsImage, boolean]>"
         },
         "playdate.graphics.image:load(path)": {
             "signature": "playdate.graphics.image:load(path)",
@@ -5156,7 +5156,7 @@
                     "type": "string"
                 }
             ],
-            "returnType": "true | [false, string]"
+            "returnType": "true | LuaMultiReturn<[false, string]>"
         },
         "playdate.graphics.image:copy()": {
             "signature": "playdate.graphics.image:copy()",
@@ -5166,7 +5166,7 @@
         "playdate.graphics.image:getSize()": {
             "signature": "playdate.graphics.image:getSize()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.image:draw(x, y, [flip, [sourceRect]])": {
             "signature": "playdate.graphics.image:draw(x, y, [flip, [sourceRect]])",
@@ -5740,12 +5740,12 @@
         "playdate.graphics.nineSlice:getSize()": {
             "signature": "playdate.graphics.nineSlice:getSize()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.nineSlice:getMinSize()": {
             "signature": "playdate.graphics.nineSlice:getMinSize()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.nineSlice:drawInRect(x, y, width, height)": {
             "signature": "playdate.graphics.nineSlice:drawInRect(x, y, width, height)",
@@ -6173,7 +6173,7 @@
                     "type": "string"
                 }
             ],
-            "returnType": "true | [false, string]"
+            "returnType": "true | LuaMultiReturn<[false, string]>"
         },
         "playdate.graphics.imagetable:getLength()": {
             "signature": "playdate.graphics.imagetable:getLength()",
@@ -6183,7 +6183,7 @@
         "playdate.graphics.imagetable:getSize()": {
             "signature": "playdate.graphics.imagetable:getSize()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.imagetable:drawImage(n,x,y,[flip])": {
             "signature": "playdate.graphics.imagetable:drawImage(n,x,y,[flip])",
@@ -6262,7 +6262,7 @@
         "playdate.graphics.tilemap:getTiles()": {
             "signature": "playdate.graphics.tilemap:getTiles()",
             "parameters": [],
-            "returnType": "[number[], number]"
+            "returnType": "LuaMultiReturn<[number[], number]>"
         },
         "playdate.graphics.tilemap:draw(x, y, [sourceRect])": {
             "signature": "playdate.graphics.tilemap:draw(x, y, [sourceRect])",
@@ -6349,17 +6349,17 @@
         "playdate.graphics.tilemap:getSize()": {
             "signature": "playdate.graphics.tilemap:getSize()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.tilemap:getPixelSize()": {
             "signature": "playdate.graphics.tilemap:getPixelSize()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.tilemap:getTileSize()": {
             "signature": "playdate.graphics.tilemap:getTileSize()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.tilemap:getCollisionRects(emptyIDs)": {
             "signature": "playdate.graphics.tilemap:getCollisionRects(emptyIDs)",
@@ -6430,7 +6430,7 @@
         "playdate.graphics.sprite:getPosition()": {
             "signature": "playdate.graphics.sprite:getPosition()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.sprite:moveBy(x, y)": {
             "signature": "playdate.graphics.sprite:moveBy(x, y)",
@@ -6493,7 +6493,7 @@
         "playdate.graphics.sprite:getCenter()": {
             "signature": "playdate.graphics.sprite:getCenter()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.sprite:getCenterPoint()": {
             "signature": "playdate.graphics.sprite:getCenterPoint()",
@@ -6517,7 +6517,7 @@
         "playdate.graphics.sprite:getSize()": {
             "signature": "playdate.graphics.sprite:getSize()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.sprite:setScale(scale, [yScale])": {
             "signature": "playdate.graphics.sprite:setScale(scale, [yScale])",
@@ -6536,7 +6536,7 @@
         "playdate.graphics.sprite:getScale()": {
             "signature": "playdate.graphics.sprite:getScale()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.sprite:setRotation(angle, [scale, [yScale]])": {
             "signature": "playdate.graphics.sprite:setRotation(angle, [scale, [yScale]])",
@@ -6670,7 +6670,7 @@
         "playdate.graphics.sprite:getBounds()": {
             "signature": "playdate.graphics.sprite:getBounds()",
             "parameters": [],
-            "returnType": "[number, number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number, number]>"
         },
         "playdate.graphics.sprite:getBoundsRect()": {
             "signature": "playdate.graphics.sprite:getBoundsRect()",
@@ -6880,7 +6880,7 @@
         "playdate.graphics.sprite:getCollideBounds()": {
             "signature": "playdate.graphics.sprite:getCollideBounds()",
             "parameters": [],
-            "returnType": "[number, number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number, number]>"
         },
         "playdate.graphics.sprite:clearCollideRect()": {
             "signature": "playdate.graphics.sprite:clearCollideRect()",
@@ -6989,7 +6989,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "[number, number, PlaydateCollision[], number]"
+            "returnType": "LuaMultiReturn<[number, number, PlaydateCollision[], number]>"
         },
         "playdate.graphics.sprite:moveWithCollisions(goalPoint)": {
             "signature": "playdate.graphics.sprite:moveWithCollisions(goalPoint)",
@@ -6999,7 +6999,7 @@
                     "type": "PlaydateGeometryPoint"
                 }
             ],
-            "returnType": "[number, number, PlaydateCollision[], number]"
+            "returnType": "LuaMultiReturn<[number, number, PlaydateCollision[], number]>"
         },
         "playdate.graphics.sprite:checkCollisions(x, y)": {
             "signature": "playdate.graphics.sprite:checkCollisions(x, y)",
@@ -7013,7 +7013,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "[number, number, PlaydateCollision[], number]"
+            "returnType": "LuaMultiReturn<[number, number, PlaydateCollision[], number]>"
         },
         "playdate.graphics.sprite:checkCollisions(point)": {
             "signature": "playdate.graphics.sprite:checkCollisions(point)",
@@ -7023,7 +7023,7 @@
                     "type": "PlaydateGeometryPoint"
                 }
             ],
-            "returnType": "[number, number, PlaydateCollision[], number]"
+            "returnType": "LuaMultiReturn<[number, number, PlaydateCollision[], number]>"
         },
         "playdate.graphics.sprite:collisionResponse(other)": {
             "signature": "playdate.graphics.sprite:collisionResponse(other)",
@@ -7562,7 +7562,7 @@
         "playdate.graphics.video:getSize()": {
             "signature": "playdate.graphics.video:getSize()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.graphics.video:getFrameCount()": {
             "signature": "playdate.graphics.video:getFrameCount()",
@@ -8140,7 +8140,7 @@
                     "type": "((headphone: boolean, mic: boolean) => void) | null"
                 }
             ],
-            "returnType": "[boolean, boolean]"
+            "returnType": "LuaMultiReturn<[boolean, boolean]>"
         },
         "playdate.sound.setOutputsActive(headphones, speaker)": {
             "signature": "playdate.sound.setOutputsActive(headphones, speaker)",
@@ -8224,7 +8224,7 @@
         "playdate.sound.sampleplayer:getVolume()": {
             "signature": "playdate.sound.sampleplayer:getVolume()",
             "parameters": [],
-            "returnType": "number | [number, number]"
+            "returnType": "number | LuaMultiReturn<[number, number]>"
         },
         "playdate.sound.sampleplayer:setLoopCallback(callback, [arg])": {
             "signature": "playdate.sound.sampleplayer:setLoopCallback(callback, [arg])",
@@ -8392,7 +8392,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "true | [false, string]"
+            "returnType": "true | LuaMultiReturn<[false, string]>"
         },
         "playdate.sound.fileplayer:stop()": {
             "signature": "playdate.sound.fileplayer:stop()",
@@ -8496,7 +8496,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "true | [false, string]"
+            "returnType": "true | LuaMultiReturn<[false, string]>"
         },
         "playdate.sound.fileplayer:setRate(rate)": {
             "signature": "playdate.sound.fileplayer:setRate(rate)",
@@ -8555,7 +8555,7 @@
         "playdate.sound.fileplayer:getVolume()": {
             "signature": "playdate.sound.fileplayer:getVolume()",
             "parameters": [],
-            "returnType": "number | [number, number]"
+            "returnType": "number | LuaMultiReturn<[number, number]>"
         },
         "playdate.sound.fileplayer:setOffset(seconds)": {
             "signature": "playdate.sound.fileplayer:setOffset(seconds)",
@@ -8623,7 +8623,7 @@
         "playdate.sound.sample:decompress()": {
             "signature": "playdate.sound.sample:decompress()",
             "parameters": [],
-            "returnType": "true | [false, string]"
+            "returnType": "true | LuaMultiReturn<[false, string]>"
         },
         "playdate.sound.sample:getSampleRate()": {
             "signature": "playdate.sound.sample:getSampleRate()",
@@ -8638,7 +8638,7 @@
         "playdate.sound.sample:getLength()": {
             "signature": "playdate.sound.sample:getLength()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.sound.sample:play([repeatCount], [rate])": {
             "signature": "playdate.sound.sample:play([repeatCount], [rate])",
@@ -9007,7 +9007,7 @@
         "playdate.sound.synth:getVolume()": {
             "signature": "playdate.sound.synth:getVolume()",
             "parameters": [],
-            "returnType": "number | [number, number]"
+            "returnType": "number | LuaMultiReturn<[number, number]>"
         },
         "playdate.sound.synth:setWaveform(waveform)": {
             "signature": "playdate.sound.synth:setWaveform(waveform)",
@@ -10160,7 +10160,7 @@
         "playdate.sound.instrument:getVolume()": {
             "signature": "playdate.sound.instrument:getVolume()",
             "parameters": [],
-            "returnType": "number | [number, number]"
+            "returnType": "number | LuaMultiReturn<[number, number]>"
         },
         "playdate.sound.instrument.new([synth])": {
             "signature": "playdate.sound.instrument.new([synth])",
@@ -10252,7 +10252,7 @@
                     "type": "'headset' | 'device'"
                 }
             ],
-            "returnType": "[true, 'headset' | 'device'] | [false, string]"
+            "returnType": "LuaMultiReturn<[true, 'headset' | 'device']> | LuaMultiReturn<[false, string]>"
         },
         "playdate.sound.micinput.stopListening()": {
             "signature": "playdate.sound.micinput.stopListening()",
@@ -11013,7 +11013,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "[number, number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number, number]>"
         },
         "playdate.ui.gridview:setSectionHeaderHeight(height)": {
             "signature": "playdate.ui.gridview:setSectionHeaderHeight(height)",
@@ -11115,7 +11115,7 @@
         "playdate.ui.gridview:getScrollPosition()": {
             "signature": "playdate.ui.gridview:getScrollPosition()",
             "parameters": [],
-            "returnType": "[number, number]"
+            "returnType": "LuaMultiReturn<[number, number]>"
         },
         "playdate.ui.gridview:scrollToCell(section, row, column, [animated])": {
             "signature": "playdate.ui.gridview:scrollToCell(section, row, column, [animated])",
@@ -11206,7 +11206,7 @@
         "playdate.ui.gridview:getSelection()": {
             "signature": "playdate.ui.gridview:getSelection()",
             "parameters": [],
-            "returnType": "[number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number]>"
         },
         "playdate.ui.gridview:setSelectedRow(row)": {
             "signature": "playdate.ui.gridview:setSelectedRow(row)",
@@ -11360,7 +11360,7 @@
         "playdate.ui.crankIndicator:getBounds()": {
             "signature": "playdate.ui.crankIndicator:getBounds()",
             "parameters": [],
-            "returnType": "[number, number, number, number]"
+            "returnType": "LuaMultiReturn<[number, number, number, number]>"
         }
     }
 }
