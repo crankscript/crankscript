@@ -11,7 +11,7 @@ const transpile = (path: string) => {
     tstl.transpileProject(join(path, 'tsconfig.json'), {
         luaTarget: LuaTarget.Lua54,
         outDir: join(path, 'Source'),
-        luaBundle: 'game.lua',
+        luaBundle: 'main.lua',
         luaBundleEntry: join(path, 'src', 'index.ts'),
         luaPlugins: [
             {
