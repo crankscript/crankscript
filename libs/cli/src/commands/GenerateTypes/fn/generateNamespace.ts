@@ -1,6 +1,6 @@
 import {
-    InterfaceDeclaration,
-    MethodSignatureStructure,
+    ClassDeclaration,
+    MethodDeclarationStructure,
     ModuleDeclaration,
     SourceFile,
     VariableDeclarationKind,
@@ -17,7 +17,7 @@ export const generateNamespace = (
     namespaceDescription: PlaydateNamespace,
     namespaces: string[],
     subjects: Map<string, SourceFile | ModuleDeclaration>,
-    typeSubjects: Map<string, InterfaceDeclaration>,
+    typeSubjects: Map<string, ClassDeclaration>,
     typeProvider: ReturnType<typeof createTypeProvider>,
     types: Record<string, PlaydateType>
 ) => {
@@ -25,7 +25,7 @@ export const generateNamespace = (
     const namespaceName = namespaces[namespaces.length - 1];
     const isRoot = namespaces.length === 1 && namespaces[0] === 'playdate';
     const subject =
-        namespaces.length === 1
+        namespaces.length <= 1
             ? subjects.get('root')
             : subjects.get(subjectName);
 
@@ -33,9 +33,12 @@ export const generateNamespace = (
         return;
     }
 
-    const module = subject.addModule({
-        name: namespaceName,
-    });
+    const module =
+        namespaces.length > 0
+            ? subject.addModule({
+                  name: namespaceName,
+              })
+            : subject;
 
     const addMethods = (
         typeName: string,
@@ -46,27 +49,27 @@ export const generateNamespace = (
             .split('.')
             .map((name) => name[0].toUpperCase() + name.slice(1))
             .join('');
-        const typeInterface = subj.addInterface({
+        const typeClass = subj.addClass({
             name: interfaceName,
         });
-        typeSubjects.set(typeName, typeInterface);
+        typeSubjects.set(typeName, typeClass);
 
         for (const func of methods) {
             const parameters = typeProvider.getParameters(func);
 
-            typeInterface.addMethod({
+            typeClass.addMethod({
                 name: func.name,
                 docs: [func.docs],
                 returnType: typeProvider.getFunctionReturnType(func),
                 parameters,
                 ...(typeProvider.getFunctionOverrideOptions(
                     func
-                ) as Partial<MethodSignatureStructure>),
+                ) as Partial<MethodDeclarationStructure>),
             });
         }
     };
 
-    if (isRoot) {
+    if (isRoot && 'addJsDoc' in module) {
         module.addJsDoc({
             description: 'Playdate SDK',
         });
@@ -77,7 +80,9 @@ export const generateNamespace = (
         });
     }
 
-    subjects.set(namespaces.join('.'), module);
+    if (namespaces.length > 0) {
+        subjects.set(namespaces.join('.'), module);
+    }
 
     if (namespaceDescription.methods.length > 0) {
         addMethods(
@@ -95,7 +100,7 @@ export const generateNamespace = (
             if (typeSubjects.has(typeName)) {
                 const typeInterface = typeSubjects.get(
                     typeName
-                ) as InterfaceDeclaration;
+                ) as ClassDeclaration;
 
                 typeInterface.addProperty({
                     name: property.name,

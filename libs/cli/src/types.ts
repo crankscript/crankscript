@@ -1,6 +1,6 @@
 import {
     FunctionDeclarationStructure,
-    MethodSignatureStructure,
+    MethodDeclarationStructure,
     ParameterDeclarationStructure,
 } from 'ts-morph';
 import { Environment } from '@/cli/environment/dto/Environment.js';
@@ -96,6 +96,7 @@ export interface PlaydateType {
 }
 
 export interface ApiDefinitions {
+    rootNamespace: PlaydateNamespace;
     namespaces: Record<string, PlaydateNamespace>;
     types: Record<string, PlaydateType>;
 }
@@ -121,7 +122,7 @@ export interface FunctionDetails {
     returnType: string;
     overrideParameters?: boolean;
     overrideOptions?: Partial<
-        FunctionDeclarationStructure | MethodSignatureStructure
+        FunctionDeclarationStructure | MethodDeclarationStructure
     >;
 }
 

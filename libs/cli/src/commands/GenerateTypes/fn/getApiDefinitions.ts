@@ -10,6 +10,11 @@ export const getApiDefinitions = (
     functions: FunctionDescription[],
     properties: PropertyDescription[]
 ) => {
+    const rootNamespace: PlaydateNamespace = {
+        functions: [],
+        methods: [],
+        properties: [],
+    };
     const namespaces: Record<string, PlaydateNamespace> = {};
     const types: Record<string, PlaydateType> = {};
     const realNamespaces = new Set<string>();
@@ -84,6 +89,12 @@ export const getApiDefinitions = (
                 types[fullNamespacePath] = { methods: [] };
             }
             types[fullNamespacePath].methods.push(func);
+        } else if (fullNamespacePath === '') {
+            if (func.hasSelf) {
+                rootNamespace.methods.push(func);
+            } else {
+                rootNamespace.functions.push(func);
+            }
         }
     });
 
@@ -92,10 +103,13 @@ export const getApiDefinitions = (
 
         if (realNamespaces.has(fullNamespacePath)) {
             namespaces[fullNamespacePath].properties.push(prop);
+        } else if (fullNamespacePath === '') {
+            rootNamespace.properties.push(prop);
         }
     });
 
     return {
+        rootNamespace,
         namespaces,
         types,
     } satisfies ApiDefinitions;

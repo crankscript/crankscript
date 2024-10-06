@@ -1,7 +1,7 @@
 import { writeFileSync } from 'node:fs';
 import { useMemo } from 'react';
 import {
-    InterfaceDeclaration,
+    ClassDeclaration,
     ModuleDeclaration,
     Project,
     SourceFile,
@@ -40,8 +40,17 @@ export const useGenerateTypeFile = (
                     string,
                     SourceFile | ModuleDeclaration
                 >();
-                const typeSubjects = new Map<string, InterfaceDeclaration>();
+                const typeSubjects = new Map<string, ClassDeclaration>();
                 subjects.set('root', typeFile);
+
+                generateNamespace(
+                    definitions.rootNamespace,
+                    [],
+                    subjects,
+                    typeSubjects,
+                    typeProvider,
+                    definitions.types
+                );
 
                 Object.keys(definitions.namespaces).forEach((namespace) => {
                     const namespaceDescription =
@@ -59,9 +68,7 @@ export const useGenerateTypeFile = (
 
                 writeFileSync(
                     path,
-                    typeFile
-                        .getFullText()
-                        .replace('/** Playdate SDK */', '\n/** Playdate SDK */')
+                    typeFile.getFullText().replace('/**', '\n/**')
                 );
             },
             ready: definitions !== null && typeProvider !== null,

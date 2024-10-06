@@ -36,9 +36,16 @@ export const getDescriptionsFromHtml = (html: string, version: string) => {
     for (const element of functionSignatures) {
         const id = $(element).attr('id') ?? '';
         const isProperty = id.startsWith('v-');
-        const titleText = $(element).find('.title').text();
+        const titleText = $(element).find('> .title').text();
 
-        if (titleText.indexOf('#') !== -1 || /[a-zA-Z]\[/.test(titleText)) {
+        if (
+            titleText.indexOf('#') !== -1 ||
+            /[a-zA-Z]\[/.test(titleText) ||
+            /^-[a-zA-Z]/.test(titleText) ||
+            /[+*/]/.test(titleText) ||
+            titleText.indexOf(' - ') !== -1 ||
+            titleText.indexOf(' .. ') !== -1
+        ) {
             continue;
         }
 

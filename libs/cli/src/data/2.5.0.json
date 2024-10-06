@@ -8,7 +8,7 @@
         "type PlaydateInputHandler = { AButtonDown: typeof AButtonDown; AButtonHeld: typeof AButtonHeld; AButtonUp: typeof AButtonUp; BButtonDown: typeof BButtonDown; BButtonHeld: typeof BButtonHeld; BButtonUp: typeof BButtonUp; downButtonDown: typeof downButtonDown; downButtonUp: typeof downButtonUp; leftButtonDown: typeof leftButtonDown; leftButtonUp: typeof leftButtonUp; rightButtonDown: typeof rightButtonDown; rightButtonUp: typeof rightButtonUp; upButtonDown: typeof upButtonDown; upButtonUp: typeof upButtonUp; cranked: typeof cranked; crankDocked: typeof crankDocked; crankUndocked: typeof crankUndocked; };",
         "type PlaydateFontFamily = { [PlaydateFontVariant.Normal]: PlaydateGraphicsFont; [PlaydateFontVariant.Bold]: PlaydateGraphicsFont; [PlaydateFontVariant.Italic]: PlaydateGraphicsFont; };",
         "type PlaydateFontFamilyPaths = { [PlaydateFontVariant.Normal]: string; [PlaydateFontVariant.Bold]: string; [PlaydateFontVariant.Italic]: string; };",
-        "type PlaydateGenericCollision<TType extends PlaydateCollisionResponse, TExtra = {} > = { sprite: PlaydateSprite; other: PlaydateSprite; type: TType; overlaps: boolean; ti: number; move: PlaydateGeometryVector2D; normal: PlaydateGeometryVector2D; touch: PlaydateGeometryPoint; spriteRect: PlaydateGeometryRect; otherRect: PlaydateGeometryRect; } & TExtra;",
+        "type PlaydateGenericCollision<TType extends PlaydateCollisionResponse, TExtra = {} > = { sprite: PlaydateGraphicsSprite; other: PlaydateGraphicsSprite; type: TType; overlaps: boolean; ti: number; move: PlaydateGeometryVector2D; normal: PlaydateGeometryVector2D; touch: PlaydateGeometryPoint; spriteRect: PlaydateGeometryRect; otherRect: PlaydateGeometryRect; } & TExtra;",
         "type PlaydateCollision = PlaydateGenericCollision<PlaydateCollisionResponse.Overlap> | PlaydateGenericCollision<PlaydateCollisionResponse.Freeze> | PlaydateGenericCollision<PlaydateCollisionResponse.Bounce, { bounce: PlaydateGeometryPoint }> | PlaydateGenericCollision<PlaydateCollisionResponse.Slide, { slide: PlaydateGeometryPoint }>;",
         "type PlaydateEasingFunction = typeof easingFunctions.linear | typeof easingFunctions.inQuad | typeof easingFunctions.outQuad | typeof easingFunctions.inOutQuad | typeof easingFunctions.outInQuad | typeof easingFunctions.inCubic | typeof easingFunctions.outCubic | typeof easingFunctions.inOutCubic | typeof easingFunctions.outInCubic | typeof easingFunctions.inQuart | typeof easingFunctions.outQuart | typeof easingFunctions.inOutQuart | typeof easingFunctions.outInQuart | typeof easingFunctions.inQuint | typeof easingFunctions.outQuint | typeof easingFunctions.inOutQuint | typeof easingFunctions.outInQuint | typeof easingFunctions.inSine | typeof easingFunctions.outSine | typeof easingFunctions.inOutSine | typeof easingFunctions.outInSine | typeof easingFunctions.inExpo | typeof easingFunctions.outExpo | typeof easingFunctions.inOutExpo | typeof easingFunctions.outInExpo | typeof easingFunctions.inCirc | typeof easingFunctions.outCirc | typeof easingFunctions.inOutCirc | typeof easingFunctions.outInCirc | typeof easingFunctions.inElastic | typeof easingFunctions.outElastic | typeof easingFunctions.inOutElastic | typeof easingFunctions.outInElastic | typeof easingFunctions.inBack | typeof easingFunctions.outBack | typeof easingFunctions.inOutBack | typeof easingFunctions.outInBack | typeof easingFunctions.outBounce | typeof easingFunctions.inBounce | typeof easingFunctions.inOutBounce | typeof easingFunctions.outInBounce;",
         "type PlaydateCollisionInfo = { sprite: PlaydateGraphicsSprite; entryPoint: PlaydateGeometryPoint; exitPoint: PlaydateGeometryPoint; ti1: number; ti2: number; };",
@@ -212,6 +212,35 @@
         }
     },
     "functions": {
+        "print(string)": {
+            "signature": "print(string)",
+            "overrideParameters": true,
+            "parameters": [
+                {
+                    "name": "arg",
+                    "type": "unknown[]",
+                    "overrideOptions": {
+                        "isRestParameter": true
+                    }
+                }
+            ],
+            "returnType": "void"
+        },
+        "printTable(table)": {
+            "signature": "printTable(table)",
+            "parameters": [
+                {
+                    "name": "table",
+                    "type": "AnyTable"
+                }
+            ],
+            "returnType": "void"
+        },
+        "where()": {
+            "signature": "where()",
+            "parameters": [],
+            "returnType": "string"
+        },
         "playdate.menu:addMenuItem(title, callback)": {
             "signature": "playdate.menu:addMenuItem(title, callback)",
             "parameters": [

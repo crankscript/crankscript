@@ -1,3 +1,0 @@
-- When creating types in the d.ts file, actually create classes instead
-- Before emitting the lua program, check that the needed imports are present
-- Create a core library which will be translated to lua
