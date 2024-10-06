@@ -17,9 +17,10 @@
         "ink": "^5.0.1",
         "react": "^18.3.1",
         "ts-morph": "^23.0.0",
+        "ts-node": "^10.9.2",
         "typanion": "^3.14.0",
-        "typescript-to-lua": "^1.27.0",
-        "typescript": "~5.6.2"
+        "typescript": "~5.6.2",
+        "typescript-to-lua": "^1.27.0"
     },
     "type": "module",
     "main": "./src/index.js",
