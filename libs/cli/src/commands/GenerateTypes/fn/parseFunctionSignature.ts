@@ -19,7 +19,7 @@ export const parseFunctionSignature = (signature: string) => {
         namespaces,
         parameters: params.map((eachParam) => ({
             name: eachParam.replace(/\[/g, '').replace(/]/g, '').trim(),
-            required: !eachParam.includes('['),
+            required: !eachParam.includes('[') && !eachParam.includes(']'),
         })),
         hasSelf,
     } satisfies Omit<FunctionDescription, 'docs'>;

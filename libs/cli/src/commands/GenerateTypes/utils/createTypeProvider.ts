@@ -167,7 +167,10 @@ export const createTypeProvider = (version: string) => {
         return func.parameters.map((parameter) => {
             const details = getParameterDetails(func, parameter.name);
 
-            return getParameterFromDetails(details);
+            return {
+                hasQuestionToken: !parameter.required,
+                ...getParameterFromDetails(details),
+            } satisfies ParameterDeclarationStructure;
         });
     };
 
@@ -176,7 +179,7 @@ export const createTypeProvider = (version: string) => {
     };
 
     const save = () => {
-        const contents = JSON.stringify(provider, null, 4);
+        const contents = JSON.stringify(provider, null, 4) + '\n';
 
         writeFileSync(path, contents, 'utf-8');
     };
