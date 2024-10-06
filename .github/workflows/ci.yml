@@ -35,7 +35,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
       - run: git config user.email github-actions@github.com
         if: github.ref == 'refs/heads/main'
-      - run: npx release --projects=$(npx nx show projects | paste -sd ',' -) --yes --verbose
+      - run: npx nx release -p $(nx show projects --affected --sep=,) --yes --verbose
         if: github.ref == 'refs/heads/main'
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
