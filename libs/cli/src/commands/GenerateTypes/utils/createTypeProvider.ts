@@ -115,12 +115,6 @@ export const createTypeProvider = (version: string) => {
         return provider.statements;
     };
 
-    const isPropertyStatic = (property: PropertyDescription) => {
-        const { isStatic } = getPropertyDetails(property);
-
-        return isStatic;
-    };
-
     const getFunctionReturnType = (func: FunctionDescription) => {
         const { returnType } = getFunctionDetails(func);
 
