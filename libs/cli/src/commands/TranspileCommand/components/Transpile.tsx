@@ -15,13 +15,7 @@ const transpile = (path: string) => {
         luaBundleEntry: join(path, 'src', 'index.ts'),
         luaPlugins: [
             {
-                name: join(
-                    RootFolder,
-                    'src',
-                    'commands',
-                    'CompileCommand',
-                    'plugin.cts'
-                ),
+                name: join(RootFolder, 'assets', 'plugin.ts'),
             },
         ],
     });
