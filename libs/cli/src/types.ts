@@ -1,4 +1,5 @@
 import {
+    ClassDeclarationStructure,
     FunctionDeclarationStructure,
     MethodDeclarationStructure,
     ParameterDeclarationStructure,
@@ -113,6 +114,7 @@ export interface FunctionDetails {
 export type TypeProviderData = {
     globalStatements: string[];
     statements: string[];
+    classes: Record<string, Partial<ClassDeclarationStructure>>;
     properties: Record<string, PropertyDetails>;
     functions: Record<string, FunctionDetails>;
 };

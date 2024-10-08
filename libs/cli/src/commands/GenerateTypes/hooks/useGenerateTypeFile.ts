@@ -41,7 +41,7 @@ export const useGenerateTypeFile = (
 
                 typeFile.addStatements(typeProvider.getGlobalStatements());
 
-                generateNamespace(globalNamespace, typeFile, typeProvider);
+                generateNamespace(globalNamespace, typeFile, typeProvider, '');
 
                 writeFileSync(
                     path,
@@ -61,9 +61,11 @@ const generateNamespace = (
     apiObject: ApiObject,
     incomingSubject: SourceFile | ModuleDeclaration,
     typeProvider: ReturnType<typeof createTypeProvider>,
+    namespace: string,
     name?: string
 ) => {
     let subject = incomingSubject;
+    const fullNamespaceName = [namespace, name].filter(Boolean).join('.');
 
     if (name) {
         subject = incomingSubject.addModule({
@@ -87,6 +89,7 @@ const generateNamespace = (
             docs: [func.docs],
             parameters,
             returnType: typeProvider.getFunctionReturnType(func),
+            isExported: !!name,
             ...(typeProvider.getFunctionOverrideOptions(
                 func
             ) as FunctionDeclarationStructure),
@@ -109,6 +112,7 @@ const generateNamespace = (
     if (name && apiObject.methods.length > 0) {
         const typeClass = incomingSubject.addClass({
             name,
+            ...typeProvider.getClassOptions(fullNamespaceName),
         });
         propertiesSubject = typeClass;
 
@@ -151,7 +155,13 @@ const generateNamespace = (
         }
     }
 
-    for (const namespace of Object.entries(apiObject.namespaces)) {
-        generateNamespace(namespace[1], subject, typeProvider, namespace[0]);
+    for (const eachNamespace of Object.entries(apiObject.namespaces)) {
+        generateNamespace(
+            eachNamespace[1],
+            subject,
+            typeProvider,
+            fullNamespaceName,
+            eachNamespace[0]
+        );
     }
 };

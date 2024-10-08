@@ -27,17 +27,23 @@ export const createTypeProvider = (version: string) => {
         : ({
               globalStatements: [],
               statements: [],
+              classes: {},
               properties: {},
               functions: {},
           } satisfies TypeProviderData);
     const provider = {
         globalStatements: fallbackProvider.globalStatements,
         statements: fallbackProvider.statements,
+        classes: fallbackProvider.classes,
         properties: {},
         functions: {},
     } as TypeProviderData;
     const visitedProperties = new Map<string, PropertyDetails>();
     const visitedFunctions = new Map<string, FunctionDetails>();
+
+    const getClassOptions = (className: string) => {
+        return provider.classes[className] ?? {};
+    };
 
     const getPropertyDetails = (property: PropertyDescription) => {
         if (visitedProperties.has(property.signature)) {
@@ -181,6 +187,7 @@ export const createTypeProvider = (version: string) => {
     return {
         getGlobalStatements,
         getStatements,
+        getClassOptions,
         getPropertyDetails,
         getFunctionReturnType,
         getParameterDetails,
