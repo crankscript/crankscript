@@ -2,13 +2,15 @@ import { writeFileSync } from 'node:fs';
 import { useMemo } from 'react';
 import {
     ClassDeclaration,
+    FunctionDeclarationStructure,
+    MethodDeclarationStructure,
     ModuleDeclaration,
     Project,
     SourceFile,
 } from 'ts-morph';
-import { generateNamespace } from '@/cli/commands/GenerateTypes/fn/generateNamespace.js';
 import { createTypeProvider } from '@/cli/commands/GenerateTypes/utils/createTypeProvider.js';
-import { ApiDefinitions, CheckListItem } from '@/cli/types.js';
+import { TypescriptReservedNamed } from '@/cli/constants.js';
+import { ApiDefinitions, ApiObject, CheckListItem } from '@/cli/types.js';
 
 export const useGenerateTypeFile = (
     path: string,
@@ -34,37 +36,12 @@ export const useGenerateTypeFile = (
                 const typeFile = project.createSourceFile(path, '', {
                     overwrite: true,
                 });
+
+                const globalNamespace = definitions.global;
+
                 typeFile.addStatements(typeProvider.getGlobalStatements());
 
-                const subjects = new Map<
-                    string,
-                    SourceFile | ModuleDeclaration
-                >();
-                const typeSubjects = new Map<string, ClassDeclaration>();
-                subjects.set('root', typeFile);
-
-                generateNamespace(
-                    definitions.rootNamespace,
-                    [],
-                    subjects,
-                    typeSubjects,
-                    typeProvider,
-                    definitions.types
-                );
-
-                Object.keys(definitions.namespaces).forEach((namespace) => {
-                    const namespaceDescription =
-                        definitions.namespaces[namespace];
-                    const namespaces = namespace.split('.');
-                    generateNamespace(
-                        namespaceDescription,
-                        namespaces,
-                        subjects,
-                        typeSubjects,
-                        typeProvider,
-                        definitions.types
-                    );
-                });
+                generateNamespace(globalNamespace, typeFile, typeProvider);
 
                 writeFileSync(
                     path,
@@ -78,4 +55,103 @@ export const useGenerateTypeFile = (
     return {
         generateTypeFile,
     };
+};
+
+const generateNamespace = (
+    apiObject: ApiObject,
+    incomingSubject: SourceFile | ModuleDeclaration,
+    typeProvider: ReturnType<typeof createTypeProvider>,
+    name?: string
+) => {
+    let subject = incomingSubject;
+
+    if (name) {
+        subject = incomingSubject.addModule({
+            name,
+        });
+    }
+
+    if (name === 'playdate') {
+        subject.addStatements(typeProvider.getStatements());
+    }
+
+    for (const func of apiObject.functions) {
+        const isFunctionNameReserved = TypescriptReservedNamed.includes(
+            func.name
+        );
+        const resolvedName = `_${func.name}`;
+        const parameters = typeProvider.getParameters(func);
+
+        subject.addFunction({
+            name: isFunctionNameReserved ? resolvedName : func.name,
+            docs: [func.docs],
+            parameters,
+            returnType: typeProvider.getFunctionReturnType(func),
+            ...(typeProvider.getFunctionOverrideOptions(
+                func
+            ) as FunctionDeclarationStructure),
+        });
+
+        if (isFunctionNameReserved) {
+            subject.addExportDeclaration({
+                namedExports: [
+                    {
+                        name: resolvedName,
+                        alias: func.name,
+                    },
+                ],
+            });
+        }
+    }
+
+    let propertiesSubject: ClassDeclaration | null = null;
+
+    if (name && apiObject.methods.length > 0) {
+        const typeClass = incomingSubject.addClass({
+            name,
+        });
+        propertiesSubject = typeClass;
+
+        for (const method of apiObject.methods) {
+            const parameters = typeProvider.getParameters(method);
+
+            typeClass.addMethod({
+                name: method.name,
+                docs: [method.docs],
+                parameters,
+                returnType: typeProvider.getFunctionReturnType(method),
+                ...(typeProvider.getFunctionOverrideOptions(
+                    method
+                ) as Partial<MethodDeclarationStructure>),
+            });
+        }
+    }
+
+    for (const property of apiObject.properties) {
+        const propertyDetails = typeProvider.getPropertyDetails(property);
+
+        if (propertiesSubject) {
+            propertiesSubject.addProperty({
+                name: property.name,
+                docs: [property.docs],
+                type: propertyDetails.type,
+                isStatic: propertyDetails.isStatic,
+                isReadonly: propertyDetails.isReadOnly,
+            });
+        } else {
+            subject.addVariableStatement({
+                docs: [property.docs],
+                declarations: [
+                    {
+                        name: property.name,
+                        type: propertyDetails.type,
+                    },
+                ],
+            });
+        }
+    }
+
+    for (const namespace of Object.entries(apiObject.namespaces)) {
+        generateNamespace(namespace[1], subject, typeProvider, namespace[0]);
+    }
 };

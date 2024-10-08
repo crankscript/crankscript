@@ -74,31 +74,15 @@ export interface FunctionDescription {
     hasSelf: boolean;
     docs: string;
 }
-
-export interface ConstantDescription {
-    name: string;
-    docs: string;
-    values: {
-        name: string;
-        value: number;
-        docs: string;
-    }[];
-}
-
-export interface PlaydateNamespace {
+export interface ApiObject {
     functions: FunctionDescription[];
     methods: FunctionDescription[];
     properties: PropertyDescription[];
-}
-
-export interface PlaydateType {
-    methods: FunctionDescription[];
+    namespaces: Record<string, ApiObject>;
 }
 
 export interface ApiDefinitions {
-    rootNamespace: PlaydateNamespace;
-    namespaces: Record<string, PlaydateNamespace>;
-    types: Record<string, PlaydateType>;
+    global: ApiObject;
 }
 
 export interface ParameterDetails {
