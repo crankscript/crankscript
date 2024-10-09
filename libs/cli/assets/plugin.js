@@ -34,6 +34,25 @@ var call_1 = require("typescript-to-lua/dist/transformation/visitors/call");
 var fields_1 = require("typescript-to-lua/dist/transformation/visitors/class/members/fields");
 var utils_1 = require("typescript-to-lua/dist/transformation/visitors/class/utils");
 var function_1 = require("typescript-to-lua/dist/transformation/visitors/function");
+var importMap = {
+    graphics: new Set(['graphics']),
+    sprites: new Set(['sprite']),
+    crank: new Set(['getCrankTicks']),
+    object: new Set(['printTable']),
+    'utilities/where': new Set(['where']),
+    easing: new Set(['easingFunctions']),
+    nineSlice: new Set(['nineSlice']),
+    qrcode: new Set(['generateQRCode']),
+    animation: new Set(['animation']),
+    animator: new Set(['animator']),
+    keyboard: new Set(['keyboard']),
+    math: new Set(['math']),
+    string: new Set(['string']),
+    timer: new Set(['timer']),
+    frameTimer: new Set(['frameTimer']),
+    ui: new Set(['ui']),
+};
+var imports = new Set();
 function createClassCall(context, className, extendsNode) {
     // class('X')
     var classCall = tstl.createCallExpression(tstl.createIdentifier('class'), [tstl.createStringLiteral(className.text)]);
@@ -101,6 +120,7 @@ function transformMethodDeclaration(context, node, className) {
     return tstl.createAssignmentStatement(tstl.createTableIndexExpression(className, transformPropertyName(context, node.name)), functionExpression);
 }
 var transformClassDeclaration = function (declaration, context) {
+    imports.add('object');
     var className;
     if (declaration.name) {
         className = tstl.createIdentifier(declaration.name.text);
@@ -181,26 +201,7 @@ var transformSuperExpression = function (expression, context) {
     return lua.createTableIndexExpression(className, lua.createStringLiteral('super'));
 };
 exports.transformSuperExpression = transformSuperExpression;
-var importMap = {
-    graphics: new Set(['graphics']),
-    sprites: new Set(['sprite']),
-    crank: new Set(['getCrankTicks']),
-    object: new Set(['printTable']),
-    'utilities/where': new Set(['where']),
-    easing: new Set(['easingFunctions']),
-    nineSlice: new Set(['nineSlice']),
-    qrcode: new Set(['generateQRCode']),
-    animation: new Set(['animation']),
-    animator: new Set(['animator']),
-    keyboard: new Set(['keyboard']),
-    math: new Set(['math']),
-    string: new Set(['string']),
-    timer: new Set(['timer']),
-    frameTimer: new Set(['frameTimer']),
-    ui: new Set(['ui']),
-};
-var imports = new Set();
-var processFunction = function (name) {
+var processName = function (name) {
     for (var _i = 0, _a = Object.entries(importMap); _i < _a.length; _i++) {
         var _b = _a[_i], key = _b[0], value = _b[1];
         if (value instanceof Set && value.has(name)) {
@@ -224,13 +225,13 @@ var plugin = {
         _a[ts.SyntaxKind.NewExpression] = transformNewExpression,
         _a[ts.SyntaxKind.PropertyAccessExpression] = function (node, context) {
             if (ts.isIdentifier(node.expression)) {
-                processFunction(node.name.text);
+                processName(node.name.text);
             }
             return context.superTransformExpression(node);
         },
         _a[ts.SyntaxKind.CallExpression] = function (node, context) {
             if (ts.isIdentifier(node.expression)) {
-                processFunction(node.expression.escapedText.toString());
+                processName(node.expression.escapedText.toString());
             }
             if (ts.isIdentifier(node.expression) &&
                 node.expression.escapedText === 'require') {

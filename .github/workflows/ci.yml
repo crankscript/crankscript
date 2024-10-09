@@ -1,42 +1,42 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+    push:
+        branches:
+            - main
+    pull_request:
 
 permissions:
-  actions: read
-  contents: write
+    actions: read
+    contents: write
 
 jobs:
-  main:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+    main:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
 
-      # Cache node_modules
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
+            # Cache node_modules
+            -   uses: actions/setup-node@v4
+                with:
+                    node-version: 22
+                    cache: 'npm'
+                    registry-url: 'https://registry.npmjs.org'
 
-      - run: npm ci --legacy-peer-deps
-      - uses: nrwl/nx-set-shas@v4
+            -   run: npm ci --legacy-peer-deps
+            -   uses: nrwl/nx-set-shas@v4
 
-      - run: npx nx affected -t lint test build
-      - run: npx nx affected -t post-build
+            -   run: npx nx affected -t lint test build
+            -   run: npx nx affected -t post-build
 
-      - run: git config user.name github-actions
-        if: github.ref == 'refs/heads/main'
-      - run: git config user.email github-actions@github.com
-        if: github.ref == 'refs/heads/main'
-      - run: npx nx release -p $(nx show projects --affected --sep=,) --yes --verbose
-        if: github.ref == 'refs/heads/main'
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+            -   run: git config user.name github-actions
+                if: github.ref == 'refs/heads/main'
+            -   run: git config user.email github-actions@github.com
+                if: github.ref == 'refs/heads/main'
+            -   run: npx nx release -p $(nx show projects --affected --sep=,) --yes --verbose
+                if: github.ref == 'refs/heads/main'
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                    NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}

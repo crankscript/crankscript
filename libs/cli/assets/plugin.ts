@@ -15,6 +15,27 @@ import {
     transformParameters,
 } from 'typescript-to-lua/dist/transformation/visitors/function';
 
+const importMap = {
+    graphics: new Set(['graphics']),
+    sprites: new Set(['sprite']),
+    crank: new Set(['getCrankTicks']),
+    object: new Set(['printTable']),
+    'utilities/where': new Set(['where']),
+    easing: new Set(['easingFunctions']),
+    nineSlice: new Set(['nineSlice']),
+    qrcode: new Set(['generateQRCode']),
+    animation: new Set(['animation']),
+    animator: new Set(['animator']),
+    keyboard: new Set(['keyboard']),
+    math: new Set(['math']),
+    string: new Set(['string']),
+    timer: new Set(['timer']),
+    frameTimer: new Set(['frameTimer']),
+    ui: new Set(['ui']),
+};
+
+const imports = new Set<string>();
+
 function createClassCall(
     context: tstl.TransformationContext,
     className: tstl.Identifier,
@@ -154,6 +175,8 @@ export const transformClassDeclaration: FunctionVisitor<
     declaration,
     context: TransformationContext & { classSuperInfos?: [ClassSuperInfo] }
 ) => {
+    imports.add('object');
+
     let className: tstl.Identifier;
     if (declaration.name) {
         className = tstl.createIdentifier(declaration.name.text);
@@ -266,28 +289,7 @@ export const transformSuperExpression: FunctionVisitor<ts.SuperExpression> = (
     );
 };
 
-const importMap = {
-    graphics: new Set(['graphics']),
-    sprites: new Set(['sprite']),
-    crank: new Set(['getCrankTicks']),
-    object: new Set(['printTable']),
-    'utilities/where': new Set(['where']),
-    easing: new Set(['easingFunctions']),
-    nineSlice: new Set(['nineSlice']),
-    qrcode: new Set(['generateQRCode']),
-    animation: new Set(['animation']),
-    animator: new Set(['animator']),
-    keyboard: new Set(['keyboard']),
-    math: new Set(['math']),
-    string: new Set(['string']),
-    timer: new Set(['timer']),
-    frameTimer: new Set(['frameTimer']),
-    ui: new Set(['ui']),
-};
-
-const imports = new Set<string>();
-
-const processFunction = (name: string) => {
+const processName = (name: string) => {
     for (const [key, value] of Object.entries(importMap)) {
         if (value instanceof Set && value.has(name)) {
             imports.add(key);
@@ -313,14 +315,14 @@ const plugin = {
         [ts.SyntaxKind.NewExpression]: transformNewExpression,
         [ts.SyntaxKind.PropertyAccessExpression]: (node, context) => {
             if (ts.isIdentifier(node.expression)) {
-                processFunction(node.name.text);
+                processName(node.name.text);
             }
 
             return context.superTransformExpression(node);
         },
         [ts.SyntaxKind.CallExpression]: (node, context) => {
             if (ts.isIdentifier(node.expression)) {
-                processFunction(node.expression.escapedText.toString());
+                processName(node.expression.escapedText.toString());
             }
 
             if (
