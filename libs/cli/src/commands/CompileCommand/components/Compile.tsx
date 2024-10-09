@@ -1,6 +1,8 @@
 import { exec } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
+import process from 'node:process';
+import { promisify } from 'node:util';
 import React, { useMemo } from 'react';
 import { CheckList } from '@/cli/components/CheckList/index.js';
 import { Environment } from '@/cli/environment/dto/Environment.js';
@@ -11,6 +13,8 @@ interface Props {
     environment: Environment;
     watch?: boolean;
 }
+
+const promisifiedExec = promisify(exec);
 
 export const Compile = ({ environment, watch = false }: Props) => {
     useQuitOnCtrlC();
@@ -39,7 +43,7 @@ export const Compile = ({ environment, watch = false }: Props) => {
                 runningDescription: 'Compiling lua code...',
                 finishedDescription: () => 'Lua code compiled',
                 runner: async () => {
-                    exec(`${path} Source`);
+                    return promisifiedExec(`${path} Source`);
                 },
                 ready: true,
             },
