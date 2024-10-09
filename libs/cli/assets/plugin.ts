@@ -266,12 +266,63 @@ export const transformSuperExpression: FunctionVisitor<ts.SuperExpression> = (
     );
 };
 
+const importMap = {
+    graphics: new Set(['graphics']),
+    sprites: new Set(['sprite']),
+    crank: new Set(['getCrankTicks']),
+    object: new Set(['printTable']),
+    'utilities/where': new Set(['where']),
+    easing: new Set(['easingFunctions']),
+    nineSlice: new Set(['nineSlice']),
+    qrcode: new Set(['generateQRCode']),
+    animation: new Set(['animation']),
+    animator: new Set(['animator']),
+    keyboard: new Set(['keyboard']),
+    math: new Set(['math']),
+    string: new Set(['string']),
+    timer: new Set(['timer']),
+    frameTimer: new Set(['frameTimer']),
+    ui: new Set(['ui']),
+};
+
+const imports = new Set<string>();
+
+const processFunction = (name: string) => {
+    for (const [key, value] of Object.entries(importMap)) {
+        if (value instanceof Set && value.has(name)) {
+            imports.add(key);
+        }
+    }
+};
+
 const plugin = {
+    beforeEmit: (_, __, ___, result) => {
+        const importsString = Array.from(imports)
+            .map((importString) => `import "CoreLibs/${importString}"`)
+            .join('\n');
+
+        if (importsString.trim() === '') {
+            return;
+        }
+
+        result[0].code = `-- These imports were added automatically\n\n${importsString}\n\n-- End of automatic imports\n\n${result[0].code}`;
+    },
     visitors: {
         [ts.SyntaxKind.ClassDeclaration]: transformClassDeclaration,
         [ts.SyntaxKind.SuperKeyword]: transformSuperExpression,
         [ts.SyntaxKind.NewExpression]: transformNewExpression,
+        [ts.SyntaxKind.PropertyAccessExpression]: (node, context) => {
+            if (ts.isIdentifier(node.expression)) {
+                processFunction(node.name.text);
+            }
+
+            return context.superTransformExpression(node);
+        },
         [ts.SyntaxKind.CallExpression]: (node, context) => {
+            if (ts.isIdentifier(node.expression)) {
+                processFunction(node.expression.escapedText.toString());
+            }
+
             if (
                 ts.isIdentifier(node.expression) &&
                 node.expression.escapedText === 'require'

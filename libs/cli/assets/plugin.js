@@ -181,15 +181,59 @@ var transformSuperExpression = function (expression, context) {
     return lua.createTableIndexExpression(className, lua.createStringLiteral('super'));
 };
 exports.transformSuperExpression = transformSuperExpression;
+var importMap = {
+    graphics: new Set(['graphics']),
+    sprites: new Set(['sprite']),
+    crank: new Set(['getCrankTicks']),
+    object: new Set(['printTable']),
+    'utilities/where': new Set(['where']),
+    easing: new Set(['easingFunctions']),
+    nineSlice: new Set(['nineSlice']),
+    qrcode: new Set(['generateQRCode']),
+    animation: new Set(['animation']),
+    animator: new Set(['animator']),
+    keyboard: new Set(['keyboard']),
+    math: new Set(['math']),
+    string: new Set(['string']),
+    timer: new Set(['timer']),
+    frameTimer: new Set(['frameTimer']),
+    ui: new Set(['ui']),
+};
+var imports = new Set();
+var processFunction = function (name) {
+    for (var _i = 0, _a = Object.entries(importMap); _i < _a.length; _i++) {
+        var _b = _a[_i], key = _b[0], value = _b[1];
+        if (value instanceof Set && value.has(name)) {
+            imports.add(key);
+        }
+    }
+};
 var plugin = {
+    beforeEmit: function (_, __, ___, result) {
+        var importsString = Array.from(imports)
+            .map(function (importString) { return "import \"CoreLibs/".concat(importString, "\""); })
+            .join('\n');
+        if (importsString.trim() === '') {
+            return;
+        }
+        result[0].code = "-- These imports were added automatically\n\n".concat(importsString, "\n\n-- End of automatic imports\n\n").concat(result[0].code);
+    },
     visitors: (_a = {},
         _a[ts.SyntaxKind.ClassDeclaration] = exports.transformClassDeclaration,
         _a[ts.SyntaxKind.SuperKeyword] = exports.transformSuperExpression,
         _a[ts.SyntaxKind.NewExpression] = transformNewExpression,
+        _a[ts.SyntaxKind.PropertyAccessExpression] = function (node, context) {
+            if (ts.isIdentifier(node.expression)) {
+                processFunction(node.name.text);
+            }
+            return context.superTransformExpression(node);
+        },
         _a[ts.SyntaxKind.CallExpression] = function (node, context) {
+            if (ts.isIdentifier(node.expression)) {
+                processFunction(node.expression.escapedText.toString());
+            }
             if (ts.isIdentifier(node.expression) &&
                 node.expression.escapedText === 'require') {
-                console.log(1);
                 var normalNode = context.superTransformExpression(node);
                 normalNode.expression.text = 'import';
                 normalNode.expression.originalName = 'import';
