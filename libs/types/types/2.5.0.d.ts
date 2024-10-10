@@ -1426,7 +1426,9 @@ namespace playdate {
         addMenuItem(
             title: string,
             callback: () => void
-        ): playdate.menu.item | LuaMultiReturn<[null, string]>;
+        ):
+            | LuaMultiReturn<[playdate.menu.item, undefined]>
+            | LuaMultiReturn<[null, string]>;
 
         /**
          * <p>Creates a new menu item that can be checked or unchecked by the player.</p>
@@ -1461,7 +1463,9 @@ namespace playdate {
             title: string,
             initialValue?: boolean = false,
             callback: () => void
-        ): playdate.menu.item | LuaMultiReturn<[null, string]>;
+        ):
+            | LuaMultiReturn<[playdate.menu.item, undefined]>
+            | LuaMultiReturn<[null, string]>;
 
         /**
          * <p>Creates a menu item that allows the player to cycle through a set of options.</p>
@@ -1500,7 +1504,9 @@ namespace playdate {
             options: TOptions,
             initalValue?: TOptions[number],
             callback: () => void
-        ): playdate.menu.item | LuaMultiReturn<[null, string]>;
+        ):
+            | LuaMultiReturn<[playdate.menu.item, undefined]>
+            | LuaMultiReturn<[null, string]>;
 
         /**
          * [Read more](https://sdk.play.date/2.5.0#m-menu.getMenuItems)
@@ -3658,7 +3664,11 @@ namespace playdate {
              *
              * [Read more](https://sdk.play.date/2.5.0#m-file.write)
              */
-            write(string: string): number | LuaMultiReturn<[0, string]>;
+            write(
+                string: string
+            ):
+                | LuaMultiReturn<[number, undefined]>
+                | LuaMultiReturn<[0, string]>;
 
             /**
              * <p>Flushes any buffered data written to the file to the disk.</p>
@@ -4182,7 +4192,9 @@ namespace playdate {
              */
             intersectsLineSegment(
                 ls: playdate.geometry.lineSegmentnt
-            ): false | LuaMultiReturn<[true, playdate.geometry.point]>;
+            ):
+                | LuaMultiReturn<[false, undefined]>
+                | LuaMultiReturn<[true, playdate.geometry.point]>;
 
             /**
              * <p>Returns the values (<em>intersects</em>, <em>intersectionPoints</em>).</p>
@@ -6920,7 +6932,11 @@ namespace playdate {
              *
              * [Read more](https://sdk.play.date/2.5.0#m-graphics.image.load)
              */
-            load(path: string): true | LuaMultiReturn<[false, string]>;
+            load(
+                path: string
+            ):
+                | LuaMultiReturn<[true, undefined]>
+                | LuaMultiReturn<[false, string]>;
 
             /**
              * <p>Returns a new <code>playdate.graphics.image</code> that is an exact copy of the original.</p>
@@ -8127,7 +8143,11 @@ namespace playdate {
              *
              * [Read more](https://sdk.play.date/2.5.0#m-graphics.imagetable.load)
              */
-            load(path: string): true | LuaMultiReturn<[false, string]>;
+            load(
+                path: string
+            ):
+                | LuaMultiReturn<[true, undefined]>
+                | LuaMultiReturn<[false, string]>;
 
             /**
              * <p>Returns the number of images in the table. See also <a href="https://sdk.play.date/2.5.0#m-graphics.imagetable.__len">#imagetable</a>.</p>
@@ -10951,7 +10971,9 @@ namespace playdate {
              *
              * [Read more](https://sdk.play.date/2.5.0#m-sound.sampleplayer.getVolume)
              */
-            getVolume(): number | LuaMultiReturn<[number, number]>;
+            getVolume():
+                | LuaMultiReturn<[number, undefined]>
+                | LuaMultiReturn<[number, number]>;
 
             /**
              * <p>Sets a function to be called every time the sample loops. The sample object is passed to this function as the first argument, and the optional <em>arg</em> argument is passed as the second.</p>
@@ -11115,7 +11137,11 @@ namespace playdate {
              *
              * [Read more](https://sdk.play.date/2.5.0#m-sound.fileplayer.play)
              */
-            play(repeatCount?: number): true | LuaMultiReturn<[false, string]>;
+            play(
+                repeatCount?: number
+            ):
+                | LuaMultiReturn<[true, undefined]>
+                | LuaMultiReturn<[false, string]>;
 
             /**
              * <p>Stops playing the file, resets the playback offset to zero, and calls the finish callback.</p>
@@ -11244,7 +11270,9 @@ namespace playdate {
              */
             setBufferSize(
                 seconds: number
-            ): true | LuaMultiReturn<[false, string]>;
+            ):
+                | LuaMultiReturn<[true, undefined]>
+                | LuaMultiReturn<[false, string]>;
 
             /**
              * <p>Sets the playback rate for the file. 1.0 is normal speed, 0.5 is down an octave, 2.0 is up an octave, etc. Unlike sampleplayers, fileplayers can’t play in reverse (i.e., rate &lt; 0).</p>
@@ -11288,7 +11316,9 @@ namespace playdate {
              *
              * [Read more](https://sdk.play.date/2.5.0#m-sound.fileplayer.getVolume)
              */
-            getVolume(): number | LuaMultiReturn<[number, number]>;
+            getVolume():
+                | LuaMultiReturn<[number, undefined]>
+                | LuaMultiReturn<[number, number]>;
 
             /**
              * <p>Sets the current offset of the fileplayer, in seconds. This value is not adjusted for rate.</p>
@@ -11357,7 +11387,9 @@ namespace playdate {
              *
              * [Read more](https://sdk.play.date/2.5.0#m-sound.sample.decompress)
              */
-            decompress(): true | LuaMultiReturn<[false, string]>;
+            decompress():
+                | LuaMultiReturn<[true, undefined]>
+                | LuaMultiReturn<[false, string]>;
 
             /**
              * <p>Returns the sample rate as an integer, such as 44100 or 22050.</p>
@@ -11735,7 +11767,9 @@ namespace playdate {
              *
              * [Read more](https://sdk.play.date/2.5.0#m-sound.synth.getVolume)
              */
-            getVolume(): number | LuaMultiReturn<[number, number]>;
+            getVolume():
+                | LuaMultiReturn<[number, undefined]>
+                | LuaMultiReturn<[number, number]>;
 
             /**
              * <p>Sets the waveform or <a href="https://sdk.play.date/2.5.0#C-sound.sample">Sample</a> the synth plays. If a sample is given, its data must be uncompressed PCM, not ADPCM. Otherwise <em>waveform</em> should be one of the following constants:</p>
@@ -12824,7 +12858,9 @@ namespace playdate {
              *
              * [Read more](https://sdk.play.date/2.5.0#m-sound.instrument.getVolume)
              */
-            getVolume(): number | LuaMultiReturn<[number, number]>;
+            getVolume():
+                | LuaMultiReturn<[number, undefined]>
+                | LuaMultiReturn<[number, number]>;
         }
 
         namespace controlsignal {

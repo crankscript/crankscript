@@ -258,7 +258,7 @@
                     "type": "() => void"
                 }
             ],
-            "returnType": "playdate.menu.item | LuaMultiReturn<[null, string]>"
+            "returnType": "LuaMultiReturn<[playdate.menu.item, undefined]> | LuaMultiReturn<[null, string]>"
         },
         "playdate.menu:addCheckmarkMenuItem(title, [initialValue], callback)": {
             "signature": "playdate.menu:addCheckmarkMenuItem(title, [initialValue], callback)",
@@ -279,7 +279,7 @@
                     "type": "() => void"
                 }
             ],
-            "returnType": "playdate.menu.item | LuaMultiReturn<[null, string]>"
+            "returnType": "LuaMultiReturn<[playdate.menu.item, undefined]> | LuaMultiReturn<[null, string]>"
         },
         "playdate.menu:addOptionsMenuItem(title, options, [initalValue], callback)": {
             "signature": "playdate.menu:addOptionsMenuItem(title, options, [initalValue], callback)",
@@ -304,7 +304,7 @@
                     "type": "() => void"
                 }
             ],
-            "returnType": "playdate.menu.item | LuaMultiReturn<[null, string]>"
+            "returnType": "LuaMultiReturn<[playdate.menu.item, undefined]> | LuaMultiReturn<[null, string]>"
         },
         "playdate.menu:getMenuItems()": {
             "signature": "playdate.menu:getMenuItems()",
@@ -379,7 +379,7 @@
                     "type": "string"
                 }
             ],
-            "returnType": "number | LuaMultiReturn<[0, string]>"
+            "returnType": "LuaMultiReturn<[number, undefined]> | LuaMultiReturn<[0, string]>"
         },
         "playdate.file.file:flush()": {
             "signature": "playdate.file.file:flush()",
@@ -2949,7 +2949,7 @@
                     "type": "playdate.geometry.lineSegmentnt"
                 }
             ],
-            "returnType": "false | LuaMultiReturn<[true, playdate.geometry.point]>"
+            "returnType": "LuaMultiReturn<[false, undefined]> | LuaMultiReturn<[true, playdate.geometry.point]>"
         },
         "playdate.geometry.lineSegment:intersectsPolygon(poly)": {
             "signature": "playdate.geometry.lineSegment:intersectsPolygon(poly)",
@@ -5190,7 +5190,7 @@
                     "type": "string"
                 }
             ],
-            "returnType": "true | LuaMultiReturn<[false, string]>"
+            "returnType": "LuaMultiReturn<[true, undefined]> | LuaMultiReturn<[false, string]>"
         },
         "playdate.graphics.image:copy()": {
             "signature": "playdate.graphics.image:copy()",
@@ -6207,7 +6207,7 @@
                     "type": "string"
                 }
             ],
-            "returnType": "true | LuaMultiReturn<[false, string]>"
+            "returnType": "LuaMultiReturn<[true, undefined]> | LuaMultiReturn<[false, string]>"
         },
         "playdate.graphics.imagetable:getLength()": {
             "signature": "playdate.graphics.imagetable:getLength()",
@@ -8258,7 +8258,7 @@
         "playdate.sound.sampleplayer:getVolume()": {
             "signature": "playdate.sound.sampleplayer:getVolume()",
             "parameters": [],
-            "returnType": "number | LuaMultiReturn<[number, number]>"
+            "returnType": "LuaMultiReturn<[number, undefined]> | LuaMultiReturn<[number, number]>"
         },
         "playdate.sound.sampleplayer:setLoopCallback(callback, [arg])": {
             "signature": "playdate.sound.sampleplayer:setLoopCallback(callback, [arg])",
@@ -8426,7 +8426,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "true | LuaMultiReturn<[false, string]>"
+            "returnType": "LuaMultiReturn<[true, undefined]> | LuaMultiReturn<[false, string]>"
         },
         "playdate.sound.fileplayer:stop()": {
             "signature": "playdate.sound.fileplayer:stop()",
@@ -8530,7 +8530,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "true | LuaMultiReturn<[false, string]>"
+            "returnType": "LuaMultiReturn<[true, undefined]> | LuaMultiReturn<[false, string]>"
         },
         "playdate.sound.fileplayer:setRate(rate)": {
             "signature": "playdate.sound.fileplayer:setRate(rate)",
@@ -8589,7 +8589,7 @@
         "playdate.sound.fileplayer:getVolume()": {
             "signature": "playdate.sound.fileplayer:getVolume()",
             "parameters": [],
-            "returnType": "number | LuaMultiReturn<[number, number]>"
+            "returnType": "LuaMultiReturn<[number, undefined]> | LuaMultiReturn<[number, number]>"
         },
         "playdate.sound.fileplayer:setOffset(seconds)": {
             "signature": "playdate.sound.fileplayer:setOffset(seconds)",
@@ -8657,7 +8657,7 @@
         "playdate.sound.sample:decompress()": {
             "signature": "playdate.sound.sample:decompress()",
             "parameters": [],
-            "returnType": "true | LuaMultiReturn<[false, string]>"
+            "returnType": "LuaMultiReturn<[true, undefined]> | LuaMultiReturn<[false, string]>"
         },
         "playdate.sound.sample:getSampleRate()": {
             "signature": "playdate.sound.sample:getSampleRate()",
@@ -9041,7 +9041,7 @@
         "playdate.sound.synth:getVolume()": {
             "signature": "playdate.sound.synth:getVolume()",
             "parameters": [],
-            "returnType": "number | LuaMultiReturn<[number, number]>"
+            "returnType": "LuaMultiReturn<[number, undefined]> | LuaMultiReturn<[number, number]>"
         },
         "playdate.sound.synth:setWaveform(waveform)": {
             "signature": "playdate.sound.synth:setWaveform(waveform)",
@@ -10194,7 +10194,7 @@
         "playdate.sound.instrument:getVolume()": {
             "signature": "playdate.sound.instrument:getVolume()",
             "parameters": [],
-            "returnType": "number | LuaMultiReturn<[number, number]>"
+            "returnType": "LuaMultiReturn<[number, undefined]> | LuaMultiReturn<[number, number]>"
         },
         "playdate.sound.instrument.new([synth])": {
             "signature": "playdate.sound.instrument.new([synth])",
