@@ -4,7 +4,6 @@ import { useGenerateTypeFile } from '@/cli/commands/GenerateTypes/hooks/useGener
 import { useGetVersion } from '@/cli/commands/GenerateTypes/hooks/useGetVersion.js';
 import { useParseDocumentation } from '@/cli/commands/GenerateTypes/hooks/useParseDocumentation.js';
 import { CheckList } from '@/cli/components/CheckList/index.js';
-import { useQuitOnCtrlC } from '@/cli/hooks/useQuitOnCtrlC.js';
 import { CheckListItem, PlaydateSdkVersion } from '@/cli/types.js';
 
 interface Props {
@@ -14,8 +13,6 @@ interface Props {
 }
 
 export const GenerateTypes = ({ output, version, overwriteJson }: Props) => {
-    useQuitOnCtrlC();
-
     const { typeProvider, fetchedVersion, getVersion } = useGetVersion(version);
     const { html, fetchHtml } = useFetchHtml(fetchedVersion);
     const { definitions, parseDocumentation } = useParseDocumentation(

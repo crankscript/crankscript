@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { getApiDefinitions } from '@/cli/commands/GenerateTypes/fn/getApiDefinitions.js';
 import { getDescriptionsFromHtml } from '@/cli/commands/GenerateTypes/fn/getDescriptionsFromHtml.js';
+import { getFunctionTypeOverride } from '@/cli/commands/GenerateTypes/fn/getFunctionTypeOverride.js';
 import { CheckListItem, ApiDefinitions } from '@/cli/types.js';
 
 export const useParseDocumentation = (html: string | null, version: string) => {
@@ -22,7 +23,11 @@ export const useParseDocumentation = (html: string | null, version: string) => {
                     version
                 );
 
-                return getApiDefinitions(functions, properties);
+                return getApiDefinitions(
+                    functions,
+                    properties,
+                    getFunctionTypeOverride(version)
+                );
             },
             onFinish: (result) => {
                 setResult(result);

@@ -1,35 +1,13 @@
-import {
-    StatusMessage,
-    StatusMessageProps,
-    Spinner,
-    extendTheme,
-    defaultTheme,
-    ThemeProvider,
-} from '@inkjs/ui';
-import { Text, TextProps } from 'ink';
+import { StatusMessage, StatusMessageProps } from '@inkjs/ui';
+import { Text } from 'ink';
 import React, { useEffect, useRef, useState } from 'react';
+import { Spinner } from '@/cli/components/Spinner.js';
 import { CheckListItem } from '@/cli/types.js';
 
 export interface ItemProps<TResult> {
     item: CheckListItem<TResult>;
     start: boolean;
 }
-
-// todo: possibly extract this
-const SpinnerTheme = extendTheme(defaultTheme, {
-    components: {
-        Spinner: {
-            styles: {
-                frame: (): TextProps => ({
-                    color: 'yellowBright',
-                }),
-                label: (): TextProps => ({
-                    color: 'yellowBright',
-                }),
-            },
-        },
-    },
-});
 
 export const Item = <TResult,>({
     item: {
@@ -117,11 +95,7 @@ export const Item = <TResult,>({
     }
 
     if (isRunning) {
-        return (
-            <ThemeProvider theme={SpinnerTheme}>
-                <Spinner label={` ${message}`} />
-            </ThemeProvider>
-        );
+        return <Spinner label={message} />;
     }
 
     return (

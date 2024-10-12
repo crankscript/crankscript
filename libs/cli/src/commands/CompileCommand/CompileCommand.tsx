@@ -1,4 +1,4 @@
-import { Command, Option } from 'clipanion';
+import { Command } from 'clipanion';
 import React from 'react';
 import { Compile } from '@/cli/commands/CompileCommand/components/Compile.js';
 import { EnvironmentAwareCommand } from '@/cli/commands/EnvironmentAwareCommand/index.js';
@@ -11,11 +11,7 @@ export class CompileCommand extends EnvironmentAwareCommand {
         description: 'Compiles the code and runs the simulator',
     });
 
-    watch = Option.Boolean('-w,--watch', false, {
-        description: 'Watch for changes',
-    });
-
     override renderWithEnvironment(environment: Environment) {
-        return <Compile environment={environment} watch={this.watch} />;
+        return <Compile environment={environment} />;
     }
 }

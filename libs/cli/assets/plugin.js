@@ -162,6 +162,16 @@ var transformClassDeclaration = function (declaration, context) {
         .map(function (method) { return transformMethodDeclaration(context, method, className); })
         .filter(function (method) { return method !== undefined; });
     statements.push.apply(statements, methods);
+    // export
+    if ('localSymbol' in declaration &&
+        typeof declaration.localSymbol === 'object' &&
+        'exportSymbol' in declaration.localSymbol &&
+        typeof declaration.localSymbol.exportSymbol === 'object' &&
+        'escapedName' in declaration.localSymbol.exportSymbol &&
+        typeof declaration.localSymbol.exportSymbol.escapedName === 'string') {
+        var escapedName = declaration.localSymbol.exportSymbol.escapedName;
+        statements.push(tstl.createAssignmentStatement(tstl.createTableIndexExpression(tstl.createIdentifier('____exports'), tstl.createStringLiteral(escapedName)), className));
+    }
     return statements;
 };
 exports.transformClassDeclaration = transformClassDeclaration;

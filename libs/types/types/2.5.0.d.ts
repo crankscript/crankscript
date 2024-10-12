@@ -13158,26 +13158,6 @@ namespace playdate {
          * @noSelf
          */
         export function allTimers(): playdate.timer[];
-
-        export function timerEndedCallback(...args: unknown[]): void;
-        /**
-         * <p>A Function of the form <em>function(timer)</em> or <em>function(...)</em> where "..." corresponds to the values in the table assigned to <em>timerEndedArgs</em>. Called when the timer has completed.</p>
-         *
-         * [Read more](https://sdk.play.date/2.5.0#c-timer.timerEndedCallback)
-         *
-         * @noSelf
-         */
-        export function timerEndedCallback(timer: playdate.timer): void;
-
-        export function updateCallback(...args: unknown[]): void;
-        /**
-         * <p>A callback function that will be called on every frame (every time <em>timer.updateAll()</em> is called). If the timer was created with arguments, those will be passed as arguments to the function provided. Otherwise, the timer is passed as the single argument.</p>
-         *
-         * [Read more](https://sdk.play.date/2.5.0#c-timer.updateCallback)
-         *
-         * @noSelf
-         */
-        export function updateCallback(timer: playdate.timer): void;
     }
 
     class timer {
@@ -13211,6 +13191,26 @@ namespace playdate {
          * [Read more](https://sdk.play.date/2.5.0#m-timer.reset)
          */
         reset(): void;
+
+        timerEndedCallback(...args: unknown[]): void;
+        /**
+         * <p>A Function of the form <em>function(timer)</em> or <em>function(...)</em> where "..." corresponds to the values in the table assigned to <em>timerEndedArgs</em>. Called when the timer has completed.</p>
+         *
+         * [Read more](https://sdk.play.date/2.5.0#c-timer.timerEndedCallback)
+         *
+         * @noSelf
+         */
+        timerEndedCallback(timer: playdate.timer): void;
+
+        updateCallback(...args: unknown[]): void;
+        /**
+         * <p>A callback function that will be called on every frame (every time <em>timer.updateAll()</em> is called). If the timer was created with arguments, those will be passed as arguments to the function provided. Otherwise, the timer is passed as the single argument.</p>
+         *
+         * [Read more](https://sdk.play.date/2.5.0#c-timer.updateCallback)
+         *
+         * @noSelf
+         */
+        updateCallback(timer: playdate.timer): void;
 
         /**
          * <p>Current value calculated from the start and end values, the time elapsed, and the easing function.</p>
@@ -13412,26 +13412,6 @@ namespace playdate {
          * @noSelf
          */
         export function allTimers(): playdate.frametimer[];
-
-        export function timerEndedCallback(...args: unknown[]): void;
-        /**
-         * <p>A Function of the form <em>function(timer)</em> or <em>function(...)</em> where "..." corresponds to the values in the table assigned to <em>timerEndedArgs</em>. Called when the timer has completed.</p>
-         *
-         * [Read more](https://sdk.play.date/2.5.0#c-frameTimer.timerEndedCallback)
-         *
-         * @noSelf
-         */
-        export function timerEndedCallback(timer: playdate.frametimer): void;
-
-        export function updateCallback(...args: unknown[]): void;
-        /**
-         * <p>A function to be called on every frame update. If the frame timer was created with arguments, those will be passed as arguments to the function provided. Otherwise, the timer is passed as the single argument.</p>
-         *
-         * [Read more](https://sdk.play.date/2.5.0#c-frameTimer.updateCallback)
-         *
-         * @noSelf
-         */
-        export function updateCallback(timer: playdate.frametimer): void;
     }
 
     class frameTimer {
@@ -13462,6 +13442,26 @@ namespace playdate {
          * [Read more](https://sdk.play.date/2.5.0#m-frameTimer.reset)
          */
         reset(): void;
+
+        timerEndedCallback(...args: unknown[]): void;
+        /**
+         * <p>A Function of the form <em>function(timer)</em> or <em>function(...)</em> where "..." corresponds to the values in the table assigned to <em>timerEndedArgs</em>. Called when the timer has completed.</p>
+         *
+         * [Read more](https://sdk.play.date/2.5.0#c-frameTimer.timerEndedCallback)
+         *
+         * @noSelf
+         */
+        timerEndedCallback(timer: playdate.frametimer): void;
+
+        updateCallback(...args: unknown[]): void;
+        /**
+         * <p>A function to be called on every frame update. If the frame timer was created with arguments, those will be passed as arguments to the function provided. Otherwise, the timer is passed as the single argument.</p>
+         *
+         * [Read more](https://sdk.play.date/2.5.0#c-frameTimer.updateCallback)
+         *
+         * @noSelf
+         */
+        updateCallback(timer: playdate.frametimer): void;
 
         /**
          * <p>Current value calculated from the start and end values, the current frame, and the easing function.</p>

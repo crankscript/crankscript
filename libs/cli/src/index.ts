@@ -6,6 +6,7 @@ import { Cli } from 'clipanion';
 import { CompileCommand } from '@/cli/commands/CompileCommand/index.js';
 import { DoctorCommand } from '@/cli/commands/DoctorCommand.js';
 import { GenerateTypesCommand } from '@/cli/commands/GenerateTypes/index.js';
+import { SimulatorCommand } from '@/cli/commands/SimulatorCommand/index.js';
 import { TranspileCommand } from '@/cli/commands/TranspileCommand/index.js';
 import { RootFolder } from '@/cli/constants.js';
 
@@ -23,8 +24,13 @@ const cli = new Cli({
     binaryVersion: packageJson.version,
 });
 
+process.on('SIGINT', function () {
+    process.exit();
+});
+
 cli.register(DoctorCommand);
 cli.register(TranspileCommand);
 cli.register(CompileCommand);
 cli.register(GenerateTypesCommand);
+cli.register(SimulatorCommand);
 cli.runExit(args);

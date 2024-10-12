@@ -3,11 +3,13 @@ import {
     FunctionDescription,
     ApiObject,
     PropertyDescription,
+    FunctionTypeOverrideMap,
 } from '@/cli/types.js';
 
 export const getApiDefinitions = (
     functions: FunctionDescription[],
-    properties: PropertyDescription[]
+    properties: PropertyDescription[],
+    functionTypeOverride: FunctionTypeOverrideMap
 ): ApiDefinitions => {
     const global: ApiObject = {
         functions: [],
@@ -35,7 +37,7 @@ export const getApiDefinitions = (
 
     functions.forEach((func) => {
         const targetNamespace = getOrCreateNamespace(func.namespaces, global);
-        if (func.hasSelf) {
+        if (func.hasSelf || functionTypeOverride[func.signature]?.isMethod) {
             targetNamespace.methods.push(func);
         } else {
             targetNamespace.functions.push(func);

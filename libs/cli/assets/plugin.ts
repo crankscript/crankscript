@@ -233,6 +233,29 @@ export const transformClassDeclaration: FunctionVisitor<
         .filter((method): method is tstl.Statement => method !== undefined);
     statements.push(...methods);
 
+    // export the class if needed
+    // todo: check if there is a cleaner way to do this
+    if (
+        'localSymbol' in declaration &&
+        typeof declaration.localSymbol === 'object' &&
+        'exportSymbol' in declaration.localSymbol &&
+        typeof declaration.localSymbol.exportSymbol === 'object' &&
+        'escapedName' in declaration.localSymbol.exportSymbol &&
+        typeof declaration.localSymbol.exportSymbol.escapedName === 'string'
+    ) {
+        const escapedName = declaration.localSymbol.exportSymbol.escapedName;
+
+        statements.push(
+            tstl.createAssignmentStatement(
+                tstl.createTableIndexExpression(
+                    tstl.createIdentifier('____exports'),
+                    tstl.createStringLiteral(escapedName)
+                ),
+                className
+            )
+        );
+    }
+
     return statements;
 };
 

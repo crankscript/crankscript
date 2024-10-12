@@ -74,6 +74,7 @@ export interface FunctionDescription {
     parameters: ParameterDescription[];
     hasSelf: boolean;
     docs: string;
+    isCallback: boolean;
 }
 export interface ApiObject {
     functions: FunctionDescription[];
@@ -118,3 +119,5 @@ export type TypeProviderData = {
     properties: Record<string, PropertyDetails>;
     functions: Record<string, FunctionDetails>;
 };
+
+export type FunctionTypeOverrideMap = Record<string, { isMethod: boolean }>;
