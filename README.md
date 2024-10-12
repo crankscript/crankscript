@@ -1,7 +1,6 @@
 <div align="center">
 <h1>Crankscript</h1>
-<span>⚠️ This documentation is a work in progress  ⚠️</span>
-</div><br>
+</div>
 
 Crankscript is a collection of tools that lets you write Playdate games in TypeScript. TypeScript code is enriched with Playdate type definitions, and transformed to Lua with [TypeScript-to-Lua](https://typescripttolua.github.io/).
 
@@ -9,10 +8,12 @@ Crankscript is a collection of tools that lets you write Playdate games in TypeS
 > Crankscript exists thanks to [this Playdate Dev Forum thread](https://devforum.play.date/t/playdate-sdk-with-typescript/). Special thanks to Andy for contributing the TypeScript-to-Lua plugin and the initial d.ts file, and to Orta for providing the require transformation code.
 
 > [!NOTE]
-> Disclaimer: Crankscript is not an official Playdate SDK. It is a community project that aims to make Playdate development more accessible to TypeScript developers.
+> Crankscript is not affiliated with Playdate or Panic Inc. in any way.
 
 > [!WARNING]
-> This project is in early development. The type definitions may be incomplete or incorrect. Please report any issues you encounter.
+> This project is in an early development stage. The type definitions may be incomplete or incorrect. Please report any issues you encounter.
+
+https://github.com/user-attachments/assets/5b4165ee-82b5-46c6-9199-f58d2a3fe2af
 
 ## Getting started
 
