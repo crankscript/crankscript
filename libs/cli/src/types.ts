@@ -74,8 +74,8 @@ export interface FunctionDescription {
     parameters: ParameterDescription[];
     hasSelf: boolean;
     docs: string;
-    isCallback: boolean;
 }
+
 export interface ApiObject {
     functions: FunctionDescription[];
     methods: FunctionDescription[];
@@ -121,3 +121,7 @@ export type TypeProviderData = {
 };
 
 export type FunctionTypeOverrideMap = Record<string, { isMethod: boolean }>;
+
+export enum TemplateName {
+    Blank = 'blank',
+}

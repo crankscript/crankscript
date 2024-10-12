@@ -36,7 +36,6 @@ export const getDescriptionsFromHtml = (html: string, version: string) => {
     for (const element of functionSignatures) {
         const id = $(element).attr('id') ?? '';
         const isProperty = id.startsWith('v-');
-        const isCallback = id.startsWith('c-');
         const titleText = $(element).find('> .title').text();
 
         if (
@@ -102,7 +101,6 @@ export const getDescriptionsFromHtml = (html: string, version: string) => {
 
                     functions.push({
                         ...description,
-                        isCallback,
                         docs,
                     });
                 } catch (e) {
