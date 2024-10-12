@@ -1,5 +1,5 @@
 import process from 'node:process';
-import { Option } from 'clipanion';
+import { Command, Option } from 'clipanion';
 import React from 'react';
 import * as t from 'typanion';
 import { RenderableCommand } from '@/cli/commands/RenderableCommand.js';
@@ -12,6 +12,10 @@ export const projectPathOption = Option.String('-p,--path', process.cwd(), {
 
 export class TranspileCommand extends RenderableCommand {
     static override paths = [['transpile']];
+
+    static override usage = Command.Usage({
+        description: 'Transpile TypeScript files to Lua',
+    });
 
     projectPath = projectPathOption;
 

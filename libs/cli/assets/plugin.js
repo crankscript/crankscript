@@ -162,7 +162,8 @@ var transformClassDeclaration = function (declaration, context) {
         .map(function (method) { return transformMethodDeclaration(context, method, className); })
         .filter(function (method) { return method !== undefined; });
     statements.push.apply(statements, methods);
-    // export
+    // export the class if needed
+    // todo: check if there is a cleaner way to do this
     if ('localSymbol' in declaration &&
         typeof declaration.localSymbol === 'object' &&
         'exportSymbol' in declaration.localSymbol &&

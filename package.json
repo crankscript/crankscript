@@ -24,6 +24,7 @@
         "tslib": "^2.3.0",
         "tstl": "^3.0.0",
         "tsx": "^4.19.1",
+        "turndown": "^7.2.0",
         "typanion": "^3.14.0",
         "typescript-to-lua": "^1.27.0",
         "zod": "^3.23.8"
@@ -47,6 +48,7 @@
         "@swc/jest": "~0.2.36",
         "@types/jest": "^29.5.12",
         "@types/node": "18.19.54",
+        "@types/turndown": "^5.0.5",
         "@typescript-eslint/eslint-plugin": "^7.16.0",
         "@typescript-eslint/parser": "^7.16.0",
         "cz-conventional-changelog": "^3.3.0",

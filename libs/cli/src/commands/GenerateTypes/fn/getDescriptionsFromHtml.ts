@@ -1,4 +1,5 @@
 import { load } from 'cheerio';
+import Turndown from 'turndown';
 import { PlaydateSdkUrl } from '@/cli/commands/GenerateTypes/constants.js';
 import { parseFunctionSignature } from '@/cli/commands/GenerateTypes/fn/parseFunctionSignature.js';
 import { FunctionDescription, PropertyDescription } from '@/cli/types.js';
@@ -32,6 +33,7 @@ export const getDescriptionsFromHtml = (html: string, version: string) => {
     const functions: FunctionDescription[] = [];
     const properties: PropertyDescription[] = [];
     const visitedSignatures: string[] = [];
+    const turndown = new Turndown();
 
     for (const element of functionSignatures) {
         const id = $(element).attr('id') ?? '';
@@ -71,8 +73,10 @@ export const getDescriptionsFromHtml = (html: string, version: string) => {
             '<a href="' + PlaydateSdkUrl + version + '#'
         );
 
+        docsString = turndown.turndown(docsString);
+
         const baseDocs = id
-            ? `${docsString}\n[Read more](${PlaydateSdkUrl}${version}#${id})`
+            ? `${docsString}\n\n[Read more](${PlaydateSdkUrl}${version}#${id})`
             : docsString;
 
         for (const title of titles) {

@@ -2,7 +2,7 @@
 
 import { readFileSync } from 'fs';
 import { join } from 'node:path';
-import { Cli } from 'clipanion';
+import { Builtins, Cli } from 'clipanion';
 import { CompileCommand } from '@/cli/commands/CompileCommand/index.js';
 import { DoctorCommand } from '@/cli/commands/DoctorCommand.js';
 import { GenerateTypesCommand } from '@/cli/commands/GenerateTypes/index.js';
@@ -29,6 +29,8 @@ process.on('SIGINT', function () {
     process.exit();
 });
 
+cli.register(Builtins.HelpCommand);
+cli.register(Builtins.VersionCommand);
 cli.register(DoctorCommand);
 cli.register(NewCommand);
 cli.register(TranspileCommand);
