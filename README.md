@@ -11,7 +11,7 @@ Crankscript is a collection of tools that lets you write Playdate games in TypeS
 > [!WARNING]
 > This project is in an early development stage. The type definitions may be incomplete or incorrect. Please report any issues you encounter.
 
-https://github.com/user-attachments/assets/5b4165ee-82b5-46c6-9199-f58d2a3fe2af
+https://github.com/user-attachments/assets/ea667a8b-754b-4b79-8f9e-8fe608228ed9
 
 ## Getting started
 
@@ -43,7 +43,3 @@ npm run simulator
 ```
 
 That's it!
-
-<img width="595" alt="Screenshot 2024-10-12 at 23 13 56" src="https://github.com/user-attachments/assets/4b4b657e-b4b6-4f2f-893d-483d395d2cdc">
-
-The type definitions file includes the description 
