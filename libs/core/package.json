@@ -9,5 +9,6 @@
         "tslib": "^2.3.0"
     },
     "type": "commonjs",
-    "types": "./src/index.d.ts"
+    "types": "./src/index.d.ts",
+    "main": "./src/index"
 }
