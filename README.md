@@ -1,6 +1,4 @@
-<div align="center">
-<h1>Crankscript</h1>
-</div>
+<h1 align="center">Crankscript</h1>
 
 Crankscript is a collection of tools that lets you write Playdate games in TypeScript. TypeScript code is enriched with Playdate type definitions, and transformed to Lua with [TypeScript-to-Lua](https://typescripttolua.github.io/).
 
@@ -45,3 +43,7 @@ npm run simulator
 ```
 
 That's it!
+
+<img width="595" alt="Screenshot 2024-10-12 at 23 13 56" src="https://github.com/user-attachments/assets/4b4b657e-b4b6-4f2f-893d-483d395d2cdc">
+
+The type definitions file includes the description 
