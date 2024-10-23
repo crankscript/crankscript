@@ -1,12 +1,9 @@
-import { exec } from 'node:child_process';
+import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
-import { promisify } from 'node:util';
 import { useMemo } from 'react';
 import { CheckListItem } from '@/cli/types.js';
 
-const promisifiedExec = promisify(exec);
-
-export const useCompileTasks = (sdkPath: string) => {
+export const useCompileTasks = (pdcPath: string) => {
     return useMemo(
         () => [
             {
@@ -16,11 +13,11 @@ export const useCompileTasks = (sdkPath: string) => {
                 finishedDescription: (result) =>
                     `Found pdc binary at "${result}"`,
                 runner: async () => {
-                    if (!existsSync(sdkPath)) {
+                    if (!existsSync(pdcPath)) {
                         throw new Error('Could not find pdc binary');
                     }
 
-                    return sdkPath;
+                    return pdcPath;
                 },
                 ready: true,
             } satisfies CheckListItem<string>,
@@ -30,7 +27,45 @@ export const useCompileTasks = (sdkPath: string) => {
                 runningDescription: 'Compiling lua code...',
                 finishedDescription: () => 'Lua code compiled',
                 runner: async () => {
-                    return promisifiedExec(`${sdkPath} Source`);
+                    return new Promise((resolve, reject) => {
+                        const pdc = spawn(pdcPath, ['Source', 'Game.pdx']);
+
+                        // Collect any standard output or errors
+                        let stdout = '';
+                        let stderr = '';
+
+                        // Handle stdout (standard output)
+                        pdc.stdout.on('data', (data) => {
+                            stdout += data.toString();
+                        });
+
+                        // Handle stderr (standard error)
+                        pdc.stderr.on('data', (data) => {
+                            stderr += data.toString();
+                        });
+
+                        // Handle the process closing
+                        pdc.on('close', (code) => {
+                            if (code === 0) {
+                                resolve(stdout); // Resolve the promise with the output
+                            } else {
+                                reject(
+                                    new Error(
+                                        `pdc exited with code ${code}: ${stderr}`
+                                    )
+                                );
+                            }
+                        });
+
+                        // Handle any errors that occur while starting the process
+                        pdc.on('error', (err) => {
+                            reject(
+                                new Error(
+                                    `Failed to start pdc process: ${err.message}`
+                                )
+                            );
+                        });
+                    });
                 },
                 ready: true,
             },

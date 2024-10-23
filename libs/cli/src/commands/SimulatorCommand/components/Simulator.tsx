@@ -1,7 +1,7 @@
-import { exec } from 'node:child_process';
 import { FSWatcher, watch as watchDir } from 'node:fs';
 import { join } from 'node:path';
 import { StatusMessage } from '@inkjs/ui';
+import open from 'open';
 import React, {
     useCallback,
     useEffect,
@@ -44,29 +44,31 @@ export const Simulator = ({
     }, [hasChanged, setHasChanged]);
 
     const handleFinish = useCallback(() => {
-        exec(`open ${background ? '--background' : ''} Source.pdx`);
-
-        if (!watch) {
-            process.exit();
-        }
-
-        setHasChangedMessage(false);
-
-        if (watcher.current) {
-            watcher.current.close();
-        }
-
-        setIsWatching(true);
-
-        watcher.current = watchDir(
-            join(path, 'src'),
-            { recursive: true },
-            () => {
-                setHasChanged(true);
-                setHasChangedMessage(true);
-                setIsWatching(false);
+        open('Game.pdx', {
+            background,
+        }).then(() => {
+            if (!watch) {
+                process.exit();
             }
-        );
+
+            setHasChangedMessage(false);
+
+            if (watcher.current) {
+                watcher.current.close();
+            }
+
+            setIsWatching(true);
+
+            watcher.current = watchDir(
+                join(path, 'src'),
+                { recursive: true },
+                () => {
+                    setHasChanged(true);
+                    setHasChangedMessage(true);
+                    setIsWatching(false);
+                }
+            );
+        });
     }, [watch, setHasChanged, setIsWatching]);
 
     const tasks = useMemo(() => {
