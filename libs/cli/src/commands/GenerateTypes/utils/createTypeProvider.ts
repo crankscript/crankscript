@@ -175,7 +175,18 @@ export const createTypeProvider = (version: string) => {
     };
 
     const getFunctionOverrideOptions = (func: FunctionDescription) => {
-        return getFunctionDetails(func).overrideOptions ?? {};
+        const options = getFunctionDetails(func).overrideOptions ?? {};
+
+        if ('overloads' in options && Array.isArray(options.overloads)) {
+            return {
+                overloads: options.overloads.map((overload) => ({
+                    ...overload,
+                    docs: [func.docs],
+                })),
+            };
+        }
+
+        return options;
     };
 
     const save = () => {

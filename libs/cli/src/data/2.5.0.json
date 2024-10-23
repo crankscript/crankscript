@@ -276,7 +276,7 @@
                 },
                 {
                     "name": "callback",
-                    "type": "() => void"
+                    "type": "(value: boolean) => void"
                 }
             ],
             "returnType": "LuaMultiReturn<[playdate.menu.item, undefined]> | LuaMultiReturn<[null, string]>"
@@ -666,7 +666,7 @@
         "playdate.getSystemMenu()": {
             "signature": "playdate.getSystemMenu()",
             "parameters": [],
-            "returnType": "void"
+            "returnType": "playdate.menu"
         },
         "playdate.setMenuImage(image, [xOffset])": {
             "signature": "playdate.setMenuImage(image, [xOffset])",

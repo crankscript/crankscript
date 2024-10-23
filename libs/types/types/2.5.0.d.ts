@@ -324,7 +324,7 @@ namespace playdate {
      *
      * @noSelf
      */
-    export function getSystemMenu(): void;
+    export function getSystemMenu(): playdate.menu;
 
     /**
      * While the game is paused it can optionally provide an image to be displayed alongside the System Menu. Use this function to set that image.
@@ -1235,7 +1235,7 @@ namespace playdate {
         addCheckmarkMenuItem(
             title: string,
             initialValue?: boolean = false,
-            callback: () => void
+            callback: (value: boolean) => void
         ):
             | LuaMultiReturn<[playdate.menu.item, undefined]>
             | LuaMultiReturn<[null, string]>;
@@ -10558,6 +10558,11 @@ namespace playdate {
              */
             getTrackCount(): number;
 
+            /**
+             * Adds the given [playdate.sound.track](https://sdk.play.date/2.5.0#C-sound.track) to the sequence. If `track` omitted, the function creates and returns a new track.
+             *
+             * [Read more](https://sdk.play.date/2.5.0#m-sound.sequence.addTrack)
+             */
             addTrack(): playdate.sound.track;
             /**
              * Adds the given [playdate.sound.track](https://sdk.play.date/2.5.0#C-sound.track) to the sequence. If `track` omitted, the function creates and returns a new track.
@@ -11003,6 +11008,17 @@ namespace playdate {
          */
         export function updateTimers(): void;
 
+        /**
+         * Returns a new playdate.timer that will run for _duration_ milliseconds. _callback_ is a function closure that will be called when the timer is complete.
+         *
+         * Accepts a variable number of arguments that will be passed to the callback function when it is called. If arguments are not provided, the timer itself will be passed to the callback instead.
+         *
+         * By default, timers start upon instantiation. To modify the behavior of a timer, see [common timer methods](https://sdk.play.date/2.5.0#C-commonTimerMethods) and [properties](https://sdk.play.date/2.5.0#C-commonTimerProperties).
+         *
+         * [Read more](https://sdk.play.date/2.5.0#f-timer.new)
+         *
+         * @noSelf
+         */
         export function _new(
             duration: number,
             callback: (timer: playdate.timer) => void
@@ -11026,6 +11042,13 @@ namespace playdate {
 
         export { _new as new };
 
+        /**
+         * Performs the function _callback_ after _delay_ milliseconds. Accepts a variable number of arguments that will be passed to the callback function when it is called. If arguments are not provided, the timer itself will be passed to the callback instead.
+         *
+         * [Read more](https://sdk.play.date/2.5.0#f-timer.performAfterDelay)
+         *
+         * @noSelf
+         */
         export function performAfterDelay(
             delay: number,
             callback: (timer: playdate.timer) => void
@@ -11061,6 +11084,13 @@ namespace playdate {
 
         export { _new as new };
 
+        /**
+         * Calls `keyRepeatTimerWithDelay()` below with standard values of _delayAfterInitialFiring_ = 300 and _delayAfterSecondFiring_ = 100.
+         *
+         * [Read more](https://sdk.play.date/2.5.0#f-timer.keyRepeatTimer)
+         *
+         * @noSelf
+         */
         export function keyRepeatTimer(
             callback: (timer: playdate.timer) => void
         ): void;
@@ -11076,6 +11106,13 @@ namespace playdate {
             ...args: unknown[]
         ): void;
 
+        /**
+         * returns a timer that fires at key-repeat intervals. The function _callback_ will be called immediately, then again after _delayAfterInitialFiring_ milliseconds, then repeatedly at _delayAfterSecondFiring_ millisecond intervals.
+         *
+         * [Read more](https://sdk.play.date/2.5.0#f-timer.keyRepeatTimerWithDelay)
+         *
+         * @noSelf
+         */
         export function keyRepeatTimerWithDelay(
             delayAfterInitialFiring: number,
             delayAfterSecondFiring: number,
@@ -11140,6 +11177,13 @@ namespace playdate {
          */
         reset(): void;
 
+        /**
+         * A Function of the form _function(timer)_ or _function(...)_ where "..." corresponds to the values in the table assigned to _timerEndedArgs_. Called when the timer has completed.
+         *
+         * [Read more](https://sdk.play.date/2.5.0#c-timer.timerEndedCallback)
+         *
+         * @noSelf
+         */
         timerEndedCallback(...args: unknown[]): void;
         /**
          * A Function of the form _function(timer)_ or _function(...)_ where "..." corresponds to the values in the table assigned to _timerEndedArgs_. Called when the timer has completed.
@@ -11150,6 +11194,13 @@ namespace playdate {
          */
         timerEndedCallback(timer: playdate.timer): void;
 
+        /**
+         * A callback function that will be called on every frame (every time _timer.updateAll()_ is called). If the timer was created with arguments, those will be passed as arguments to the function provided. Otherwise, the timer is passed as the single argument.
+         *
+         * [Read more](https://sdk.play.date/2.5.0#c-timer.updateCallback)
+         *
+         * @noSelf
+         */
         updateCallback(...args: unknown[]): void;
         /**
          * A callback function that will be called on every frame (every time _timer.updateAll()_ is called). If the timer was created with arguments, those will be passed as arguments to the function provided. Otherwise, the timer is passed as the single argument.
@@ -11277,6 +11328,17 @@ namespace playdate {
          */
         export function updateTimers(): void;
 
+        /**
+         * Returns a new playdate.frameTimer that will run for _duration_ frames. _callback_ is a function closure that will be called when the timer is complete.
+         *
+         * Accepts a variable number of arguments that will be passed to the callback function when it is called. If arguments are not provided, the timer itself will be passed to the callback instead.
+         *
+         * By default, frame timers start upon instantiation. To modify the behavior of a frame timer, see [common frame timer methods](https://sdk.play.date/2.5.0#C-commonFrameTimerMethods) and [properties](https://sdk.play.date/2.5.0#C-commonFrameTimerProperties).
+         *
+         * [Read more](https://sdk.play.date/2.5.0#f-frameTimer.new)
+         *
+         * @noSelf
+         */
         export function _new(
             duration: number,
             callback: (timer: playdate.frametimer) => void
@@ -11300,6 +11362,13 @@ namespace playdate {
 
         export { _new as new };
 
+        /**
+         * Performs the function _callback_ after the _delay_ number of frames. Accepts a variable number of arguments that will be passed to the callback function when it is called. If arguments are not provided, the timer itself will be passed to the callback instead.
+         *
+         * [Read more](https://sdk.play.date/2.5.0#f-frameTimer.performAfterDelay)
+         *
+         * @noSelf
+         */
         export function performAfterDelay(
             delay: number,
             callback: (timer: playdate.timer) => void
@@ -11378,6 +11447,13 @@ namespace playdate {
          */
         reset(): void;
 
+        /**
+         * A Function of the form _function(timer)_ or _function(...)_ where "..." corresponds to the values in the table assigned to _timerEndedArgs_. Called when the timer has completed.
+         *
+         * [Read more](https://sdk.play.date/2.5.0#c-frameTimer.timerEndedCallback)
+         *
+         * @noSelf
+         */
         timerEndedCallback(...args: unknown[]): void;
         /**
          * A Function of the form _function(timer)_ or _function(...)_ where "..." corresponds to the values in the table assigned to _timerEndedArgs_. Called when the timer has completed.
@@ -11388,6 +11464,13 @@ namespace playdate {
          */
         timerEndedCallback(timer: playdate.frametimer): void;
 
+        /**
+         * A function to be called on every frame update. If the frame timer was created with arguments, those will be passed as arguments to the function provided. Otherwise, the timer is passed as the single argument.
+         *
+         * [Read more](https://sdk.play.date/2.5.0#c-frameTimer.updateCallback)
+         *
+         * @noSelf
+         */
         updateCallback(...args: unknown[]): void;
         /**
          * A function to be called on every frame update. If the frame timer was created with arguments, those will be passed as arguments to the function provided. Otherwise, the timer is passed as the single argument.
