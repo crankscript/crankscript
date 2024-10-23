@@ -1,6 +1,6 @@
 {
     "name": "@crankscript/core",
-    "version": "0.0.2",
+    "version": "0.1.3",
     "license": "MIT",
     "scripts": {
         "compile": "tstl -p tsconfig.lua.json"

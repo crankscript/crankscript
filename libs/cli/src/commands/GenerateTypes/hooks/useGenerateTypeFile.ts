@@ -45,7 +45,7 @@ export const useGenerateTypeFile = (
 
                 writeFileSync(
                     path,
-                    typeFile.getFullText().replace('/**', '\n/**')
+                    typeFile.getFullText().replace('*/', '*/\n')
                 );
             },
             ready: definitions !== null && typeProvider !== null,

@@ -1,7 +1,8 @@
 {
     "globalStatements": [
         "/// <reference types=\"lua-types/5.4\" />",
-        "// noinspection JSUnusedGlobalSymbols,JSDuplicatedDeclaration,ReservedWordAsName"
+        "// noinspection JSUnusedGlobalSymbols,JSDuplicatedDeclaration,ReservedWordAsName",
+        "\n/**\n * This TypeScript declaration file (`d.ts`) was automatically generated using documentation from the Playdate SDK,\n * specifically from \"Inside Playdate\" and \"Inside Playdate with C\".\n *\n * The documentation excerpts are owned by Panic Inc. and are provided here solely for reference within the context of\n * Playdate game development. I do not claim ownership of any part of the documentation.\n *\n * If you are using this file, you must also comply with the Playdate SDK license, available at\n * https://play.date/dev/sdk-license/.\n */\n"
     ],
     "statements": [
         "import {PlaydateColor, PlaydateButton, PlaydateLanguage, PlaydateFlip, PlaydatePolygonFill, PlaydateDitherType, PlaydateLineCapStyle, PlaydateDrawMode, PlaydateStrokeLocation, PlaydateFontVariant, PlaydateTextAlignment, PlaydateCollisionResponse, PlaydateCapitalizationBehavior, PlaydateSoundFormat, PlaydateSoundWave, PlaydateSoundLfoType, PlaydateSoundTwoPoleFilterType, PlaydateFileOpenMode} from '@crankscript/core';",
