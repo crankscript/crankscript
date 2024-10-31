@@ -118,3 +118,7 @@ export declare enum PlaydateSoundTwoPoleFilterType {
     LowShelf = 5,
     HighShelf = 6
 }
+export interface ReloadOptions {
+    interval?: number;
+}
+export declare const withReload: (update: () => void, options?: ReloadOptions) => () => void;

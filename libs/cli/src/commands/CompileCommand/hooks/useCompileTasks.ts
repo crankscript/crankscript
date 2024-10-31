@@ -1,7 +1,8 @@
-import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
+import open from 'open';
 import { useMemo } from 'react';
 import { CheckListItem } from '@/cli/types.js';
+import { isWindows } from '@/cli/utils/platform.js';
 
 export const useCompileTasks = (pdcPath: string) => {
     return useMemo(
@@ -27,45 +28,20 @@ export const useCompileTasks = (pdcPath: string) => {
                 runningDescription: 'Compiling lua code...',
                 finishedDescription: () => 'Lua code compiled',
                 runner: async () => {
-                    return new Promise((resolve, reject) => {
-                        const pdc = spawn(pdcPath, ['Source', 'Game.pdx']);
-
-                        // Collect any standard output or errors
-                        let stdout = '';
-                        let stderr = '';
-
-                        // Handle stdout (standard output)
-                        pdc.stdout.on('data', (data) => {
-                            stdout += data.toString();
-                        });
-
-                        // Handle stderr (standard error)
-                        pdc.stderr.on('data', (data) => {
-                            stderr += data.toString();
-                        });
-
-                        // Handle the process closing
-                        pdc.on('close', (code) => {
-                            if (code === 0) {
-                                resolve(stdout); // Resolve the promise with the output
-                            } else {
-                                reject(
-                                    new Error(
-                                        `pdc exited with code ${code}: ${stderr}`
-                                    )
-                                );
-                            }
-                        });
-
-                        // Handle any errors that occur while starting the process
-                        pdc.on('error', (err) => {
-                            reject(
-                                new Error(
-                                    `Failed to start pdc process: ${err.message}`
-                                )
-                            );
-                        });
+                    await open('', {
+                        app: {
+                            name: pdcPath,
+                            arguments: ['Source', 'Game.pdx'],
+                        },
                     });
+
+                    if (isWindows) {
+                        // Wait for pdc.exe to compile
+                        // See https://github.com/sindresorhus/open/issues/298
+                        await new Promise((resolve) =>
+                            setTimeout(resolve, 1000)
+                        );
+                    }
                 },
                 ready: true,
             },

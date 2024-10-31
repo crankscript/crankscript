@@ -16,6 +16,11 @@ export class SimulatorCommand extends EnvironmentAwareCommand {
         description: 'Watch for changes',
     });
 
+    recompileOnly = Option.Boolean('-r,--recompile-only', false, {
+        description:
+            'Use with --watch to only recompile without launching the simulator when files change',
+    });
+
     background = Option.Boolean('-b,--background', false, {
         description: 'Do not bring simulator to foreground',
     });
@@ -28,6 +33,7 @@ export class SimulatorCommand extends EnvironmentAwareCommand {
                 environment={environment}
                 path={this.projectPath}
                 watch={this.watch}
+                recompileOnly={this.recompileOnly}
                 background={this.background}
             />
         );

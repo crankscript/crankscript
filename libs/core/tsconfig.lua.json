@@ -14,7 +14,10 @@
             "lua-types/5.4"
         ]
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/index.ts"],
+    "files": [
+        "../types/types/latest.d.ts"
+    ],
     "exclude": [],
     "tstl": {
         "luaTarget": "5.4",

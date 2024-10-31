@@ -47,3 +47,34 @@ npm run simulator
 ```
 
 That's it!
+
+## A note about platform support
+
+A more detailed documentation is in progress. For now, here's an important note about platform support.
+
+The `simulator` command supports `--watch`. In MacOS, when a change is detected, the simulator is launched again. This will not open a new simulator window, but will instead reload the game in the existing window.
+
+This behavior is not supported in Linux or Windows, so a workaround is needed. In those platforms, it is possible to use the following command:
+
+```sh
+npm run simulator -- --watch --recompile-only
+```
+
+This will recompile the project when a change is detected, but the simulator will not be reopened. In order to see the changes, a reload must be triggered from the Lua side.
+
+The package `@crankscript/core` provides a helper function which can do just that. It will check the latest modified time of "main.pdz" at regular intervals, and if a change is detected, it will reload the game using `playdate.file.run`.
+
+To use the utility, simply wrap your update function with it.
+
+```ts
+import { withReload } from "@crankscript/core";
+
+playdate.update = withReload(() => {
+    // Your update code here
+}, {
+    // It is possible to specify the interval in milliseconds
+    interval: 1000 // this is the default interval
+});
+```
+
+Please report any issues you encounter.
