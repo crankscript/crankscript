@@ -135,3 +135,40 @@ export enum PlaydateSoundTwoPoleFilterType {
     LowShelf = 5,
     HighShelf = 6,
 }
+
+let lastTime = -1;
+const { second, minute, hour, day, month, year } =
+    playdate.file.modtime('main.pdz');
+
+export interface ReloadOptions {
+    interval?: number;
+}
+
+export const withReload = (update: () => void, options?: ReloadOptions) => {
+    const { interval = 1000 } = options || {};
+
+    return () => {
+        const elapsedSeconds = Math.floor(
+            playdate.getCurrentTimeMilliseconds() / interval
+        );
+
+        if (elapsedSeconds !== lastTime) {
+            lastTime = elapsedSeconds;
+            const newTime = playdate.file.modtime('main.pdz');
+
+            if (
+                newTime.second !== second ||
+                newTime.minute !== minute ||
+                newTime.hour !== hour ||
+                newTime.day !== day ||
+                newTime.month !== month ||
+                newTime.year !== year
+            ) {
+                print('Reloading...');
+                playdate.file.run('main.pdz');
+            }
+        }
+
+        update();
+    };
+};

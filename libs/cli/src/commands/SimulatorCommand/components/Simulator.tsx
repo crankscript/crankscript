@@ -11,14 +11,17 @@ import React, {
 } from 'react';
 import { getPdcPathFromEnvironment } from '@/cli/commands/CompileCommand/fn/getPdcPathFromEnvironment.js';
 import { useCompileTasks } from '@/cli/commands/CompileCommand/hooks/useCompileTasks.js';
+import { getSimulatorPathFromEnvironment } from '@/cli/commands/SimulatorCommand/fn/getSimulatorPathFromEnvironment.js';
 import { useTranspileTasks } from '@/cli/commands/TranspileCommand/hooks/useTranspileTasks.js';
 import { CheckList } from '@/cli/components/CheckList/index.js';
 import { Environment } from '@/cli/environment/dto/Environment.js';
+import { isMac, isWindows } from '@/cli/utils/platform.js';
 
 interface Props {
     environment: Environment;
     path: string;
     watch?: boolean;
+    recompileOnly?: boolean;
     background?: boolean;
 }
 
@@ -26,6 +29,7 @@ export const Simulator = ({
     environment,
     path,
     watch = false,
+    recompileOnly = false,
     background = false,
 }: Props) => {
     const watcher = useRef<FSWatcher | null>(null);
@@ -36,6 +40,7 @@ export const Simulator = ({
     const compileTasks = useCompileTasks(
         getPdcPathFromEnvironment(environment)
     );
+    const didRun = useRef(false);
 
     useEffect(() => {
         if (hasChanged) {
@@ -44,30 +49,47 @@ export const Simulator = ({
     }, [hasChanged, setHasChanged]);
 
     const handleFinish = useCallback(() => {
+        if (didRun.current && recompileOnly) {
+            return;
+        }
+
+        didRun.current = true;
+
         open('Game.pdx', {
             background,
+            app: isMac
+                ? undefined
+                : {
+                      name: getSimulatorPathFromEnvironment(environment),
+                  },
         }).then(() => {
             if (!watch) {
-                process.exit();
-            }
-
-            setHasChangedMessage(false);
-
-            if (watcher.current) {
-                watcher.current.close();
-            }
-
-            setIsWatching(true);
-
-            watcher.current = watchDir(
-                join(path, 'src'),
-                { recursive: true },
-                () => {
-                    setHasChanged(true);
-                    setHasChangedMessage(true);
-                    setIsWatching(false);
+                if (!isWindows) {
+                    process.exit();
                 }
-            );
+
+                // Wait for the simulator to start
+                // See https://github.com/sindresorhus/open/issues/298
+                setTimeout(process.exit, 1000);
+            } else {
+                setHasChangedMessage(false);
+
+                if (watcher.current) {
+                    watcher.current.close();
+                }
+
+                setIsWatching(true);
+
+                watcher.current = watchDir(
+                    join(path, 'src'),
+                    { recursive: true },
+                    () => {
+                        setHasChanged(true);
+                        setHasChangedMessage(true);
+                        setIsWatching(false);
+                    }
+                );
+            }
         });
     }, [watch, setHasChanged, setIsWatching]);
 

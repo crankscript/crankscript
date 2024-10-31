@@ -186,4 +186,31 @@ ____exports.PlaydateSoundTwoPoleFilterType.LowShelf = 5
 ____exports.PlaydateSoundTwoPoleFilterType[____exports.PlaydateSoundTwoPoleFilterType.LowShelf] = "LowShelf"
 ____exports.PlaydateSoundTwoPoleFilterType.HighShelf = 6
 ____exports.PlaydateSoundTwoPoleFilterType[____exports.PlaydateSoundTwoPoleFilterType.HighShelf] = "HighShelf"
+local lastTime = -1
+local ____playdate_file_modtime_result_0 = playdate.file.modtime("main.pdz")
+local second = ____playdate_file_modtime_result_0.second
+local minute = ____playdate_file_modtime_result_0.minute
+local hour = ____playdate_file_modtime_result_0.hour
+local day = ____playdate_file_modtime_result_0.day
+local month = ____playdate_file_modtime_result_0.month
+local year = ____playdate_file_modtime_result_0.year
+____exports.withReload = function(____, update, options)
+    local ____temp_1 = options or ({})
+    local interval = ____temp_1.interval
+    if interval == nil then
+        interval = 1000
+    end
+    return function()
+        local elapsedSeconds = math.floor(playdate.getCurrentTimeMilliseconds() / interval)
+        if elapsedSeconds ~= lastTime then
+            lastTime = elapsedSeconds
+            local newTime = playdate.file.modtime("main.pdz")
+            if newTime.second ~= second or newTime.minute ~= minute or newTime.hour ~= hour or newTime.day ~= day or newTime.month ~= month or newTime.year ~= year then
+                print("Reloading...")
+                playdate.file.run("main.pdz")
+            end
+        end
+        update(nil)
+    end
+end
 return ____exports
