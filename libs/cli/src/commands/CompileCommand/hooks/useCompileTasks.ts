@@ -1,4 +1,5 @@
 import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import open from 'open';
 import { useMemo } from 'react';
 import { CheckListItem } from '@/cli/types.js';
@@ -28,10 +29,15 @@ export const useCompileTasks = (pdcPath: string) => {
                 runningDescription: 'Compiling lua code...',
                 finishedDescription: () => 'Lua code compiled',
                 runner: async () => {
+                    const currentDirectory = process.cwd();
+
                     await open('', {
                         app: {
                             name: pdcPath,
-                            arguments: ['Source', 'Game.pdx'],
+                            arguments: [
+                                join(currentDirectory, 'Source'),
+                                join(currentDirectory, 'Game.pdx'),
+                            ],
                         },
                     });
 
