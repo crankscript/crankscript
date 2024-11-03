@@ -1,0 +1,16 @@
+{
+    "name": "@crankscript/tstl-library",
+    "version": "0.0.1",
+    "scripts": {
+        "post-build": "cp -r ../../dist/libs/tstl-plugin/src/* ../../libs/cli/assets/"
+    },
+    "dependencies": {
+        "@swc/helpers": "~0.5.11",
+        "typescript": "^5.6.2",
+        "typescript-to-lua": "^1.27.0"
+    },
+    "type": "commonjs",
+    "main": "./src/index.js",
+    "typings": "./src/index.d.ts",
+    "private": true
+}

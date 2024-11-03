@@ -4,7 +4,8 @@
     "license": "MIT",
     "scripts": {
         "prepare": "husky install",
-        "crankscript-dev": " tsx --tsconfig libs/cli/tsconfig.json libs/cli/src/index.ts"
+        "crankscript-dev": "tsx --tsconfig libs/cli/tsconfig.json libs/cli/src/index.ts",
+        "prepare-tstl-plugin": "nx run tstl-plugin:build && nx run tstl-plugin:post-build"
     },
     "author": {
         "name": "Alberto Piu"
@@ -62,7 +63,9 @@
         "jest-environment-node": "^29.7.0",
         "nx": "19.8.0",
         "prettier": "^2.6.2",
-        "ts-jest": "^29.1.0",
+        "ts-jest": "^29.2.5",
+        "ts-jest-resolver": "^2.0.1",
+        "ts-node": "10.9.1",
         "tsc-alias": "^1.8.10",
         "typescript": "~5.6.2",
         "verdaccio": "^5.0.4"

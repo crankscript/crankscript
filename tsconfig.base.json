@@ -17,6 +17,7 @@
         "paths": {
             "@crankscript/cli": ["libs/cli/src/index.ts"],
             "@crankscript/core": ["libs/core/src/index.ts"],
+            "@crankscript/tstl-library": ["libs/tstl-plugin/src/index.ts"],
             "@crankscript/types": ["libs/types/src/index.ts"]
         }
     },

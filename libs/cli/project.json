@@ -15,17 +15,12 @@
     "targets": {
         "build": {
             "executor": "@nx/js:swc",
-            "outputs": [
-                "{options.outputPath}"
-            ],
+            "outputs": ["{options.outputPath}"],
             "options": {
                 "outputPath": "dist/libs/cli",
                 "main": "libs/cli/src/index.ts",
                 "tsConfig": "libs/cli/tsconfig.lib.json",
-                "assets": [
-                    "libs/cli/*.md",
-                    "libs/cli/assets/*"
-                ]
+                "assets": ["libs/cli/*.md", "libs/cli/assets/*"]
             }
         },
         "nx-release-publish": {

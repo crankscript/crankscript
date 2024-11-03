@@ -1,4 +1,4 @@
-import { parseFunctionSignature } from '@/cli/commands/GenerateTypes/fn/parseFunctionSignature.js';
+import { parseFunctionSignature } from '../parseFunctionSignature.js';
 
 describe('parseFunctionSignature', () => {
     it('should parse global function', () => {

@@ -1,0 +1,19 @@
+{
+    "name": "tstl-plugin",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/tstl-plugin/src",
+    "projectType": "library",
+    "tags": [],
+    "targets": {
+        "build": {
+            "executor": "@nx/js:swc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/libs/tstl-plugin",
+                "main": "libs/tstl-plugin/src/index.ts",
+                "tsConfig": "libs/tstl-plugin/tsconfig.lib.json",
+                "assets": ["libs/tstl-plugin/*.md"]
+            }
+        }
+    }
+}

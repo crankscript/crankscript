@@ -40,3 +40,8 @@ Thumbs.db
 
 .nx/cache
 .nx/workspace-data
+
+**/Source/**
+
+libs/cli/assets/*
+!libs/cli/assets/package.json

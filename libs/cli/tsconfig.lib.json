@@ -6,6 +6,7 @@
         "types": [
             "node"
         ],
+        "module": "nodenext",
         "moduleResolution": "nodenext",
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
@@ -21,6 +22,7 @@
     "exclude": [
         "jest.config.ts",
         "src/**/*.spec.ts",
-        "src/**/*.test.ts"
+        "src/**/*.test.ts",
+        "src/**/_tests/**/test-*"
     ]
 }
