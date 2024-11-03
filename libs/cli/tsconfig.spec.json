@@ -2,13 +2,19 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "outDir": "../../dist/out-tsc",
-        "module": "commonjs",
+        "module": "nodenext",
         "types": [
             "jest",
             "node"
         ],
         "moduleResolution": "nodenext",
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/cli/*": [
+                "src/*"
+            ]
+        }
     },
     "include": [
         "jest.config.ts",

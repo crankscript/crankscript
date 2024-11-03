@@ -6,6 +6,7 @@
         "types": [
             "node"
         ],
+        "module": "nodenext",
         "moduleResolution": "nodenext",
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",

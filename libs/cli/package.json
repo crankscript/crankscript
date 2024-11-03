@@ -3,8 +3,7 @@
     "version": "0.0.0",
     "scripts": {
         "dev": "tsx src/index.ts",
-        "post-build": "tsc-alias --project tsconfig.json",
-        "prepare-assets": "npx tsc -p assets/tsconfig.json"
+        "post-build": "tsc-alias --project tsconfig.json"
     },
     "bin": {
         "crankscript": "./src/index.js"
