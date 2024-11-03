@@ -4,8 +4,7 @@
     "license": "MIT",
     "scripts": {
         "prepare": "husky install",
-        "crankscript-dev": "tsx --tsconfig libs/cli/tsconfig.json libs/cli/src/index.ts",
-        "prepare-tstl-plugin": "nx run tstl-plugin:build && nx run tstl-plugin:post-build"
+        "crankscript-dev": "tsx --tsconfig libs/cli/tsconfig.json libs/cli/src/index.ts"
     },
     "author": {
         "name": "Alberto Piu"
@@ -70,6 +69,10 @@
         "typescript": "~5.6.2",
         "verdaccio": "^5.0.4"
     },
+    "files": [
+        "src/",
+        "assets/"
+    ],
     "nx": {
         "includedScripts": []
     },

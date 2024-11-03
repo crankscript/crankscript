@@ -29,10 +29,10 @@ jobs:
             -   uses: nrwl/nx-set-shas@v4
 
             -   run: npx nx run-many -t lint test build -p tstl-plugin
-            -   run: npx nx run tstl-plugin:post-build
+            -   run: npx nx run tstl-plugin:move-build-to-cli
 
             -   run: NODE_OPTIONS=--experimental-vm-modules npx nx affected -t lint test build --exclude=tstl-plugin
-            -   run: npx nx affected -t post-build --exclude=tstl-plugin
+            -   run: npx nx affected -t post-build
 
             -   run: git config user.name github-actions
                 if: github.ref == 'refs/heads/main'
