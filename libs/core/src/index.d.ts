@@ -1,122 +1,132 @@
 export declare enum PlaydateColor {
-    Black = 0,
-    White = 1,
-    Clear = 2,
-    XOR = 3
+    Black,
+    White,
+    Clear,
+    XOR
 }
 export declare enum PlaydateFlip {
-    Unflipped = 0,
-    FlippedX = 1,
-    FlippedY = 2,
-    FlippedXY = 3
+    Unflipped,
+    FlippedX,
+    FlippedY,
+    FlippedXY
 }
 export declare enum PlaydatePolygonFill {
-    NonZero = 0,
-    EvenOdd = 1
+    NonZero,
+    EvenOdd
 }
 export declare enum PlaydateButton {
-    Left = 1,
-    Right = 2,
-    Up = 4,
-    Down = 8,
-    B = 16,
-    A = 32
+    Left,
+    Right,
+    Up,
+    Down,
+    B,
+    A
 }
 export declare enum PlaydateLanguage {
-    English = 0,
-    Japanese = 1
+    English,
+    Japanese
 }
 export declare enum PlaydateFileOpenMode {
-    Read = 3,
-    Write = 4,
-    Append = 8
+    Read,
+    Write,
+    Append
 }
 export declare enum PlaydateDitherType {
-    None = 0,
-    DiagonalLine = 1,
-    VerticalLine = 2,
-    HorizontalLine = 3,
-    Screen = 4,
-    Bayer2x2 = 5,
-    Bayer4x4 = 6,
-    Bayer8x8 = 7,
-    FloydSteinberg = 8,
-    Burkes = 9,
-    Atkinson = 10
+    None,
+    DiagonalLine,
+    VerticalLine,
+    HorizontalLine,
+    Screen,
+    Bayer2x2,
+    Bayer4x4,
+    Bayer8x8,
+    FloydSteinberg,
+    Burkes,
+    Atkinson
 }
 export declare enum PlaydateLineCapStyle {
-    Butt = 0,
-    Square = 1,
-    Round = 2
+    Butt,
+    Square,
+    Round
 }
 export declare enum PlaydateDrawMode {
-    Copy = 0,
-    WhiteTransparent = 1,
-    BlackTransparent = 2,
-    FillWhite = 3,
-    FillBlack = 4,
-    XOR = 5,
-    NXOR = 6,
-    Inverted = 7
+    Copy,
+    WhiteTransparent,
+    BlackTransparent,
+    FillWhite,
+    FillBlack,
+    XOR,
+    NXOR,
+    Inverted
 }
 export declare enum PlaydateStrokeLocation {
-    Centered = 0,
-    Inside = 1,
-    Outside = 2
+    Centered,
+    Inside,
+    Outside
 }
 export declare enum PlaydateFontVariant {
-    Normal = 0,
-    Bold = 1,
-    Italic = 2
+    Normal,
+    Bold,
+    Italic
 }
 export declare enum PlaydateTextAlignment {
-    Left = 0,
-    Right = 1,
-    Center = 2
+    Left,
+    Right,
+    Center
 }
 export declare enum PlaydateCollisionResponse {
-    Slide = 0,
-    Freeze = 1,
-    Overlap = 2,
-    Bounce = 3
+    Slide,
+    Freeze,
+    Overlap,
+    Bounce
 }
 export declare enum PlaydateCapitalizationBehavior {
-    Normal = 1,
-    Words = 2,
-    Sentences = 3
+    Normal,
+    Words,
+    Sentences
 }
 export declare enum PlaydateSoundFormat {
-    '8bitMono' = 0,
-    '8bitStereo' = 1,
-    '16bitMono' = 2,
-    '16bitStereo' = 3
+    '8bitMono',
+    '8bitStereo',
+    '16bitMono',
+    '16bitStereo'
 }
 export declare enum PlaydateSoundWave {
-    Square = 0,
-    Triangle = 1,
-    Sine = 2,
-    Noise = 3,
-    Sawtooth = 4,
-    POPhase = 5,
-    PODigital = 6,
-    POVosim = 7
+    Square,
+    Triangle,
+    Sine,
+    Noise,
+    Sawtooth,
+    POPhase,
+    PODigital,
+    POVosim
 }
 export declare enum PlaydateSoundLfoType {
-    Square = 0,
-    Triangle = 1,
-    Sine = 2,
-    SampleAndHold = 3,
-    SawtoothUp = 4,
-    SawtoothDown = 5
+    Square,
+    Triangle,
+    Sine,
+    SampleAndHold,
+    SawtoothUp,
+    SawtoothDown
 }
 export declare enum PlaydateSoundTwoPoleFilterType {
-    LowPass = 0,
-    HighPass = 1,
-    BandPass = 2,
-    Notch = 3,
-    PEQ = 4,
-    LowShelf = 5,
-    HighShelf = 6
+    LowPass,
+    HighPass,
+    BandPass,
+    Notch,
+    PEQ,
+    LowShelf,
+    HighShelf
+}
+export declare enum PlaydateSeekWhence {
+    Set,
+    FromCurrent,
+    FromEnd
+}
+export declare enum PlaydateWrapMode {
+    Clip,
+    Character,
+    Word
 }
 export interface ReloadOptions {
     interval?: number;

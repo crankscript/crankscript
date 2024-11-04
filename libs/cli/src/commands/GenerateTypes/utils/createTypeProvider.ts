@@ -5,6 +5,7 @@ import {
     FunctionDeclarationStructure,
     ParameterDeclarationStructure,
     StructureKind,
+    VariableDeclarationStructure,
 } from 'ts-morph';
 import { DataFolder } from '@/cli/constants.js';
 import {
@@ -26,6 +27,7 @@ export const createTypeProvider = (version: string) => {
         ? (JSON.parse(readFileSync(path, 'utf-8')) as TypeProviderData)
         : ({
               globalStatements: [],
+              constants: {},
               statements: [],
               classes: {},
               properties: {},
@@ -33,6 +35,7 @@ export const createTypeProvider = (version: string) => {
           } satisfies TypeProviderData);
     const provider = {
         globalStatements: fallbackProvider.globalStatements,
+        constants: fallbackProvider.constants,
         statements: fallbackProvider.statements,
         classes: fallbackProvider.classes,
         properties: {},
@@ -189,6 +192,16 @@ export const createTypeProvider = (version: string) => {
         return options;
     };
 
+    const getConstants = (fullNamespace: string) => {
+        return (provider.constants[fullNamespace] ?? []).map((constant) => {
+            return {
+                kind: StructureKind.VariableDeclaration,
+                name: typeof constant === 'string' ? constant : constant.name,
+                type: typeof constant === 'string' ? 'number' : constant.type,
+            } satisfies VariableDeclarationStructure;
+        });
+    };
+
     const save = () => {
         const contents = JSON.stringify(provider, null, 4) + '\n';
 
@@ -204,6 +217,7 @@ export const createTypeProvider = (version: string) => {
         getParameterDetails,
         getParameters,
         getFunctionOverrideOptions,
+        getConstants,
         save,
     };
 };

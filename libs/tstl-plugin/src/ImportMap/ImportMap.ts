@@ -14,14 +14,14 @@ export class ImportMap {
     }
 
     processName(name: string) {
-        for (const [key, value] of Object.entries(this.map)) {
-            if (value instanceof Set && value.has(name)) {
+        for (const [key, value] of Object.entries(ImportMap.map)) {
+            if (value.has(name)) {
                 this.add(key);
             }
         }
     }
 
-    static map = {
+    private static map = {
         graphics: new Set(['graphics']),
         sprites: new Set(['sprite']),
         crank: new Set(['getCrankTicks']),

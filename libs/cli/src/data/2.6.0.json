@@ -4,9 +4,114 @@
         "// noinspection JSUnusedGlobalSymbols,JSDuplicatedDeclaration,ReservedWordAsName",
         "\n/**\n * This TypeScript declaration file (`d.ts`) was automatically generated using documentation from the Playdate SDK,\n * specifically from \"Inside Playdate\" and \"Inside Playdate with C\".\n *\n * The documentation excerpts are owned by Panic Inc. and are provided here solely for reference within the context of\n * Playdate game development. I do not claim ownership of any part of the documentation.\n *\n * If you are using this file, you must also comply with the Playdate SDK license, available at\n * https://play.date/dev/sdk-license/.\n */\n"
     ],
-    "constants": {},
+    "constants": {
+        "playdate": [
+            "kButtonA",
+            "kButtonB",
+            "kButtonDown",
+            "kButtonLeft",
+            "kButtonRight",
+            "kButtonUp"
+        ],
+        "playdate.graphics": [
+            "kColorBlack",
+            "kColorWhite",
+            "kColorClear",
+            "kColorXOR",
+            "kImageUnflipped",
+            "kImageFlippedX",
+            "kImageFlippedY",
+            "kImageFlippedXY",
+            "kPolygonFillNonZero",
+            "kPolygonFillEvenOdd",
+            "kDitherTypeNone",
+            "kDitherTypeDiagonalLine",
+            "kDitherTypeVerticalLine",
+            "kDitherTypeHorizontalLine",
+            "kDitherTypeScreen",
+            "kDitherTypeBayer2x2",
+            "kDitherTypeBayer4x4",
+            "kDitherTypeBayer8x8",
+            "kDitherTypeFloydSteinberg",
+            "kDitherTypeBurkes",
+            "kDitherTypeAtkinson",
+            "kLineCapStyleButt",
+            "kLineCapStyleRound",
+            "kLineCapStyleSquare",
+            "kDrawModeBlackTransparent",
+            "kDrawModeCopy",
+            "kDrawModeFillBlack",
+            "kDrawModeFillWhite",
+            "kDrawModeInverted",
+            "kDrawModeNXOR",
+            "kDrawModeWhiteTransparent",
+            "kDrawModeXOR",
+            "kStrokeCentered",
+            "kStrokeInside",
+            "kStrokeOutside",
+            "kAlignCenter",
+            "kAlignLeft",
+            "kAlignRight",
+            "kWrapCharacter",
+            "kWrapClip",
+            "kWrapWord"
+        ],
+        "playdate.graphics.sprite": [
+            "kCollisionTypeBounce",
+            "kCollisionTypeFreeze",
+            "kCollisionTypeOverlap",
+            "kCollisionTypeSlide"
+        ],
+        "playdate.graphics.font": [
+            "kLanguageEnglish",
+            "kLanguageJapanese",
+            "kVariantBold",
+            "kVariantItalic",
+            "kVariantNormal"
+        ],
+        "playdate.file": [
+            "kFileAppend",
+            "kFileRead",
+            "kFileWrite",
+            "kSeekSet",
+            "kSeekFromCurrent",
+            "kSeekFromEnd"
+        ],
+        "playdate.keyboard": [
+            "kCapitalizationNormal",
+            "kCapitalizationWords",
+            "kCapitalizationSentences"
+        ],
+        "playdate.sound": [
+            "kFormat16bitMono",
+            "kFormat16bitStereo",
+            "kFormat8bitMono",
+            "kFormat8bitStereo",
+            "kWaveNoise",
+            "kWavePODigital",
+            "kWavePOPhase",
+            "kWavePOVosim",
+            "kWaveSawtooth",
+            "kWaveSine",
+            "kWaveSquare",
+            "kWaveTriangle",
+            "kLFOSampleAndHold",
+            "kLFOSawtoothDown",
+            "kLFOSawtoothUp",
+            "kLFOSine",
+            "kLFOSquare",
+            "kLFOTriangle",
+            "kFilterBandPass",
+            "kFilterHighPass",
+            "kFilterHighShelf",
+            "kFilterLowPass",
+            "kFilterLowShelf",
+            "kFilterNotch",
+            "kFilterPEQ"
+        ]
+    },
     "statements": [
-        "import {PlaydateColor, PlaydateButton, PlaydateLanguage, PlaydateFlip, PlaydatePolygonFill, PlaydateDitherType, PlaydateLineCapStyle, PlaydateDrawMode, PlaydateStrokeLocation, PlaydateFontVariant, PlaydateTextAlignment, PlaydateCollisionResponse, PlaydateCapitalizationBehavior, PlaydateSoundFormat, PlaydateSoundWave, PlaydateSoundLfoType, PlaydateSoundTwoPoleFilterType, PlaydateFileOpenMode} from '@crankscript/core';",
+        "import {PlaydateColor, PlaydateButton, PlaydateLanguage, PlaydateFlip, PlaydatePolygonFill, PlaydateDitherType, PlaydateLineCapStyle, PlaydateDrawMode, PlaydateStrokeLocation, PlaydateFontVariant, PlaydateTextAlignment, PlaydateCollisionResponse, PlaydateCapitalizationBehavior, PlaydateSoundFormat, PlaydateSoundWave, PlaydateSoundLfoType, PlaydateSoundTwoPoleFilterType, PlaydateFileOpenMode, PlaydateSeekWhence, PlaydateWrapMode} from '@crankscript/core';",
         "type PlaydateInputHandler = { AButtonDown: typeof AButtonDown; AButtonHeld: typeof AButtonHeld; AButtonUp: typeof AButtonUp; BButtonDown: typeof BButtonDown; BButtonHeld: typeof BButtonHeld; BButtonUp: typeof BButtonUp; downButtonDown: typeof downButtonDown; downButtonUp: typeof downButtonUp; leftButtonDown: typeof leftButtonDown; leftButtonUp: typeof leftButtonUp; rightButtonDown: typeof rightButtonDown; rightButtonUp: typeof rightButtonUp; upButtonDown: typeof upButtonDown; upButtonUp: typeof upButtonUp; cranked: typeof cranked; crankDocked: typeof crankDocked; crankUndocked: typeof crankUndocked; };",
         "type PlaydateFontFamily = { [PlaydateFontVariant.Normal]: playdate.graphics.font; [PlaydateFontVariant.Bold]: playdate.graphics.font; [PlaydateFontVariant.Italic]: playdate.graphics.font; };",
         "type PlaydateFontFamilyPaths = { [PlaydateFontVariant.Normal]: string; [PlaydateFontVariant.Bold]: string; [PlaydateFontVariant.Italic]: string; };",
@@ -179,6 +284,10 @@
             "signature": "playdate.frameTimer.timerEndedArgs",
             "type": "unknown[]"
         },
+        "playdate.ui.crankIndicator.clockwise": {
+            "signature": "playdate.ui.crankIndicator.clockwise",
+            "type": "boolean"
+        },
         "playdate.ui.gridview.needsDisplay": {
             "signature": "playdate.ui.gridview.needsDisplay",
             "type": "boolean",
@@ -212,10 +321,6 @@
         "playdate.ui.gridview.scrollCellsToCenter": {
             "signature": "playdate.ui.gridview.scrollCellsToCenter",
             "type": "boolean"
-        },
-        "playdate.ui.crankIndicator.clockwise": {
-            "signature": "playdate.ui.crankIndicator.clockwise",
-            "type": "boolean"
         }
     },
     "functions": {
@@ -247,348 +352,6 @@
             "signature": "where()",
             "parameters": [],
             "returnType": "string"
-        },
-        "playdate.menu:addMenuItem(title, callback)": {
-            "signature": "playdate.menu:addMenuItem(title, callback)",
-            "parameters": [
-                {
-                    "name": "title",
-                    "type": "string"
-                },
-                {
-                    "name": "callback",
-                    "type": "() => void"
-                }
-            ],
-            "returnType": "LuaMultiReturn<[playdate.menu.item, undefined]> | LuaMultiReturn<[null, string]>"
-        },
-        "playdate.menu:addCheckmarkMenuItem(title, [initialValue], callback)": {
-            "signature": "playdate.menu:addCheckmarkMenuItem(title, [initialValue], callback)",
-            "parameters": [
-                {
-                    "name": "title",
-                    "type": "string"
-                },
-                {
-                    "name": "initialValue",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "false"
-                    }
-                },
-                {
-                    "name": "callback",
-                    "type": "(value: boolean) => void"
-                }
-            ],
-            "returnType": "LuaMultiReturn<[playdate.menu.item, undefined]> | LuaMultiReturn<[null, string]>"
-        },
-        "playdate.menu:addOptionsMenuItem(title, options, [initalValue], callback)": {
-            "signature": "playdate.menu:addOptionsMenuItem(title, options, [initalValue], callback)",
-            "overrideOptions": {
-                "typeParameters": "TOptions extends string[]"
-            },
-            "parameters": [
-                {
-                    "name": "title",
-                    "type": "string"
-                },
-                {
-                    "name": "options",
-                    "type": "TOptions"
-                },
-                {
-                    "name": "initalValue",
-                    "type": "TOptions[number]"
-                },
-                {
-                    "name": "callback",
-                    "type": "() => void"
-                }
-            ],
-            "returnType": "LuaMultiReturn<[playdate.menu.item, undefined]> | LuaMultiReturn<[null, string]>"
-        },
-        "playdate.menu:getMenuItems()": {
-            "signature": "playdate.menu:getMenuItems()",
-            "parameters": [],
-            "returnType": "playdate.menu.item[]"
-        },
-        "playdate.menu:removeMenuItem(menuItem)": {
-            "signature": "playdate.menu:removeMenuItem(menuItem)",
-            "parameters": [
-                {
-                    "name": "menuItem",
-                    "type": "playdate.menu.item"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.menu:removeAllMenuItems()": {
-            "signature": "playdate.menu:removeAllMenuItems()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.menu.item:setCallback(callback)": {
-            "signature": "playdate.menu.item:setCallback(callback)",
-            "parameters": [
-                {
-                    "name": "callback",
-                    "type": "() => void"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.menu.item:setTitle(newTitle)": {
-            "signature": "playdate.menu.item:setTitle(newTitle)",
-            "parameters": [
-                {
-                    "name": "newTitle",
-                    "type": "string"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.menu.item:getTitle()": {
-            "signature": "playdate.menu.item:getTitle()",
-            "parameters": [],
-            "returnType": "string"
-        },
-        "playdate.menu.item:setValue(newValue)": {
-            "signature": "playdate.menu.item:setValue(newValue)",
-            "parameters": [
-                {
-                    "name": "newValue",
-                    "type": "number | boolean | string"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.menu.item:getValue()": {
-            "signature": "playdate.menu.item:getValue()",
-            "parameters": [],
-            "returnType": "number | boolean | string"
-        },
-        "playdate.file.file:close()": {
-            "signature": "playdate.file.file:close()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.file.file:write(string)": {
-            "signature": "playdate.file.file:write(string)",
-            "parameters": [
-                {
-                    "name": "string",
-                    "type": "string"
-                }
-            ],
-            "returnType": "LuaMultiReturn<[number, undefined]> | LuaMultiReturn<[0, string]>"
-        },
-        "playdate.file.file:flush()": {
-            "signature": "playdate.file.file:flush()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.file.file:readline()": {
-            "signature": "playdate.file.file:readline()",
-            "parameters": [],
-            "returnType": "string"
-        },
-        "playdate.file.file:read(numberOfBytes)": {
-            "signature": "playdate.file.file:read(numberOfBytes)",
-            "parameters": [
-                {
-                    "name": "numberOfBytes",
-                    "type": "number"
-                }
-            ],
-            "returnType": "LuaMultiReturn<[string, number]> | LuaMultiReturn<[null, string]>"
-        },
-        "playdate.file.file:seek(offset)": {
-            "signature": "playdate.file.file:seek(offset)",
-            "parameters": [
-                {
-                    "name": "offset",
-                    "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.file.file:tell()": {
-            "signature": "playdate.file.file:tell()",
-            "parameters": [],
-            "returnType": "number"
-        },
-        "playdate.pathfinder.node:addConnection(node, weight, addReciprocalConnection)": {
-            "signature": "playdate.pathfinder.node:addConnection(node, weight, addReciprocalConnection)",
-            "parameters": [
-                {
-                    "name": "node",
-                    "type": "playdate.pathfinder.node"
-                },
-                {
-                    "name": "weight",
-                    "type": "number"
-                },
-                {
-                    "name": "addReciprocalConnection",
-                    "type": "boolean"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.pathfinder.node:addConnections(nodes, weights, addReciprocalConnections)": {
-            "signature": "playdate.pathfinder.node:addConnections(nodes, weights, addReciprocalConnections)",
-            "parameters": [
-                {
-                    "name": "nodes",
-                    "type": "playdate.pathfinder.node[]"
-                },
-                {
-                    "name": "weights",
-                    "type": "number[]"
-                },
-                {
-                    "name": "addReciprocalConnections",
-                    "type": "boolean"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.pathfinder.node:addConnectionToNodeWithXY(x, y, weight, addReciprocalConnection)": {
-            "signature": "playdate.pathfinder.node:addConnectionToNodeWithXY(x, y, weight, addReciprocalConnection)",
-            "parameters": [
-                {
-                    "name": "x",
-                    "type": "number"
-                },
-                {
-                    "name": "y",
-                    "type": "number"
-                },
-                {
-                    "name": "weight",
-                    "type": "number"
-                },
-                {
-                    "name": "addReciprocalConnection",
-                    "type": "boolean"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.pathfinder.node:connectedNodes()": {
-            "signature": "playdate.pathfinder.node:connectedNodes()",
-            "parameters": [],
-            "returnType": "playdate.pathfinder.node[]"
-        },
-        "playdate.pathfinder.node:removeConnection(node, [removeReciprocal])": {
-            "signature": "playdate.pathfinder.node:removeConnection(node, [removeReciprocal])",
-            "parameters": [
-                {
-                    "name": "node",
-                    "type": "playdate.pathfinder.node"
-                },
-                {
-                    "name": "removeReciprocal",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "false"
-                    }
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.pathfinder.node:removeAllConnections([removeIncoming])": {
-            "signature": "playdate.pathfinder.node:removeAllConnections([removeIncoming])",
-            "parameters": [
-                {
-                    "name": "removeIncoming",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "false"
-                    }
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.pathfinder.node:setXY(x, y)": {
-            "signature": "playdate.pathfinder.node:setXY(x, y)",
-            "parameters": [
-                {
-                    "name": "x",
-                    "type": "number"
-                },
-                {
-                    "name": "y",
-                    "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.sound.signal:setOffset(offset)": {
-            "signature": "playdate.sound.signal:setOffset(offset)",
-            "parameters": [
-                {
-                    "name": "offset",
-                    "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.sound.signal:setScale(scale)": {
-            "signature": "playdate.sound.signal:setScale(scale)",
-            "parameters": [
-                {
-                    "name": "scale",
-                    "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.sound.delaylinetap:setDelay(time)": {
-            "signature": "playdate.sound.delaylinetap:setDelay(time)",
-            "parameters": [
-                {
-                    "name": "time",
-                    "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.sound.delaylinetap:setDelayMod(signal)": {
-            "signature": "playdate.sound.delaylinetap:setDelayMod(signal)",
-            "parameters": [
-                {
-                    "name": "signal",
-                    "type": "playdate.sound.signal | null"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.sound.delaylinetap:setVolume(level)": {
-            "signature": "playdate.sound.delaylinetap:setVolume(level)",
-            "parameters": [
-                {
-                    "name": "level",
-                    "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.sound.delaylinetap:getVolume()": {
-            "signature": "playdate.sound.delaylinetap:getVolume()",
-            "parameters": [],
-            "returnType": "number"
-        },
-        "playdate.sound.delaylinetap:setFlipChannels(flag)": {
-            "signature": "playdate.sound.delaylinetap:setFlipChannels(flag)",
-            "parameters": [
-                {
-                    "name": "flag",
-                    "type": "boolean"
-                }
-            ],
-            "returnType": "void"
         },
         "playdate.apiVersion()": {
             "signature": "playdate.apiVersion()",
@@ -1097,6 +860,16 @@
             "parameters": [],
             "returnType": "void"
         },
+        "playdate.serialMessageReceived(message)": {
+            "signature": "playdate.serialMessageReceived(message)",
+            "parameters": [
+                {
+                    "name": "message",
+                    "type": "string"
+                }
+            ],
+            "returnType": "void"
+        },
         "playdate.setCollectsGarbage(flag)": {
             "signature": "playdate.setCollectsGarbage(flag)",
             "parameters": [
@@ -1131,15 +904,125 @@
             ],
             "returnType": "void"
         },
-        "playdate.serialMessageReceived(message)": {
-            "signature": "playdate.serialMessageReceived(message)",
+        "playdate.menu:addMenuItem(title, callback)": {
+            "signature": "playdate.menu:addMenuItem(title, callback)",
             "parameters": [
                 {
-                    "name": "message",
+                    "name": "title",
+                    "type": "string"
+                },
+                {
+                    "name": "callback",
+                    "type": "() => void"
+                }
+            ],
+            "returnType": "LuaMultiReturn<[playdate.menu.item, undefined]> | LuaMultiReturn<[null, string]>"
+        },
+        "playdate.menu:addCheckmarkMenuItem(title, [initialValue], callback)": {
+            "signature": "playdate.menu:addCheckmarkMenuItem(title, [initialValue], callback)",
+            "parameters": [
+                {
+                    "name": "title",
+                    "type": "string"
+                },
+                {
+                    "name": "initialValue",
+                    "type": "boolean",
+                    "overrideOptions": {
+                        "initializer": "false"
+                    }
+                },
+                {
+                    "name": "callback",
+                    "type": "(value: boolean) => void"
+                }
+            ],
+            "returnType": "LuaMultiReturn<[playdate.menu.item, undefined]> | LuaMultiReturn<[null, string]>"
+        },
+        "playdate.menu:addOptionsMenuItem(title, options, [initalValue], callback)": {
+            "signature": "playdate.menu:addOptionsMenuItem(title, options, [initalValue], callback)",
+            "overrideOptions": {
+                "typeParameters": "TOptions extends string[]"
+            },
+            "parameters": [
+                {
+                    "name": "title",
+                    "type": "string"
+                },
+                {
+                    "name": "options",
+                    "type": "TOptions"
+                },
+                {
+                    "name": "initalValue",
+                    "type": "TOptions[number]"
+                },
+                {
+                    "name": "callback",
+                    "type": "() => void"
+                }
+            ],
+            "returnType": "LuaMultiReturn<[playdate.menu.item, undefined]> | LuaMultiReturn<[null, string]>"
+        },
+        "playdate.menu:getMenuItems()": {
+            "signature": "playdate.menu:getMenuItems()",
+            "parameters": [],
+            "returnType": "playdate.menu.item[]"
+        },
+        "playdate.menu:removeMenuItem(menuItem)": {
+            "signature": "playdate.menu:removeMenuItem(menuItem)",
+            "parameters": [
+                {
+                    "name": "menuItem",
+                    "type": "playdate.menu.item"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.menu:removeAllMenuItems()": {
+            "signature": "playdate.menu:removeAllMenuItems()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.menu.item:setCallback(callback)": {
+            "signature": "playdate.menu.item:setCallback(callback)",
+            "parameters": [
+                {
+                    "name": "callback",
+                    "type": "() => void"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.menu.item:setTitle(newTitle)": {
+            "signature": "playdate.menu.item:setTitle(newTitle)",
+            "parameters": [
+                {
+                    "name": "newTitle",
                     "type": "string"
                 }
             ],
             "returnType": "void"
+        },
+        "playdate.menu.item:getTitle()": {
+            "signature": "playdate.menu.item:getTitle()",
+            "parameters": [],
+            "returnType": "string"
+        },
+        "playdate.menu.item:setValue(newValue)": {
+            "signature": "playdate.menu.item:setValue(newValue)",
+            "parameters": [
+                {
+                    "name": "newValue",
+                    "type": "number | boolean | string"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.menu.item:getValue()": {
+            "signature": "playdate.menu.item:getValue()",
+            "parameters": [],
+            "returnType": "number | boolean | string"
         },
         "playdate.inputHandlers.push(handler, [masksPreviousHandlers])": {
             "signature": "playdate.inputHandlers.push(handler, [masksPreviousHandlers])",
@@ -2451,6 +2334,60 @@
             ],
             "returnType": "void"
         },
+        "playdate.file.file:close()": {
+            "signature": "playdate.file.file:close()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.file.file:write(string)": {
+            "signature": "playdate.file.file:write(string)",
+            "parameters": [
+                {
+                    "name": "string",
+                    "type": "string"
+                }
+            ],
+            "returnType": "LuaMultiReturn<[number, undefined]> | LuaMultiReturn<[0, string]>"
+        },
+        "playdate.file.file:flush()": {
+            "signature": "playdate.file.file:flush()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.file.file:readline()": {
+            "signature": "playdate.file.file:readline()",
+            "parameters": [],
+            "returnType": "string"
+        },
+        "playdate.file.file:read(numberOfBytes)": {
+            "signature": "playdate.file.file:read(numberOfBytes)",
+            "parameters": [
+                {
+                    "name": "numberOfBytes",
+                    "type": "number"
+                }
+            ],
+            "returnType": "LuaMultiReturn<[string, number]> | LuaMultiReturn<[null, string]>"
+        },
+        "playdate.file.file:seek(offset, [whence])": {
+            "signature": "playdate.file.file:seek(offset, [whence])",
+            "parameters": [
+                {
+                    "name": "offset",
+                    "type": "number"
+                },
+                {
+                    "name": "whence",
+                    "type": "PlaydateSeekWhence"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.file.file:tell()": {
+            "signature": "playdate.file.file:tell()",
+            "parameters": [],
+            "returnType": "number"
+        },
         "playdate.geometry.squaredDistanceToPoint(x1, y1, x2, y2)": {
             "signature": "playdate.geometry.squaredDistanceToPoint(x1, y1, x2, y2)",
             "parameters": [
@@ -2494,6 +2431,41 @@
                 }
             ],
             "returnType": "number"
+        },
+        "playdate.geometry.affineTransform.new(m11, m12, m21, m22, tx, ty)": {
+            "signature": "playdate.geometry.affineTransform.new(m11, m12, m21, m22, tx, ty)",
+            "parameters": [
+                {
+                    "name": "m11",
+                    "type": "number"
+                },
+                {
+                    "name": "m12",
+                    "type": "number"
+                },
+                {
+                    "name": "m21",
+                    "type": "number"
+                },
+                {
+                    "name": "m22",
+                    "type": "number"
+                },
+                {
+                    "name": "tx",
+                    "type": "number"
+                },
+                {
+                    "name": "ty",
+                    "type": "number"
+                }
+            ],
+            "returnType": "playdate.geometry.affineTransformTransform"
+        },
+        "playdate.geometry.affineTransform.new()": {
+            "signature": "playdate.geometry.affineTransform.new()",
+            "parameters": [],
+            "returnType": "playdate.geometry.affineTransformTransform"
         },
         "playdate.geometry.affineTransform:copy()": {
             "signature": "playdate.geometry.affineTransform:copy()",
@@ -2762,40 +2734,35 @@
             ],
             "returnType": "playdate.geometry.polygon"
         },
-        "playdate.geometry.affineTransform.new(m11, m12, m21, m22, tx, ty)": {
-            "signature": "playdate.geometry.affineTransform.new(m11, m12, m21, m22, tx, ty)",
+        "playdate.geometry.arc.new(x, y, radius, startAngle, endAngle, [direction])": {
+            "signature": "playdate.geometry.arc.new(x, y, radius, startAngle, endAngle, [direction])",
             "parameters": [
                 {
-                    "name": "m11",
+                    "name": "x",
                     "type": "number"
                 },
                 {
-                    "name": "m12",
+                    "name": "y",
                     "type": "number"
                 },
                 {
-                    "name": "m21",
+                    "name": "radius",
                     "type": "number"
                 },
                 {
-                    "name": "m22",
+                    "name": "startAngle",
                     "type": "number"
                 },
                 {
-                    "name": "tx",
+                    "name": "endAngle",
                     "type": "number"
                 },
                 {
-                    "name": "ty",
-                    "type": "number"
+                    "name": "direction",
+                    "type": "boolean"
                 }
             ],
-            "returnType": "playdate.geometry.affineTransformTransform"
-        },
-        "playdate.geometry.affineTransform.new()": {
-            "signature": "playdate.geometry.affineTransform.new()",
-            "parameters": [],
-            "returnType": "playdate.geometry.affineTransformTransform"
+            "returnType": "playdate.geometry.arc"
         },
         "playdate.geometry.arc:copy()": {
             "signature": "playdate.geometry.arc:copy()",
@@ -2836,35 +2803,65 @@
             ],
             "returnType": "playdate.geometry.point"
         },
-        "playdate.geometry.arc.new(x, y, radius, startAngle, endAngle, [direction])": {
-            "signature": "playdate.geometry.arc.new(x, y, radius, startAngle, endAngle, [direction])",
+        "playdate.geometry.lineSegment.new(x1, y1, x2, y2)": {
+            "signature": "playdate.geometry.lineSegment.new(x1, y1, x2, y2)",
             "parameters": [
                 {
-                    "name": "x",
+                    "name": "x1",
                     "type": "number"
                 },
                 {
-                    "name": "y",
+                    "name": "y1",
                     "type": "number"
                 },
                 {
-                    "name": "radius",
+                    "name": "x2",
                     "type": "number"
                 },
                 {
-                    "name": "startAngle",
+                    "name": "y2",
                     "type": "number"
-                },
-                {
-                    "name": "endAngle",
-                    "type": "number"
-                },
-                {
-                    "name": "direction",
-                    "type": "boolean"
                 }
             ],
-            "returnType": "playdate.geometry.arc"
+            "returnType": "playdate.geometry.lineSegmentnt"
+        },
+        "playdate.geometry.lineSegment.fast_intersection(x1, y1, x2, y2, x3, y3, x4, y4)": {
+            "signature": "playdate.geometry.lineSegment.fast_intersection(x1, y1, x2, y2, x3, y3, x4, y4)",
+            "parameters": [
+                {
+                    "name": "x1",
+                    "type": "number"
+                },
+                {
+                    "name": "y1",
+                    "type": "number"
+                },
+                {
+                    "name": "x2",
+                    "type": "number"
+                },
+                {
+                    "name": "y2",
+                    "type": "number"
+                },
+                {
+                    "name": "x3",
+                    "type": "number"
+                },
+                {
+                    "name": "y3",
+                    "type": "number"
+                },
+                {
+                    "name": "x4",
+                    "type": "number"
+                },
+                {
+                    "name": "y4",
+                    "type": "number"
+                }
+            ],
+            "returnType": "LuaMultiReturn<[boolean, number]>"
         },
         "playdate.geometry.lineSegment:copy()": {
             "signature": "playdate.geometry.lineSegment:copy()",
@@ -2973,65 +2970,19 @@
             ],
             "returnType": "LuaMultiReturn<[boolean, number]>"
         },
-        "playdate.geometry.lineSegment.new(x1, y1, x2, y2)": {
-            "signature": "playdate.geometry.lineSegment.new(x1, y1, x2, y2)",
+        "playdate.geometry.point.new(x, y)": {
+            "signature": "playdate.geometry.point.new(x, y)",
             "parameters": [
                 {
-                    "name": "x1",
+                    "name": "x",
                     "type": "number"
                 },
                 {
-                    "name": "y1",
-                    "type": "number"
-                },
-                {
-                    "name": "x2",
-                    "type": "number"
-                },
-                {
-                    "name": "y2",
+                    "name": "y",
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.geometry.lineSegmentnt"
-        },
-        "playdate.geometry.lineSegment.fast_intersection(x1, y1, x2, y2, x3, y3, x4, y4)": {
-            "signature": "playdate.geometry.lineSegment.fast_intersection(x1, y1, x2, y2, x3, y3, x4, y4)",
-            "parameters": [
-                {
-                    "name": "x1",
-                    "type": "number"
-                },
-                {
-                    "name": "y1",
-                    "type": "number"
-                },
-                {
-                    "name": "x2",
-                    "type": "number"
-                },
-                {
-                    "name": "y2",
-                    "type": "number"
-                },
-                {
-                    "name": "x3",
-                    "type": "number"
-                },
-                {
-                    "name": "y3",
-                    "type": "number"
-                },
-                {
-                    "name": "x4",
-                    "type": "number"
-                },
-                {
-                    "name": "y4",
-                    "type": "number"
-                }
-            ],
-            "returnType": "LuaMultiReturn<[boolean, number]>"
+            "returnType": "playdate.geometry.point"
         },
         "playdate.geometry.point:copy()": {
             "signature": "playdate.geometry.point:copy()",
@@ -3091,19 +3042,43 @@
             ],
             "returnType": "number"
         },
-        "playdate.geometry.point.new(x, y)": {
-            "signature": "playdate.geometry.point.new(x, y)",
+        "playdate.geometry.polygon.new(x1, y1, x2, y2, ..., xn, yn)": {
+            "signature": "playdate.geometry.polygon.new(x1, y1, x2, y2, ..., xn, yn)",
+            "overrideParameters": true,
             "parameters": [
                 {
-                    "name": "x",
-                    "type": "number"
-                },
+                    "name": "coordinates",
+                    "type": "number",
+                    "overrideOptions": {
+                        "isRestParameter": true
+                    }
+                }
+            ],
+            "returnType": "playdate.geometry.polygon"
+        },
+        "playdate.geometry.polygon.new(p1, p2, ..., pn)": {
+            "signature": "playdate.geometry.polygon.new(p1, p2, ..., pn)",
+            "overrideParameters": true,
+            "parameters": [
                 {
-                    "name": "y",
+                    "name": "points",
+                    "type": "playdate.geometry.point",
+                    "overrideOptions": {
+                        "isRestParameter": true
+                    }
+                }
+            ],
+            "returnType": "playdate.geometry.polygon"
+        },
+        "playdate.geometry.polygon.new(numberOfVertices)": {
+            "signature": "playdate.geometry.polygon.new(numberOfVertices)",
+            "parameters": [
+                {
+                    "name": "numberOfVertices",
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.geometry.point"
+            "returnType": "playdate.geometry.polygon"
         },
         "playdate.geometry.polygon:copy()": {
             "signature": "playdate.geometry.polygon:copy()",
@@ -3244,43 +3219,103 @@
             ],
             "returnType": "void"
         },
-        "playdate.geometry.polygon.new(x1, y1, x2, y2, ..., xn, yn)": {
-            "signature": "playdate.geometry.polygon.new(x1, y1, x2, y2, ..., xn, yn)",
-            "overrideParameters": true,
+        "playdate.geometry.rect.new(x, y, width, height)": {
+            "signature": "playdate.geometry.rect.new(x, y, width, height)",
             "parameters": [
                 {
-                    "name": "coordinates",
-                    "type": "number",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
-                }
-            ],
-            "returnType": "playdate.geometry.polygon"
-        },
-        "playdate.geometry.polygon.new(p1, p2, ..., pn)": {
-            "signature": "playdate.geometry.polygon.new(p1, p2, ..., pn)",
-            "overrideParameters": true,
-            "parameters": [
+                    "name": "x",
+                    "type": "number"
+                },
                 {
-                    "name": "points",
-                    "type": "playdate.geometry.point",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
-                }
-            ],
-            "returnType": "playdate.geometry.polygon"
-        },
-        "playdate.geometry.polygon.new(numberOfVertices)": {
-            "signature": "playdate.geometry.polygon.new(numberOfVertices)",
-            "parameters": [
+                    "name": "y",
+                    "type": "number"
+                },
                 {
-                    "name": "numberOfVertices",
+                    "name": "width",
+                    "type": "number"
+                },
+                {
+                    "name": "height",
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.geometry.polygon"
+            "returnType": "playdate.geometry.rect"
+        },
+        "playdate.geometry.rect.fast_intersection(x1, y1, w1, h1, x2, y2, w2, h2)": {
+            "signature": "playdate.geometry.rect.fast_intersection(x1, y1, w1, h1, x2, y2, w2, h2)",
+            "parameters": [
+                {
+                    "name": "x1",
+                    "type": "number"
+                },
+                {
+                    "name": "y1",
+                    "type": "number"
+                },
+                {
+                    "name": "w1",
+                    "type": "number"
+                },
+                {
+                    "name": "h1",
+                    "type": "number"
+                },
+                {
+                    "name": "x2",
+                    "type": "number"
+                },
+                {
+                    "name": "y2",
+                    "type": "number"
+                },
+                {
+                    "name": "w2",
+                    "type": "number"
+                },
+                {
+                    "name": "h2",
+                    "type": "number"
+                }
+            ],
+            "returnType": "LuaMultiReturn<[number, number, number, number]> | [number, number, number, number][]"
+        },
+        "playdate.geometry.rect.fast_union(x1, y1, w1, h1, x2, y2, w2, h2)": {
+            "signature": "playdate.geometry.rect.fast_union(x1, y1, w1, h1, x2, y2, w2, h2)",
+            "parameters": [
+                {
+                    "name": "x1",
+                    "type": "number"
+                },
+                {
+                    "name": "y1",
+                    "type": "number"
+                },
+                {
+                    "name": "w1",
+                    "type": "number"
+                },
+                {
+                    "name": "h1",
+                    "type": "number"
+                },
+                {
+                    "name": "x2",
+                    "type": "number"
+                },
+                {
+                    "name": "y2",
+                    "type": "number"
+                },
+                {
+                    "name": "w2",
+                    "type": "number"
+                },
+                {
+                    "name": "h2",
+                    "type": "number"
+                }
+            ],
+            "returnType": "[number, number, number, number][]"
         },
         "playdate.geometry.rect:copy()": {
             "signature": "playdate.geometry.rect:copy()",
@@ -3473,114 +3508,6 @@
             ],
             "returnType": "void"
         },
-        "playdate.geometry.rect.new(x, y, width, height)": {
-            "signature": "playdate.geometry.rect.new(x, y, width, height)",
-            "parameters": [
-                {
-                    "name": "x",
-                    "type": "number"
-                },
-                {
-                    "name": "y",
-                    "type": "number"
-                },
-                {
-                    "name": "width",
-                    "type": "number"
-                },
-                {
-                    "name": "height",
-                    "type": "number"
-                }
-            ],
-            "returnType": "playdate.geometry.rect"
-        },
-        "playdate.geometry.rect.fast_intersection(x1, y1, w1, h1, x2, y2, w2, h2)": {
-            "signature": "playdate.geometry.rect.fast_intersection(x1, y1, w1, h1, x2, y2, w2, h2)",
-            "parameters": [
-                {
-                    "name": "x1",
-                    "type": "number"
-                },
-                {
-                    "name": "y1",
-                    "type": "number"
-                },
-                {
-                    "name": "w1",
-                    "type": "number"
-                },
-                {
-                    "name": "h1",
-                    "type": "number"
-                },
-                {
-                    "name": "x2",
-                    "type": "number"
-                },
-                {
-                    "name": "y2",
-                    "type": "number"
-                },
-                {
-                    "name": "w2",
-                    "type": "number"
-                },
-                {
-                    "name": "h2",
-                    "type": "number"
-                }
-            ],
-            "returnType": "LuaMultiReturn<[number, number, number, number]> | [number, number, number, number][]"
-        },
-        "playdate.geometry.rect.fast_union(x1, y1, w1, h1, x2, y2, w2, h2)": {
-            "signature": "playdate.geometry.rect.fast_union(x1, y1, w1, h1, x2, y2, w2, h2)",
-            "parameters": [
-                {
-                    "name": "x1",
-                    "type": "number"
-                },
-                {
-                    "name": "y1",
-                    "type": "number"
-                },
-                {
-                    "name": "w1",
-                    "type": "number"
-                },
-                {
-                    "name": "h1",
-                    "type": "number"
-                },
-                {
-                    "name": "x2",
-                    "type": "number"
-                },
-                {
-                    "name": "y2",
-                    "type": "number"
-                },
-                {
-                    "name": "w2",
-                    "type": "number"
-                },
-                {
-                    "name": "h2",
-                    "type": "number"
-                }
-            ],
-            "returnType": "[number, number, number, number][]"
-        },
-        "playdate.geometry.size:copy()": {
-            "signature": "playdate.geometry.size:copy()",
-            "parameters": [],
-            "returnType": "playdate.geometry.size"
-        },
-        "playdate.geometry.size:unpack()": {
-            "signature": "playdate.geometry.size:unpack()",
-            "parameters": [],
-            "returnType": "LuaMultiReturn<[number, number]>"
-        },
         "playdate.geometry.size.new(width, height)": {
             "signature": "playdate.geometry.size.new(width, height)",
             "parameters": [
@@ -3594,6 +3521,44 @@
                 }
             ],
             "returnType": "playdate.geometry.size"
+        },
+        "playdate.geometry.size:copy()": {
+            "signature": "playdate.geometry.size:copy()",
+            "parameters": [],
+            "returnType": "playdate.geometry.size"
+        },
+        "playdate.geometry.size:unpack()": {
+            "signature": "playdate.geometry.size:unpack()",
+            "parameters": [],
+            "returnType": "LuaMultiReturn<[number, number]>"
+        },
+        "playdate.geometry.vector2D.new(x, y)": {
+            "signature": "playdate.geometry.vector2D.new(x, y)",
+            "parameters": [
+                {
+                    "name": "x",
+                    "type": "number"
+                },
+                {
+                    "name": "y",
+                    "type": "number"
+                }
+            ],
+            "returnType": "playdate.geometry.vector2D"
+        },
+        "playdate.geometry.vector2D.newPolar(length, angle)": {
+            "signature": "playdate.geometry.vector2D.newPolar(length, angle)",
+            "parameters": [
+                {
+                    "name": "length",
+                    "type": "number"
+                },
+                {
+                    "name": "angle",
+                    "type": "number"
+                }
+            ],
+            "returnType": "playdate.geometry.vector2D"
         },
         "playdate.geometry.vector2D:copy()": {
             "signature": "playdate.geometry.vector2D:copy()",
@@ -3703,34 +3668,6 @@
         "playdate.geometry.vector2D:rightNormal()": {
             "signature": "playdate.geometry.vector2D:rightNormal()",
             "parameters": [],
-            "returnType": "playdate.geometry.vector2D"
-        },
-        "playdate.geometry.vector2D.new(x, y)": {
-            "signature": "playdate.geometry.vector2D.new(x, y)",
-            "parameters": [
-                {
-                    "name": "x",
-                    "type": "number"
-                },
-                {
-                    "name": "y",
-                    "type": "number"
-                }
-            ],
-            "returnType": "playdate.geometry.vector2D"
-        },
-        "playdate.geometry.vector2D.newPolar(length, angle)": {
-            "signature": "playdate.geometry.vector2D.newPolar(length, angle)",
-            "parameters": [
-                {
-                    "name": "length",
-                    "type": "number"
-                },
-                {
-                    "name": "angle",
-                    "type": "number"
-                }
-            ],
             "returnType": "playdate.geometry.vector2D"
         },
         "playdate.graphics.pushContext([image])": {
@@ -4330,6 +4267,20 @@
             ],
             "returnType": "void"
         },
+        "playdate.graphics.drawPolygon(x1, y1, x2, y2, [...])": {
+            "signature": "playdate.graphics.drawPolygon(x1, y1, x2, y2, [...])",
+            "overrideParameters": true,
+            "parameters": [
+                {
+                    "name": "coordinates",
+                    "type": "number",
+                    "overrideOptions": {
+                        "isRestParameter": true
+                    }
+                }
+            ],
+            "returnType": "void"
+        },
         "playdate.graphics.fillPolygon(x1, y1, x2, y2, [...])": {
             "signature": "playdate.graphics.fillPolygon(x1, y1, x2, y2, [...])",
             "overrideParameters": true,
@@ -4340,6 +4291,16 @@
                     "overrideOptions": {
                         "isRestParameter": true
                     }
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.fillPolygon(p)": {
+            "signature": "playdate.graphics.fillPolygon(p)",
+            "parameters": [
+                {
+                    "name": "p",
+                    "type": "playdate.geometry.polygon"
                 }
             ],
             "returnType": "void"
@@ -4649,6 +4610,44 @@
             ],
             "returnType": "void"
         },
+        "playdate.graphics.setStencilPattern(row1, row2, row3, row4, row5, row6, row7, row8)": {
+            "signature": "playdate.graphics.setStencilPattern(row1, row2, row3, row4, row5, row6, row7, row8)",
+            "parameters": [
+                {
+                    "name": "row1",
+                    "type": "number"
+                },
+                {
+                    "name": "row2",
+                    "type": "number"
+                },
+                {
+                    "name": "row3",
+                    "type": "number"
+                },
+                {
+                    "name": "row4",
+                    "type": "number"
+                },
+                {
+                    "name": "row5",
+                    "type": "number"
+                },
+                {
+                    "name": "row6",
+                    "type": "number"
+                },
+                {
+                    "name": "row7",
+                    "type": "number"
+                },
+                {
+                    "name": "row8",
+                    "type": "number"
+                }
+            ],
+            "returnType": "number"
+        },
         "playdate.graphics.setStencilPattern(level, [ditherType])": {
             "signature": "playdate.graphics.setStencilPattern(level, [ditherType])",
             "parameters": [
@@ -4832,8 +4831,8 @@
             ],
             "returnType": "playdate.graphics.font"
         },
-        "playdate.graphics.drawText(text, x, y, [fontFamily, [leadingAdjustment]])": {
-            "signature": "playdate.graphics.drawText(text, x, y, [fontFamily, [leadingAdjustment]])",
+        "playdate.graphics.drawText(text, x, y, [width, height], [fontFamily], [leadingAdjustment], [wrapMode], [alignment])": {
+            "signature": "playdate.graphics.drawText(text, x, y, [width, height], [fontFamily], [leadingAdjustment], [wrapMode], [alignment])",
             "parameters": [
                 {
                     "name": "text",
@@ -4848,18 +4847,64 @@
                     "type": "number"
                 },
                 {
+                    "name": "width",
+                    "type": "number"
+                },
+                {
+                    "name": "height",
+                    "type": "number"
+                },
+                {
                     "name": "fontFamily",
                     "type": "PlaydateFontFamily"
                 },
                 {
                     "name": "leadingAdjustment",
                     "type": "number"
+                },
+                {
+                    "name": "wrapMode",
+                    "type": "PlaydateWrapMode"
+                },
+                {
+                    "name": "alignment",
+                    "type": "PlaydateTextAlignment"
                 }
             ],
-            "returnType": "LuaMultiReturn<[number, number]>"
+            "returnType": "void"
         },
-        "playdate.graphics.drawLocalizedText(key, x, y, [language, [leadingAdjustment]])": {
-            "signature": "playdate.graphics.drawLocalizedText(key, x, y, [language, [leadingAdjustment]])",
+        "playdate.graphics.drawText(text, rect, [fontFamily], [leadingAdjustment], [wrapMode], [alignment])": {
+            "signature": "playdate.graphics.drawText(text, rect, [fontFamily], [leadingAdjustment], [wrapMode], [alignment])",
+            "parameters": [
+                {
+                    "name": "text",
+                    "type": "string"
+                },
+                {
+                    "name": "rect",
+                    "type": "playdate.geometry.rect"
+                },
+                {
+                    "name": "fontFamily",
+                    "type": "PlaydateFontFamily"
+                },
+                {
+                    "name": "leadingAdjustment",
+                    "type": "number"
+                },
+                {
+                    "name": "wrapMode",
+                    "type": "PlaydateWrapMode"
+                },
+                {
+                    "name": "alignment",
+                    "type": "PlaydateTextAlignment"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.drawLocalizedText(key, x, y, [width, height], [language], [leadingAdjustment], [wrapMode], [alignment])": {
+            "signature": "playdate.graphics.drawLocalizedText(key, x, y, [width, height], [language], [leadingAdjustment], [wrapMode], [alignment])",
             "parameters": [
                 {
                     "name": "key",
@@ -4872,6 +4917,44 @@
                 {
                     "name": "y",
                     "type": "number"
+                },
+                {
+                    "name": "width",
+                    "type": "number"
+                },
+                {
+                    "name": "height",
+                    "type": "number"
+                },
+                {
+                    "name": "language",
+                    "type": "PlaydateLanguage"
+                },
+                {
+                    "name": "leadingAdjustment",
+                    "type": "number"
+                },
+                {
+                    "name": "wrapMode",
+                    "type": "PlaydateWrapMode"
+                },
+                {
+                    "name": "alignment",
+                    "type": "PlaydateTextAlignment"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.drawLocalizedText(key, rect, [language], [leadingAdjustment])": {
+            "signature": "playdate.graphics.drawLocalizedText(key, rect, [language], [leadingAdjustment])",
+            "parameters": [
+                {
+                    "name": "key",
+                    "type": "string"
+                },
+                {
+                    "name": "rect",
+                    "type": "playdate.geometry.rect"
                 },
                 {
                     "name": "language",
@@ -5183,6 +5266,34 @@
                 }
             ],
             "returnType": "LuaMultiReturn<[playdate.graphics.image, boolean]>"
+        },
+        "playdate.graphics.image.new(width, height, [bgcolor])": {
+            "signature": "playdate.graphics.image.new(width, height, [bgcolor])",
+            "parameters": [
+                {
+                    "name": "width",
+                    "type": "number"
+                },
+                {
+                    "name": "height",
+                    "type": "number"
+                },
+                {
+                    "name": "bgcolor",
+                    "type": "PlaydateColor"
+                }
+            ],
+            "returnType": "playdate.graphics.image"
+        },
+        "playdate.graphics.image.new(path)": {
+            "signature": "playdate.graphics.image.new(path)",
+            "parameters": [
+                {
+                    "name": "path",
+                    "type": "string"
+                }
+            ],
+            "returnType": "playdate.graphics.image"
         },
         "playdate.graphics.image:load(path)": {
             "signature": "playdate.graphics.image:load(path)",
@@ -5745,33 +5856,31 @@
             "parameters": [],
             "returnType": "playdate.graphics.image"
         },
-        "playdate.graphics.image.new(width, height, [bgcolor])": {
-            "signature": "playdate.graphics.image.new(width, height, [bgcolor])",
+        "playdate.graphics.nineSlice.new(imagePath, innerX, innerY, innerWidth, innerHeight)": {
+            "signature": "playdate.graphics.nineSlice.new(imagePath, innerX, innerY, innerWidth, innerHeight)",
             "parameters": [
                 {
-                    "name": "width",
-                    "type": "number"
-                },
-                {
-                    "name": "height",
-                    "type": "number"
-                },
-                {
-                    "name": "bgcolor",
-                    "type": "PlaydateColor"
-                }
-            ],
-            "returnType": "playdate.graphics.image"
-        },
-        "playdate.graphics.image.new(path)": {
-            "signature": "playdate.graphics.image.new(path)",
-            "parameters": [
-                {
-                    "name": "path",
+                    "name": "imagePath",
                     "type": "string"
+                },
+                {
+                    "name": "innerX",
+                    "type": "number"
+                },
+                {
+                    "name": "innerY",
+                    "type": "number"
+                },
+                {
+                    "name": "innerWidth",
+                    "type": "number"
+                },
+                {
+                    "name": "innerHeight",
+                    "type": "number"
                 }
             ],
-            "returnType": "playdate.graphics.image"
+            "returnType": "playdate.graphics.nineSlice"
         },
         "playdate.graphics.nineSlice:getSize()": {
             "signature": "playdate.graphics.nineSlice:getSize()",
@@ -5815,31 +5924,23 @@
             ],
             "returnType": "void"
         },
-        "playdate.graphics.nineSlice.new(imagePath, innerX, innerY, innerWidth, innerHeight)": {
-            "signature": "playdate.graphics.nineSlice.new(imagePath, innerX, innerY, innerWidth, innerHeight)",
+        "playdate.graphics.animation.loop.new([delay, [imageTable, [shouldLoop]]])": {
+            "signature": "playdate.graphics.animation.loop.new([delay, [imageTable, [shouldLoop]]])",
             "parameters": [
                 {
-                    "name": "imagePath",
-                    "type": "string"
-                },
-                {
-                    "name": "innerX",
+                    "name": "delay",
                     "type": "number"
                 },
                 {
-                    "name": "innerY",
-                    "type": "number"
+                    "name": "imageTable",
+                    "type": "playdate.graphics.imagetable"
                 },
                 {
-                    "name": "innerWidth",
-                    "type": "number"
-                },
-                {
-                    "name": "innerHeight",
-                    "type": "number"
+                    "name": "shouldLoop",
+                    "type": "boolean"
                 }
             ],
-            "returnType": "playdate.graphics.nineSlice"
+            "returnType": "playdate.graphics.animation.loop"
         },
         "playdate.graphics.animation.loop:draw(x, y, [flip])": {
             "signature": "playdate.graphics.animation.loop:draw(x, y, [flip])",
@@ -5879,56 +5980,117 @@
             ],
             "returnType": "void"
         },
-        "playdate.graphics.animation.loop.new([delay, [imageTable, [shouldLoop]]])": {
-            "signature": "playdate.graphics.animation.loop.new([delay, [imageTable, [shouldLoop]]])",
+        "playdate.graphics.animation.blinker.new([onDuration, [offDuration, [loop, [cycles, [default]]]]])": {
+            "signature": "playdate.graphics.animation.blinker.new([onDuration, [offDuration, [loop, [cycles, [default]]]]])",
+            "overrideParameters": true,
             "parameters": [
                 {
-                    "name": "delay",
-                    "type": "number"
+                    "name": "onDuration",
+                    "type": "number",
+                    "overrideOptions": {
+                        "initializer": "200"
+                    }
                 },
                 {
-                    "name": "imageTable",
-                    "type": "playdate.graphics.imagetable"
+                    "name": "offDuration",
+                    "type": "number",
+                    "overrideOptions": {
+                        "initializer": "200"
+                    }
                 },
                 {
-                    "name": "shouldLoop",
-                    "type": "boolean"
+                    "name": "loop",
+                    "type": "boolean",
+                    "overrideOptions": {
+                        "initializer": "false"
+                    }
+                },
+                {
+                    "name": "cycles",
+                    "type": "number",
+                    "overrideOptions": {
+                        "initializer": "6"
+                    }
+                },
+                {
+                    "name": "_default",
+                    "type": "boolean",
+                    "overrideOptions": {
+                        "initializer": "true"
+                    }
                 }
             ],
-            "returnType": "playdate.graphics.animation.loop"
+            "returnType": "playdate.graphics.animation.blinker"
         },
-        "playdate.graphics.animator:currentValue()": {
-            "signature": "playdate.graphics.animator:currentValue()",
+        "playdate.graphics.animation.blinker.updateAll()": {
+            "signature": "playdate.graphics.animation.blinker.updateAll()",
             "parameters": [],
-            "returnType": "TSubject"
+            "returnType": "void"
         },
-        "playdate.graphics.animator:valueAtTime(time)": {
-            "signature": "playdate.graphics.animator:valueAtTime(time)",
+        "playdate.graphics.animation.blinker.stopAll()": {
+            "signature": "playdate.graphics.animation.blinker.stopAll()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.graphics.animation.blinker:update()": {
+            "signature": "playdate.graphics.animation.blinker:update()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.graphics.animation.blinker:start([onDuration, [offDuration, [loop, [cycles, [default]]]]])": {
+            "signature": "playdate.graphics.animation.blinker:start([onDuration, [offDuration, [loop, [cycles, [default]]]]])",
+            "overrideParameters": true,
             "parameters": [
                 {
-                    "name": "time",
-                    "type": "number"
-                }
-            ],
-            "returnType": "TSubject"
-        },
-        "playdate.graphics.animator:progress()": {
-            "signature": "playdate.graphics.animator:progress()",
-            "parameters": [],
-            "returnType": "number"
-        },
-        "playdate.graphics.animator:reset([duration])": {
-            "signature": "playdate.graphics.animator:reset([duration])",
-            "parameters": [
+                    "name": "onDuration",
+                    "type": "number",
+                    "overrideOptions": {
+                        "initializer": "200"
+                    }
+                },
                 {
-                    "name": "duration",
-                    "type": "number"
+                    "name": "offDuration",
+                    "type": "number",
+                    "overrideOptions": {
+                        "initializer": "200"
+                    }
+                },
+                {
+                    "name": "loop",
+                    "type": "boolean",
+                    "overrideOptions": {
+                        "initializer": "false"
+                    }
+                },
+                {
+                    "name": "cycles",
+                    "type": "number",
+                    "overrideOptions": {
+                        "initializer": "6"
+                    }
+                },
+                {
+                    "name": "_default",
+                    "type": "boolean",
+                    "overrideOptions": {
+                        "initializer": "true"
+                    }
                 }
             ],
             "returnType": "void"
         },
-        "playdate.graphics.animator:ended()": {
-            "signature": "playdate.graphics.animator:ended()",
+        "playdate.graphics.animation.blinker:startLoop()": {
+            "signature": "playdate.graphics.animation.blinker:startLoop()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.graphics.animation.blinker:stop()": {
+            "signature": "playdate.graphics.animation.blinker:stop()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.graphics.animation.blinker:remove()": {
+            "signature": "playdate.graphics.animation.blinker:remove()",
             "parameters": [],
             "returnType": "void"
         },
@@ -6049,119 +6211,68 @@
             ],
             "returnType": "playdate.graphics.animator"
         },
-        "playdate.graphics.animation.blinker:update()": {
-            "signature": "playdate.graphics.animation.blinker:update()",
+        "playdate.graphics.animator:currentValue()": {
+            "signature": "playdate.graphics.animator:currentValue()",
             "parameters": [],
-            "returnType": "void"
+            "returnType": "TSubject"
         },
-        "playdate.graphics.animation.blinker:start([onDuration, [offDuration, [loop, [cycles, [default]]]]])": {
-            "signature": "playdate.graphics.animation.blinker:start([onDuration, [offDuration, [loop, [cycles, [default]]]]])",
-            "overrideParameters": true,
+        "playdate.graphics.animator:valueAtTime(time)": {
+            "signature": "playdate.graphics.animator:valueAtTime(time)",
             "parameters": [
                 {
-                    "name": "onDuration",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "200"
-                    }
-                },
+                    "name": "time",
+                    "type": "number"
+                }
+            ],
+            "returnType": "TSubject"
+        },
+        "playdate.graphics.animator:progress()": {
+            "signature": "playdate.graphics.animator:progress()",
+            "parameters": [],
+            "returnType": "number"
+        },
+        "playdate.graphics.animator:reset([duration])": {
+            "signature": "playdate.graphics.animator:reset([duration])",
+            "parameters": [
                 {
-                    "name": "offDuration",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "200"
-                    }
-                },
-                {
-                    "name": "loop",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "false"
-                    }
-                },
-                {
-                    "name": "cycles",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "6"
-                    }
-                },
-                {
-                    "name": "_default",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "true"
-                    }
+                    "name": "duration",
+                    "type": "number"
                 }
             ],
             "returnType": "void"
         },
-        "playdate.graphics.animation.blinker:startLoop()": {
-            "signature": "playdate.graphics.animation.blinker:startLoop()",
+        "playdate.graphics.animator:ended()": {
+            "signature": "playdate.graphics.animator:ended()",
             "parameters": [],
             "returnType": "void"
         },
-        "playdate.graphics.animation.blinker:stop()": {
-            "signature": "playdate.graphics.animation.blinker:stop()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.graphics.animation.blinker:remove()": {
-            "signature": "playdate.graphics.animation.blinker:remove()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.graphics.animation.blinker.new([onDuration, [offDuration, [loop, [cycles, [default]]]]])": {
-            "signature": "playdate.graphics.animation.blinker.new([onDuration, [offDuration, [loop, [cycles, [default]]]]])",
-            "overrideParameters": true,
+        "playdate.graphics.imagetable.new(path)": {
+            "signature": "playdate.graphics.imagetable.new(path)",
             "parameters": [
                 {
-                    "name": "onDuration",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "200"
-                    }
-                },
-                {
-                    "name": "offDuration",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "200"
-                    }
-                },
-                {
-                    "name": "loop",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "false"
-                    }
-                },
-                {
-                    "name": "cycles",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "6"
-                    }
-                },
-                {
-                    "name": "_default",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "true"
-                    }
+                    "name": "path",
+                    "type": "string"
                 }
             ],
-            "returnType": "playdate.graphics.animation.blinker"
+            "returnType": "playdate.graphics.imagetable"
         },
-        "playdate.graphics.animation.blinker.updateAll()": {
-            "signature": "playdate.graphics.animation.blinker.updateAll()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.graphics.animation.blinker.stopAll()": {
-            "signature": "playdate.graphics.animation.blinker.stopAll()",
-            "parameters": [],
-            "returnType": "void"
+        "playdate.graphics.imagetable.new(count, [cellsWide], [cellSize])": {
+            "signature": "playdate.graphics.imagetable.new(count, [cellsWide], [cellSize])",
+            "parameters": [
+                {
+                    "name": "count",
+                    "type": "number"
+                },
+                {
+                    "name": "cellsWide",
+                    "type": "number"
+                },
+                {
+                    "name": "cellsize",
+                    "type": "number"
+                }
+            ],
+            "returnType": "playdate.graphics.imagetable"
         },
         "playdate.graphics.imagetable:getImage(n)": {
             "signature": "playdate.graphics.imagetable:getImage(n)",
@@ -6243,33 +6354,10 @@
             ],
             "returnType": "void"
         },
-        "playdate.graphics.imagetable.new(path)": {
-            "signature": "playdate.graphics.imagetable.new(path)",
-            "parameters": [
-                {
-                    "name": "path",
-                    "type": "string"
-                }
-            ],
-            "returnType": "playdate.graphics.imagetable"
-        },
-        "playdate.graphics.imagetable.new(count, [cellsWide], [cellSize])": {
-            "signature": "playdate.graphics.imagetable.new(count, [cellsWide], [cellSize])",
-            "parameters": [
-                {
-                    "name": "count",
-                    "type": "number"
-                },
-                {
-                    "name": "cellsWide",
-                    "type": "number"
-                },
-                {
-                    "name": "cellsize",
-                    "type": "number"
-                }
-            ],
-            "returnType": "playdate.graphics.imagetable"
+        "playdate.graphics.tilemap.new()": {
+            "signature": "playdate.graphics.tilemap.new()",
+            "parameters": [],
+            "returnType": "playdate.graphics.tilemap"
         },
         "playdate.graphics.tilemap:setImageTable(table)": {
             "signature": "playdate.graphics.tilemap:setImageTable(table)",
@@ -6407,10 +6495,406 @@
             ],
             "returnType": "playdate.geometry.rect[]"
         },
-        "playdate.graphics.tilemap.new()": {
-            "signature": "playdate.graphics.tilemap.new()",
+        "playdate.graphics.sprite.new([image_or_tilemap])": {
+            "signature": "playdate.graphics.sprite.new([image_or_tilemap])",
+            "parameters": [
+                {
+                    "name": "image_or_tilemap",
+                    "type": "playdate.graphics.image | playdate.graphics.tilemap"
+                }
+            ],
+            "returnType": "playdate.graphics.sprite"
+        },
+        "playdate.graphics.sprite.spriteWithText(text, maxWidth, maxHeight, [backgroundColor, [leadingAdjustment, [truncationString, [alignment, [font]]]]])": {
+            "signature": "playdate.graphics.sprite.spriteWithText(text, maxWidth, maxHeight, [backgroundColor, [leadingAdjustment, [truncationString, [alignment, [font]]]]])",
+            "parameters": [
+                {
+                    "name": "text",
+                    "type": "string"
+                },
+                {
+                    "name": "maxWidth",
+                    "type": "number"
+                },
+                {
+                    "name": "maxHeight",
+                    "type": "number"
+                },
+                {
+                    "name": "backgroundColor",
+                    "type": "PlaydateColor"
+                },
+                {
+                    "name": "leadingAdjustment",
+                    "type": "number"
+                },
+                {
+                    "name": "truncationString",
+                    "type": "string"
+                },
+                {
+                    "name": "alignment",
+                    "type": "PlaydateTextAlignment"
+                },
+                {
+                    "name": "font",
+                    "type": "playdate.graphics.font"
+                }
+            ],
+            "returnType": "playdate.graphics.sprite"
+        },
+        "playdate.graphics.sprite.update()": {
+            "signature": "playdate.graphics.sprite.update()",
             "parameters": [],
-            "returnType": "playdate.graphics.tilemap"
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.addSprite(sprite)": {
+            "signature": "playdate.graphics.sprite.addSprite(sprite)",
+            "parameters": [
+                {
+                    "name": "sprite",
+                    "type": "playdate.graphics.sprite"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.removeSprite(sprite)": {
+            "signature": "playdate.graphics.sprite.removeSprite(sprite)",
+            "parameters": [
+                {
+                    "name": "sprite",
+                    "type": "playdate.graphics.sprite"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.setBackgroundDrawingCallback(drawCallback)": {
+            "signature": "playdate.graphics.sprite.setBackgroundDrawingCallback(drawCallback)",
+            "parameters": [
+                {
+                    "name": "drawCallback",
+                    "type": "(x: number, y: number, width: number, height: number) => void"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.redrawBackground()": {
+            "signature": "playdate.graphics.sprite.redrawBackground()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.setClipRectsInRange(x, y, width, height, startz, endz)": {
+            "signature": "playdate.graphics.sprite.setClipRectsInRange(x, y, width, height, startz, endz)",
+            "parameters": [
+                {
+                    "name": "x",
+                    "type": "number"
+                },
+                {
+                    "name": "y",
+                    "type": "number"
+                },
+                {
+                    "name": "width",
+                    "type": "number"
+                },
+                {
+                    "name": "height",
+                    "type": "number"
+                },
+                {
+                    "name": "startz",
+                    "type": "number"
+                },
+                {
+                    "name": "endz",
+                    "type": "number"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.setClipRectsInRange(rect, startz, endz)": {
+            "signature": "playdate.graphics.sprite.setClipRectsInRange(rect, startz, endz)",
+            "parameters": [
+                {
+                    "name": "rect",
+                    "type": "playdate.geometry.rect"
+                },
+                {
+                    "name": "startz",
+                    "type": "number"
+                },
+                {
+                    "name": "endz",
+                    "type": "number"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.clearClipRectsInRange(startz, endz)": {
+            "signature": "playdate.graphics.sprite.clearClipRectsInRange(startz, endz)",
+            "parameters": [
+                {
+                    "name": "startz",
+                    "type": "number"
+                },
+                {
+                    "name": "endz",
+                    "type": "number"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.setAlwaysRedraw(flag)": {
+            "signature": "playdate.graphics.sprite.setAlwaysRedraw(flag)",
+            "parameters": [
+                {
+                    "name": "flag",
+                    "type": "boolean"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.getAlwaysRedraw()": {
+            "signature": "playdate.graphics.sprite.getAlwaysRedraw()",
+            "parameters": [],
+            "returnType": "boolean"
+        },
+        "playdate.graphics.sprite.addDirtyRect(x, y, width, height)": {
+            "signature": "playdate.graphics.sprite.addDirtyRect(x, y, width, height)",
+            "parameters": [
+                {
+                    "name": "x",
+                    "type": "number"
+                },
+                {
+                    "name": "y",
+                    "type": "number"
+                },
+                {
+                    "name": "width",
+                    "type": "number"
+                },
+                {
+                    "name": "height",
+                    "type": "number"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.getAllSprites()": {
+            "signature": "playdate.graphics.sprite.getAllSprites()",
+            "parameters": [],
+            "returnType": "playdate.graphics.sprite[]"
+        },
+        "playdate.graphics.sprite.performOnAllSprites(f)": {
+            "signature": "playdate.graphics.sprite.performOnAllSprites(f)",
+            "parameters": [
+                {
+                    "name": "f",
+                    "type": "(sprite: playdate.graphics.sprite) => void"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.spriteCount()": {
+            "signature": "playdate.graphics.sprite.spriteCount()",
+            "parameters": [],
+            "returnType": "number"
+        },
+        "playdate.graphics.sprite.removeAll()": {
+            "signature": "playdate.graphics.sprite.removeAll()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.removeSprites(spriteArray)": {
+            "signature": "playdate.graphics.sprite.removeSprites(spriteArray)",
+            "parameters": [
+                {
+                    "name": "spriteArray",
+                    "type": "playdate.graphics.sprite[]"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.allOverlappingSprites()": {
+            "signature": "playdate.graphics.sprite.allOverlappingSprites()",
+            "parameters": [],
+            "returnType": "[playdate.graphics.sprite, playdate.graphics.sprite][]"
+        },
+        "playdate.graphics.sprite.querySpritesAtPoint(x, y)": {
+            "signature": "playdate.graphics.sprite.querySpritesAtPoint(x, y)",
+            "parameters": [
+                {
+                    "name": "x",
+                    "type": "number"
+                },
+                {
+                    "name": "y",
+                    "type": "number"
+                }
+            ],
+            "returnType": "playdate.graphics.sprite[]"
+        },
+        "playdate.graphics.sprite.querySpritesAtPoint(p)": {
+            "signature": "playdate.graphics.sprite.querySpritesAtPoint(p)",
+            "parameters": [
+                {
+                    "name": "p",
+                    "type": "playdate.geometry.point"
+                }
+            ],
+            "returnType": "playdate.graphics.sprite[]"
+        },
+        "playdate.graphics.sprite.querySpritesInRect(x, y, width, height)": {
+            "signature": "playdate.graphics.sprite.querySpritesInRect(x, y, width, height)",
+            "parameters": [
+                {
+                    "name": "x",
+                    "type": "number"
+                },
+                {
+                    "name": "y",
+                    "type": "number"
+                },
+                {
+                    "name": "width",
+                    "type": "number"
+                },
+                {
+                    "name": "height",
+                    "type": "number"
+                }
+            ],
+            "returnType": "playdate.graphics.sprite[]"
+        },
+        "playdate.graphics.sprite.querySpritesInRect(rect)": {
+            "signature": "playdate.graphics.sprite.querySpritesInRect(rect)",
+            "parameters": [
+                {
+                    "name": "rect",
+                    "type": "playdate.geometry.rect"
+                }
+            ],
+            "returnType": "playdate.graphics.sprite[]"
+        },
+        "playdate.graphics.sprite.querySpritesAlongLine(x1, y1, x2, y2)": {
+            "signature": "playdate.graphics.sprite.querySpritesAlongLine(x1, y1, x2, y2)",
+            "parameters": [
+                {
+                    "name": "x1",
+                    "type": "number"
+                },
+                {
+                    "name": "y1",
+                    "type": "number"
+                },
+                {
+                    "name": "x2",
+                    "type": "number"
+                },
+                {
+                    "name": "y2",
+                    "type": "number"
+                }
+            ],
+            "returnType": "playdate.graphics.sprite[]"
+        },
+        "playdate.graphics.sprite.querySpritesAlongLine(lineSegment)": {
+            "signature": "playdate.graphics.sprite.querySpritesAlongLine(lineSegment)",
+            "parameters": [
+                {
+                    "name": "lineSegment",
+                    "type": "playdate.geometry.lineSegmentnt"
+                }
+            ],
+            "returnType": "playdate.graphics.sprite[]"
+        },
+        "playdate.graphics.sprite.querySpriteInfoAlongLine(x1, y1, x2, y2)": {
+            "signature": "playdate.graphics.sprite.querySpriteInfoAlongLine(x1, y1, x2, y2)",
+            "parameters": [
+                {
+                    "name": "x1",
+                    "type": "number"
+                },
+                {
+                    "name": "y1",
+                    "type": "number"
+                },
+                {
+                    "name": "x2",
+                    "type": "number"
+                },
+                {
+                    "name": "y2",
+                    "type": "number"
+                }
+            ],
+            "returnType": "PlaydateCollisionInfo"
+        },
+        "playdate.graphics.sprite.querySpriteInfoAlongLine(lineSegment)": {
+            "signature": "playdate.graphics.sprite.querySpriteInfoAlongLine(lineSegment)",
+            "parameters": [
+                {
+                    "name": "lineSegment",
+                    "type": "playdate.geometry.lineSegmentnt"
+                }
+            ],
+            "returnType": "PlaydateCollisionInfo"
+        },
+        "playdate.graphics.sprite.addEmptyCollisionSprite(r)": {
+            "signature": "playdate.graphics.sprite.addEmptyCollisionSprite(r)",
+            "parameters": [
+                {
+                    "name": "r",
+                    "type": "playdate.geometry.rect"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.addEmptyCollisionSprite(x, y, w, h)": {
+            "signature": "playdate.graphics.sprite.addEmptyCollisionSprite(x, y, w, h)",
+            "parameters": [
+                {
+                    "name": "x",
+                    "type": "number"
+                },
+                {
+                    "name": "y",
+                    "type": "number"
+                },
+                {
+                    "name": "w",
+                    "type": "number"
+                },
+                {
+                    "name": "h",
+                    "type": "number"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.graphics.sprite.addWallSprites(tilemap, emptyIDs, [xOffset, yOffset])": {
+            "signature": "playdate.graphics.sprite.addWallSprites(tilemap, emptyIDs, [xOffset, yOffset])",
+            "parameters": [
+                {
+                    "name": "tilemap",
+                    "type": "playdate.graphics.tilemap"
+                },
+                {
+                    "name": "emptyIDs",
+                    "type": "number[]"
+                },
+                {
+                    "name": "xOffset",
+                    "type": "number"
+                },
+                {
+                    "name": "yOffset",
+                    "type": "number"
+                }
+            ],
+            "returnType": "void"
         },
         "playdate.graphics.sprite:setImage(image, [flip, [scale, [yscale]]])": {
             "signature": "playdate.graphics.sprite:setImage(image, [flip, [scale, [yscale]]])",
@@ -7071,425 +7555,86 @@
             ],
             "returnType": "PlaydateCollisionResponse"
         },
-        "playdate.graphics.sprite.new([image_or_tilemap])": {
-            "signature": "playdate.graphics.sprite.new([image_or_tilemap])",
+        "playdate.graphics.font.new(path)": {
+            "signature": "playdate.graphics.font.new(path)",
             "parameters": [
                 {
-                    "name": "image_or_tilemap",
-                    "type": "playdate.graphics.image | playdate.graphics.tilemap"
+                    "name": "path",
+                    "type": "string"
                 }
             ],
-            "returnType": "playdate.graphics.sprite"
+            "returnType": "playdate.graphics.font"
         },
-        "playdate.graphics.sprite.spriteWithText(text, maxWidth, maxHeight, [backgroundColor, [leadingAdjustment, [truncationString, [alignment, [font]]]]])": {
-            "signature": "playdate.graphics.sprite.spriteWithText(text, maxWidth, maxHeight, [backgroundColor, [leadingAdjustment, [truncationString, [alignment, [font]]]]])",
+        "playdate.graphics.font.newFamily(fontPaths)": {
+            "signature": "playdate.graphics.font.newFamily(fontPaths)",
+            "parameters": [
+                {
+                    "name": "fontPaths",
+                    "type": "PlaydateFontFamilyPaths"
+                }
+            ],
+            "returnType": "PlaydateFontFamily"
+        },
+        "playdate.graphics.font:drawText(text, x, y, [width, height], [leadingAdjustment], [wrapMode], [alignment])": {
+            "signature": "playdate.graphics.font:drawText(text, x, y, [width, height], [leadingAdjustment], [wrapMode], [alignment])",
             "parameters": [
                 {
                     "name": "text",
                     "type": "string"
                 },
                 {
-                    "name": "maxWidth",
+                    "name": "x",
                     "type": "number"
                 },
                 {
-                    "name": "maxHeight",
+                    "name": "y",
                     "type": "number"
                 },
                 {
-                    "name": "backgroundColor",
-                    "type": "PlaydateColor"
+                    "name": "width",
+                    "type": "number"
+                },
+                {
+                    "name": "height",
+                    "type": "number"
                 },
                 {
                     "name": "leadingAdjustment",
                     "type": "number"
                 },
                 {
-                    "name": "truncationString",
-                    "type": "string"
+                    "name": "wrapMode",
+                    "type": "PlaydateWrapMode"
                 },
                 {
                     "name": "alignment",
                     "type": "PlaydateTextAlignment"
-                },
-                {
-                    "name": "font",
-                    "type": "playdate.graphics.font"
-                }
-            ],
-            "returnType": "playdate.graphics.sprite"
-        },
-        "playdate.graphics.sprite.update()": {
-            "signature": "playdate.graphics.sprite.update()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.addSprite(sprite)": {
-            "signature": "playdate.graphics.sprite.addSprite(sprite)",
-            "parameters": [
-                {
-                    "name": "sprite",
-                    "type": "playdate.graphics.sprite"
                 }
             ],
             "returnType": "void"
         },
-        "playdate.graphics.sprite.removeSprite(sprite)": {
-            "signature": "playdate.graphics.sprite.removeSprite(sprite)",
-            "parameters": [
-                {
-                    "name": "sprite",
-                    "type": "playdate.graphics.sprite"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.setBackgroundDrawingCallback(drawCallback)": {
-            "signature": "playdate.graphics.sprite.setBackgroundDrawingCallback(drawCallback)",
-            "parameters": [
-                {
-                    "name": "drawCallback",
-                    "type": "(x: number, y: number, width: number, height: number) => void"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.redrawBackground()": {
-            "signature": "playdate.graphics.sprite.redrawBackground()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.setClipRectsInRange(x, y, width, height, startz, endz)": {
-            "signature": "playdate.graphics.sprite.setClipRectsInRange(x, y, width, height, startz, endz)",
-            "parameters": [
-                {
-                    "name": "x",
-                    "type": "number"
-                },
-                {
-                    "name": "y",
-                    "type": "number"
-                },
-                {
-                    "name": "width",
-                    "type": "number"
-                },
-                {
-                    "name": "height",
-                    "type": "number"
-                },
-                {
-                    "name": "startz",
-                    "type": "number"
-                },
-                {
-                    "name": "endz",
-                    "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.setClipRectsInRange(rect, startz, endz)": {
-            "signature": "playdate.graphics.sprite.setClipRectsInRange(rect, startz, endz)",
-            "parameters": [
-                {
-                    "name": "rect",
-                    "type": "playdate.geometry.rect"
-                },
-                {
-                    "name": "startz",
-                    "type": "number"
-                },
-                {
-                    "name": "endz",
-                    "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.clearClipRectsInRange(startz, endz)": {
-            "signature": "playdate.graphics.sprite.clearClipRectsInRange(startz, endz)",
-            "parameters": [
-                {
-                    "name": "startz",
-                    "type": "number"
-                },
-                {
-                    "name": "endz",
-                    "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.setAlwaysRedraw(flag)": {
-            "signature": "playdate.graphics.sprite.setAlwaysRedraw(flag)",
-            "parameters": [
-                {
-                    "name": "flag",
-                    "type": "boolean"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.getAlwaysRedraw()": {
-            "signature": "playdate.graphics.sprite.getAlwaysRedraw()",
-            "parameters": [],
-            "returnType": "boolean"
-        },
-        "playdate.graphics.sprite.addDirtyRect(x, y, width, height)": {
-            "signature": "playdate.graphics.sprite.addDirtyRect(x, y, width, height)",
-            "parameters": [
-                {
-                    "name": "x",
-                    "type": "number"
-                },
-                {
-                    "name": "y",
-                    "type": "number"
-                },
-                {
-                    "name": "width",
-                    "type": "number"
-                },
-                {
-                    "name": "height",
-                    "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.getAllSprites()": {
-            "signature": "playdate.graphics.sprite.getAllSprites()",
-            "parameters": [],
-            "returnType": "playdate.graphics.sprite[]"
-        },
-        "playdate.graphics.sprite.performOnAllSprites(f)": {
-            "signature": "playdate.graphics.sprite.performOnAllSprites(f)",
-            "parameters": [
-                {
-                    "name": "f",
-                    "type": "(sprite: playdate.graphics.sprite) => void"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.spriteCount()": {
-            "signature": "playdate.graphics.sprite.spriteCount()",
-            "parameters": [],
-            "returnType": "number"
-        },
-        "playdate.graphics.sprite.removeAll()": {
-            "signature": "playdate.graphics.sprite.removeAll()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.removeSprites(spriteArray)": {
-            "signature": "playdate.graphics.sprite.removeSprites(spriteArray)",
-            "parameters": [
-                {
-                    "name": "spriteArray",
-                    "type": "playdate.graphics.sprite[]"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.allOverlappingSprites()": {
-            "signature": "playdate.graphics.sprite.allOverlappingSprites()",
-            "parameters": [],
-            "returnType": "[playdate.graphics.sprite, playdate.graphics.sprite][]"
-        },
-        "playdate.graphics.sprite.querySpritesAtPoint(x, y)": {
-            "signature": "playdate.graphics.sprite.querySpritesAtPoint(x, y)",
-            "parameters": [
-                {
-                    "name": "x",
-                    "type": "number"
-                },
-                {
-                    "name": "y",
-                    "type": "number"
-                }
-            ],
-            "returnType": "playdate.graphics.sprite[]"
-        },
-        "playdate.graphics.sprite.querySpritesAtPoint(p)": {
-            "signature": "playdate.graphics.sprite.querySpritesAtPoint(p)",
-            "parameters": [
-                {
-                    "name": "p",
-                    "type": "playdate.geometry.point"
-                }
-            ],
-            "returnType": "playdate.graphics.sprite[]"
-        },
-        "playdate.graphics.sprite.querySpritesInRect(x, y, width, height)": {
-            "signature": "playdate.graphics.sprite.querySpritesInRect(x, y, width, height)",
-            "parameters": [
-                {
-                    "name": "x",
-                    "type": "number"
-                },
-                {
-                    "name": "y",
-                    "type": "number"
-                },
-                {
-                    "name": "width",
-                    "type": "number"
-                },
-                {
-                    "name": "height",
-                    "type": "number"
-                }
-            ],
-            "returnType": "playdate.graphics.sprite[]"
-        },
-        "playdate.graphics.sprite.querySpritesInRect(rect)": {
-            "signature": "playdate.graphics.sprite.querySpritesInRect(rect)",
-            "parameters": [
-                {
-                    "name": "rect",
-                    "type": "playdate.geometry.rect"
-                }
-            ],
-            "returnType": "playdate.graphics.sprite[]"
-        },
-        "playdate.graphics.sprite.querySpritesAlongLine(x1, y1, x2, y2)": {
-            "signature": "playdate.graphics.sprite.querySpritesAlongLine(x1, y1, x2, y2)",
-            "parameters": [
-                {
-                    "name": "x1",
-                    "type": "number"
-                },
-                {
-                    "name": "y1",
-                    "type": "number"
-                },
-                {
-                    "name": "x2",
-                    "type": "number"
-                },
-                {
-                    "name": "y2",
-                    "type": "number"
-                }
-            ],
-            "returnType": "playdate.graphics.sprite[]"
-        },
-        "playdate.graphics.sprite.querySpritesAlongLine(lineSegment)": {
-            "signature": "playdate.graphics.sprite.querySpritesAlongLine(lineSegment)",
-            "parameters": [
-                {
-                    "name": "lineSegment",
-                    "type": "playdate.geometry.lineSegmentnt"
-                }
-            ],
-            "returnType": "playdate.graphics.sprite[]"
-        },
-        "playdate.graphics.sprite.querySpriteInfoAlongLine(x1, y1, x2, y2)": {
-            "signature": "playdate.graphics.sprite.querySpriteInfoAlongLine(x1, y1, x2, y2)",
-            "parameters": [
-                {
-                    "name": "x1",
-                    "type": "number"
-                },
-                {
-                    "name": "y1",
-                    "type": "number"
-                },
-                {
-                    "name": "x2",
-                    "type": "number"
-                },
-                {
-                    "name": "y2",
-                    "type": "number"
-                }
-            ],
-            "returnType": "PlaydateCollisionInfo"
-        },
-        "playdate.graphics.sprite.querySpriteInfoAlongLine(lineSegment)": {
-            "signature": "playdate.graphics.sprite.querySpriteInfoAlongLine(lineSegment)",
-            "parameters": [
-                {
-                    "name": "lineSegment",
-                    "type": "playdate.geometry.lineSegmentnt"
-                }
-            ],
-            "returnType": "PlaydateCollisionInfo"
-        },
-        "playdate.graphics.sprite.addEmptyCollisionSprite(r)": {
-            "signature": "playdate.graphics.sprite.addEmptyCollisionSprite(r)",
-            "parameters": [
-                {
-                    "name": "r",
-                    "type": "playdate.geometry.rect"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.addEmptyCollisionSprite(x, y, w, h)": {
-            "signature": "playdate.graphics.sprite.addEmptyCollisionSprite(x, y, w, h)",
-            "parameters": [
-                {
-                    "name": "x",
-                    "type": "number"
-                },
-                {
-                    "name": "y",
-                    "type": "number"
-                },
-                {
-                    "name": "w",
-                    "type": "number"
-                },
-                {
-                    "name": "h",
-                    "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.sprite.addWallSprites(tilemap, emptyIDs, [xOffset, yOffset])": {
-            "signature": "playdate.graphics.sprite.addWallSprites(tilemap, emptyIDs, [xOffset, yOffset])",
-            "parameters": [
-                {
-                    "name": "tilemap",
-                    "type": "playdate.graphics.tilemap"
-                },
-                {
-                    "name": "emptyIDs",
-                    "type": "number[]"
-                },
-                {
-                    "name": "xOffset",
-                    "type": "number"
-                },
-                {
-                    "name": "yOffset",
-                    "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.font:drawText(text, x, y, [leadingAdjustment])": {
-            "signature": "playdate.graphics.font:drawText(text, x, y, [leadingAdjustment])",
+        "playdate.graphics.font:drawText(text, rect, [leadingAdjustment], [wrapMode], [alignment])": {
+            "signature": "playdate.graphics.font:drawText(text, rect, [leadingAdjustment], [wrapMode], [alignment])",
             "parameters": [
                 {
                     "name": "text",
                     "type": "string"
                 },
                 {
-                    "name": "x",
-                    "type": "number"
-                },
-                {
-                    "name": "y",
-                    "type": "number"
+                    "name": "rect",
+                    "type": "playdate.geometry.rect"
                 },
                 {
                     "name": "leadingAdjustment",
                     "type": "number"
+                },
+                {
+                    "name": "wrapMode",
+                    "type": "PlaydateWrapMode"
+                },
+                {
+                    "name": "alignment",
+                    "type": "PlaydateTextAlignment"
                 }
             ],
             "returnType": "void"
@@ -7575,25 +7720,15 @@
             ],
             "returnType": "playdate.graphics.image"
         },
-        "playdate.graphics.font.new(path)": {
-            "signature": "playdate.graphics.font.new(path)",
+        "playdate.graphics.video.new(path)": {
+            "signature": "playdate.graphics.video.new(path)",
             "parameters": [
                 {
                     "name": "path",
                     "type": "string"
                 }
             ],
-            "returnType": "playdate.graphics.font"
-        },
-        "playdate.graphics.font.newFamily(fontPaths)": {
-            "signature": "playdate.graphics.font.newFamily(fontPaths)",
-            "parameters": [
-                {
-                    "name": "fontPaths",
-                    "type": "PlaydateFontFamilyPaths"
-                }
-            ],
-            "returnType": "PlaydateFontFamily"
+            "returnType": "playdate.graphics.video"
         },
         "playdate.graphics.video:getSize()": {
             "signature": "playdate.graphics.video:getSize()",
@@ -7636,102 +7771,6 @@
                 {
                     "name": "number",
                     "type": "number"
-                }
-            ],
-            "returnType": "void"
-        },
-        "playdate.graphics.video.new(path)": {
-            "signature": "playdate.graphics.video.new(path)",
-            "parameters": [
-                {
-                    "name": "path",
-                    "type": "string"
-                }
-            ],
-            "returnType": "playdate.graphics.video"
-        },
-        "json.decode(string)": {
-            "signature": "json.decode(string)",
-            "parameters": [
-                {
-                    "name": "string",
-                    "type": "string"
-                }
-            ],
-            "returnType": "AnyTable"
-        },
-        "json.decodeFile(file)": {
-            "signature": "json.decodeFile(file)",
-            "parameters": [
-                {
-                    "name": "file",
-                    "type": "playdate.file.file"
-                }
-            ],
-            "returnType": "AnyTable"
-        },
-        "json.decodeFile(path)": {
-            "signature": "json.decodeFile(path)",
-            "parameters": [
-                {
-                    "name": "path",
-                    "type": "string"
-                }
-            ],
-            "returnType": "AnyTable"
-        },
-        "json.encode(table)": {
-            "signature": "json.encode(table)",
-            "parameters": [
-                {
-                    "name": "table",
-                    "type": "AnyTable"
-                }
-            ],
-            "returnType": "string"
-        },
-        "json.encodePretty(table)": {
-            "signature": "json.encodePretty(table)",
-            "parameters": [
-                {
-                    "name": "table",
-                    "type": "AnyTable"
-                }
-            ],
-            "returnType": "string"
-        },
-        "json.encodeToFile(file, [pretty], table)": {
-            "signature": "json.encodeToFile(file, [pretty], table)",
-            "parameters": [
-                {
-                    "name": "file",
-                    "type": "playdate.file.file"
-                },
-                {
-                    "name": "pretty",
-                    "type": "boolean"
-                },
-                {
-                    "name": "table",
-                    "type": "AnyTable"
-                }
-            ],
-            "returnType": "void"
-        },
-        "json.encodeToFile(path, [pretty], table)": {
-            "signature": "json.encodeToFile(path, [pretty], table)",
-            "parameters": [
-                {
-                    "name": "path",
-                    "type": "string"
-                },
-                {
-                    "name": "pretty",
-                    "type": "boolean"
-                },
-                {
-                    "name": "table",
-                    "type": "AnyTable"
                 }
             ],
             "returnType": "void"
@@ -7824,6 +7863,42 @@
                 }
             ],
             "returnType": "number"
+        },
+        "playdate.pathfinder.graph.new([nodeCount, [coordinates]])": {
+            "signature": "playdate.pathfinder.graph.new([nodeCount, [coordinates]])",
+            "parameters": [
+                {
+                    "name": "nodeCount",
+                    "type": "number"
+                },
+                {
+                    "name": "coordinates",
+                    "type": "[number, number][]"
+                }
+            ],
+            "returnType": "playdate.pathfinder.graph"
+        },
+        "playdate.pathfinder.graph.new2DGrid(width, height, [allowDiagonals, [includedNodes]])": {
+            "signature": "playdate.pathfinder.graph.new2DGrid(width, height, [allowDiagonals, [includedNodes]])",
+            "parameters": [
+                {
+                    "name": "width",
+                    "type": "number"
+                },
+                {
+                    "name": "height",
+                    "type": "number"
+                },
+                {
+                    "name": "allowDiagonals",
+                    "type": "boolean"
+                },
+                {
+                    "name": "includedNodes",
+                    "type": "(1 | 0)[]"
+                }
+            ],
+            "returnType": "playdate.pathfinder.graph"
         },
         "playdate.pathfinder.graph:addNewNode(id, [x, y, [connectedNodes, weights, addReciprocalConnections]])": {
             "signature": "playdate.pathfinder.graph:addNewNode(id, [x, y, [connectedNodes, weights, addReciprocalConnections]])",
@@ -8073,41 +8148,112 @@
             ],
             "returnType": "void"
         },
-        "playdate.pathfinder.graph.new([nodeCount, [coordinates]])": {
-            "signature": "playdate.pathfinder.graph.new([nodeCount, [coordinates]])",
+        "playdate.pathfinder.node:addConnection(node, weight, addReciprocalConnection)": {
+            "signature": "playdate.pathfinder.node:addConnection(node, weight, addReciprocalConnection)",
             "parameters": [
                 {
-                    "name": "nodeCount",
+                    "name": "node",
+                    "type": "playdate.pathfinder.node"
+                },
+                {
+                    "name": "weight",
                     "type": "number"
                 },
                 {
-                    "name": "coordinates",
-                    "type": "[number, number][]"
-                }
-            ],
-            "returnType": "playdate.pathfinder.graph"
-        },
-        "playdate.pathfinder.graph.new2DGrid(width, height, [allowDiagonals, [includedNodes]])": {
-            "signature": "playdate.pathfinder.graph.new2DGrid(width, height, [allowDiagonals, [includedNodes]])",
-            "parameters": [
-                {
-                    "name": "width",
-                    "type": "number"
-                },
-                {
-                    "name": "height",
-                    "type": "number"
-                },
-                {
-                    "name": "allowDiagonals",
+                    "name": "addReciprocalConnection",
                     "type": "boolean"
-                },
-                {
-                    "name": "includedNodes",
-                    "type": "(1 | 0)[]"
                 }
             ],
-            "returnType": "playdate.pathfinder.graph"
+            "returnType": "void"
+        },
+        "playdate.pathfinder.node:addConnections(nodes, weights, addReciprocalConnections)": {
+            "signature": "playdate.pathfinder.node:addConnections(nodes, weights, addReciprocalConnections)",
+            "parameters": [
+                {
+                    "name": "nodes",
+                    "type": "playdate.pathfinder.node[]"
+                },
+                {
+                    "name": "weights",
+                    "type": "number[]"
+                },
+                {
+                    "name": "addReciprocalConnections",
+                    "type": "boolean"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.pathfinder.node:addConnectionToNodeWithXY(x, y, weight, addReciprocalConnection)": {
+            "signature": "playdate.pathfinder.node:addConnectionToNodeWithXY(x, y, weight, addReciprocalConnection)",
+            "parameters": [
+                {
+                    "name": "x",
+                    "type": "number"
+                },
+                {
+                    "name": "y",
+                    "type": "number"
+                },
+                {
+                    "name": "weight",
+                    "type": "number"
+                },
+                {
+                    "name": "addReciprocalConnection",
+                    "type": "boolean"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.pathfinder.node:connectedNodes()": {
+            "signature": "playdate.pathfinder.node:connectedNodes()",
+            "parameters": [],
+            "returnType": "playdate.pathfinder.node[]"
+        },
+        "playdate.pathfinder.node:removeConnection(node, [removeReciprocal])": {
+            "signature": "playdate.pathfinder.node:removeConnection(node, [removeReciprocal])",
+            "parameters": [
+                {
+                    "name": "node",
+                    "type": "playdate.pathfinder.node"
+                },
+                {
+                    "name": "removeReciprocal",
+                    "type": "boolean",
+                    "overrideOptions": {
+                        "initializer": "false"
+                    }
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.pathfinder.node:removeAllConnections([removeIncoming])": {
+            "signature": "playdate.pathfinder.node:removeAllConnections([removeIncoming])",
+            "parameters": [
+                {
+                    "name": "removeIncoming",
+                    "type": "boolean",
+                    "overrideOptions": {
+                        "initializer": "false"
+                    }
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.pathfinder.node:setXY(x, y)": {
+            "signature": "playdate.pathfinder.node:setXY(x, y)",
+            "parameters": [
+                {
+                    "name": "x",
+                    "type": "number"
+                },
+                {
+                    "name": "y",
+                    "type": "number"
+                }
+            ],
+            "returnType": "void"
         },
         "playdate.simulator.writeToFile(image, path)": {
             "signature": "playdate.simulator.writeToFile(image, path)",
@@ -8201,6 +8347,26 @@
             "signature": "playdate.sound.resetTime()",
             "parameters": [],
             "returnType": "void"
+        },
+        "playdate.sound.sampleplayer.new(path)": {
+            "signature": "playdate.sound.sampleplayer.new(path)",
+            "parameters": [
+                {
+                    "name": "path",
+                    "type": "string"
+                }
+            ],
+            "returnType": "playdate.sound.sampleplayer"
+        },
+        "playdate.sound.sampleplayer.new(sample)": {
+            "signature": "playdate.sound.sampleplayer.new(sample)",
+            "parameters": [
+                {
+                    "name": "sample",
+                    "type": "playdate.sound.sample"
+                }
+            ],
+            "returnType": "playdate.sound.sampleplayer"
         },
         "playdate.sound.sampleplayer:copy()": {
             "signature": "playdate.sound.sampleplayer:copy()",
@@ -8390,25 +8556,29 @@
             "parameters": [],
             "returnType": "number"
         },
-        "playdate.sound.sampleplayer.new(path)": {
-            "signature": "playdate.sound.sampleplayer.new(path)",
+        "playdate.sound.fileplayer.new([buffersize])": {
+            "signature": "playdate.sound.fileplayer.new([buffersize])",
+            "parameters": [
+                {
+                    "name": "buffersize",
+                    "type": "number"
+                }
+            ],
+            "returnType": "playdate.sound.fileplayer"
+        },
+        "playdate.sound.fileplayer.new(path, [buffersize])": {
+            "signature": "playdate.sound.fileplayer.new(path, [buffersize])",
             "parameters": [
                 {
                     "name": "path",
                     "type": "string"
-                }
-            ],
-            "returnType": "playdate.sound.sampleplayer"
-        },
-        "playdate.sound.sampleplayer.new(sample)": {
-            "signature": "playdate.sound.sampleplayer.new(sample)",
-            "parameters": [
+                },
                 {
-                    "name": "sample",
-                    "type": "playdate.sound.sample"
+                    "name": "buffersize",
+                    "type": "number"
                 }
             ],
-            "returnType": "playdate.sound.sampleplayer"
+            "returnType": "playdate.sound.fileplayer"
         },
         "playdate.sound.fileplayer:load(path)": {
             "signature": "playdate.sound.fileplayer:load(path)",
@@ -8608,29 +8778,32 @@
             "parameters": [],
             "returnType": "number"
         },
-        "playdate.sound.fileplayer.new([buffersize])": {
-            "signature": "playdate.sound.fileplayer.new([buffersize])",
-            "parameters": [
-                {
-                    "name": "buffersize",
-                    "type": "number"
-                }
-            ],
-            "returnType": "playdate.sound.fileplayer"
-        },
-        "playdate.sound.fileplayer.new(path, [buffersize])": {
-            "signature": "playdate.sound.fileplayer.new(path, [buffersize])",
+        "playdate.sound.sample.new(path)": {
+            "signature": "playdate.sound.sample.new(path)",
             "parameters": [
                 {
                     "name": "path",
                     "type": "string"
-                },
-                {
-                    "name": "buffersize",
-                    "type": "number"
                 }
             ],
-            "returnType": "playdate.sound.fileplayer"
+            "returnType": "playdate.sound.sample"
+        },
+        "playdate.sound.sample.new(seconds, [format])": {
+            "signature": "playdate.sound.sample.new(seconds, [format])",
+            "parameters": [
+                {
+                    "name": "seconds",
+                    "type": "number"
+                },
+                {
+                    "name": "format",
+                    "type": "PlaydateSoundFormat",
+                    "overrideOptions": {
+                        "initializer": "PlaydateSoundFormat['16bitStereo']"
+                    }
+                }
+            ],
+            "returnType": "playdate.sound.sample"
         },
         "playdate.sound.sample:getSubsample(startOffset, endOffset)": {
             "signature": "playdate.sound.sample:getSubsample(startOffset, endOffset)",
@@ -8722,32 +8895,10 @@
             ],
             "returnType": "void"
         },
-        "playdate.sound.sample.new(path)": {
-            "signature": "playdate.sound.sample.new(path)",
-            "parameters": [
-                {
-                    "name": "path",
-                    "type": "string"
-                }
-            ],
-            "returnType": "playdate.sound.sample"
-        },
-        "playdate.sound.sample.new(seconds, [format])": {
-            "signature": "playdate.sound.sample.new(seconds, [format])",
-            "parameters": [
-                {
-                    "name": "seconds",
-                    "type": "number"
-                },
-                {
-                    "name": "format",
-                    "type": "PlaydateSoundFormat",
-                    "overrideOptions": {
-                        "initializer": "PlaydateSoundFormat['16bitStereo']"
-                    }
-                }
-            ],
-            "returnType": "playdate.sound.sample"
+        "playdate.sound.channel.new()": {
+            "signature": "playdate.sound.channel.new()",
+            "parameters": [],
+            "returnType": "playdate.sound.channel"
         },
         "playdate.sound.channel:remove()": {
             "signature": "playdate.sound.channel:remove()",
@@ -8839,10 +8990,43 @@
             ],
             "returnType": "void"
         },
-        "playdate.sound.channel.new()": {
-            "signature": "playdate.sound.channel.new()",
+        "playdate.sound.channel:getDryLevelSignal()": {
+            "signature": "playdate.sound.channel:getDryLevelSignal()",
             "parameters": [],
-            "returnType": "playdate.sound.channel"
+            "returnType": "playdate.sound.signal"
+        },
+        "playdate.sound.channel:getWetLevelSignal()": {
+            "signature": "playdate.sound.channel:getWetLevelSignal()",
+            "parameters": [],
+            "returnType": "playdate.sound.signal"
+        },
+        "playdate.sound.synth.new([waveform])": {
+            "signature": "playdate.sound.synth.new([waveform])",
+            "parameters": [
+                {
+                    "name": "waveform",
+                    "type": "PlaydateSoundWave"
+                }
+            ],
+            "returnType": "playdate.sound.synth"
+        },
+        "playdate.sound.synth.new(sample, [sustainStart, sustainEnd])": {
+            "signature": "playdate.sound.synth.new(sample, [sustainStart, sustainEnd])",
+            "parameters": [
+                {
+                    "name": "sample",
+                    "type": "playdate.sound.sample"
+                },
+                {
+                    "name": "sustainStart",
+                    "type": "number"
+                },
+                {
+                    "name": "sustainEnd",
+                    "type": "number"
+                }
+            ],
+            "returnType": "playdate.sound.synth"
         },
         "playdate.sound.synth:copy()": {
             "signature": "playdate.sound.synth:copy()",
@@ -8980,6 +9164,11 @@
             ],
             "returnType": "void"
         },
+        "playdate.sound.synth:clearEnvelope()": {
+            "signature": "playdate.sound.synth:clearEnvelope()",
+            "parameters": [],
+            "returnType": "void"
+        },
         "playdate.sound.synth:setEnvelopeCurvature(amount)": {
             "signature": "playdate.sound.synth:setEnvelopeCurvature(amount)",
             "parameters": [
@@ -9105,33 +9294,40 @@
             ],
             "returnType": "void"
         },
-        "playdate.sound.synth.new([waveform])": {
-            "signature": "playdate.sound.synth.new([waveform])",
+        "playdate.sound.signal:setOffset(offset)": {
+            "signature": "playdate.sound.signal:setOffset(offset)",
             "parameters": [
                 {
-                    "name": "waveform",
-                    "type": "PlaydateSoundWave"
+                    "name": "offset",
+                    "type": "number"
                 }
             ],
-            "returnType": "playdate.sound.synth"
+            "returnType": "void"
         },
-        "playdate.sound.synth.new(sample, [sustainStart, sustainEnd])": {
-            "signature": "playdate.sound.synth.new(sample, [sustainStart, sustainEnd])",
+        "playdate.sound.signal:setScale(scale)": {
+            "signature": "playdate.sound.signal:setScale(scale)",
             "parameters": [
                 {
-                    "name": "sample",
-                    "type": "playdate.sound.sample"
-                },
-                {
-                    "name": "sustainStart",
-                    "type": "number"
-                },
-                {
-                    "name": "sustainEnd",
+                    "name": "scale",
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.sound.synth"
+            "returnType": "void"
+        },
+        "playdate.sound.signal:getValue()": {
+            "signature": "playdate.sound.signal:getValue()",
+            "parameters": [],
+            "returnType": "number"
+        },
+        "playdate.sound.lfo.new([type])": {
+            "signature": "playdate.sound.lfo.new([type])",
+            "parameters": [
+                {
+                    "name": "type",
+                    "type": "PlaydateSoundLfoType"
+                }
+            ],
+            "returnType": "playdate.sound.lfo"
         },
         "playdate.sound.lfo:setType(type)": {
             "signature": "playdate.sound.lfo:setType(type)",
@@ -9241,15 +9437,32 @@
             ],
             "returnType": "void"
         },
-        "playdate.sound.lfo.new([type])": {
-            "signature": "playdate.sound.lfo.new([type])",
+        "playdate.sound.lfo:getValue()": {
+            "signature": "playdate.sound.lfo:getValue()",
+            "parameters": [],
+            "returnType": "number"
+        },
+        "playdate.sound.envelope.new([attack, decay, sustain, release])": {
+            "signature": "playdate.sound.envelope.new([attack, decay, sustain, release])",
             "parameters": [
                 {
-                    "name": "type",
-                    "type": "PlaydateSoundLfoType"
+                    "name": "attack",
+                    "type": "number"
+                },
+                {
+                    "name": "decay",
+                    "type": "number"
+                },
+                {
+                    "name": "sustain",
+                    "type": "number"
+                },
+                {
+                    "name": "release",
+                    "type": "number"
                 }
             ],
-            "returnType": "playdate.sound.lfo"
+            "returnType": "playdate.sound.envelope"
         },
         "playdate.sound.envelope:setAttack(attack)": {
             "signature": "playdate.sound.envelope:setAttack(attack)",
@@ -9399,27 +9612,15 @@
             ],
             "returnType": "void"
         },
-        "playdate.sound.envelope.new([attack, decay, sustain, release])": {
-            "signature": "playdate.sound.envelope.new([attack, decay, sustain, release])",
-            "parameters": [
-                {
-                    "name": "attack",
-                    "type": "number"
-                },
-                {
-                    "name": "decay",
-                    "type": "number"
-                },
-                {
-                    "name": "sustain",
-                    "type": "number"
-                },
-                {
-                    "name": "release",
-                    "type": "number"
-                }
-            ],
-            "returnType": "playdate.sound.envelope"
+        "playdate.sound.envelope:getValue()": {
+            "signature": "playdate.sound.envelope:getValue()",
+            "parameters": [],
+            "returnType": "number"
+        },
+        "playdate.sound.bitcrusher.new()": {
+            "signature": "playdate.sound.bitcrusher.new()",
+            "parameters": [],
+            "returnType": "playdate.sound.bitcrusher"
         },
         "playdate.sound.bitcrusher:setMix(level)": {
             "signature": "playdate.sound.bitcrusher:setMix(level)",
@@ -9481,10 +9682,10 @@
             ],
             "returnType": "void"
         },
-        "playdate.sound.bitcrusher.new()": {
-            "signature": "playdate.sound.bitcrusher.new()",
+        "playdate.sound.ringmod.new()": {
+            "signature": "playdate.sound.ringmod.new()",
             "parameters": [],
-            "returnType": "playdate.sound.bitcrusher"
+            "returnType": "playdate.sound.ringmod"
         },
         "playdate.sound.ringmod:setMix(level)": {
             "signature": "playdate.sound.ringmod:setMix(level)",
@@ -9526,10 +9727,10 @@
             ],
             "returnType": "void"
         },
-        "playdate.sound.ringmod.new()": {
-            "signature": "playdate.sound.ringmod.new()",
+        "playdate.sound.onepolefilter.new()": {
+            "signature": "playdate.sound.onepolefilter.new()",
             "parameters": [],
-            "returnType": "playdate.sound.ringmod"
+            "returnType": "playdate.sound.onepolefilter"
         },
         "playdate.sound.onepolefilter:setMix(level)": {
             "signature": "playdate.sound.onepolefilter:setMix(level)",
@@ -9571,10 +9772,15 @@
             ],
             "returnType": "void"
         },
-        "playdate.sound.onepolefilter.new()": {
-            "signature": "playdate.sound.onepolefilter.new()",
-            "parameters": [],
-            "returnType": "playdate.sound.onepolefilter"
+        "playdate.sound.twopolefilter.new(type)": {
+            "signature": "playdate.sound.twopolefilter.new(type)",
+            "parameters": [
+                {
+                    "name": "type",
+                    "type": "PlaydateSoundTwoPoleFilterType"
+                }
+            ],
+            "returnType": "playdate.sound.twopolefilter"
         },
         "playdate.sound.twopolefilter:setMix(level)": {
             "signature": "playdate.sound.twopolefilter:setMix(level)",
@@ -9656,15 +9862,10 @@
             ],
             "returnType": "void"
         },
-        "playdate.sound.twopolefilter.new(type)": {
-            "signature": "playdate.sound.twopolefilter.new(type)",
-            "parameters": [
-                {
-                    "name": "type",
-                    "type": "PlaydateSoundTwoPoleFilterType"
-                }
-            ],
-            "returnType": "playdate.sound.twopolefilter"
+        "playdate.sound.overdrive.new()": {
+            "signature": "playdate.sound.overdrive.new()",
+            "parameters": [],
+            "returnType": "playdate.sound.overdrive"
         },
         "playdate.sound.overdrive:setMix(level)": {
             "signature": "playdate.sound.overdrive:setMix(level)",
@@ -9736,10 +9937,15 @@
             ],
             "returnType": "void"
         },
-        "playdate.sound.overdrive.new()": {
-            "signature": "playdate.sound.overdrive.new()",
-            "parameters": [],
-            "returnType": "playdate.sound.overdrive"
+        "playdate.sound.delayline.new(length)": {
+            "signature": "playdate.sound.delayline.new(length)",
+            "parameters": [
+                {
+                    "name": "length",
+                    "type": "number"
+                }
+            ],
+            "returnType": "playdate.sound.delayline"
         },
         "playdate.sound.delayline:setMix(level)": {
             "signature": "playdate.sound.delayline:setMix(level)",
@@ -9781,15 +9987,60 @@
             ],
             "returnType": "void"
         },
-        "playdate.sound.delayline.new(length)": {
-            "signature": "playdate.sound.delayline.new(length)",
+        "playdate.sound.delaylinetap:setDelay(time)": {
+            "signature": "playdate.sound.delaylinetap:setDelay(time)",
             "parameters": [
                 {
-                    "name": "length",
+                    "name": "time",
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.sound.delayline"
+            "returnType": "void"
+        },
+        "playdate.sound.delaylinetap:setDelayMod(signal)": {
+            "signature": "playdate.sound.delaylinetap:setDelayMod(signal)",
+            "parameters": [
+                {
+                    "name": "signal",
+                    "type": "playdate.sound.signal | null"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.sound.delaylinetap:setVolume(level)": {
+            "signature": "playdate.sound.delaylinetap:setVolume(level)",
+            "parameters": [
+                {
+                    "name": "level",
+                    "type": "number"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.sound.delaylinetap:getVolume()": {
+            "signature": "playdate.sound.delaylinetap:getVolume()",
+            "parameters": [],
+            "returnType": "number"
+        },
+        "playdate.sound.delaylinetap:setFlipChannels(flag)": {
+            "signature": "playdate.sound.delaylinetap:setFlipChannels(flag)",
+            "parameters": [
+                {
+                    "name": "flag",
+                    "type": "boolean"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.sound.sequence.new([midi_path])": {
+            "signature": "playdate.sound.sequence.new([midi_path])",
+            "parameters": [
+                {
+                    "name": "midi_path",
+                    "type": "string"
+                }
+            ],
+            "returnType": "playdate.sound.sequence"
         },
         "playdate.sound.sequence:play([finishCallback])": {
             "signature": "playdate.sound.sequence:play([finishCallback])",
@@ -9930,15 +10181,10 @@
             "parameters": [],
             "returnType": "void"
         },
-        "playdate.sound.sequence.new([midi_path])": {
-            "signature": "playdate.sound.sequence.new([midi_path])",
-            "parameters": [
-                {
-                    "name": "midi_path",
-                    "type": "string"
-                }
-            ],
-            "returnType": "playdate.sound.sequence"
+        "playdate.sound.track.new()": {
+            "signature": "playdate.sound.track.new()",
+            "parameters": [],
+            "returnType": "playdate.sound.track"
         },
         "playdate.sound.track:addNote(step, note, length, [velocity])": {
             "signature": "playdate.sound.track:addNote(step, note, length, [velocity])",
@@ -10073,10 +10319,15 @@
             "parameters": [],
             "returnType": "playdate.sound.controlsignal[]"
         },
-        "playdate.sound.track.new()": {
-            "signature": "playdate.sound.track.new()",
-            "parameters": [],
-            "returnType": "playdate.sound.track"
+        "playdate.sound.instrument.new([synth])": {
+            "signature": "playdate.sound.instrument.new([synth])",
+            "parameters": [
+                {
+                    "name": "synth",
+                    "type": "playdate.sound.synth"
+                }
+            ],
+            "returnType": "playdate.sound.instrument"
         },
         "playdate.sound.instrument:addVoice(v, [note], [rangeend], [transpose])": {
             "signature": "playdate.sound.instrument:addVoice(v, [note], [rangeend], [transpose])",
@@ -10095,6 +10346,26 @@
                 },
                 {
                     "name": "transpose",
+                    "type": "number"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.sound.instrument:setPitchBend(amount)": {
+            "signature": "playdate.sound.instrument:setPitchBend(amount)",
+            "parameters": [
+                {
+                    "name": "amount",
+                    "type": "number"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.sound.instrument:setPitchBendRange(halfsteps)": {
+            "signature": "playdate.sound.instrument:setPitchBendRange(halfsteps)",
+            "parameters": [
+                {
+                    "name": "halfsteps",
                     "type": "number"
                 }
             ],
@@ -10198,15 +10469,10 @@
             "parameters": [],
             "returnType": "LuaMultiReturn<[number, undefined]> | LuaMultiReturn<[number, number]>"
         },
-        "playdate.sound.instrument.new([synth])": {
-            "signature": "playdate.sound.instrument.new([synth])",
-            "parameters": [
-                {
-                    "name": "synth",
-                    "type": "playdate.sound.synth"
-                }
-            ],
-            "returnType": "playdate.sound.instrument"
+        "playdate.sound.controlsignal.new()": {
+            "signature": "playdate.sound.controlsignal.new()",
+            "parameters": [],
+            "returnType": "playdate.sound.controlsignal"
         },
         "playdate.sound.controlsignal:addEvent(step, value, [interpolate])": {
             "signature": "playdate.sound.controlsignal:addEvent(step, value, [interpolate])",
@@ -10256,10 +10522,10 @@
             "parameters": [],
             "returnType": "number"
         },
-        "playdate.sound.controlsignal.new()": {
-            "signature": "playdate.sound.controlsignal.new()",
+        "playdate.sound.controlsignal:getValue()": {
+            "signature": "playdate.sound.controlsignal:getValue()",
             "parameters": [],
-            "returnType": "playdate.sound.controlsignal"
+            "returnType": "number"
         },
         "playdate.sound.micinput.recordToSample(buffer, completionCallback)": {
             "signature": "playdate.sound.micinput.recordToSample(buffer, completionCallback)",
@@ -10344,26 +10610,6 @@
                 }
             ],
             "returnType": "string"
-        },
-        "playdate.timer:pause()": {
-            "signature": "playdate.timer:pause()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.timer:start()": {
-            "signature": "playdate.timer:start()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.timer:remove()": {
-            "signature": "playdate.timer:remove()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.timer:reset()": {
-            "signature": "playdate.timer:reset()",
-            "parameters": [],
-            "returnType": "void"
         },
         "playdate.timer.updateTimers()": {
             "signature": "playdate.timer.updateTimers()",
@@ -10559,6 +10805,26 @@
             "parameters": [],
             "returnType": "playdate.timer[]"
         },
+        "playdate.timer:pause()": {
+            "signature": "playdate.timer:pause()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.timer:start()": {
+            "signature": "playdate.timer:start()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.timer:remove()": {
+            "signature": "playdate.timer:remove()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.timer:reset()": {
+            "signature": "playdate.timer:reset()",
+            "parameters": [],
+            "returnType": "void"
+        },
         "playdate.timer.timerEndedCallback": {
             "signature": "playdate.timer.timerEndedCallback",
             "overrideParameters": true,
@@ -10607,26 +10873,6 @@
                     "type": "playdate.timer"
                 }
             ],
-            "returnType": "void"
-        },
-        "playdate.frameTimer:pause()": {
-            "signature": "playdate.frameTimer:pause()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.frameTimer:start()": {
-            "signature": "playdate.frameTimer:start()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.frameTimer:remove()": {
-            "signature": "playdate.frameTimer:remove()",
-            "parameters": [],
-            "returnType": "void"
-        },
-        "playdate.frameTimer:reset()": {
-            "signature": "playdate.frameTimer:reset()",
-            "parameters": [],
             "returnType": "void"
         },
         "playdate.frameTimer.updateTimers()": {
@@ -10745,6 +10991,26 @@
             "parameters": [],
             "returnType": "playdate.frametimer[]"
         },
+        "playdate.frameTimer:pause()": {
+            "signature": "playdate.frameTimer:pause()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.frameTimer:start()": {
+            "signature": "playdate.frameTimer:start()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.frameTimer:remove()": {
+            "signature": "playdate.frameTimer:remove()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.frameTimer:reset()": {
+            "signature": "playdate.frameTimer:reset()",
+            "parameters": [],
+            "returnType": "void"
+        },
         "playdate.frameTimer.timerEndedCallback": {
             "signature": "playdate.frameTimer.timerEndedCallback",
             "overrideParameters": true,
@@ -10794,6 +11060,49 @@
                 }
             ],
             "returnType": "void"
+        },
+        "playdate.ui.crankIndicator:draw([xOffset, yOffset])": {
+            "signature": "playdate.ui.crankIndicator:draw([xOffset, yOffset])",
+            "parameters": [
+                {
+                    "name": "xOffset",
+                    "type": "number"
+                },
+                {
+                    "name": "yOffset",
+                    "type": "number"
+                }
+            ],
+            "returnType": "void"
+        },
+        "playdate.ui.crankIndicator:resetAnimation()": {
+            "signature": "playdate.ui.crankIndicator:resetAnimation()",
+            "parameters": [],
+            "returnType": "void"
+        },
+        "playdate.ui.crankIndicator:getBounds()": {
+            "signature": "playdate.ui.crankIndicator:getBounds()",
+            "parameters": [],
+            "returnType": "LuaMultiReturn<[number, number, number, number]>"
+        },
+        "playdate.ui.gridview.new(cellWidth, cellHeight)": {
+            "signature": "playdate.ui.gridview.new(cellWidth, cellHeight)",
+            "parameters": [
+                {
+                    "name": "cellWidth",
+                    "type": "number"
+                },
+                {
+                    "name": "cellHeight",
+                    "type": "number"
+                }
+            ],
+            "returnType": "playdate.ui.gridview"
+        },
+        "playdate.ui.gridview.getSectionHeaderHeight()": {
+            "signature": "playdate.ui.gridview.getSectionHeaderHeight()",
+            "parameters": [],
+            "returnType": "number"
         },
         "playdate.ui.gridview:drawCell(section, row, column, selected, x, y, width, height)": {
             "signature": "playdate.ui.gridview:drawCell(section, row, column, selected, x, y, width, height)",
@@ -11355,48 +11664,91 @@
             ],
             "returnType": "void"
         },
-        "playdate.ui.gridview.new(cellWidth, cellHeight)": {
-            "signature": "playdate.ui.gridview.new(cellWidth, cellHeight)",
+        "json.decode(string)": {
+            "signature": "json.decode(string)",
             "parameters": [
                 {
-                    "name": "cellWidth",
-                    "type": "number"
-                },
-                {
-                    "name": "cellHeight",
-                    "type": "number"
+                    "name": "string",
+                    "type": "string"
                 }
             ],
-            "returnType": "playdate.ui.gridview"
+            "returnType": "AnyTable"
         },
-        "playdate.ui.gridview.getSectionHeaderHeight()": {
-            "signature": "playdate.ui.gridview.getSectionHeaderHeight()",
-            "parameters": [],
-            "returnType": "number"
-        },
-        "playdate.ui.crankIndicator:draw([xOffset, yOffset])": {
-            "signature": "playdate.ui.crankIndicator:draw([xOffset, yOffset])",
+        "json.decodeFile(file)": {
+            "signature": "json.decodeFile(file)",
             "parameters": [
                 {
-                    "name": "xOffset",
-                    "type": "number"
+                    "name": "file",
+                    "type": "playdate.file.file"
+                }
+            ],
+            "returnType": "AnyTable"
+        },
+        "json.decodeFile(path)": {
+            "signature": "json.decodeFile(path)",
+            "parameters": [
+                {
+                    "name": "path",
+                    "type": "string"
+                }
+            ],
+            "returnType": "AnyTable"
+        },
+        "json.encode(table)": {
+            "signature": "json.encode(table)",
+            "parameters": [
+                {
+                    "name": "table",
+                    "type": "AnyTable"
+                }
+            ],
+            "returnType": "string"
+        },
+        "json.encodePretty(table)": {
+            "signature": "json.encodePretty(table)",
+            "parameters": [
+                {
+                    "name": "table",
+                    "type": "AnyTable"
+                }
+            ],
+            "returnType": "string"
+        },
+        "json.encodeToFile(file, [pretty], table)": {
+            "signature": "json.encodeToFile(file, [pretty], table)",
+            "parameters": [
+                {
+                    "name": "file",
+                    "type": "playdate.file.file"
                 },
                 {
-                    "name": "yOffset",
-                    "type": "number"
+                    "name": "pretty",
+                    "type": "boolean"
+                },
+                {
+                    "name": "table",
+                    "type": "AnyTable"
                 }
             ],
             "returnType": "void"
         },
-        "playdate.ui.crankIndicator:resetAnimation()": {
-            "signature": "playdate.ui.crankIndicator:resetAnimation()",
-            "parameters": [],
+        "json.encodeToFile(path, [pretty], table)": {
+            "signature": "json.encodeToFile(path, [pretty], table)",
+            "parameters": [
+                {
+                    "name": "path",
+                    "type": "string"
+                },
+                {
+                    "name": "pretty",
+                    "type": "boolean"
+                },
+                {
+                    "name": "table",
+                    "type": "AnyTable"
+                }
+            ],
             "returnType": "void"
-        },
-        "playdate.ui.crankIndicator:getBounds()": {
-            "signature": "playdate.ui.crankIndicator:getBounds()",
-            "parameters": [],
-            "returnType": "LuaMultiReturn<[number, number, number, number]>"
         }
     }
 }

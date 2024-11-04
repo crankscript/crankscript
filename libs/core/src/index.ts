@@ -1,139 +1,151 @@
 export enum PlaydateColor {
-    Black = 0,
-    White = 1,
-    Clear = 2,
-    XOR = 3,
+    Black = playdate.graphics.kColorBlack,
+    White = playdate.graphics.kColorWhite,
+    Clear = playdate.graphics.kColorClear,
+    XOR = playdate.graphics.kColorXOR,
 }
 
 export enum PlaydateFlip {
-    Unflipped = 0,
-    FlippedX = 1,
-    FlippedY = 2,
-    FlippedXY = 3,
+    Unflipped = playdate.graphics.kImageUnflipped,
+    FlippedX = playdate.graphics.kImageFlippedX,
+    FlippedY = playdate.graphics.kImageFlippedY,
+    FlippedXY = playdate.graphics.kImageFlippedXY,
 }
 
 export enum PlaydatePolygonFill {
-    NonZero = 0,
-    EvenOdd = 1,
+    NonZero = playdate.graphics.kPolygonFillNonZero,
+    EvenOdd = playdate.graphics.kPolygonFillEvenOdd,
 }
 
 export enum PlaydateButton {
-    Left = 1,
-    Right = 2,
-    Up = 4,
-    Down = 8,
-    B = 16,
-    A = 32,
+    Left = playdate.kButtonLeft,
+    Right = playdate.kButtonRight,
+    Up = playdate.kButtonUp,
+    Down = playdate.kButtonDown,
+    B = playdate.kButtonB,
+    A = playdate.kButtonA,
 }
 
 export enum PlaydateLanguage {
-    English = 0,
-    Japanese = 1,
+    English = playdate.graphics.font.kLanguageEnglish,
+    Japanese = playdate.graphics.font.kLanguageJapanese,
 }
 
 export enum PlaydateFileOpenMode {
-    Read = 3,
-    Write = 4,
-    Append = 8,
+    Read = playdate.file.kFileRead,
+    Write = playdate.file.kFileWrite,
+    Append = playdate.file.kFileAppend,
 }
 
 export enum PlaydateDitherType {
-    None = 0,
-    DiagonalLine = 1,
-    VerticalLine = 2,
-    HorizontalLine = 3,
-    Screen = 4,
-    Bayer2x2 = 5,
-    Bayer4x4 = 6,
-    Bayer8x8 = 7,
-    FloydSteinberg = 8,
-    Burkes = 9,
-    Atkinson = 10,
+    None = playdate.graphics.kDitherTypeNone,
+    DiagonalLine = playdate.graphics.kDitherTypeDiagonalLine,
+    VerticalLine = playdate.graphics.kDitherTypeVerticalLine,
+    HorizontalLine = playdate.graphics.kDitherTypeHorizontalLine,
+    Screen = playdate.graphics.kDitherTypeScreen,
+    Bayer2x2 = playdate.graphics.kDitherTypeBayer2x2,
+    Bayer4x4 = playdate.graphics.kDitherTypeBayer4x4,
+    Bayer8x8 = playdate.graphics.kDitherTypeBayer8x8,
+    FloydSteinberg = playdate.graphics.kDitherTypeFloydSteinberg,
+    Burkes = playdate.graphics.kDitherTypeBurkes,
+    Atkinson = playdate.graphics.kDitherTypeAtkinson,
 }
 
 export enum PlaydateLineCapStyle {
-    Butt = 0,
-    Square = 1,
-    Round = 2,
+    Butt = playdate.graphics.kLineCapStyleButt,
+    Square = playdate.graphics.kLineCapStyleSquare,
+    Round = playdate.graphics.kLineCapStyleRound,
 }
 
 export enum PlaydateDrawMode {
-    Copy = 0,
-    WhiteTransparent = 1,
-    BlackTransparent = 2,
-    FillWhite = 3,
-    FillBlack = 4,
-    XOR = 5,
-    NXOR = 6,
-    Inverted = 7,
+    Copy = playdate.graphics.kDrawModeCopy,
+    WhiteTransparent = playdate.graphics.kDrawModeWhiteTransparent,
+    BlackTransparent = playdate.graphics.kDrawModeBlackTransparent,
+    FillWhite = playdate.graphics.kDrawModeFillWhite,
+    FillBlack = playdate.graphics.kDrawModeFillBlack,
+    XOR = playdate.graphics.kDrawModeXOR,
+    NXOR = playdate.graphics.kDrawModeNXOR,
+    Inverted = playdate.graphics.kDrawModeInverted,
 }
 
 export enum PlaydateStrokeLocation {
-    Centered = 0,
-    Inside = 1,
-    Outside = 2,
+    Centered = playdate.graphics.kStrokeCentered,
+    Inside = playdate.graphics.kStrokeInside,
+    Outside = playdate.graphics.kStrokeOutside,
 }
 
 export enum PlaydateFontVariant {
-    Normal = 0,
-    Bold = 1,
-    Italic = 2,
+    Normal = playdate.graphics.font.kVariantNormal,
+    Bold = playdate.graphics.font.kVariantBold,
+    Italic = playdate.graphics.font.kVariantItalic,
 }
 
 export enum PlaydateTextAlignment {
-    Left = 0,
-    Right = 1,
-    Center = 2,
+    Left = playdate.graphics.kAlignLeft,
+    Right = playdate.graphics.kAlignRight,
+    Center = playdate.graphics.kAlignCenter,
 }
 
 export enum PlaydateCollisionResponse {
-    Slide = 0,
-    Freeze = 1,
-    Overlap = 2,
-    Bounce = 3,
+    Slide = playdate.graphics.sprite.kCollisionTypeSlide,
+    Freeze = playdate.graphics.sprite.kCollisionTypeFreeze,
+    Overlap = playdate.graphics.sprite.kCollisionTypeOverlap,
+    Bounce = playdate.graphics.sprite.kCollisionTypeBounce,
 }
 
 export enum PlaydateCapitalizationBehavior {
-    Normal = 1,
-    Words = 2,
-    Sentences = 3,
+    Normal = playdate.keyboard.kCapitalizationNormal,
+    Words = playdate.keyboard.kCapitalizationWords,
+    Sentences = playdate.keyboard.kCapitalizationSentences,
 }
 
 export enum PlaydateSoundFormat {
-    '8bitMono' = 0,
-    '8bitStereo' = 1,
-    '16bitMono' = 2,
-    '16bitStereo' = 3,
+    '8bitMono' = playdate.sound.kFormat8bitMono,
+    '8bitStereo' = playdate.sound.kFormat8bitStereo,
+    '16bitMono' = playdate.sound.kFormat16bitMono,
+    '16bitStereo' = playdate.sound.kFormat16bitStereo,
 }
 
 export enum PlaydateSoundWave {
-    Square = 0,
-    Triangle = 1,
-    Sine = 2,
-    Noise = 3,
-    Sawtooth = 4,
-    POPhase = 5,
-    PODigital = 6,
-    POVosim = 7,
+    Square = playdate.sound.kWaveSquare,
+    Triangle = playdate.sound.kWaveTriangle,
+    Sine = playdate.sound.kWaveSine,
+    Noise = playdate.sound.kWaveNoise,
+    Sawtooth = playdate.sound.kWaveSawtooth,
+    POPhase = playdate.sound.kWavePOPhase,
+    PODigital = playdate.sound.kWavePODigital,
+    POVosim = playdate.sound.kWavePOVosim,
 }
 
 export enum PlaydateSoundLfoType {
-    Square = 0,
-    Triangle = 1,
-    Sine = 2,
-    SampleAndHold = 3,
-    SawtoothUp = 4,
-    SawtoothDown = 5,
+    Square = playdate.sound.kLFOSquare,
+    Triangle = playdate.sound.kLFOTriangle,
+    Sine = playdate.sound.kLFOSine,
+    SampleAndHold = playdate.sound.kLFOSampleAndHold,
+    SawtoothUp = playdate.sound.kLFOSawtoothUp,
+    SawtoothDown = playdate.sound.kLFOSawtoothDown,
 }
 
 export enum PlaydateSoundTwoPoleFilterType {
-    LowPass = 0,
-    HighPass = 1,
-    BandPass = 2,
-    Notch = 3,
-    PEQ = 4,
-    LowShelf = 5,
-    HighShelf = 6,
+    LowPass = playdate.sound.kFilterLowPass,
+    HighPass = playdate.sound.kFilterHighPass,
+    BandPass = playdate.sound.kFilterBandPass,
+    Notch = playdate.sound.kFilterNotch,
+    PEQ = playdate.sound.kFilterPEQ,
+    LowShelf = playdate.sound.kFilterLowShelf,
+    HighShelf = playdate.sound.kFilterHighShelf,
+}
+
+export enum PlaydateSeekWhence {
+    Set = playdate.file.kSeekSet,
+    FromCurrent = playdate.file.kSeekFromCurrent,
+    FromEnd = playdate.file.kSeekFromEnd,
+}
+
+export enum PlaydateWrapMode {
+    Clip = playdate.graphics.kWrapClip,
+    Character = playdate.graphics.kWrapCharacter,
+    Word = playdate.graphics.kWrapWord,
 }
 
 let lastTime = -1;
