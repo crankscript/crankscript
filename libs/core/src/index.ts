@@ -38,17 +38,17 @@ export enum PlaydateFileOpenMode {
 }
 
 export enum PlaydateDitherType {
-    None = playdate.graphics.kDitherTypeNone,
-    DiagonalLine = playdate.graphics.kDitherTypeDiagonalLine,
-    VerticalLine = playdate.graphics.kDitherTypeVerticalLine,
-    HorizontalLine = playdate.graphics.kDitherTypeHorizontalLine,
-    Screen = playdate.graphics.kDitherTypeScreen,
-    Bayer2x2 = playdate.graphics.kDitherTypeBayer2x2,
-    Bayer4x4 = playdate.graphics.kDitherTypeBayer4x4,
-    Bayer8x8 = playdate.graphics.kDitherTypeBayer8x8,
-    FloydSteinberg = playdate.graphics.kDitherTypeFloydSteinberg,
-    Burkes = playdate.graphics.kDitherTypeBurkes,
-    Atkinson = playdate.graphics.kDitherTypeAtkinson,
+    None = playdate.graphics.image.kDitherTypeNone,
+    DiagonalLine = playdate.graphics.image.kDitherTypeDiagonalLine,
+    VerticalLine = playdate.graphics.image.kDitherTypeVerticalLine,
+    HorizontalLine = playdate.graphics.image.kDitherTypeHorizontalLine,
+    Screen = playdate.graphics.image.kDitherTypeScreen,
+    Bayer2x2 = playdate.graphics.image.kDitherTypeBayer2x2,
+    Bayer4x4 = playdate.graphics.image.kDitherTypeBayer4x4,
+    Bayer8x8 = playdate.graphics.image.kDitherTypeBayer8x8,
+    FloydSteinberg = playdate.graphics.image.kDitherTypeFloydSteinberg,
+    Burkes = playdate.graphics.image.kDitherTypeBurkes,
+    Atkinson = playdate.graphics.image.kDitherTypeAtkinson,
 }
 
 export enum PlaydateLineCapStyle {

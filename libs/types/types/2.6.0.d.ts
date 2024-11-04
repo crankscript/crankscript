@@ -4078,17 +4078,6 @@ namespace playdate {
         export const kImageFlippedXY: number;
         export const kPolygonFillNonZero: number;
         export const kPolygonFillEvenOdd: number;
-        export const kDitherTypeNone: number;
-        export const kDitherTypeDiagonalLine: number;
-        export const kDitherTypeVerticalLine: number;
-        export const kDitherTypeHorizontalLine: number;
-        export const kDitherTypeScreen: number;
-        export const kDitherTypeBayer2x2: number;
-        export const kDitherTypeBayer4x4: number;
-        export const kDitherTypeBayer8x8: number;
-        export const kDitherTypeFloydSteinberg: number;
-        export const kDitherTypeBurkes: number;
-        export const kDitherTypeAtkinson: number;
         export const kLineCapStyleButt: number;
         export const kLineCapStyleRound: number;
         export const kLineCapStyleSquare: number;
@@ -5801,6 +5790,18 @@ namespace playdate {
         ): LuaMultiReturn<[playdate.graphics.image, boolean]>;
 
         namespace image {
+            export const kDitherTypeNone: number;
+            export const kDitherTypeDiagonalLine: number;
+            export const kDitherTypeVerticalLine: number;
+            export const kDitherTypeHorizontalLine: number;
+            export const kDitherTypeScreen: number;
+            export const kDitherTypeBayer2x2: number;
+            export const kDitherTypeBayer4x4: number;
+            export const kDitherTypeBayer8x8: number;
+            export const kDitherTypeFloydSteinberg: number;
+            export const kDitherTypeBurkes: number;
+            export const kDitherTypeAtkinson: number;
+
             /**
              * Creates a new blank image of the given width and height. The image can be drawn on using [playdate.graphics.pushContext()](https://sdk.play.date/2.6.0#f-graphics.pushContext) or [playdate.graphics.lockFocus()](https://sdk.play.date/2.6.0#f-graphics.lockFocus). The optional _bgcolor_ argument is one of the color constants as used in [playdate.graphics.setColor()](https://sdk.play.date/2.6.0#f-graphics.setColor), defaulting to _kColorClear_.
              *
