@@ -7,6 +7,7 @@ import {
     ModuleDeclaration,
     Project,
     SourceFile,
+    VariableDeclarationKind,
 } from 'ts-morph';
 import { createTypeProvider } from '@/cli/commands/GenerateTypes/utils/createTypeProvider.js';
 import { TypescriptReservedNamed } from '@/cli/constants.js';
@@ -75,6 +76,14 @@ const generateNamespace = (
 
     if (name === 'playdate') {
         subject.addStatements(typeProvider.getStatements());
+    }
+
+    for (const constant of typeProvider.getConstants(fullNamespaceName)) {
+        subject.addVariableStatement({
+            declarations: [constant],
+            isExported: true,
+            declarationKind: VariableDeclarationKind.Const,
+        });
     }
 
     for (const func of apiObject.functions) {
