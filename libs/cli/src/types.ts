@@ -112,9 +112,15 @@ export interface FunctionDetails {
     >;
 }
 
+export interface ConstantDefinition {
+    name: string;
+    type: string;
+}
+
 export type TypeProviderData = {
     globalStatements: string[];
     statements: string[];
+    constants: Record<string, (ConstantDefinition | string)[]>;
     classes: Record<string, Partial<ClassDeclarationStructure>>;
     properties: Record<string, PropertyDetails>;
     functions: Record<string, FunctionDetails>;
