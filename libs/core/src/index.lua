@@ -1,4 +1,5 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
+import "CoreLibs/keyboard"
 local ____exports = {}
 ____exports.PlaydateColor = PlaydateColor or ({})
 ____exports.PlaydateColor.Black = playdate.graphics.kColorBlack
