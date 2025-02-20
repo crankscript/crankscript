@@ -1178,7 +1178,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-menu.item.setCallback)
              */
             setCallback(callback: () => void): void;
-
             /**
              * Sets the title displayed for this menu item.
              *
@@ -1187,14 +1186,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-menu.item.setTitle)
              */
             setTitle(newTitle: string): void;
-
             /**
              * Returns the title displayed for this menu item.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-menu.item.getTitle)
              */
             getTitle(): string;
-
             /**
              * Sets the value for this menu item. The value is of a different type depending on the type of menu item:
              *
@@ -1212,7 +1209,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-menu.item.setValue)
              */
             setValue(newValue: number | boolean | string): void;
-
             /**
              * Returns the value for this menu item.
              *
@@ -1234,7 +1230,6 @@ namespace playdate {
         ):
             | LuaMultiReturn<[playdate.menu.item, undefined]>
             | LuaMultiReturn<[null, string]>;
-
         /**
          * Creates a new menu item that can be checked or unchecked by the player.
          *
@@ -1259,7 +1254,6 @@ namespace playdate {
         ):
             | LuaMultiReturn<[playdate.menu.item, undefined]>
             | LuaMultiReturn<[null, string]>;
-
         /**
          * Creates a menu item that allows the player to cycle through a set of options.
          *
@@ -1287,20 +1281,17 @@ namespace playdate {
         ):
             | LuaMultiReturn<[playdate.menu.item, undefined]>
             | LuaMultiReturn<[null, string]>;
-
         /**
          *
          * [Read more](https://sdk.play.date/2.6.0#m-menu.getMenuItems)
          */
         getMenuItems(): playdate.menu.item[];
-
         /**
          * Removes the specified [playdate.menu.item](https://sdk.play.date/2.6.0#menu-item) from the menu.
          *
          * [Read more](https://sdk.play.date/2.6.0#m-menu.removeMenuItem)
          */
         removeMenuItem(menuItem: playdate.menu.item): void;
-
         /**
          * Removes from the referenced menu object all [playdate.menu.item](https://sdk.play.date/2.6.0#menu-item)s added by your game.
          *
@@ -2898,7 +2889,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-file.close)
              */
             close(): void;
-
             /**
              * Writes the given string to the file and returns the number of bytes written if successful, or 0 and a second return value describing the error. If you wish to include line termination characters (`\n`, `\r`), please include them in the string.
              *
@@ -2909,7 +2899,6 @@ namespace playdate {
             ):
                 | LuaMultiReturn<[number, undefined]>
                 | LuaMultiReturn<[0, string]>;
-
             /**
              * Flushes any buffered data written to the file to the disk.
              *
@@ -2918,14 +2907,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-file.flush)
              */
             flush(): void;
-
             /**
              * Returns the next line of the file, delimited by either `\n` or `\r\n`. The returned string does not include newline characters.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-file.readline)
              */
             readline(): string;
-
             /**
              * Returns a buffer containing up to _numberOfBytes_ bytes from the file, and the number of bytes read. If the read failed, the function returns `nil` and a second value describing the error.
              *
@@ -2938,7 +2925,6 @@ namespace playdate {
             ):
                 | LuaMultiReturn<[string, number]>
                 | LuaMultiReturn<[null, string]>;
-
             /**
              * Sets the file read/write position to the given byte offset. `whence`, if given is one of the following:
              *
@@ -2954,7 +2940,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-file.seek)
              */
             seek(offset: number, whence?: PlaydateSeekWhence): void;
-
             /**
              * Returns the current byte offset of the read/write position in the file.
              *
@@ -3037,7 +3022,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.copy)
              */
             copy(): playdate.geometry.affineTransformTransform;
-
             /**
              * Mutates the caller so that it is an affine transformation matrix constructed by inverting itself.
              *
@@ -3046,14 +3030,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.invert)
              */
             invert(): void;
-
             /**
              * Mutates the the caller, changing it to an identity transform matrix.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.reset)
              */
             reset(): void;
-
             /**
              * Mutates the the caller. The affine transform _af_ is concatenated to the caller.
              *
@@ -3064,14 +3046,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.concat)
              */
             concat(af: playdate.geometry.affineTransformTransform): void;
-
             /**
              * Mutates the caller by applying a translate transformation. x values are moved by _dx_, y values by _dy_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.translate)
              */
             translate(dx: number, dy: number): void;
-
             /**
              * Returns a copy of the calling affine transform with a translate transformation appended.
              *
@@ -3081,7 +3061,6 @@ namespace playdate {
                 dx: number,
                 dy: number
             ): playdate.geometry.affineTransformTransform;
-
             /**
              * Mutates the caller by applying a scaling transformation.
              *
@@ -3092,7 +3071,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.scale)
              */
             scale(sx: number, sy?: number): void;
-
             /**
              * Returns a copy of the calling affine transform with a scaling transformation appended.
              *
@@ -3106,7 +3084,6 @@ namespace playdate {
                 sx: number,
                 sy?: number
             ): playdate.geometry.affineTransformTransform;
-
             /**
              * Mutates the caller by applying a rotation transformation.
              *
@@ -3123,7 +3100,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform:rotate-point)
              */
             rotate(angle: number, point?: playdate.geometry.point): void;
-
             /**
              * Returns a copy of the calling affine transform with a rotate transformation appended.
              *
@@ -3147,14 +3123,12 @@ namespace playdate {
                 angle: number,
                 point?: playdate.geometry.point
             ): playdate.geometry.affineTransformTransform;
-
             /**
              * Mutates the caller, appending a skew transformation. _sx_ is the value by which to skew the x axis, and _sy_ the value for the y axis. Values are in degrees.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.skew)
              */
             skew(sx: number, sy: number): void;
-
             /**
              * Returns the given transform with a skew transformation appended. _sx_ is the value by which to skew the x axis, and _sy_ the value for the y axis. Values are in degrees.
              *
@@ -3164,14 +3138,12 @@ namespace playdate {
                 sx: number,
                 sy: number
             ): playdate.geometry.affineTransformTransform;
-
             /**
              * Modifies the [point](https://sdk.play.date/2.6.0#C-geometry.point) _p_ by applying the affine transform.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.transformPoint)
              */
             transformPoint(p: playdate.geometry.point): void;
-
             /**
              * As above, but returns a new point rather than modifying _p_.
              *
@@ -3180,21 +3152,18 @@ namespace playdate {
             transformedPoint(
                 p: playdate.geometry.point
             ): playdate.geometry.point;
-
             /**
              * Returns two values calculated by applying the affine transform to the point (_x_, _y_)
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.transformXY)
              */
             transformXY(x: number, y: number): LuaMultiReturn<[number, number]>;
-
             /**
              * Modifies the [line segment](https://sdk.play.date/2.6.0#C-geometry.lineSegment) _ls_ by applying the affine transform.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.transformLineSegment)
              */
             transformLineSegment(ls: playdate.geometry.lineSegmentnt): void;
-
             /**
              * As above, but returns a new [line segment](https://sdk.play.date/2.6.0#C-geometry.lineSegment) rather than modifying _ls_.
              *
@@ -3203,28 +3172,24 @@ namespace playdate {
             transformedLineSegment(
                 ls: playdate.geometry.lineSegmentnt
             ): playdate.geometry.lineSegmentnt;
-
             /**
              * Modifies the axis aligned bounding box _r_ (a [rect](https://sdk.play.date/2.6.0#C-geometry.rect)) by applying the affine transform.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.transformAABB)
              */
             transformAABB(r: playdate.geometry.rect): void;
-
             /**
              * As above, but returns a new [rect](https://sdk.play.date/2.6.0#C-geometry.rect) rather than modifying _r_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.transformedAABB)
              */
             transformedAABB(r: playdate.geometry.rect): playdate.geometry.rect;
-
             /**
              * Modifies the [polygon](https://sdk.play.date/2.6.0#C-geometry.polygon) _p_ by applying the affine transform.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.transformPolygon)
              */
             transformPolygon(p: playdate.geometry.polygon): void;
-
             /**
              * As above, but returns a new [polygon](https://sdk.play.date/2.6.0#C-geometry.polygon) rather than modifying _p_.
              *
@@ -3266,28 +3231,24 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.arc.copy)
              */
             copy(): playdate.geometry.arc;
-
             /**
              * Returns the length of the arc.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.arc.length)
              */
             length(): number;
-
             /**
              * Returns true if the direction of the arc is clockwise.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.arc.isClockwise)
              */
             isClockwise(): boolean;
-
             /**
              * Sets the direction of the arc.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.arc.setIsClockwise)
              */
             setIsClockwise(flag: boolean): void;
-
             /**
              * Returns a new [point](https://sdk.play.date/2.6.0#C-geometry.point) on the arc, `distance` pixels from the arc’s start angle. If `extend` is true, the returned point is allowed to project past the arc’s endpoints; otherwise, it is constrained to the arc’s initial point if `distance` is negative, or the end point if `distance` is greater than the arc’s length.
              *
@@ -3344,42 +3305,36 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.lineSegment.copy)
              */
             copy(): playdate.geometry.lineSegmentnt;
-
             /**
              * Returns the values _x1, y1, x2, y2_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.lineSegment.unpack)
              */
             unpack(): LuaMultiReturn<[number, number, number, number]>;
-
             /**
              * Returns the length of the line segment.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.lineSegment.length)
              */
             length(): number;
-
             /**
              * Modifies the line segment, offsetting its values by _dx_, _dy_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.lineSegment.offset)
              */
             offset(dx: number, dy: number): void;
-
             /**
              * Returns a new line segment, the given segment offset by _dx_, _dy_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.lineSegment.offsetBy)
              */
             offsetBy(dx: number, dy: number): playdate.geometry.lineSegmentnt;
-
             /**
              * Returns a [playdate.geometry.point](https://sdk.play.date/2.6.0#C-geometry.point) representing the mid point of the line segment.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.lineSegment.midPoint)
              */
             midPoint(): playdate.geometry.point;
-
             /**
              * Returns a [playdate.geometry.point](https://sdk.play.date/2.6.0#C-geometry.point) on the line segment, `distance` pixels from the start of the line. If `extend` is true, the returned point is allowed to project past the segment’s endpoints; otherwise, it is constrained to the line segment’s initial point if `distance` is negative, or the end point if `distance` is greater than the segment’s length.
              *
@@ -3389,14 +3344,12 @@ namespace playdate {
                 distance: number,
                 extend?: boolean
             ): playdate.geometry.point;
-
             /**
              * Returns a [playdate.geometry.vector2D](https://sdk.play.date/2.6.0#C-geometry.vector2D) representation of the line segment.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.lineSegment.segmentVector)
              */
             segmentVector(): playdate.geometry.vector2D;
-
             /**
              * Returns a [playdate.geometry.point](https://sdk.play.date/2.6.0#C-geometry.point) that is the closest point to point _p_ that is on the line segment.
              *
@@ -3405,7 +3358,6 @@ namespace playdate {
             closestPointOnLineToPoint(
                 p: playdate.geometry.point
             ): playdate.geometry.point;
-
             /**
              * Returns true if there is an intersection between the caller and the line segment _ls_.
              *
@@ -3418,7 +3370,6 @@ namespace playdate {
             ):
                 | LuaMultiReturn<[false, undefined]>
                 | LuaMultiReturn<[true, playdate.geometry.point]>;
-
             /**
              * Returns the values (_intersects_, _intersectionPoints_).
              *
@@ -3431,7 +3382,6 @@ namespace playdate {
             intersectsPolygon(
                 poly: playdate.geometry.polygon
             ): LuaMultiReturn<[boolean, number]>;
-
             /**
              * Returns the values (_intersects_, _intersectionPoints_).
              *
@@ -3466,35 +3416,30 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.point.copy)
              */
             copy(): playdate.geometry.point;
-
             /**
              * Returns the values _x, y_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.point.unpack)
              */
             unpack(): LuaMultiReturn<[number, number]>;
-
             /**
              * Modifies the point, offsetting its values by _dx_, _dy_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.point.offset)
              */
             offset(dx: number, dy: number): void;
-
             /**
              * Returns a new point object, the given point offset by _dx_, _dy_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.point.offsetBy)
              */
             offsetBy(dx: number, dy: number): playdate.geometry.point;
-
             /**
              * Returns the square of the distance to point _p_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.point.squaredDistanceToPoint)
              */
             squaredDistanceToPoint(p: playdate.geometry.point): number;
-
             /**
              * Returns the distance to point _p_.
              *
@@ -3587,21 +3532,18 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.polygon.copy)
              */
             copy(): playdate.geometry.polygon;
-
             /**
              * `:close()` closes a polygon. If the polygon’s first and last point aren’t coincident, a line segment will be generated to connect them.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.polygon.close)
              */
             close(): void;
-
             /**
              * Returns true if the polygon is closed, false if not.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.polygon.isClosed)
              */
             isClosed(): boolean;
-
             /**
              * Returns a boolean value, true if the [point](https://sdk.play.date/2.6.0#C-geometry.point) _p_ or the point at _(x, y)_ is contained within the caller polygon.
              *
@@ -3625,56 +3567,48 @@ namespace playdate {
                 y: number,
                 fillRule?: PlaydatePolygonFill = PlaydatePolygonFill.EvenOdd
             ): boolean;
-
             /**
              * Returns multiple values (_x_, _y_, _width_, _height_) giving the axis-aligned bounding box for the polygon.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.polygon.getBounds)
              */
             getBounds(): LuaMultiReturn<[number, number, number, number]>;
-
             /**
              * Returns the axis-aligned bounding box for the given polygon as a [`playdate.geometry.rect`](https://sdk.play.date/2.6.0#C-geometry.rect) object.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.polygon.getBoundsRect)
              */
             getBoundsRect(): playdate.geometry.rect;
-
             /**
              * Returns the number of points in the polygon.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.polygon.count)
              */
             count(): number;
-
             /**
              * Returns the total length of all line segments in the polygon.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.polygon.length)
              */
             length(): number;
-
             /**
              * Sets the polygon’s _n_\-th point to (_x_, _y_).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.polygon.setPointAt)
              */
             setPointAt(n: number, x: number, y: number): void;
-
             /**
              * Returns the polygon’s _n_\-th point.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.polygon.getPointAt)
              */
             getPointAt(n: number): playdate.geometry.point;
-
             /**
              * Returns true if the given polygon intersects the polygon _p_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.polygon.intersects)
              */
             intersects(p: playdate.geometry.polygon): boolean;
-
             /**
              * Returns a [playdate.geometry.point](https://sdk.play.date/2.6.0#C-geometry.point) on one of the polygon’s line segments, `distance` pixels from the start of the polygon. If `extend` is true, the point is allowed to project past the polygon’s ends; otherwise, it is constrained to the polygon’s initial point if `distance` is negative, or the last point if `distance` is greater than the polygon’s length.
              *
@@ -3684,7 +3618,6 @@ namespace playdate {
                 distance: number,
                 extend?: boolean
             ): playdate.geometry.point;
-
             /**
              * Translates each point on the polygon by _dx_, _dy_ pixels.
              *
@@ -3760,84 +3693,72 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.copy)
              */
             copy(): playdate.geometry.rect;
-
             /**
              * Returns a new playdate.geometry.polygon version of the rect.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.toPolygon)
              */
             toPolygon(): playdate.geometry.polygon;
-
             /**
              * Returns _x_, _y_, _width_ and _height_ as individual values.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.unpack)
              */
             unpack(): LuaMultiReturn<[number, number, number, number]>;
-
             /**
              * Returns true if a rectangle has zero width or height.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.isEmpty)
              */
             isEmpty(): boolean;
-
             /**
              * Returns true if the _x_, _y_, _width_, and _height_ values of the caller and _r2_ are all equal.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.isEqual)
              */
             isEqual(r2: playdate.geometry.rect): boolean;
-
             /**
              * Returns true if _r2_ intersects the caller.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.intersects)
              */
             intersects(r2: playdate.geometry.rect): boolean;
-
             /**
              * Returns a rect representing the overlapping portion of the caller and _r2_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.intersection)
              */
             intersection(r2: playdate.geometry.rect): playdate.geometry.rect;
-
             /**
              * Returns the smallest possible rect that contains both the source rect and _r2_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.union)
              */
             union(r2: playdate.geometry.rect): playdate.geometry.rect;
-
             /**
              * Insets the rect by the given _dx_ and _dy_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.inset)
              */
             inset(dx: number, dy: number): void;
-
             /**
              * Returns a rect that is inset by the given _dx_ and _dy_, with the same center point.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.insetBy)
              */
             insetBy(dx: number, dy: number): playdate.geometry.rect;
-
             /**
              * Offsets the rect by the given _dx_ and _dy_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.offset)
              */
             offset(dx: number, dy: number): void;
-
             /**
              * Returns a rect with its origin point offset by _dx_, _dy_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.offsetBy)
              */
             offsetBy(dx: number, dy: number): playdate.geometry.rect;
-
             /**
              * Returns true if the [rect](https://sdk.play.date/2.6.0#C-geometry.rect) _r2_ is contained within the caller [rect](https://sdk.play.date/2.6.0#C-geometry.rect).
              *
@@ -3855,7 +3776,6 @@ namespace playdate {
                 width: number,
                 height: number
             ): boolean;
-
             /**
              * Returns true if the [point](https://sdk.play.date/2.6.0#C-geometry.point) _p_ is contained within the caller [rect](https://sdk.play.date/2.6.0#C-geometry.rect).
              *
@@ -3868,14 +3788,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.containsPoint-xy)
              */
             containsPoint(x: number, y: number): boolean;
-
             /**
              * Returns a [point](https://sdk.play.date/2.6.0#C-geometry.point) at the center of the caller.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.rect.centerPoint)
              */
             centerPoint(): playdate.geometry.point;
-
             /**
              * Flips the caller about the center of rect _r2_.
              *
@@ -3895,6 +3813,26 @@ namespace playdate {
                 r2: playdate.geometry.rect,
                 flip: PlaydateFlip
             ): void;
+            /** The x-coordinate of the rectangle's top-left corner. */
+            x: number;
+            /** The y-coordinate of the rectangle's top-left corner. */
+            y: number;
+            /** The width of the rectangle. */
+            width: number;
+            /** The height of the rectangle. */
+            height: number;
+            /** The y-coordinate of the rectangle's top edge. */
+            readonly top: number;
+            /** The y-coordinate of the rectangle's bottom edge. */
+            readonly bottom: number;
+            /** The x-coordinate of the rectangle's right edge. */
+            readonly right: number;
+            /** The x-coordinate of the rectangle's left edge. */
+            readonly left: number;
+            /** The coordinates of the top left corner. */
+            readonly origin: LuaMultiReturn<[number, number]>;
+            /** The width and height of the rectangle. */
+            readonly size: LuaMultiReturn<[number, number]>;
         }
 
         namespace size {
@@ -3920,7 +3858,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.size.copy)
              */
             copy(): playdate.geometry.size;
-
             /**
              * Returns the values _width, height_.
              *
@@ -3964,77 +3901,66 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.copy)
              */
             copy(): playdate.geometry.vector2D;
-
             /**
              * Returns the values _dx, dy_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.unpack)
              */
             unpack(): LuaMultiReturn<[number, number]>;
-
             /**
              * Modifies the caller by adding vector _v_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.addVector)
              */
             addVector(v: playdate.geometry.vector2D): void;
-
             /**
              * Modifies the caller, scaling it by amount _s_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.scale)
              */
             scale(s: number): void;
-
             /**
              * Returns the given vector scaled by _s_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.scaledBy)
              */
             scaledBy(s: number): playdate.geometry.vector2D;
-
             /**
              * Modifies the caller by normalizing it so that its length is 1. If the vector is (0,0), the vector is unchanged.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.normalize)
              */
             normalize(): void;
-
             /**
              * Returns a new vector by normalizing the given vector.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.normalized)
              */
             normalized(): playdate.geometry.vector2D;
-
             /**
              * Returns the dot product of the caller and the vector _v_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.dotProduct)
              */
             dotProduct(v: playdate.geometry.vector2D): number;
-
             /**
              * Returns the magnitude of the caller.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.magnitude)
              */
             magnitude(): number;
-
             /**
              * Returns the square of the magnitude of the caller.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.magnitudeSquared)
              */
             magnitudeSquared(): number;
-
             /**
              * Modifies the caller by projecting it along the vector _v_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.projectAlong)
              */
             projectAlong(v: playdate.geometry.vector2D): void;
-
             /**
              * Returns a new vector created by projecting the given vector along the vector _v_.
              *
@@ -4043,21 +3969,18 @@ namespace playdate {
             projectedAlong(
                 v: playdate.geometry.vector2D
             ): playdate.geometry.vector2D;
-
             /**
              * Returns the angle between the caller and the vector _v_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.angleBetween)
              */
             angleBetween(v: playdate.geometry.vector2D): number;
-
             /**
              * Returns a vector that is the left normal of the caller.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.leftNormal)
              */
             leftNormal(): playdate.geometry.vector2D;
-
             /**
              * Returns a vector that is the right normal of the caller.
              *
@@ -5842,21 +5765,18 @@ namespace playdate {
             ):
                 | LuaMultiReturn<[true, undefined]>
                 | LuaMultiReturn<[false, string]>;
-
             /**
              * Returns a new `playdate.graphics.image` that is an exact copy of the original.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.copy)
              */
             copy(): playdate.graphics.image;
-
             /**
              * Returns the pair (_width_, _height_)
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.getSize)
              */
             getSize(): LuaMultiReturn<[number, number]>;
-
             /**
              * Draws the image with its upper-left corner at location (_x_, _y_) or [playdate.geometry.point](https://sdk.play.date/2.6.0#C-geometry.point) _p_.
              *
@@ -5908,7 +5828,6 @@ namespace playdate {
                 flip?: PlaydateFlip,
                 sourceRect?: playdate.geometry.rect
             ): void;
-
             /**
              * Draws the image at location _(x, y)_ centered at the point within the image represented by _(ax, ay)_ in unit coordinate space. For example, values of _ax = 0.0_, _ay = 0.0_ represent the image’s top-left corner, _ax = 1.0_, _ay = 1.0_ represent the bottom-right, and _ax = 0.5_, _ay = 0.5_ represent the center of the image.
              *
@@ -5927,7 +5846,6 @@ namespace playdate {
                 ay: number,
                 flip?: PlaydateFlip
             ): void;
-
             /**
              * Draws the image centered at location _(x, y)_.
              *
@@ -5940,7 +5858,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.drawCentered)
              */
             drawCentered(x: number, y: number, flip?: PlaydateFlip): void;
-
             /**
              * Draws the image ignoring the currently-set [`drawOffset`](https://sdk.play.date/2.6.0#f-graphics.setDrawOffset).
              *
@@ -5956,14 +5873,12 @@ namespace playdate {
                 p: playdate.geometry.point,
                 flip?: PlaydateFlip
             ): void;
-
             /**
              * Erases the contents of the image, setting all pixels to white if _color_ is _playdate.graphics.kColorWhite_, black if it’s _playdate.graphics.kColorBlack_, or clear if it’s _playdate.graphics.kColorClear_. If the image is cleared to black or white, the mask (if it exists) is set to fully opaque. If the image is cleared to kColorClear and the image doesn’t have a mask, a mask is added to it.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.clear)
              */
             clear(color: PlaydateColor): void;
-
             /**
              * Returns _playdate.graphics.kColorWhite_ if the image is white at (_x_, _y_), _playdate.graphics.kColorBlack_ if it’s black, or _playdate.graphics.kColorClear_ if it’s transparent.
              *
@@ -5977,7 +5892,6 @@ namespace playdate {
                 x: number,
                 y: number
             ): Omit<PlaydateColor, PlaydateColor.XOR>;
-
             /**
              * Draws this image centered at point _(x,y)_ at (clockwise) _angle_ degrees, scaled by optional argument _scale_, with an optional separate scaling for the y axis.
              *
@@ -5990,7 +5904,6 @@ namespace playdate {
                 scale?: number,
                 yscale?: number
             ): void;
-
             /**
              * Returns a new image containing this image rotated by (clockwise) _angle_ degrees, scaled by optional argument _scale_, with an optional separate scaling for the y axis.
              *
@@ -6005,7 +5918,6 @@ namespace playdate {
                 scale?: number,
                 yscale?: number
             ): playdate.graphics.image;
-
             /**
              * Draws this image with its upper-left corner at point _(x,y)_, scaled by amount _scale_, with an optional separate scaling for the y axis.
              *
@@ -6017,7 +5929,6 @@ namespace playdate {
                 scale: number,
                 yscale?: number
             ): void;
-
             /**
              * Returns a new image containing this image scaled by amount _scale_, with an optional separate scaling for the y axis.
              *
@@ -6027,7 +5938,6 @@ namespace playdate {
                 scale: number,
                 yscale?: number
             ): playdate.graphics.image;
-
             /**
              * Draws this image centered at point _(x,y)_ with the [transform](https://sdk.play.date/2.6.0#C-geometry.affineTransform) _xform_ applied.
              *
@@ -6038,7 +5948,6 @@ namespace playdate {
                 x: number,
                 y: number
             ): void;
-
             /**
              * Returns a new image containing the image with the [transform](https://sdk.play.date/2.6.0#C-geometry.affineTransform) _xform_ applied.
              *
@@ -6047,7 +5956,6 @@ namespace playdate {
             transformedImage(
                 xform: playdate.geometry.affineTransformTransform
             ): playdate.graphics.image;
-
             /**
              * Draws the image as if it’s mapped onto a tilted plane, transforming the target coordinates to image coordinates using an affine transform:
              *
@@ -6088,14 +5996,12 @@ namespace playdate {
                 tiltAngle: number,
                 tile: number
             ): void;
-
             /**
              * Sets the image’s mask to a copy of _maskImage_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.setMaskImage)
              */
             setMaskImage(maskImage: playdate.graphics.image): void;
-
             /**
              * If the image has a mask, returns the mask as a separate image. Otherwise, returns `nil`.
              *
@@ -6106,35 +6012,30 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.getMaskImage)
              */
             getMaskImage(): playdate.graphics.image;
-
             /**
              * Adds a mask to the image if it doesn’t already have one. If _opaque_ is `true` or not specified, the image mask applied will be completely white, so the image will be entirely opaque. If _opaque_ is `false`, the mask will be completely black, so the image will be entirely transparent.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.addMask)
              */
             addMask(opaque?: boolean): void;
-
             /**
              * Removes the mask from the image if it has one.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.removeMask)
              */
             removeMask(): void;
-
             /**
              * Returns _true_ if the image has a mask.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.hasMask)
              */
             hasMask(): boolean;
-
             /**
              * Erases the contents of the image’s mask, so that the image is entirely opaque if _opaque_ is 1, transparent otherwise. This function has no effect if the image doesn’t have a mask.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.clearMask)
              */
             clearMask(opaque?: number): 1 | 0;
-
             /**
              * Tiles the image into the given rectangle, using either listed dimensions or a [`playdate.geometry.rect`](https://sdk.play.date/2.6.0#C-geometry.rect) object, and the optional flip style.
              *
@@ -6153,7 +6054,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.drawTiled)
              */
             drawTiled(rect: playdate.geometry.rect, flip?: PlaydateFlip): void;
-
             /**
              * Draws a blurred version of the image at (_x_, _y_).
              *
@@ -6179,7 +6079,6 @@ namespace playdate {
                 xPhase?: number,
                 yPhase?: number
             ): void;
-
             /**
              * Returns a blurred copy of the caller.
              *
@@ -6226,7 +6125,6 @@ namespace playdate {
                 xPhase?: number,
                 yPhase?: number
             ): playdate.graphics.image;
-
             /**
              * Draws a partially transparent image with its upper-left corner at location (_x_, _y_)
              *
@@ -6242,7 +6140,6 @@ namespace playdate {
                 alpha: number,
                 ditherType: number
             ): void;
-
             /**
              * Returns a faded version of the caller.
              *
@@ -6256,21 +6153,18 @@ namespace playdate {
                 alpha: number,
                 ditherType: number
             ): playdate.graphics.image;
-
             /**
              * If _flag_ is true, the image will be drawn with its colors inverted. If the image is being used as a stencil, its behavior is reversed: pixels are drawn where the stencil is black, nothing is drawn where the stencil is white.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.setInverted)
              */
             setInverted(flag: boolean): void;
-
             /**
              * Returns a color-inverted copy of the caller.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.invertedImage)
              */
             invertedImage(): playdate.graphics.image;
-
             /**
              * Returns an image that is a blend between the caller and _image_.
              *
@@ -6287,7 +6181,6 @@ namespace playdate {
                 alpha: number,
                 ditherType: PlaydateDitherType
             ): playdate.graphics.image;
-
             /**
              * Returns an image created by applying a VCR pause effect to the calling image.
              *
@@ -6322,14 +6215,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.nineSlice.getSize)
              */
             getSize(): LuaMultiReturn<[number, number]>;
-
             /**
              * Returns the minimum size of the 9 slice image as a pair _(width, height)_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.nineSlice.getMinSize)
              */
             getMinSize(): LuaMultiReturn<[number, number]>;
-
             /**
              * Draws the 9 slice image at the desired coordinates by stretching the defined region to achieve the width and height inputs.
              *
@@ -6395,21 +6286,18 @@ namespace playdate {
                  * [Read more](https://sdk.play.date/2.6.0#m-graphics.animation.loop.draw)
                  */
                 draw(x: number, y: number, flip?: PlaydateFlip): void;
-
                 /**
                  * Returns a [`playdate.graphics.image`](https://sdk.play.date/2.6.0#C-graphics.image) from the caller’s _imageTable_ if it exists. The image returned will be at the imageTable’s index that matches the caller’s _frame_.
                  *
                  * [Read more](https://sdk.play.date/2.6.0#m-graphics.animation.loop.image)
                  */
                 image(): playdate.graphics.image;
-
                 /**
                  * Returns false if the loop has passed its last frame and does not loop.
                  *
                  * [Read more](https://sdk.play.date/2.6.0#m-graphics.animation.loop.isValid)
                  */
                 isValid(): boolean;
-
                 /**
                  * Sets the [`playdate.graphics.imagetable`](https://sdk.play.date/2.6.0#C-graphics.imagetable) to be used for this animation loop, and sets the loop’s endFrame property to #imageTable.
                  *
@@ -6485,7 +6373,6 @@ namespace playdate {
                  * [Read more](https://sdk.play.date/2.6.0#m-graphics.animation.blinker.update)
                  */
                 update(): void;
-
                 /**
                  * Starts a blinker if it’s not running. Pass values for any property values you wish to modify.
                  *
@@ -6498,21 +6385,18 @@ namespace playdate {
                     cycles: number = 6,
                     _default: boolean = true
                 ): void;
-
                 /**
                  * Starts a blinker if it’s not running and sets its `loop` property to true. Equivalent to calling `playdate.graphics.animation.blinker:start(nil, nil, true)`
                  *
                  * [Read more](https://sdk.play.date/2.6.0#m-graphics.animation.blinker.startLoop)
                  */
                 startLoop(): void;
-
                 /**
                  * Stops a blinker if it’s running, returning the blinker’s `on` properly to the default value.
                  *
                  * [Read more](https://sdk.play.date/2.6.0#m-graphics.animation.blinker.stop)
                  */
                 stop(): void;
-
                 /**
                  * Flags the caller for removal from the global list of blinkers
                  *
@@ -6721,35 +6605,30 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.animator.currentValue)
              */
             currentValue(): TSubject;
-
             /**
              * Returns the value of the animation at the given number of milliseconds after the start time. The value will be either a number or a [playdate.geometry.point](https://sdk.play.date/2.6.0#C-geometry.point), depending on the type of animator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.animator.valueAtTime)
              */
             valueAtTime(time: number): TSubject;
-
             /**
              * Returns the current progress of the animation as a value from 0 to 1.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.animator.progress)
              */
             progress(): number;
-
             /**
              * Resets the animation, setting its start time to the current time, and changes the animation’s duration if a new duration is given.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.animator.reset)
              */
             reset(duration?: number): void;
-
             /**
              * Returns true if the animation is completed. Only returns true if this function or [`currentValue()`](https://sdk.play.date/2.6.0#m-graphics.animator.currentValue) has been called since the animation ended in order to allow animations to fully finish before true is returned.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.animator.ended)
              */
             ended(): void;
-
             /**
              * For [easing functions](https://sdk.play.date/2.6.0#M-easingFunctions) that take additional amplitude (such as _inOutElastic_), set these values on animator instances to the desired values.
              *
@@ -6825,14 +6704,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.imagetable.getImage-xy)
              */
             getImage(x: number, y: number): playdate.graphics.image | null;
-
             /**
              * Sets the image at slot _n_ in the image table by creating a reference to the data in _image_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.imagetable.setImage)
              */
             setImage(n: number, image: playdate.graphics.image): void;
-
             /**
              * Loads a new image table from the data at _path_ into an already-existing image table, without allocating additional memory. The image table at _path_ must contain images of the same dimensions as the previous.
              *
@@ -6845,21 +6722,18 @@ namespace playdate {
             ):
                 | LuaMultiReturn<[true, undefined]>
                 | LuaMultiReturn<[false, string]>;
-
             /**
              * Returns the number of images in the table. See also [#imagetable](https://sdk.play.date/2.6.0#m-graphics.imagetable.__len).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.imagetable.getLength)
              */
             getLength(): number;
-
             /**
              * Returns the pair (_cellsWide_, _cellsHigh_).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.imagetable.getSize)
              */
             getSize(): LuaMultiReturn<[number, number]>;
-
             /**
              * Equivalent to `graphics.imagetable:getImage(n):draw(x,y,[flip])`.
              *
@@ -6893,14 +6767,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.tilemap.setImageTable)
              */
             setImageTable(table: playdate.graphics.imagetable): void;
-
             /**
              * Sets the tilemap’s width to _width_, then populates the tilemap with _data_, which should be a flat, one-dimensional array-like table containing index values to the [tilemap’s imagetable](https://sdk.play.date/2.6.0#m-graphics.tilemap.setImageTable).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.tilemap.setTiles)
              */
             setTiles(data: number[], width: number): void;
-
             /**
              * Returns _data_, _width_
              * _data_ is a flat, one-dimensional array-like table containing index values to the [tilemap’s imagetable](https://sdk.play.date/2.6.0#m-graphics.tilemap.setImageTable).
@@ -6909,7 +6781,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.tilemap.getTiles)
              */
             getTiles(): LuaMultiReturn<[number[], number]>;
-
             /**
              * Draws the tile map at screen coordinate (_x_, _y_).
              *
@@ -6922,7 +6793,6 @@ namespace playdate {
                 y: number,
                 sourceRect?: playdate.geometry.rect
             ): void;
-
             /**
              * Draws the tilemap ignoring the currently-set [`drawOffset`](https://sdk.play.date/2.6.0#f-graphics.setDrawOffset).
              *
@@ -6933,7 +6803,6 @@ namespace playdate {
                 y: number,
                 sourceRect?: playdate.geometry.rect
             ): void;
-
             /**
              * Sets the index of the tile at tilemap position (_x_, _y_). _index_ is the (1-based) index of the image in the tilemap’s [playdate.graphics.imagetable](https://sdk.play.date/2.6.0#C-graphics.imagetable).
              *
@@ -6944,7 +6813,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.tilemap.setTileAtPosition)
              */
             setTileAtPosition(x: number, y: number, index: number): void;
-
             /**
              * Returns the image index of the tile at the given _x_ and _y_ coordinate. If _x_ or _y_ is out of bounds, returns nil.
              *
@@ -6955,35 +6823,30 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.tilemap.getTileAtPosition)
              */
             getTileAtPosition(x: number, y: number): number | null;
-
             /**
              * Sets the tilemap’s width and height, in number of tiles.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.tilemap.setSize)
              */
             setSize(width: number, height: number): void;
-
             /**
              * Returns the size of the tile map, in tiles, as a pair, (_width_, _height_).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.tilemap.getSize)
              */
             getSize(): LuaMultiReturn<[number, number]>;
-
             /**
              * Returns the size of the tilemap in pixels; that is, the size of the image multiplied by the number of rows and columns in the map. Returns multiple values (_width_, _height_).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.tilemap.getPixelSize)
              */
             getPixelSize(): LuaMultiReturn<[number, number]>;
-
             /**
              * Returns multiple values (_width_, _height_), the pixel width and height of an individual tile.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.tilemap.getTileSize)
              */
             getTileSize(): LuaMultiReturn<[number, number]>;
-
             /**
              * This function returns an array of [playdate.geometry.rect](https://sdk.play.date/2.6.0#C-geometry.rect) objects that describe the areas of the tilemap that should trigger collisions. You can also think of them as the "impassable" rects of your tilemap. These rects will be in tilemap coordinates, not pixel coordinates.
              *
@@ -7472,182 +7335,156 @@ namespace playdate {
                 scale?: number,
                 yscale?: number
             ): void;
-
             /**
              * Returns the playdate.graphics.image object that was set with setImage().
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getImage)
              */
             getImage(): playdate.graphics.image;
-
             /**
              * Adds the given sprite to the display list, so that it is drawn in the current scene.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.add)
              */
             add(): void;
-
             /**
              * Removes the given sprite from the display list.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.remove)
              */
             remove(): void;
-
             /**
              * Moves the sprite and resets the bounds based on the image dimensions and center.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.moveTo)
              */
             moveTo(x: number, y: number): void;
-
             /**
              * Returns the sprite’s current x, y position as multiple values (_x_, _y_).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getPosition)
              */
             getPosition(): LuaMultiReturn<[number, number]>;
-
             /**
              * Moves the sprite by _x_, _y_ pixels relative to its current position.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.moveBy)
              */
             moveBy(x: number, y: number): void;
-
             /**
              * Sets the Z-index of the given sprite. Sprites with higher Z-indexes are drawn on top of those with lower Z-indexes. Valid values for _z_ are in the range (-32768, 32767).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setZIndex)
              */
             setZIndex(z: number): void;
-
             /**
              * Returns the Z-index of the given sprite.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getZIndex)
              */
             getZIndex(): number;
-
             /**
              * Sprites that aren’t visible don’t get their [draw()](https://sdk.play.date/2.6.0#c-graphics.sprite.draw) method called.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setVisible)
              */
             setVisible(flag: boolean): void;
-
             /**
              * Returns a boolean value, true if the sprite is visible.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.isVisible)
              */
             isVisible(): boolean;
-
             /**
              * Sets the sprite’s drawing center as a fraction (ranging from 0.0 to 1.0) of the height and width. Default is 0.5, 0.5 (the center of the sprite). This means that when you call [:moveTo(x, y)](https://sdk.play.date/2.6.0#m-graphics.sprite.moveTo), the center of your sprite will be positioned at _x_, _y_. If you want x and y to represent the upper left corner of your sprite, specify the center as 0, 0.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setCenter)
              */
             setCenter(x: number, y: number): void;
-
             /**
              * Returns multiple values (`x, y`) representing the sprite’s drawing center as a fraction (ranging from 0.0 to 1.0) of the height and width.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getCenter)
              */
             getCenter(): LuaMultiReturn<[number, number]>;
-
             /**
              * Returns a [playdate.geometry.point](https://sdk.play.date/2.6.0#C-geometry.point) representing the sprite’s drawing center as a fraction (ranging from 0.0 to 1.0) of the height and width.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getCenterPoint)
              */
             getCenterPoint(): playdate.geometry.point;
-
             /**
              * Sets the sprite’s size. The method has no effect if the sprite has an image set.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setSize)
              */
             setSize(width: number, height: number): void;
-
             /**
              * Returns multiple values _(width, height)_, the current size of the sprite.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getSize)
              */
             getSize(): LuaMultiReturn<[number, number]>;
-
             /**
              * Sets the scaling factor for the sprite, with an optional separate scaling for the y axis. If setImage() is called after this, the scale factor is applied to the new image. Only affects sprites that have an image set.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setScale)
              */
             setScale(scale: number, yScale?: any): void;
-
             /**
              * Returns multiple values _(xScale, yScale)_, the current scaling of the sprite.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getScale)
              */
             getScale(): LuaMultiReturn<[number, number]>;
-
             /**
              * Sets the rotation for the sprite, in degrees clockwise, with an optional scaling factor. If setImage() is called after this, the rotation and scale is applied to the new image. Only affects sprites that have an image set. This function should be used with discretion, as it’s likely to be slow on the hardware. Consider pre-rendering rotated images for your sprites instead.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setRotation)
              */
             setRotation(angle: number, scale?: number, yScale?: any): void;
-
             /**
              * Returns the current rotation of the sprite.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getRotation)
              */
             getRotation(): number;
-
             /**
              * Returns a copy of the caller.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.copy)
              */
             copy(): playdate.graphics.sprite;
-
             /**
              * The sprite’s _updatesEnabled_ flag (defaults to true) determines whether a sprite’s [update()](https://sdk.play.date/2.6.0#c-graphics.sprite.update) method will be called. By default, a sprite’s `update` method does nothing; however, you may choose to have your sprite do something on every frame by implementing an update method on your sprite instance, or implementing it in your sprite subclass.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setUpdatesEnabled)
              */
             setUpdatesEnabled(flag: boolean): void;
-
             /**
              * Returns a boolean value, true if updates are enabled on the sprite.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.updatesEnabled)
              */
             updatesEnabled(): boolean;
-
             /**
              * Sets the sprite’s tag, an integer value in the range of 0 to 255, useful for identifying sprites later, particularly when working with collisions.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setTag)
              */
             setTag(tag: number): void;
-
             /**
              * Returns the sprite’s tag, an integer value.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getTag)
              */
             getTag(): number;
-
             /**
              * Sets the mode for drawing the bitmap. See [playdate.graphics.setImageDrawMode(mode)](https://sdk.play.date/2.6.0#f-graphics.setImageDrawMode) for valid modes.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setImageDrawMode)
              */
             setImageDrawMode(mode: PlaydateDrawMode): void;
-
             /**
              * Flips the bitmap. See [playdate.graphics.image:draw()](https://sdk.play.date/2.6.0#m-graphics.imgDraw) for valid `flip` values.
              *
@@ -7658,14 +7495,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setImageFlip)
              */
             setImageFlip(flip: PlaydateFlip, flipCollideRect?: boolean): void;
-
             /**
              * Returns one of the values listed at [playdate.graphics.image:draw()](https://sdk.play.date/2.6.0#m-graphics.imgDraw).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getImageFlip)
              */
             getImageFlip(): PlaydateFlip;
-
             /**
              * When set to _true_, the sprite will draw in screen coordinates, ignoring the currently-set [_drawOffset_](https://sdk.play.date/2.6.0#f-graphics.setDrawOffset).
              *
@@ -7674,7 +7509,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setIgnoresDrawOffset)
              */
             setIgnoresDrawOffset(flag: boolean): void;
-
             /**
              * `setBounds()` positions and sizes the sprite, used for drawing and for calculating dirty rects. _upper-left-x_ and _upper-left-y_ are relative to the overall display coordinate system. (If an image is attached to the sprite, the size will be defined by that image, and not by the _width_ and _height_ parameters passed in to `setBounds()`.)
              *
@@ -7696,21 +7530,18 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setBounds-rect)
              */
             setBounds(rect: playdate.geometry.rect): void;
-
             /**
              * `getBounds()` returns multiple values (_x_, _y_, _width_, _height_).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getBounds)
              */
             getBounds(): LuaMultiReturn<[number, number, number, number]>;
-
             /**
              * `getBoundsRect()` returns the sprite bounds as a [`playdate.geometry.rect`](https://sdk.play.date/2.6.0#C-geometry.rect) object.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getBoundsRect)
              */
             getBoundsRect(): playdate.geometry.rect;
-
             /**
              * Marking a sprite opaque tells the sprite system that it doesn’t need to draw anything underneath the sprite, since it will be overdrawn anyway. If you set an image without a mask/alpha channel on the sprite, it automatically sets the opaque flag.
              *
@@ -7719,21 +7550,18 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setOpaque)
              */
             setOpaque(flag: boolean): void;
-
             /**
              * Returns the sprite’s current opaque flag.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.isOpaque)
              */
             isOpaque(): boolean;
-
             /**
              * Sets the sprite’s contents to the given [tilemap](https://sdk.play.date/2.6.0#C-graphics.tilemap). Useful if you want to automate drawing of your tilemap, especially if interleaved by depth with other sprites being drawn.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setTilemap)
              */
             setTilemap(tilemap: playdate.graphics.tilemap): void;
-
             /**
              * Important
              *
@@ -7758,14 +7586,12 @@ namespace playdate {
                 moveWithCollisions?: boolean,
                 removeOnCollision?: boolean
             ): void;
-
             /**
              * Removes a [playdate.graphics.animator](https://sdk.play.date/2.6.0#C-graphics.animator) assigned to the sprite
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.removeAnimator)
              */
             removeAnimator(): void;
-
             /**
              * Sets the clipping rectangle for the sprite, using separate parameters or a [`playdate.geometry.rect`](https://sdk.play.date/2.6.0#C-geometry.rect) object. Only areas within the rect will be drawn.
              *
@@ -7783,14 +7609,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setClipRect)
              */
             setClipRect(rect: playdate.geometry.rect): void;
-
             /**
              * Clears the sprite’s current clipping rectangle.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.clearClipRect)
              */
             clearClipRect(): void;
-
             /**
              * Specifies a stencil image to be set on the frame buffer before the sprite is drawn. If _tile_ is set, the the stencil will be tiled; in this case, the image width must be a multiple of 32 pixels.
              *
@@ -7800,7 +7624,6 @@ namespace playdate {
                 stencil: playdate.graphics.image,
                 tile?: boolean
             ): void;
-
             /**
              * Sets the sprite’s stencil to a dither pattern specified by _level_ and optional _ditherType_ (defaults to `playdate.graphics.image.kDitherTypeBayer8x8`).
              *
@@ -7810,28 +7633,24 @@ namespace playdate {
                 level: number,
                 ditherType?: PlaydateDitherType = PlaydateDitherType.Bayer8x8
             ): void;
-
             /**
              * Clears the sprite’s stencil.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.clearStencil)
              */
             clearStencil(): void;
-
             /**
              * Marks the rect defined by the sprite’s current bounds as needing a redraw.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.markDirty)
              */
             markDirty(): void;
-
             /**
              * By default, sprites are automatically marked for redraw when their image is changed via [playdate.graphics.sprite:setImage()](https://sdk.play.date/2.6.0#m-graphics.sprite.setImage). If disabled by calling this function with a _false_ argument, [playdate.graphics.sprite.addDirtyRect()](https://sdk.play.date/2.6.0#m-graphics.sprite.addDirtyRect) can be used to mark the (potentially smaller) area of the screen that needs to be redrawn.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setRedrawsOnImageChange)
              */
             setRedrawsOnImageChange(flag: boolean): void;
-
             /**
              * If the sprite doesn’t have an image, the sprite’s draw function is called as needed to update the display. The rect passed in is the current dirty rect being updated by the display list. The rect coordinates passed in are relative to the sprite itself (i.e. x = 0, y = 0 refers to the top left corner of the sprite). Note that the callback is only called when the sprite is on screen and has a size specified via [sprite:setSize()](https://sdk.play.date/2.6.0#m-graphics.sprite.setSize) or [sprite:setBounds()](https://sdk.play.date/2.6.0#m-graphics.sprite.setBounds).
              *
@@ -7873,7 +7692,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#c-graphics.sprite.draw)
              */
             draw(x: number, y: number, width: number, height: number): void;
-
             /**
              * Called by [playdate.graphics.sprite.update()](https://sdk.play.date/2.6.0#f-graphics.sprite.update) (note the syntactic difference between the period and the colon) before sprites are drawn. Implementing `:update()` gives you the opportunity to perform some code upon every frame.
              *
@@ -7941,7 +7759,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#c-graphics.sprite.update)
              */
             update(): void;
-
             /**
              * `setCollideRect()` marks the area of the sprite, relative to its own internal coordinate system, to be checked for collisions with other sprites' collide rects. Note that the coordinate space is relative to the top-left corner of the bounds, regardless of where the sprite’s [center/anchor](https://sdk.play.date/2.6.0#m-graphics.sprite.setCenter) is located.
              *
@@ -7983,7 +7800,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setCollideRect)
              */
             setCollideRect(rect: playdate.geometry.rect): void;
-
             /**
              * Returns the sprite’s collide rect set with [`setCollideRect()`](https://sdk.play.date/2.6.0#m-graphics.sprite.setCollideRect). Return value is a [`playdate.geometry.rect`](https://sdk.play.date/2.6.0#C-geometry.rect).
              *
@@ -7994,7 +7810,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getCollideRect)
              */
             getCollideRect(): playdate.geometry.rect;
-
             /**
              * Returns the sprite’s collide rect as multiple values, (_x_, _y_, _width_, _height_).
              *
@@ -8007,21 +7822,18 @@ namespace playdate {
             getCollideBounds(): LuaMultiReturn<
                 [number, number, number, number]
             >;
-
             /**
              * Clears the sprite’s collide rect set with [`setCollideRect()`](https://sdk.play.date/2.6.0#m-graphics.sprite.setCollideRect).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.clearCollideRect)
              */
             clearCollideRect(): void;
-
             /**
              * Returns an array of sprites that have collide rects that are currently overlapping the calling sprite’s collide rect, taking the sprites' groups and collides-with masks into consideration.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.overlappingSprites)
              */
             overlappingSprites(): playdate.graphics.sprite[];
-
             /**
              * Returns a boolean value set to true if a pixel-by-pixel comparison of the sprite images shows that non-transparent pixels are overlapping, based on the current bounds of the sprites.
              *
@@ -8030,21 +7842,18 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.alphaCollision)
              */
             alphaCollision(anotherSprite: playdate.graphics.sprite): boolean;
-
             /**
              * The sprite’s _collisionsEnabled_ flag (defaults to true) can be set to `false` in order to temporarily keep a sprite from colliding with any other sprite.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setCollisionsEnabled)
              */
             setCollisionsEnabled(flag: boolean): void;
-
             /**
              * Returns the sprite’s _collisionsEnabled_ flag.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.collisionsEnabled)
              */
             collisionsEnabled(): boolean;
-
             /**
              * Adds the sprite to one or more collision groups. A group is a collection of sprites that exhibit similar collision behavior. (An example: in Atari’s _Asteroids_, asteroid sprites would all be added to the same group, while the player’s spaceship might be in a different group.) Use [`setCollidesWithGroups()`](https://sdk.play.date/2.6.0#m-graphics.sprite.setCollidesWithGroups) to define which groups a sprite should collide with.
              *
@@ -8055,7 +7864,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setGroups)
              */
             setGroups(groups: number[]): void;
-
             /**
              * Pass in a group number or an array of group numbers to specify which groups this sprite can collide with. Groups are numbered 1 through 32. Use [`setGroups()`](https://sdk.play.date/2.6.0#m-graphics.sprite.setGroups) to specify which groups a sprite belongs to.
              *
@@ -8064,7 +7872,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setCollidesWithGroups)
              */
             setCollidesWithGroups(groups: number | number[]): void;
-
             /**
              * `setGroupMask()` sets the sprite’s group bitmask, which is 32 bits. In conjunction with the [`setCollidesWithGroupsMask()`](https://sdk.play.date/2.6.0#m-graphics.sprite.setCollidesWithGroupsMask) method, this controls which sprites can collide with each other.
              *
@@ -8073,14 +7880,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setGroupMask)
              */
             setGroupMask(mask: number): void;
-
             /**
              * `getGroupMask()` returns the integer value of the sprite’s group bitmask.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getGroupMask)
              */
             getGroupMask(): number;
-
             /**
              * Sets the sprite’s collides-with-groups bitmask, which is 32 bits. The mask specifies which other sprite groups this sprite can collide with. Sprites only collide if the moving sprite’s _collidesWithGroupsMask_ matches at least one group of a potential collision sprite (i.e. a bitwise AND (&) between the moving sprite’s _collidesWithGroupsMask_ and a potential collision sprite’s _groupMask_ != zero) or if the moving sprite’s _collidesWithGroupsMask_ and the other sprite’s _groupMask_ are both set to 0x00000000 (the default values).
              *
@@ -8089,28 +7894,24 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.setCollidesWithGroupsMask)
              */
             setCollidesWithGroupsMask(mask: number): void;
-
             /**
              * Returns the integer value of the sprite’s collision bitmask.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.getCollidesWithGroupsMask)
              */
             getCollidesWithGroupsMask(): number;
-
             /**
              * Resets the sprite’s group mask to `0x00000000`.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.resetGroupMask)
              */
             resetGroupMask(): void;
-
             /**
              * Resets the sprite’s collides-with-groups mask to `0x00000000`.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.resetCollidesWithGroupsMask)
              */
             resetCollidesWithGroupsMask(): void;
-
             /**
              * Moves the sprite towards _goalX_, _goalY_ or _goalPoint_ taking collisions into account, which means the sprite’s final position may not be the same as _goalX_, _goalY_ or _goalPoint_.
              *
@@ -8410,7 +8211,6 @@ namespace playdate {
             moveWithCollisions(
                 goalPoint: playdate.geometry.point
             ): LuaMultiReturn<[number, number, PlaydateCollision[], number]>;
-
             /**
              * Returns the same values as [`moveWithCollisions()`](https://sdk.play.date/2.6.0#m-graphics.sprite.moveWithCollisions) but does not actually move the sprite.
              *
@@ -8428,7 +8228,6 @@ namespace playdate {
             checkCollisions(
                 point: playdate.geometry.point
             ): LuaMultiReturn<[number, number, PlaydateCollision[], number]>;
-
             /**
              * A callback that can be defined on a sprite to control the type of collision response that should happen when a collision with _other_ occurs. This callback should return one of the following four values:
              *
@@ -8582,7 +8381,6 @@ namespace playdate {
                 wrapMode?: PlaydateWrapMode,
                 alignment?: PlaydateTextAlignment
             ): void;
-
             /**
              * Important
              *
@@ -8599,21 +8397,18 @@ namespace playdate {
                 alignment: PlaydateTextAlignment,
                 leadingAdjustment?: number
             ): void;
-
             /**
              * Returns the pixel height of this font.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.font.getHeight)
              */
             getHeight(): number;
-
             /**
              * Returns the pixel width of the text when rendered with this font.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.font.getTextWidth)
              */
             getTextWidth(text: string): number;
-
             /**
              * Sets the tracking of this font (spacing between letters), in pixels.
              *
@@ -8622,7 +8417,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.font.setTracking)
              */
             setTracking(pixels: number): void;
-
             /**
              * Returns the tracking of this font (spacing between letters), in pixels.
              *
@@ -8631,7 +8425,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.font.getTracking)
              */
             getTracking(): number;
-
             /**
              * Sets the leading (spacing between lines) of this font, in pixels.
              *
@@ -8640,14 +8433,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.font.setLeading)
              */
             setLeading(pixels: number): void;
-
             /**
              * Returns the leading (spacing between lines) of this font, in pixels.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.font.getLeading)
              */
             getLeading(): number;
-
             /**
              * Returns the [`playdate.graphics.image`](https://sdk.play.date/2.6.0#C-graphics.image) containing the requested glyph. _character_ can either be a string or a unicode codepoint number.
              *
@@ -8676,42 +8467,36 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.video.getSize)
              */
             getSize(): LuaMultiReturn<[number, number]>;
-
             /**
              * Returns the number of frames in the video.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.video.getFrameCount)
              */
             getFrameCount(): number;
-
             /**
              * Returns the number of frames per second of the video source. This number is simply for record-keeping, it is not used internally—​the game code is responsible for figuring out which frame to show when.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.video.getFrameRate)
              */
             getFrameRate(): number;
-
             /**
              * Sets the given image to the video render context. Future `video:renderFrame()` calls will draw into this image.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.video.setContext)
              */
             setContext(image: playdate.graphics.image): void;
-
             /**
              * Returns the image into which the video will be rendered, creating it if needed.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.video.getContext)
              */
             getContext(): playdate.graphics.image;
-
             /**
              * Sets the display framebuffer as the video’s render context.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.video.useScreenContext)
              */
             useScreenContext(): void;
-
             /**
              * Draws the given frame into the video’s render context.
              *
@@ -8923,7 +8708,6 @@ namespace playdate {
                 weights: number[],
                 addReciprocalConnections?: boolean
             ): void;
-
             /**
              * Creates _count_ new nodes, adding them to the graph, and returns them in an array-style table. The new node’s _id\_s will be assigned values 1 through \_count_\-1.
              *
@@ -8932,7 +8716,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-pathfinder.graph.addNewNodes)
              */
             addNewNodes(count: number): playdate.pathfinder.node[];
-
             /**
              * Adds an already-existing node to the graph. The node must have originally belonged to the same graph.
              *
@@ -8952,63 +8735,54 @@ namespace playdate {
                 weights: number[],
                 addReciprocalConnections?: boolean
             ): void;
-
             /**
              * Adds an array of already-existing nodes to the graph.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-pathfinder.graph.addNodes)
              */
             addNodes(nodes: playdate.pathfinder.node[]): void;
-
             /**
              * Returns an array containing all nodes in the graph.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-pathfinder.graph.allNodes)
              */
             allNodes(): playdate.pathfinder.node[];
-
             /**
              * Removes node from the graph. Also removes all connections to and from the node.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-pathfinder.graph.removeNode)
              */
             removeNode(node: playdate.pathfinder.node): void;
-
             /**
              * Returns the first node found with coordinates matching _x, y_, after removing it from the graph and removing all connections to and from the node.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-pathfinder.graph.removeNodeWithXY)
              */
             removeNodeWithXY(x: number, y: number): void;
-
             /**
              * Returns the first node found with a matching _id_, after removing it from the graph and removing all connections to and from the node.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-pathfinder.graph.removeNodeWithID)
              */
             removeNodeWithID(id: number): void;
-
             /**
              * Returns the first node found in the graph with a matching _id_, or nil if no such node is found.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-pathfinder.graph.nodeWithID)
              */
             nodeWithID(id: number): playdate.pathfinder.node;
-
             /**
              * Returns the first node found in the graph with matching _x_ and _y_ values, or nil if no such node is found.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-pathfinder.graph.nodeWithXY)
              */
             nodeWithXY(x: number, y: number): playdate.pathfinder.node;
-
             /**
              * `connections` should be a table of array-style tables. The keys of the outer table should correspond to node IDs, while the inner array should be a series if connecting node ID and weight combinations that will be assigned to that node. For example, `{[1]={2, 10, 3, 12}, [2]={1, 20}, [3]={1, 20, 2, 10}}` will create a connection from node ID 1 to node ID 2 with a weight of 10, and a connection to node ID 3 with a weight of 12, and so on for the other entries.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-pathfinder.graph.addConnections)
              */
             addConnections(connections: Record<number, number[]>): void;
-
             /**
              * Adds a connection from the node with `id` `fromNodeID` to the node with `id` `toNodeID` with a weight value of `weight`. Weights affect the path the A\* algorithm will solve for. A longer, lighter-weighted path will be chosen over a shorter heavier path, if available. If `addReciprocalConnection` is true, the reverse connection will also be added.
              *
@@ -9020,14 +8794,12 @@ namespace playdate {
                 weight: number,
                 addReciprocalConnection: boolean
             ): void;
-
             /**
              * Removes all connections from all nodes in the graph.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-pathfinder.graph.removeAllConnections)
              */
             removeAllConnections(): void;
-
             /**
              * Removes all connections from the matching node.
              *
@@ -9039,7 +8811,6 @@ namespace playdate {
                 id: number,
                 removeIncoming?: boolean
             ): void;
-
             /**
              * Returns an array of nodes representing the path from _startNode_ to _goalNode_, or _nil_ if no path can be found.
              *
@@ -9058,7 +8829,6 @@ namespace playdate {
                 ) => number,
                 findPathToGoalAdjacentNodes?: boolean
             ): playdate.pathfinder.node[] | null;
-
             /**
              * Works the same as [findPath](https://sdk.play.date/2.6.0#m-pathfinder.graph.findPath), but looks up nodes to find a path between using startNodeID and goalNodeID and returns a list of nodeIDs rather than the nodes themselves.
              *
@@ -9073,7 +8843,6 @@ namespace playdate {
                 ) => number,
                 findPathToGoalAdjacentNodes?: boolean
             ): playdate.pathfinder.node[] | null;
-
             /**
              * Sets the matching node’s `x` and `y` values.
              *
@@ -9101,7 +8870,6 @@ namespace playdate {
                 weight: number,
                 addReciprocalConnection: boolean
             ): void;
-
             /**
              * Adds a new connection to each node in the nodes array.
              *
@@ -9118,7 +8886,6 @@ namespace playdate {
                 weights: number[],
                 addReciprocalConnections: boolean
             ): void;
-
             /**
              * Adds a connection to the first node found with matching _x_ and _y_ values, if it exists.
              *
@@ -9134,14 +8901,12 @@ namespace playdate {
                 weight: number,
                 addReciprocalConnection: boolean
             ): void;
-
             /**
              * Returns an array of nodes that have been added as connections to this node.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-pathfinder.node.connectedNodes)
              */
             connectedNodes(): playdate.pathfinder.node[];
-
             /**
              * Removes a connection to node, if it exists. If _removeReciprocal_ is true the reverse connection will also be removed, if it exists.
              *
@@ -9151,7 +8916,6 @@ namespace playdate {
                 node: playdate.pathfinder.node,
                 removeReciprocal?: boolean = false
             ): void;
-
             /**
              * Removes all connections from the calling node.
              *
@@ -9160,7 +8924,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-pathfinder.node.removeAllConnections)
              */
             removeAllConnections(removeIncoming?: boolean = false): void;
-
             /**
              * Sets the _x_ and _y_ values for the node.
              *
@@ -9349,14 +9112,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.copy)
              */
             copy(): playdate.sound.sampleplayer;
-
             /**
              * Starts playing the sample. If _repeatCount_ is greater than one, it loops the given number of times. If zero, it loops endlessly until it is stopped with [playdate.sound.sampleplayer:stop()](https://sdk.play.date/2.6.0#m-sound.sampleplayer.stop). If _rate_ is set, the sample will be played at the given rate instead of the rate previous set with [playdate.sound.sampleplayer.setRate()](https://sdk.play.date/2.6.0#m-sound.sampleplayer.setRate).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.play)
              */
             play(repeatCount?: number, rate?: number): void;
-
             /**
              * Schedules the sound for playing at device time _when_. If _vol_ is specified, the sample will be played at level _vol_ (with optional separate right channel volume _rightvol_), otherwise it plays at the volume set by [playdate.sound.sampleplayer.setVolume()](https://sdk.play.date/2.6.0#m-sound.sampleplayer.setVolume). Note that the _when_ argument is an offset in the audio device’s time scale, as returned by [playdate.sound.getCurrentTime()](https://sdk.play.date/2.6.0#f-sound.getCurrentTime); it is **not** relative to the current time! If _when_ is less than the current audio time, the sample is played immediately. If _rate_ is set, the sample will be played at the given rate instead of the rate previously set with [playdate.sound.sampleplayer.setRate()](https://sdk.play.date/2.6.0#m-sound.sampleplayer.setRate).
              *
@@ -9372,14 +9133,12 @@ namespace playdate {
                 rightvol?: number,
                 rate?: number
             ): boolean;
-
             /**
              * Sets the playback volume (0.0 - 1.0) for left and right channels. If the optional _right_ argument is omitted, it is the same as _left_. If the sampleplayer is currently playing using the default volume (that is, it wasn’t triggered by `playAt()` with a volume given) it also changes the volume of the playing sample.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.setVolume)
              */
             setVolume(left: number, right?: number): void;
-
             /**
              * Returns the playback volume for the sampleplayer, a single value for mono sources or a pair of values (left, right) for stereo sources.
              *
@@ -9388,7 +9147,6 @@ namespace playdate {
             getVolume():
                 | LuaMultiReturn<[number, undefined]>
                 | LuaMultiReturn<[number, number]>;
-
             /**
              * Sets a function to be called every time the sample loops. The sample object is passed to this function as the first argument, and the optional _arg_ argument is passed as the second.
              *
@@ -9401,35 +9159,30 @@ namespace playdate {
                 ) => void,
                 arg?: TArgument
             ): void;
-
             /**
              * Sets the range of the sample to play. _start_ and _end_ are frame offsets from the beginning of the sample.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.setPlayRange)
              */
             setPlayRange(start: number, end: number): void;
-
             /**
              * Pauses or resumes playback.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.setPaused)
              */
             setPaused(flag: boolean): void;
-
             /**
              * Returns a boolean indicating whether the sample is playing.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.isPlaying)
              */
             isPlaying(): boolean;
-
             /**
              * Stops playing the sample.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.stop)
              */
             stop(): void;
-
             /**
              * Sets a function to be called when playback has completed. The sample object is passed to this function as the first argument, and the optional _arg_ argument is passed as the second.
              *
@@ -9439,56 +9192,48 @@ namespace playdate {
                 func: (sample: playdate.sound.sample, arg: TArgument) => void,
                 arg?: TArgument
             ): void;
-
             /**
              * Sets the [sample](https://sdk.play.date/2.6.0#C-sound.sample) to be played.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.setSample)
              */
             setSample(sample: playdate.sound.sample): void;
-
             /**
              * Gets the [sample](https://sdk.play.date/2.6.0#C-sound.sample) to be played.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.getSample)
              */
             getSample(): playdate.sound.sample;
-
             /**
              * Returns the length of the sampleplayer’s sample, in seconds. Length is not scaled by playback rate.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.getLength)
              */
             getLength(): number;
-
             /**
              * Sets the playback rate for the sample. 1.0 is normal speed, 0.5 is down an octave, 2.0 is up an octave, etc. Sampleplayers can also play samples backwards, by setting a negative rate; note, however, this does not work with ADPCM-encoded files.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.setRate)
              */
             setRate(rate: number): void;
-
             /**
              * Returns the playback rate for the sample.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.getRate)
              */
             getRate(): number;
-
             /**
              * Sets the [signal](https://sdk.play.date/2.6.0#C-sound.signal) to use as a rate modulator, added to the rate set with [playdate.sound.sampleplayer:setRate()](https://sdk.play.date/2.6.0#m-sound.sampleplayer.setRate). Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.setRateMod)
              */
             setRateMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets the current offset of the sampleplayer, in seconds. This value is not adjusted for rate.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sampleplayer.setOffset)
              */
             setOffset(seconds: number): void;
-
             /**
              * Returns the current offset of the sampleplayer, in seconds. This value is not adjusted for rate.
              *
@@ -9537,7 +9282,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.load)
              */
             load(path: string): void;
-
             /**
              * Opens and starts playing the file, first creating and filling a 1/4 second playback buffer if a buffer size hasn’t been set yet.
              *
@@ -9552,35 +9296,30 @@ namespace playdate {
             ):
                 | LuaMultiReturn<[true, undefined]>
                 | LuaMultiReturn<[false, string]>;
-
             /**
              * Stops playing the file, resets the playback offset to zero, and calls the finish callback.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.stop)
              */
             stop(): void;
-
             /**
              * Stops playing the file. A subsequent play() call resumes playback from where it was paused.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.pause)
              */
             pause(): void;
-
             /**
              * Returns a boolean indicating whether the fileplayer is playing.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.isPlaying)
              */
             isPlaying(): boolean;
-
             /**
              * Returns the length, in seconds, of the audio file.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.getLength)
              */
             getLength(): number;
-
             /**
              * Sets a function to be called when playback has completed. The fileplayer is passed as the first argument to _func_. The optional argument _arg_ is passed as the second.
              *
@@ -9593,21 +9332,18 @@ namespace playdate {
                 ) => void,
                 arg?: TArgument
             ): void;
-
             /**
              * Returns the fileplayer’s underrun flag, indicating that the player ran out of data. This can be checked in the finish callback function to check for an underrun error.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.didUnderrun)
              */
             didUnderrun(): boolean;
-
             /**
              * By default, the fileplayer stops playback if it can’t provide data fast enough. Setting the flag to _false_ tells the fileplayer to restart playback (after an audible stutter) as soon as data is available.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.setStopOnUnderrun)
              */
             setStopOnUnderrun(flag: boolean): void;
-
             /**
              * Provides a way to loop a portion of an audio file. In the following code:
              *
@@ -9634,7 +9370,6 @@ namespace playdate {
                 ) => void,
                 arg?: TArgument
             ): void;
-
             /**
              * Sets a function to be called every time the fileplayer loops. The fileplayer object is passed to this function as the first argument, and _arg_ as the second.
              *
@@ -9651,7 +9386,6 @@ namespace playdate {
                 ) => void,
                 arg?: TArgument
             ): void;
-
             /**
              * Sets the buffer size for the fileplayer, in seconds. Larger buffers protect against buffer underruns, but consume more memory. Calling this function also fills the output buffer if a source file has been set. On success, the function returns _true_; otherwise it returns _false_ and a string describing the error.
              *
@@ -9662,28 +9396,24 @@ namespace playdate {
             ):
                 | LuaMultiReturn<[true, undefined]>
                 | LuaMultiReturn<[false, string]>;
-
             /**
              * Sets the playback rate for the file. 1.0 is normal speed, 0.5 is down an octave, 2.0 is up an octave, etc. Unlike sampleplayers, fileplayers can’t play in reverse (i.e., rate < 0).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.setRate)
              */
             setRate(rate: number): void;
-
             /**
              * Returns the playback rate for the file. as set with `setRate()`.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.getRate)
              */
             getRate(): number;
-
             /**
              * Sets the [signal](https://sdk.play.date/2.6.0#C-sound.signal) to use as a rate modulator, added to the rate set with [playdate.sound.fileplayer:setRate()](https://sdk.play.date/2.6.0#m-sound.fileplayer.setRate). Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.setRateMod)
              */
             setRateMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets the playback volume (0.0 - 1.0). If a single value is passed in, both left side and right side volume are set to the given value. If two values are given, volumes are set separately. The optional _fadeSeconds_ specifies the time it takes to fade from the current volume to the specified volume, in seconds. If the function _fadeCallback_ is given, it is called when the volume fade has completed. The fileplayer object is passed as the first argument to the callback, and the optional _arg_ argument is passed as the second.
              *
@@ -9699,7 +9429,6 @@ namespace playdate {
                 ) => void,
                 arg?: TArgument
             ): void;
-
             /**
              * Returns the current volume for the fileplayer, a single value for mono sources or a pair of values (left, right) for stereo sources.
              *
@@ -9708,14 +9437,12 @@ namespace playdate {
             getVolume():
                 | LuaMultiReturn<[number, undefined]>
                 | LuaMultiReturn<[number, number]>;
-
             /**
              * Sets the current offset of the fileplayer, in seconds. This value is not adjusted for rate.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.setOffset)
              */
             setOffset(seconds: number): void;
-
             /**
              * Returns the current offset of the fileplayer, in seconds. This value is not adjusted for rate.
              *
@@ -9763,14 +9490,12 @@ namespace playdate {
                 startOffset: number,
                 endOffset: number
             ): playdate.sound.sample;
-
             /**
              * Loads the sound data from the file at _path_ into an existing sample buffer. If there is no file at _path_, the function returns nil.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sample.load)
              */
             load(path: string): void;
-
             /**
              * If the sample is ADPCM compressed, decompresses the sample data to 16-bit PCM data. This increases the sample’s memory footprint by 4x and does not affect the quality in any way, but it is necessary if you want to use the sample in a synth or play the file backwards. Returns `true` if successful, or `false` and an error message as a second return value if decompression failed.
              *
@@ -9779,14 +9504,12 @@ namespace playdate {
             decompress():
                 | LuaMultiReturn<[true, undefined]>
                 | LuaMultiReturn<[false, string]>;
-
             /**
              * Returns the sample rate as an integer, such as 44100 or 22050.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sample.getSampleRate)
              */
             getSampleRate(): number;
-
             /**
              * Returns the format of the sample, one of
              *
@@ -9801,14 +9524,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sample.getFormat)
              */
             getFormat(): PlaydateSoundFormat;
-
             /**
              * Returns two values, the length of the available sample data and the size of the allocated buffer. Both values are measured in seconds. For a sample loaded from disk, these will be the same; for a sample used for recording, the available data may be less than the allocated size.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sample.getLength)
              */
             getLength(): LuaMultiReturn<[number, number]>;
-
             /**
              * Convenience function: Creates a new sampleplayer for the sample and passes the function arguments to its [play](https://sdk.play.date/2.6.0#m-sound.sampleplayer.play) function.
              *
@@ -9818,7 +9539,6 @@ namespace playdate {
                 repeatCount?: number,
                 rate?: number
             ): playdate.sound.sampleplayer;
-
             /**
              * Convenience function: Creates a new sampleplayer for the sample and passes the function arguments to its [playAt](https://sdk.play.date/2.6.0#m-sound.sampleplayer.playAt) function.
              *
@@ -9830,7 +9550,6 @@ namespace playdate {
                 rightvol?: number,
                 rate?: number
             ): playdate.sound.sampleplayer;
-
             /**
              * Saves the sample to the given file. If `filename` has a `.wav` extension it will be saved in WAV format (and be unreadable by the Playdate sound functions), otherwise it will be saved in the Playdate pda format.
              *
@@ -9859,77 +9578,66 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.channel.remove)
              */
             remove(): void;
-
             /**
              * Adds an [effect](https://sdk.play.date/2.6.0#C-sound.effect) to the channel.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.channel.addEffect)
              */
             addEffect(effect: PlaydateSoundEffect): void;
-
             /**
              * Removes an [effect](https://sdk.play.date/2.6.0#C-sound.effect) from the channel.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.channel.removeEffect)
              */
             removeEffect(effect: PlaydateSoundEffect): void;
-
             /**
              * Adds a [source](https://sdk.play.date/2.6.0#C-sound.source) to the channel. If a source is not assigned to a channel, it plays on the default global channel.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.channel.addSource)
              */
             addSource(source: PlaydateAudioSource): void;
-
             /**
              * Removes a [source](https://sdk.play.date/2.6.0#C-sound.source) from the channel.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.channel.removeSource)
              */
             removeSource(source: PlaydateAudioSource): void;
-
             /**
              * Sets the volume (0.0 - 1.0) for the channel.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.channel.setVolume)
              */
             setVolume(volume: number): void;
-
             /**
              * Gets the volume (0.0 - 1.0) for the channel.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.channel.getVolume)
              */
             getVolume(): number;
-
             /**
              * Sets the pan parameter for the channel. -1 is left, 0 is center, and 1 is right.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.channel.setPan)
              */
             setPan(pan: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to automate the pan parameter. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.channel.setPanMod)
              */
             setPanMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to automate the volume parameter. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.channel.setVolumeMod)
              */
             setVolumeMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Returns a [signal](https://sdk.play.date/2.6.0#C-sound.signal) that follows the volume of the channel before effects are applied.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.channel.getDryLevelSignal)
              */
             getDryLevelSignal(): playdate.sound.signal;
-
             /**
              * Returns a [signal](https://sdk.play.date/2.6.0#C-sound.signal) that follows the volume of the channel after effects are applied.
              *
@@ -9975,7 +9683,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.copy)
              */
             copy(): playdate.sound.synth;
-
             /**
              * Plays a note with the current waveform or sample.
              *
@@ -10007,7 +9714,6 @@ namespace playdate {
                 length?: number,
                 when?: number
             ): boolean;
-
             /**
              * Identical to [playNote](https://sdk.play.date/2.6.0#m-sound.synth.playNote) but uses a note name like "C4", or MIDI note number (60=C4, 61=C#4, etc.). In the latter case, fractional values are allowed.
              *
@@ -10019,35 +9725,30 @@ namespace playdate {
                 length?: number,
                 when?: number
             ): boolean;
-
             /**
              * Releases the note, if one is playing. The note will continue to be voiced through the release section of the synth’s envelope.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.noteOff)
              */
             noteOff(): void;
-
             /**
              * Stops the synth immediately, without playing the release part of the envelope.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.stop)
              */
             stop(): void;
-
             /**
              * Returns true if the synth is still playing, including the release phase of the envelope.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.isPlaying)
              */
             isPlaying(): boolean;
-
             /**
              * Sets the [signal](https://sdk.play.date/2.6.0#C-sound.signal) to use as the amplitude modulator. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.setAmplitudeMod)
              */
             setAmplitudeMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets the attack time, decay time, sustain level, and release time for the sound envelope, and optionally the [curvature](https://sdk.play.date/2.6.0#m-sound.synth.setEnvelopeCurvature).
              *
@@ -10059,77 +9760,66 @@ namespace playdate {
                 sustain: number,
                 release: number
             ): void;
-
             /**
              * Sets the attack time, in seconds.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.setAttack)
              */
             setAttack(time: number): void;
-
             /**
              * Sets the decay time, in seconds.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.setDecay)
              */
             setDecay(time: number): void;
-
             /**
              * Sets the sustain level, as a proportion of the total level (0.0 to 1.0).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.setSustain)
              */
             setSustain(level: number): void;
-
             /**
              * Sets the release time, in seconds.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.setRelease)
              */
             setRelease(time: number): void;
-
             /**
              * Clears the synth’s envelope settings.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.clearEnvelope)
              */
             clearEnvelope(): void;
-
             /**
              * Smoothly changes the envelope’s shape from linear (amount=0) to exponential (amount=1).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.setEnvelopeCurvature)
              */
             setEnvelopeCurvature(amount: number): void;
-
             /**
              * Returns the synth’s envelope as a [playdate.sound.envelope](https://sdk.play.date/2.6.0#C-sound.envelope) object.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.getEnvelope)
              */
             getEnvelope(): playdate.sound.envelope;
-
             /**
              * Sets a function to be called when the synth stops playing.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.setFinishCallback)
              */
             setFinishCallback(func: () => void): void;
-
             /**
              * Sets the [signal](https://sdk.play.date/2.6.0#C-sound.signal) to use as the frequency modulator. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.setFrequencyMod)
              */
             setFrequencyMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets whether to use legato phrasing for the synth. If the legato flag is set and a new note starts while a previous note is still playing, the synth’s envelope remains in the sustain phase instead of starting a new attack.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.setLegato)
              */
             setLegato(flag: boolean): void;
-
             /**
              * Sets the synth volume. If a single value is passed in, sets both left side and right side volume to the given value. If two values are given, volumes are set separately.
              *
@@ -10138,7 +9828,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.setVolume)
              */
             setVolume(left: number, right?: number): void;
-
             /**
              * Returns the current volume for the synth, a single value for mono sources or a pair of values (left, right) for stereo sources.
              *
@@ -10149,7 +9838,6 @@ namespace playdate {
             getVolume():
                 | LuaMultiReturn<[number, undefined]>
                 | LuaMultiReturn<[number, number]>;
-
             /**
              * Sets the waveform or [Sample](https://sdk.play.date/2.6.0#C-sound.sample) the synth plays. If a sample is given, its data must be uncompressed PCM, not ADPCM. Otherwise _waveform_ should be one of the following constants:
              *
@@ -10174,7 +9862,6 @@ namespace playdate {
             setWaveform(
                 waveform: PlaydateSoundWave | playdate.sound.sample
             ): void;
-
             /**
              * Sets a wavetable for the synth to play. Sample data must be 16-bit mono uncompressed. `samplesize` is the number of samples in each waveform "cell" in the table and must be a power of 2. `xsize` is the number of cells across the wavetable. If the wavetable is two-dimensional, `ysize` gives the number of cells in the y direction.
              *
@@ -10199,14 +9886,12 @@ namespace playdate {
                 xsize: number,
                 ysize?: number
             ): void;
-
             /**
              * Sets the parameter at (1-based) position _num_ to the given value. Unless otherwise specified, _value_ ranges from 0 to 1.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.setParameter)
              */
             setParameter(parameter: number, value: number): void;
-
             /**
              * Sets the [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the parameter. Set to _nil_ to clear the modulator.
              *
@@ -10227,14 +9912,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#f-sound.signal.setOffset)
              */
             setOffset(offset: number): void;
-
             /**
              * Multiplies the signal’s output by the given scale factor. The scale is applied before the offset.
              *
              * [Read more](https://sdk.play.date/2.6.0#f-sound.signal.setScale)
              */
             setScale(scale: number): void;
-
             /**
              * Returns the current output value of the signal.
              *
@@ -10277,70 +9960,60 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.lfo.setType)
              */
             setType(type: PlaydateSoundWave): void;
-
             /**
              * Sets the LFO type to arpeggio, where the given values are in half-steps from the center note. For example, the sequence (0, 4, 7, 12) plays the notes of a major chord.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.lfo.setArpeggio)
              */
             setArpeggio(...notes: number): void;
-
             /**
              * Sets the center value of the LFO.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.lfo.setCenter)
              */
             setCenter(center: number): void;
-
             /**
              * Sets the depth of the LFO’s modulation.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.lfo.setDepth)
              */
             setDepth(depth: number): void;
-
             /**
              * Sets the rate of the LFO, in cycles per second.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.lfo.setRate)
              */
             setRate(rate: number): void;
-
             /**
              * Sets the current phase of the LFO, from 0 to 1.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.lfo.setPhase)
              */
             setPhase(phase: number): void;
-
             /**
              * Sets the initial phase of the LFO, from 0 to 1.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.lfo.setStartPhase)
              */
             setStartPhase(phase: number): void;
-
             /**
              * If an LFO is marked global, it is continuously updated whether or not it’s attached to any source.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.lfo.setGlobal)
              */
             setGlobal(flag: boolean): void;
-
             /**
              * If retrigger is on, the LFO’s phase is reset to its initial phase (default 0) when a synth using the LFO starts playing a note.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.lfo.setRetrigger)
              */
             setRetrigger(flag: boolean): void;
-
             /**
              * Sets an initial holdoff time for the LFO where the LFO remains at its center value, and a ramp time where the value increases linearly to its maximum depth. Values are in seconds.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.lfo.setDelay)
              */
             setDelay(holdoff: number, ramp: number): void;
-
             /**
              * Returns the current signal value of the LFO.
              *
@@ -10374,42 +10047,36 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.envelope.setAttack)
              */
             setAttack(attack: number): void;
-
             /**
              * Sets the envelope decay time to _decay_, in seconds.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.envelope.setDecay)
              */
             setDecay(decay: number): void;
-
             /**
              * Sets the envelope sustain level to _sustain_, as a proportion of the maximum. For example, if the sustain level is 0.5, the signal value rises to its full value over the attack phase of the envelope, then drops to half its maximum over the decay phase, and remains there while the envelope is active.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.envelope.setSustain)
              */
             setSustain(sustain: number): void;
-
             /**
              * Sets the envelope release time to _release_, in seconds.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.envelope.setRelease)
              */
             setRelease(release: number): void;
-
             /**
              * Smoothly changes the envelope’s shape from linear (amount=0) to exponential (amount=1).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.envelope.setCurvature)
              */
             setCurvature(amount: number): void;
-
             /**
              * Changes the amount by which note velocity scales output level. At the default value of 1, output is proportional to velocity; at 0 velocity has no effect on output level.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.envelope.setVelocitySensitivity)
              */
             setVelocitySensitivity(amount: number): void;
-
             /**
              * Scales the envelope rate according to the played note. For notes below `start`, the envelope’s set rate is used; for notes above `end` envelope rates are scaled by the `scaling` parameter. Between the two notes the scaling factor is interpolated from 1.0 to `scaling`. `start` and `end` are either MIDI note numbers or names like "C4". If omitted, the default range is C1 (36) to C5 (84).
              *
@@ -10420,49 +10087,42 @@ namespace playdate {
                 start?: number | string = 'C1',
                 end?: number | string = 'C5'
             ): void;
-
             /**
              * Sets the scale value for the envelope. The transformed envelope has an initial value of _offset_ and a maximum (minimum if _scale_ is negative) of _offset_ + _scale_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.envelope.setScale)
              */
             setScale(scale: number): void;
-
             /**
              * Sets the offset value for the envelope. The transformed envelope has an initial value of _offset_ and a maximum (minimum if _scale_ is negative) of _offset_ + _scale_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.envelope.setOffset)
              */
             setOffset(offset: number): void;
-
             /**
              * Sets whether to use legato phrasing for the envelope. If the legato flag is set, when the envelope is re-triggered before it’s released, it remains in the sustain phase instead of jumping back to the attack phase.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.envelope.setLegato)
              */
             setLegato(flag: boolean): void;
-
             /**
              * If retrigger is on, the envelope always starts from 0 when a note starts playing, instead of the current value if it’s active.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.envelope.setRetrigger)
              */
             setRetrigger(flag: boolean): void;
-
             /**
              * Triggers the envelope at the given _velocity_. If a _length_ parameter is given, the envelope moves to the release phase after the given time. Otherwise, the envelope is held in the sustain phase until the trigger function is called again with _velocity_ equal to zero.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.envelope.trigger)
              */
             trigger(velocity: number, length?: number): void;
-
             /**
              * If an envelope is marked global, it is continuously updated whether or not it’s attached to any source.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.envelope.setGlobal)
              */
             setGlobal(flag: boolean): void;
-
             /**
              * Returns the current signal value of the envelope.
              *
@@ -10491,35 +10151,30 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.bitcrusher.setMix)
              */
             setMix(level: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the mix level. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.bitcrusher.setMixMod)
              */
             setMixMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets the amount of crushing to _amt_. Valid values are 0 (no effect) to 1 (quantizing output to 1-bit).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.bitcrusher.setAmount)
              */
             setAmount(amt: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the filter level. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.bitcrusher.setAmountMod)
              */
             setAmountMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets the number of samples to repeat; 0 is no undersampling, 1 effectively halves the sample rate.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.bitcrusher.setUndersampling)
              */
             setUndersampling(amt: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the filter level. Set to _nil_ to clear the modulator.
              *
@@ -10548,21 +10203,18 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.ringmod.setMix)
              */
             setMix(level: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the mix level. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.ringmod.setMixMod)
              */
             setMixMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets the ringmod frequency to _f_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.ringmod.setFrequency)
              */
             setFrequency(f: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the ringmod frequency. Set to _nil_ to clear the modulator.
              *
@@ -10591,21 +10243,18 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.onepolefilter.setMix)
              */
             setMix(level: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the mix level. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.onepolefilter.setMixMod)
              */
             setMixMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets the filter’s single parameter (cutoff frequency) to _p_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.onepolefilter.setParameter)
              */
             setParameter(p: number): void;
-
             /**
              * Sets a modulator for the filter’s parameter. Set to _nil_ to clear the modulator.
              *
@@ -10650,49 +10299,42 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.twopolefilter.setMix)
              */
             setMix(level: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the mix level. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.twopolefilter.setMixMod)
              */
             setMixMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets the center frequency (in Hz) of the filter to _f_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.twopolefilter.setFrequency)
              */
             setFrequency(f: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the filter frequency. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.twopolefilter.setFrequencyMod)
              */
             setFrequencyMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets the resonance of the filter to _r_. Valid values are in the range 0-1. This parameter has no effect on shelf type filters.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.twopolefilter.setResonance)
              */
             setResonance(r: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the filter resonance. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.twopolefilter.setResonanceMod)
              */
             setResonanceMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets the gain of the filter to _g_. Gain is only used in PEQ and shelf type filters.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.twopolefilter.setGain)
              */
             setGain(g: number): void;
-
             /**
              * Sets the type of the filter to _type_.
              *
@@ -10721,42 +10363,36 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.overdrive.setMix)
              */
             setMix(level: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the mix level. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.overdrive.setMixMod)
              */
             setMixMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets the gain of the filter.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.overdrive.setGain)
              */
             setGain(level: number): void;
-
             /**
              * Sets the level where the amplified input clips.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.overdrive.setLimit)
              */
             setLimit(level: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the limit level. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.overdrive.setLimitMod)
              */
             setLimitMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Adds an offset to the upper and lower limits to create an asymmetric clipping.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.overdrive.setOffset)
              */
             setOffset(level: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the offset value. Set to _nil_ to clear the modulator.
              *
@@ -10785,21 +10421,18 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.delayline.setMix)
              */
             setMix(level: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the mix level. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.delayline.setMixMod)
              */
             setMixMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Returns a new [playdate.sound.delaylinetap](https://sdk.play.date/2.6.0#C-sound.delaylinetap) on the delay line, at the given delay (which must be less than or equal to the delay line’s length).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.delayline.addTap)
              */
             addTap(delay: number): void;
-
             /**
              * Sets the feedback level of the delay line.
              *
@@ -10817,28 +10450,24 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.delaylinetap.setDelay)
              */
             setDelay(time: number): void;
-
             /**
              * Sets a [signal](https://sdk.play.date/2.6.0#C-sound.signal) to modulate the tap delay. If the signal is continuous (e.g. an envelope or a triangle LFO, but not a square LFO) playback is sped up or slowed down to compress or expand time. Set to _nil_ to clear the modulator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.delaylinetap.setDelayMod)
              */
             setDelayMod(signal: playdate.sound.signal | null): void;
-
             /**
              * Sets the tap’s volume.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.delaylinetap.setVolume)
              */
             setVolume(level: number): void;
-
             /**
              * Returns the tap’s volume.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.delaylinetap.getVolume)
              */
             getVolume(): number;
-
             /**
              * If set and the delay line is stereo, the tap outputs the delay line’s left channel to its right output and vice versa.
              *
@@ -10869,56 +10498,48 @@ namespace playdate {
             play(
                 finishCallback?: (sequence: playdate.sound.sequence) => void
             ): void;
-
             /**
              * Stops playing the sequence.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.stop)
              */
             stop(): void;
-
             /**
              * Returns true if the sequence is currently playing.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.isPlaying)
              */
             isPlaying(): boolean;
-
             /**
              * Returns the length of the longest track in the sequence, in steps. See also [playdate.sound.track.getLength()](https://sdk.play.date/2.6.0#m-sound.track.getLength).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.getLength)
              */
             getLength(): number;
-
             /**
              * Moves the play position for the sequence to step number `step`. If `play` is set, triggers the notes at that step.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.goToStep)
              */
             goToStep(step: number, play?: boolean): void;
-
             /**
              * Returns the step number the sequence is currently at.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.getCurrentStep)
              */
             getCurrentStep(): number;
-
             /**
              * Sets the tempo of the sequence, in steps per second.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.setTempo)
              */
             setTempo(stepsPerSecond: number): void;
-
             /**
              * Returns the tempo of the sequence, in steps per second.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.getTempo)
              */
             getTempo(): number;
-
             /**
              * Sets the looping range of the sequence. If _loops_ is 0 or unset, the loop repeats endlessly.
              *
@@ -10935,14 +10556,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.setLoops-2)
              */
             setLoops(loopCount: number): void;
-
             /**
              * Returns the number of tracks in the sequence.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.getTrackCount)
              */
             getTrackCount(): number;
-
             /**
              * Adds the given [playdate.sound.track](https://sdk.play.date/2.6.0#C-sound.track) to the sequence. If `track` omitted, the function creates and returns a new track.
              *
@@ -10955,21 +10574,18 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.addTrack)
              */
             addTrack(track?: playdate.sound.track): void;
-
             /**
              * Sets the given [playdate.sound.track](https://sdk.play.date/2.6.0#C-sound.track) object at position `n` in the sequence.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.setTrackAtIndex)
              */
             setTrackAtIndex(n: number, track: playdate.sound.track): void;
-
             /**
              * Returns the [playdate.sound.track](https://sdk.play.date/2.6.0#C-sound.track) object at position `n` in the sequence.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.getTrackAtIndex)
              */
             getTrackAtIndex(n: number): playdate.sound.track;
-
             /**
              * Sends an [allNotesOff()](https://sdk.play.date/2.6.0#m-sound.instrument.allNotesOff) message to each track’s instrument.
              *
@@ -11018,7 +10634,6 @@ namespace playdate {
                 length: number;
                 velocity: number;
             }): void;
-
             /**
              * Set multiple notes at once, each array element should be a table containing values for the keys The tables contain values for keys `step`, `note`, `length`, and `velocity`.
              *
@@ -11032,7 +10647,6 @@ namespace playdate {
                     velocity: number;
                 }[]
             ): void;
-
             /**
              * Returns an array of tables representing the note events in the track.
              *
@@ -11049,42 +10663,36 @@ namespace playdate {
                 length: number;
                 velocity: number;
             }[];
-
             /**
              * Removes the note event at _step_ playing _note_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.track.removeNote)
              */
             removeNote(step: number, note: number): void;
-
             /**
              * Clears all notes from the track.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.track.clearNotes)
              */
             clearNotes(): void;
-
             /**
              * Returns the length, in steps, of the track—​that is, the step where the last note in the track ends.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.track.getLength)
              */
             getLength(): number;
-
             /**
              * Returns the current number of notes active in the track.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.track.getNotesActive)
              */
             getNotesActive(): number;
-
             /**
              * Returns the maximum number of notes simultaneously active in the track. (Known bug: this currently only works for midi files)
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.track.getPolyphony)
              */
             getPolyphony(): number;
-
             /**
              * Sets the [playdate.sound.instrument](https://sdk.play.date/2.6.0#C-sound.instrument) that this track plays. If `inst` is a [playdate.sound.synth](https://sdk.play.date/2.6.0#C-sound.synth), the function creates an instrument for the synth.
              *
@@ -11093,28 +10701,24 @@ namespace playdate {
             setInstrument(
                 inst: playdate.sound.instrument | playdate.sound.synth
             ): void;
-
             /**
              * Gets the [playdate.sound.instrument](https://sdk.play.date/2.6.0#C-sound.instrument) that this track plays.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.track.getInstrument)
              */
             getInstrument(): playdate.sound.instrument;
-
             /**
              * Mutes or unmutes the track.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.track.setMuted)
              */
             setMuted(flag: boolean): void;
-
             /**
              * Adds a [playdate.sound.controlsignal](https://sdk.play.date/2.6.0#C-sound.controlsignal) object to the track. Note that the signal must be assigned to a modulation input for it to have any audible effect. The input can be anywhere in the sound engine—​it’s not required to belong to the track in any way.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.track.addControlSignal)
              */
             addControlSignal(s: playdate.sound.controlsignal): void;
-
             /**
              * Returns an array of [playdate.sound.controlsignal](https://sdk.play.date/2.6.0#C-sound.controlsignal) objects assigned to this track.
              *
@@ -11150,28 +10754,24 @@ namespace playdate {
                 rangeend?: number | string,
                 transpose?: number
             ): void;
-
             /**
              * Sets the pitch bend to be applied to the voices in the instrument, as a fraction of the full range.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.instrument.setPitchBend)
              */
             setPitchBend(amount: number): void;
-
             /**
              * Sets the pitch bend range for the voices in the instrument. The default range is 12, for a full octave.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.instrument.setPitchBendRange)
              */
             setPitchBendRange(halfsteps: number): void;
-
             /**
              * Transposes all voices in the instrument. _halfsteps_ can be a fractional value.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.instrument.setTranspose)
              */
             setTranspose(halfsteps: number): void;
-
             /**
              * Plays the given note on the instrument. A string like `Db3` can be used instead of a pitch/note number. Fractional values are allowed. _vel_ defaults to 1.0, fully on. If _length_ isn’t specified, the note stays on until _instrument.noteOff(note)_ is called. _when_ is the number of seconds in the future to start playing the note, default is immediately.
              *
@@ -11183,7 +10783,6 @@ namespace playdate {
                 length?: number,
                 when?: number
             ): void;
-
             /**
              * Identical to `instrument:playNote()` but _note_ is a MIDI note number: 60=C4, 61=C#4, etc. Fractional values are allowed.
              *
@@ -11195,21 +10794,18 @@ namespace playdate {
                 length?: number,
                 when?: number
             ): void;
-
             /**
              * Stops the instrument voice playing note _note_. If _when_ is given, the note is stopped _when_ seconds in the future, otherwise it’s stopped immediately.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.instrument.noteOff)
              */
             noteOff(note: number, when?: number): void;
-
             /**
              * Sends a stop signal to all playing notes.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.instrument.allNotesOff)
              */
             allNotesOff(): void;
-
             /**
              * Sets the instrument volume. If a single value is passed in, sets both left side and right side volume to the given value. If two values are given, volumes are set separately.
              *
@@ -11218,7 +10814,6 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.instrument.setVolume)
              */
             setVolume(left: number, right?: number): void;
-
             /**
              * Returns the current volume for the synth, a single value for mono sources or a pair of values (left, right) for stereo sources.
              *
@@ -11261,35 +10856,30 @@ namespace playdate {
                 value: number;
                 interpolate?: boolean;
             }): void;
-
             /**
              * Clears all events from the control signal.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.controlsignal.clearEvents)
              */
             clearEvents(): void;
-
             /**
              * Sets the midi controller number for the control signal, if that’s something you want to do. The value has no effect on playback.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.controlsignal.setControllerType)
              */
             setControllerType(number: number): void;
-
             /**
              * Control signals in midi files are assigned a controller number, which describes the intent of the control. This function returns the controller number.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-sound.controlsignal.getControllerType)
              */
             getControllerType(): number;
-
             /**
              * Returns the current output value of the control signal.
              *
              * [Read more](https://sdk.play.date/2.6.0#f-sound.controlsignal.getValue)
              */
             getValue(): number;
-
             /**
              * The signal’s event list is modified by getting and setting the `events` property of the object. This is an array of tables, each containing values for keys `step` and `value`, and optionally `interpolate`.
              *
@@ -11559,14 +11149,12 @@ namespace playdate {
          * [Read more](https://sdk.play.date/2.6.0#m-timer.pause)
          */
         pause(): void;
-
         /**
          * Resumes a previously paused timer. There is no need to call :start() on a newly-instantiated timer: timers start automatically.
          *
          * [Read more](https://sdk.play.date/2.6.0#m-timer.start)
          */
         start(): void;
-
         /**
          * Removes this timer from the list of timers. This happens automatically when a non-repeating timer reaches its end, but you can use this method to dispose of timers manually.
          *
@@ -11575,14 +11163,12 @@ namespace playdate {
          * [Read more](https://sdk.play.date/2.6.0#m-timer.remove)
          */
         remove(): void;
-
         /**
          * Resets a timer to its initial values.
          *
          * [Read more](https://sdk.play.date/2.6.0#m-timer.reset)
          */
         reset(): void;
-
         /**
          * A Function of the form _function(timer)_ or _function(...)_ where "..." corresponds to the values in the table assigned to _timerEndedArgs_. Called when the timer has completed.
          *
@@ -11599,7 +11185,6 @@ namespace playdate {
          * @noSelf
          */
         timerEndedCallback(timer: playdate.timer): void;
-
         /**
          * A callback function that will be called on every frame (every time _timer.updateAll()_ is called). If the timer was created with arguments, those will be passed as arguments to the function provided. Otherwise, the timer is passed as the single argument.
          *
@@ -11616,7 +11201,6 @@ namespace playdate {
          * @noSelf
          */
         updateCallback(timer: playdate.timer): void;
-
         /**
          * Current value calculated from the start and end values, the time elapsed, and the easing function.
          *
@@ -11831,28 +11415,24 @@ namespace playdate {
          * [Read more](https://sdk.play.date/2.6.0#m-frameTimer.pause)
          */
         pause(): void;
-
         /**
          * Resumes a timer. There is no need to call :start() on a newly-instantiated frame timer: frame timers start automatically.
          *
          * [Read more](https://sdk.play.date/2.6.0#m-frameTimer.start)
          */
         start(): void;
-
         /**
          * Removes this timer from the list of timers. This happens automatically when a non-repeating timer reaches it’s end, but you can use this method to dispose of timers manually.
          *
          * [Read more](https://sdk.play.date/2.6.0#m-frameTimer.remove)
          */
         remove(): void;
-
         /**
          * Resets a timer to its initial values.
          *
          * [Read more](https://sdk.play.date/2.6.0#m-frameTimer.reset)
          */
         reset(): void;
-
         /**
          * A Function of the form _function(timer)_ or _function(...)_ where "..." corresponds to the values in the table assigned to _timerEndedArgs_. Called when the timer has completed.
          *
@@ -11869,7 +11449,6 @@ namespace playdate {
          * @noSelf
          */
         timerEndedCallback(timer: playdate.frametimer): void;
-
         /**
          * A function to be called on every frame update. If the frame timer was created with arguments, those will be passed as arguments to the function provided. Otherwise, the timer is passed as the single argument.
          *
@@ -11886,7 +11465,6 @@ namespace playdate {
          * @noSelf
          */
         updateCallback(timer: playdate.frametimer): void;
-
         /**
          * Current value calculated from the start and end values, the current frame, and the easing function.
          *
@@ -11994,21 +11572,18 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-ui.crankIndicator.draw)
              */
             draw(xOffset?: number, yOffset?: number): void;
-
             /**
              * Resets the crank animation to the beginning of its sequence.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.crankIndicator.reset)
              */
             resetAnimation(): void;
-
             /**
              * Returns _x_, _y_, _width_, _height_ representing the bounds that the crank indicator draws within. If necessary, this rect could be passed into [playdate.graphics.sprite.addDirtyRect()](https://sdk.play.date/2.6.0#m-graphics.sprite.addDirtyRect), or used to manually draw over the indicator image drawn by [playdate.ui.crankIndicator:draw()](https://sdk.play.date/2.6.0#m-crankIndicator.draw) when you want to stop showing the crank indicator.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.crankIndicator.getBounds)
              */
             getBounds(): LuaMultiReturn<[number, number, number, number]>;
-
             /**
              * Boolean property specifying which direction to animate the crank. Defaults to true.
              *
@@ -12058,7 +11633,6 @@ namespace playdate {
                 width: number,
                 height: number
             ): void;
-
             /**
              * Override this method to draw section headers. This function will only be called if the header height has been set to a value greater than zero (0).
              *
@@ -12071,7 +11645,6 @@ namespace playdate {
                 width: number,
                 height: number
             ): void;
-
             /**
              * Override this method to customize the drawing of horizontal dividers. This function will only be called if the horizontal divider height is greater than zero (0) and at least one divider has been added.
              *
@@ -12083,7 +11656,6 @@ namespace playdate {
                 width: number,
                 height: number
             ): void;
-
             /**
              * Draws the gridview in the specified rect. Ideally this should be called on every [playdate.update()](https://sdk.play.date/2.6.0#c-update) to accommodate scrolling.
              *
@@ -12095,63 +11667,54 @@ namespace playdate {
                 width: number,
                 height: number
             ): void;
-
             /**
              * Sets the number of sections in the grid view. Each section contains at least one row, and row numbering starts at 1 in each section.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.setNumberOfSections)
              */
             setNumberOfSections(num: number): void;
-
             /**
              * Returns the number of sections in the grid view.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.getNumberOfSections)
              */
             getNumberOfSections(): number;
-
             /**
              * Sets the number of rows in _section_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.setNumberOfRowsInSection)
              */
             setNumberOfRowsInSection(section: number, num: number): void;
-
             /**
              * Returns the number of rows in _section_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.getNumberOfRowsInSection)
              */
             getNumberOfRowsInSection(section: number): number;
-
             /**
              * Sets the number of columns in the gridview. 1 by default.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.setNumberOfColumns)
              */
             setNumberOfColumns(num: number): void;
-
             /**
              * Returns the number of columns in the gridview. 1 by default.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.getNumberOfColumns)
              */
             getNumberOfColumns(): number;
-
             /**
              * Convenience method for list-style gridviews, or for setting the number of rows for multiple sections at a time. Pass in a list of numbers of rows for sections starting from section 1.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.setNumberOfRows)
              */
             setNumberOfRows(...numbers: number[]): void;
-
             /**
              * Sets the size of the cells in the gridview. If cells should span the entire width of the grid (as in a list view), pass zero (0) for _cellWidth_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.setCellSize)
              */
             setCellSize(cellWidth: number, cellHeight: number): void;
-
             /**
              * Sets the amount of padding around cells.
              *
@@ -12163,7 +11726,6 @@ namespace playdate {
                 top: number,
                 bottom: number
             ): void;
-
             /**
              * Sets the amount of space the content is inset from the edges of the gridview. Useful if a background image is being used as a border.
              *
@@ -12175,7 +11737,6 @@ namespace playdate {
                 top: number,
                 bottom: number
             ): void;
-
             /**
              * Returns multiple values (x, y, width, height) representing the bounds of the cell, not including padding, relative to the top-right corner of the grid view.
              *
@@ -12189,14 +11750,12 @@ namespace playdate {
                 column: number,
                 gridWidth?: number
             ): LuaMultiReturn<[number, number, number, number]>;
-
             /**
              * Sets the height of the section headers. 0 by default, which causes section headers not to be drawn.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.setSectionHeaderHeight)
              */
             setSectionHeaderHeight(height: number = 0): void;
-
             /**
              * Sets the amount of padding around section headers.
              *
@@ -12208,42 +11767,36 @@ namespace playdate {
                 top: number,
                 bottom: number
             ): void;
-
             /**
              * Sets the height of the horizontal dividers. The default height is half the cell height specified when creating the grid view.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.setHorizontalDividerHeight)
              */
             setHorizontalDividerHeight(height: number): void;
-
             /**
              * Returns the height of the horizontal dividers.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.getHorizontalDividerHeight)
              */
             getHorizontalDividerHeight(): number;
-
             /**
              * Causes a horizontal divider to be drawn above the specified row. Drawing can be customized by overriding [playdate.ui.gridview:drawHorizontalDivider](https://sdk.play.date/2.6.0#m-gridview.drawHorizontalDivider).
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.addHorizontalDividerAbove)
              */
             addHorizontalDividerAbove(section: number, row: number): void;
-
             /**
              * Removes all horizontal dividers from the grid view.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.removeHorizontalDividers)
              */
             removeHorizontalDividers(): void;
-
             /**
              * Controls the duration of scroll animations. 250ms by default.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.setScrollDuration)
              */
             setScrollDuration(ms: number): void;
-
             /**
              * 'set' scrolls to the coordinate _x_, _y_.
              *
@@ -12252,14 +11805,12 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.setScrollPosition)
              */
             setScrollPosition(x: number, y: number, animated?: boolean): void;
-
             /**
              * Returns the current scroll location as a pair _x_, _y_.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.getScrollPosition)
              */
             getScrollPosition(): LuaMultiReturn<[number, number]>;
-
             /**
              * Scrolls to the specified cell, just enough so the cell is visible.
              *
@@ -12271,7 +11822,6 @@ namespace playdate {
                 column: number,
                 animated?: boolean
             ): void;
-
             /**
              * Scrolls to the specified cell, so the cell is centered in the gridview, if possible.
              *
@@ -12283,49 +11833,42 @@ namespace playdate {
                 column: number,
                 animated?: boolean
             ): void;
-
             /**
              * Convenience function for list-style gridviews. Scrolls to the specified row in the list.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.scrollToRow)
              */
             scrollToRow(row: number, animated?: boolean): void;
-
             /**
              * Scrolls to the top of the gridview.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.scrollToTop)
              */
             scrollToTop(animated?: boolean): void;
-
             /**
              * Selects the cell at the given position.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.setSelection)
              */
             setSelection(section: number, row: number, column: number): void;
-
             /**
              * Returns the currently-selected cell as _section_, _row_, _column_
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.getSelection)
              */
             getSelection(): LuaMultiReturn<[number, number, number]>;
-
             /**
              * Convenience method for list-style gridviews. Selects the cell at _row_ in section 1.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.setSelectedRow)
              */
             setSelectedRow(row: number): void;
-
             /**
              * Convenience method for list-style gridviews. Returns the selected cell at _row_ in section 1.
              *
              * [Read more](https://sdk.play.date/2.6.0#m-ui.gridview.getSelectedRow)
              */
             getSelectedRow(): number;
-
             /**
              * Selects the cell directly below the currently-selected cell.
              *
@@ -12338,7 +11881,6 @@ namespace playdate {
                 scrollToSelection?: boolean = true,
                 animate?: boolean = true
             ): void;
-
             /**
              * Identical to `selectNextRow()` but goes the other direction.
              *
@@ -12349,7 +11891,6 @@ namespace playdate {
                 scrollToSelection?: boolean = true,
                 animate?: boolean = true
             ): void;
-
             /**
              * Selects the cell directly to the right of the currently-selected cell.
              *
@@ -12364,7 +11905,6 @@ namespace playdate {
                 scrollToSelection?: boolean = true,
                 animate?: boolean = true
             ): void;
-
             /**
              * Identical to `selectNextColumn()` but goes the other direction.
              *
@@ -12375,7 +11915,6 @@ namespace playdate {
                 scrollToSelection?: boolean = true,
                 animate?: boolean = true
             ): void;
-
             /**
              * This read-only variable returns true if the gridview needs to be redrawn. This can be used to help optimize drawing in your app. Keep in mind that a gridview cannot know all reasons it may need to be redrawn, such as changes in your drawing callback functions, coordinate or size changes, or overlapping drawing, so you may need to additionally redraw at other times.
              *

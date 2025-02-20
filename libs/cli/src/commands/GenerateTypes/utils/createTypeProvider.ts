@@ -31,6 +31,7 @@ export const createTypeProvider = (version: string) => {
               statements: [],
               classes: {},
               properties: {},
+              dynamicProperties: {},
               functions: {},
           } satisfies TypeProviderData);
     const provider = {
@@ -39,6 +40,7 @@ export const createTypeProvider = (version: string) => {
         statements: fallbackProvider.statements,
         classes: fallbackProvider.classes,
         properties: {},
+        dynamicProperties: {},
         functions: {},
     } as TypeProviderData;
     const visitedProperties = new Map<string, PropertyDetails>();
@@ -78,6 +80,14 @@ export const createTypeProvider = (version: string) => {
         visitedProperties.set(property.signature, result);
 
         return result;
+    };
+
+    const getDynamicProperties = (namespace: string) => {
+        return (
+            provider.dynamicProperties?.[namespace] ??
+            fallbackProvider.dynamicProperties?.[namespace] ??
+            []
+        );
     };
 
     const getFunctionDetails = (func: FunctionDescription): FunctionDetails => {
@@ -213,6 +223,7 @@ export const createTypeProvider = (version: string) => {
         getStatements,
         getClassOptions,
         getPropertyDetails,
+        getDynamicProperties,
         getFunctionReturnType,
         getParameterDetails,
         getParameters,

@@ -123,6 +123,10 @@ export type TypeProviderData = {
     constants: Record<string, (ConstantDefinition | string)[]>;
     classes: Record<string, Partial<ClassDeclarationStructure>>;
     properties: Record<string, PropertyDetails>;
+    dynamicProperties: Record<
+        string,
+        Pick<PropertyDescription, 'name' | 'docs'>[]
+    >;
     functions: Record<string, FunctionDetails>;
 };
 

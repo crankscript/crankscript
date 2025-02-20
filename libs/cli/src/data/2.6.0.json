@@ -323,7 +323,97 @@
         "playdate.ui.gridview.scrollCellsToCenter": {
             "signature": "playdate.ui.gridview.scrollCellsToCenter",
             "type": "boolean"
+        },
+        "playdate.geometry.rect.x": {
+            "signature": "playdate.geometry.rect.x",
+            "type": "number"
+        },
+        "playdate.geometry.rect.y": {
+            "signature": "playdate.geometry.rect.y",
+            "type": "number"
+        },
+        "playdate.geometry.rect.width": {
+            "signature": "playdate.geometry.rect.width",
+            "type": "number"
+        },
+        "playdate.geometry.rect.height": {
+            "signature": "playdate.geometry.rect.height",
+            "type": "number"
+        },
+        "playdate.geometry.rect.top": {
+            "signature": "playdate.geometry.rect.top",
+            "type": "number",
+            "isReadOnly": true
+        },
+        "playdate.geometry.rect.bottom": {
+            "signature": "playdate.geometry.rect.bottom",
+            "type": "number",
+            "isReadOnly": true
+        },
+        "playdate.geometry.rect.right": {
+            "signature": "playdate.geometry.rect.right",
+            "type": "number",
+            "isReadOnly": true
+        },
+        "playdate.geometry.rect.left": {
+            "signature": "playdate.geometry.rect.left",
+            "type": "number",
+            "isReadOnly": true
+        },
+        "playdate.geometry.rect.origin": {
+            "signature": "playdate.geometry.rect.origin",
+            "type": "LuaMultiReturn<[number, number]>",
+            "isReadOnly": true
+        },
+        "playdate.geometry.rect.size": {
+            "signature": "playdate.geometry.rect.size",
+            "type": "LuaMultiReturn<[number, number]>",
+            "isReadOnly": true
         }
+    },
+    "dynamicProperties": {
+        "playdate.geometry.rect": [
+            {
+                "name": "x",
+                "docs": "The x-coordinate of the rectangle's top-left corner."
+            },
+            {
+                "name": "y",
+                "docs": "The y-coordinate of the rectangle's top-left corner."
+            },
+            {
+                "name": "width",
+                "docs": "The width of the rectangle."
+            },
+            {
+                "name": "height",
+                "docs": "The height of the rectangle."
+            },
+            {
+                "name": "top",
+                "docs": "The y-coordinate of the rectangle's top edge."
+            },
+            {
+                "name": "bottom",
+                "docs": "The y-coordinate of the rectangle's bottom edge."
+            },
+            {
+                "name": "right",
+                "docs": "The x-coordinate of the rectangle's right edge."
+            },
+            {
+                "name": "left",
+                "docs": "The x-coordinate of the rectangle's left edge."
+            },
+            {
+                "name": "origin",
+                "docs": "The coordinates of the top left corner."
+            },
+            {
+                "name": "size",
+                "docs": "The width and height of the rectangle."
+            }
+        ]
     },
     "functions": {
         "print(string)": {
