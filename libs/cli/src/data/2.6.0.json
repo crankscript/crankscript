@@ -323,6 +323,52 @@
         "playdate.ui.gridview.scrollCellsToCenter": {
             "signature": "playdate.ui.gridview.scrollCellsToCenter",
             "type": "boolean"
+        },
+        "playdate.geometry.rect.x": {
+            "signature": "playdate.geometry.rect.x",
+            "type": "number"
+        },
+        "playdate.geometry.rect.y": {
+            "signature": "playdate.geometry.rect.y",
+            "type": "number"
+        },
+        "playdate.geometry.rect.width": {
+            "signature": "playdate.geometry.rect.width",
+            "type": "number"
+        },
+        "playdate.geometry.rect.height": {
+            "signature": "playdate.geometry.rect.height",
+            "type": "number"
+        },
+        "playdate.geometry.rect.top": {
+            "signature": "playdate.geometry.rect.top",
+            "type": "playdate.geometry.point",
+            "isReadOnly": true
+        },
+        "playdate.geometry.rect.bottom": {
+            "signature": "playdate.geometry.rect.bottom",
+            "type": "playdate.geometry.point",
+            "isReadOnly": true
+        },
+        "playdate.geometry.rect.right": {
+            "signature": "playdate.geometry.rect.right",
+            "type": "playdate.geometry.point",
+            "isReadOnly": true
+        },
+        "playdate.geometry.rect.left": {
+            "signature": "playdate.geometry.rect.left",
+            "type": "playdate.geometry.point",
+            "isReadOnly": true
+        },
+        "playdate.geometry.rect.origin": {
+            "signature": "playdate.geometry.rect.origin",
+            "type": "playdate.geometry.point",
+            "isReadOnly": true
+        },
+        "playdate.geometry.rect.size": {
+            "signature": "playdate.geometry.rect.size",
+            "type": "playdate.geometry.size",
+            "isReadOnly": true
         }
     },
     "functions": {
