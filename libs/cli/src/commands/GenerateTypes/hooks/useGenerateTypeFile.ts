@@ -11,7 +11,12 @@ import {
 } from 'ts-morph';
 import { createTypeProvider } from '@/cli/commands/GenerateTypes/utils/createTypeProvider.js';
 import { TypescriptReservedNamed } from '@/cli/constants.js';
-import { ApiDefinitions, ApiObject, CheckListItem } from '@/cli/types.js';
+import {
+    ApiDefinitions,
+    ApiObject,
+    CheckListItem,
+    PropertyDescription,
+} from '@/cli/types.js';
 
 export const useGenerateTypeFile = (
     path: string,
@@ -140,7 +145,19 @@ const generateNamespace = (
         }
     }
 
-    for (const property of apiObject.properties) {
+    const dynamicProperties = typeProvider
+        .getDynamicProperties(`${namespace}.${name}`)
+        .map(
+            (dynamicProperty) =>
+                ({
+                    name: dynamicProperty.name,
+                    docs: dynamicProperty.docs,
+                    namespaces: namespace.split('.'),
+                    signature: `${namespace}.${name}.${dynamicProperty.name}`,
+                } satisfies PropertyDescription)
+        );
+
+    for (const property of [...apiObject.properties, ...dynamicProperties]) {
         const propertyDetails = typeProvider.getPropertyDetails(property);
 
         if (propertiesSubject) {

@@ -3813,6 +3813,26 @@ namespace playdate {
                 r2: playdate.geometry.rect,
                 flip: PlaydateFlip
             ): void;
+            /** The x-coordinate of the rectangle's top-left corner. */
+            x: number;
+            /** The y-coordinate of the rectangle's top-left corner. */
+            y: number;
+            /** The width of the rectangle. */
+            width: number;
+            /** The height of the rectangle. */
+            height: number;
+            /** The y-coordinate of the rectangle's top edge. */
+            readonly top: number;
+            /** The y-coordinate of the rectangle's bottom edge. */
+            readonly bottom: number;
+            /** The x-coordinate of the rectangle's right edge. */
+            readonly right: number;
+            /** The x-coordinate of the rectangle's left edge. */
+            readonly left: number;
+            /** The coordinates of the top left corner. */
+            readonly origin: LuaMultiReturn<[number, number]>;
+            /** The width and height of the rectangle. */
+            readonly size: LuaMultiReturn<[number, number]>;
         }
 
         namespace size {
