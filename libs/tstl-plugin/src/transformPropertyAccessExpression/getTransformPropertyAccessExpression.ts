@@ -4,9 +4,7 @@ import { ImportMap } from '../ImportMap';
 
 export const getTransformPropertyAccessExpression = (importMap: ImportMap) => {
     return ((node, context) => {
-        if (ts.isIdentifier(node.expression)) {
-            importMap.processName(node.name.text);
-        }
+        importMap.processName(node.name.text);
 
         return context.superTransformExpression(node);
     }) satisfies FunctionVisitor<ts.PropertyAccessExpression>;
