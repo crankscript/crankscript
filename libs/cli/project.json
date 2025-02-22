@@ -28,5 +28,8 @@
                 "packageRoot": "dist/{projectRoot}"
             }
         }
-    }
+    },
+    "implicitDependencies": [
+        "tstl-plugin"
+    ]
 }

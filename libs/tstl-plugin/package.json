@@ -2,7 +2,7 @@
     "name": "@crankscript/tstl-library",
     "version": "0.0.1",
     "scripts": {
-        "move-build-to-dist": "cp -r ../../dist/libs/tstl-plugin/src/* ../../dist/libs/cli/assets/",
+        "move-build-to-dist": "[ -d ../../dist/libs/cli/assets ] && cp -r ../../dist/libs/tstl-plugin/src/* ../../dist/libs/cli/assets/",
         "move-build-to-cli": "cp -r ../../dist/libs/tstl-plugin/src/* ../../libs/cli/assets/",
         "post-build": "npm run move-build-to-dist"
     },
