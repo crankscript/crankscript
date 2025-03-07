@@ -78,3 +78,6 @@ playdate.update = withReload(() => {
 ```
 
 Please report any issues you encounter.
+
+> [!NOTE]
+> This project is tested with BrowserStack.
