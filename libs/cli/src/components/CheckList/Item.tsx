@@ -75,7 +75,6 @@ export const Item = <TResult,>({
                 onFinish?.(result);
             })
             .catch((reason) => {
-                console.log(reason);
                 setfailedReason(reason.message);
             });
     }, [errorDescription, onFinish, runner, start]);
