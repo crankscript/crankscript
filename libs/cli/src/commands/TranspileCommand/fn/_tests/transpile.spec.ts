@@ -50,4 +50,18 @@ describe('transpile', () => {
             );
         });
     });
+
+    describe('builtins', () => {
+        const { result, transformedLua } = runTranspilation('builtins');
+
+        describe('Map', () => {
+            it('should transpile without errors', () => {
+                expect(result.diagnostics).toEqual([]);
+            });
+
+            it('should instantiate Map correctly', () => {
+                expect(transformedLua).toContain('test = __TS__New(Map)');
+            });
+        });
+    });
 });

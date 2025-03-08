@@ -1,9 +1,7 @@
 import { existsSync } from 'node:fs';
-import { join } from 'node:path';
-import open from 'open';
 import { useMemo } from 'react';
+import { compile } from '@/cli/commands/CompileCommand/hooks/task/compile.js';
 import { CheckListItem } from '@/cli/types.js';
-import { isWindows } from '@/cli/utils/platform.js';
 
 export const useCompileTasks = (pdcPath: string) => {
     return useMemo(
@@ -29,25 +27,7 @@ export const useCompileTasks = (pdcPath: string) => {
                 runningDescription: 'Compiling lua code...',
                 finishedDescription: () => 'Lua code compiled',
                 runner: async () => {
-                    const currentDirectory = process.cwd();
-
-                    await open('', {
-                        app: {
-                            name: pdcPath,
-                            arguments: [
-                                join(currentDirectory, 'Source'),
-                                join(currentDirectory, 'Game.pdx'),
-                            ],
-                        },
-                    });
-
-                    if (isWindows) {
-                        // Wait for pdc.exe to compile
-                        // See https://github.com/sindresorhus/open/issues/298
-                        await new Promise((resolve) =>
-                            setTimeout(resolve, 1000)
-                        );
-                    }
+                    await compile({ pdcPath, target: process.cwd() });
                 },
                 ready: true,
             },
