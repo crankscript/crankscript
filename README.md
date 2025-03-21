@@ -1,5 +1,13 @@
 <h1 align="center">Crankscript</h1>
 
+<p align="center">
+  <img src="https://github.com/crankscript/crankscript/actions/workflows/ci.yml/badge.svg" alt="CI">
+  <img src="https://github.com/crankscript/crankscript/actions/workflows/release-beta.yml/badge.svg" alt="Beta">
+  <img src="https://github.com/crankscript/crankscript/actions/workflows/release-stable.yml/badge.svg" alt="Stable">
+  <img src="https://img.shields.io/npm/v/crankscript.svg" alt="NPM version">
+  <img src="https://img.shields.io/badge/SDK-2.6.0-FFC733" alt="SDK">
+</p>
+
 Crankscript is a collection of tools that lets you write Playdate games in TypeScript. TypeScript code is enriched with Playdate type definitions, and transformed to Lua with [TypeScript-to-Lua](https://typescripttolua.github.io/).
 
 > [!NOTE]
