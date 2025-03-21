@@ -51,7 +51,7 @@ jobs:
                 if: github.ref == 'refs/heads/main'
 
             -   name: Release beta
-                run: npx nx release version -p=types,core,cli --verbose --preid beta prerelease
+                run: npx nx release --yes -p=types,core,cli --verbose --preid beta prerelease
                 if: github.ref == 'refs/heads/main'
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
