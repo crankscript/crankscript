@@ -58,7 +58,7 @@ jobs:
                     NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
             -   name: Beta publish
-                run: npx nx publish --tag beta
+                run: npx nx publish -p=types,core,cli --tag beta
                 if: github.ref == 'refs/heads/main'
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
