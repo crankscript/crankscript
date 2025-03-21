@@ -1,0 +1,22 @@
+diff --git a/node_modules/nx/src/command-line/release/utils/git.js b/node_modules/nx/src/command-line/release/utils/git.js
+index 17dcf63..176571c 100644
+--- a/node_modules/nx/src/command-line/release/utils/git.js
++++ b/node_modules/nx/src/command-line/release/utils/git.js
+@@ -25,7 +25,7 @@ function escapeRegExp(string) {
+ }
+ // https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+ const SEMVER_REGEX = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/g;
+-async function getLatestGitTagForPattern(releaseTagPattern, additionalInterpolationData = {}, checkAllBranchesWhen) {
++async function getLatestGitTagForPattern(releaseTagPattern, additionalInterpolationData = {}, checkAllBranchesWhen, prerelease = false) {
+     /**
+      * By default, we will try and resolve the latest match for the releaseTagPattern from the current branch,
+      * falling back to all branches if no match is found on the current branch.
+@@ -102,7 +102,7 @@ async function getLatestGitTagForPattern(releaseTagPattern, additionalInterpolat
+             ...additionalInterpolationData,
+         });
+         const tagRegexp = `^${escapeRegExp(interpolatedTagPattern)
+-            .replace('%v%', '(.+)')
++            .replace('%v%', prerelease ? '(.+)' : '((?!.*-).+)')
+             .replace('%p%', '(.+)')}`;
+         const matchingSemverTags = tags.filter((tag) => 
+         // Do the match against SEMVER_REGEX to ensure that we skip tags that aren't valid semver versions
