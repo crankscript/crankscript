@@ -5,7 +5,8 @@
     "scripts": {
         "prepare": "husky install",
         "crankscript-dev": "tsx --tsconfig libs/cli/tsconfig.json libs/cli/src/index.ts",
-        "docker:env:linux": "docker run --rm -it --platform linux/amd64 -v \"$(pwd):/project\" -w /project -v /project/node_modules node:18 bash -c \"npm install && bash\""
+        "docker:env:linux": "docker run --rm -it --platform linux/amd64 -v \"$(pwd):/project\" -w /project -v /project/node_modules node:18 bash -c \"npm install && bash\"",
+        "prepare-release": "bash scripts/prepare-release.sh"
     },
     "author": {
         "name": "Alberto Piu"
