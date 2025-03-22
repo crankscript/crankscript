@@ -50,16 +50,22 @@ jobs:
                 run: git config user.email github-actions@github.com
                 if: github.ref == 'refs/heads/main'
 
+            -   name: Get affected projects
+                id: check
+                run: |
+                    CHANGED=$(npx nx show projects --affected --exclude=@crankscript/source)
+                    echo "changed=$CHANGED" >> "$GITHUB_OUTPUT"
+
             -   name: Beta version and changelog
                 run: npx nx release --skip-publish --verbose --preid beta prerelease
-                if: github.ref == 'refs/heads/main'
+                if: steps.check.outputs.changed != ''
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
             -   name: Beta publish
                 run: npx nx release publish --tag beta
-                if: github.ref == 'refs/heads/main'
+                if: steps.check.outputs.changed != ''
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
