@@ -42,15 +42,15 @@ jobs:
 
             -   name: Set git user name
                 run: git config user.name github-actions
-                if: github.ref == 'refs/heads/stable'
+                if: github.ref == 'refs/heads/main'
 
             -   name: Set git user email
                 run: git config user.email github-actions@github.com
-                if: github.ref == 'refs/heads/stable'
+                if: github.ref == 'refs/heads/main'
 
             -   name: Release stable
                 run: npx nx release --yes --verbose
-                if: github.ref == 'refs/heads/stable'
+                if: github.ref == 'refs/heads/main'
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
