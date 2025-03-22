@@ -1,9 +1,7 @@
 name: Stable release
 
 on:
-    push:
-        branches:
-            - stable
+    workflow_dispatch:
 
 permissions:
     contents: write
@@ -51,7 +49,7 @@ jobs:
                 if: github.ref == 'refs/heads/stable'
 
             -   name: Release stable
-                run: npx nx release -p=types,core,cli --yes --verbose
+                run: npx nx release --yes --verbose
                 if: github.ref == 'refs/heads/stable'
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
