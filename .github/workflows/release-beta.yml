@@ -53,18 +53,18 @@ jobs:
             -   name: Get affected projects
                 id: check
                 run: |
-                    CHANGED=$(npx nx show projects --affected --exclude=@crankscript/source)
+                    CHANGED=$(npx nx show projects --affected --exclude=@crankscript/source --sep ',')
                     echo "changed=$CHANGED" >> "$GITHUB_OUTPUT"
 
             -   name: Beta version and changelog
-                run: npx nx release --skip-publish --verbose --preid beta prerelease
+                run: npx nx release -p=${{ steps.check.outputs.changed }} --skip-publish --verbose --preid beta prerelease
                 if: steps.check.outputs.changed != ''
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
             -   name: Beta publish
-                run: npx nx release publish --tag beta
+                run: npx nx release -p=${{ steps.check.outputs.changed }} publish --tag beta
                 if: steps.check.outputs.changed != ''
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
