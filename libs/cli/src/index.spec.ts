@@ -1,5 +1,5 @@
 describe('cli', () => {
-    it('should work', () => {
+    it('should pass this test', () => {
         expect('cli').toEqual('cli');
     });
 });
