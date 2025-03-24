@@ -44,11 +44,9 @@ jobs:
 
             -   name: Set git user name
                 run: git config user.name github-actions
-                if: github.ref == 'refs/heads/main'
 
             -   name: Set git user email
                 run: git config user.email github-actions@github.com
-                if: github.ref == 'refs/heads/main'
 
             -   name: Get affected projects
                 id: check
