@@ -18,6 +18,10 @@ jobs:
                     fetch-depth: 0
                     fetch-tags: true
 
+            # Needed because of https://github.com/actions/checkout/issues/1471
+            -   name: Fetch all tags
+                run: git fetch --depth=1 --tags
+
             -   name: Setup Node
                 uses: actions/setup-node@v4
                 with:
