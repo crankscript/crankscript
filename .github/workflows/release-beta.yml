@@ -3,7 +3,7 @@ name: Beta release
 on:
     push:
         branches:
-            - main
+            - beta
 
 permissions:
     contents: write
@@ -29,6 +29,8 @@ jobs:
 
             -   name: Set Nx Base and Head SHAs
                 uses: nrwl/nx-set-shas@v4
+                with:
+                  main-branch-name: beta
 
             -   name: CI tstl-plugin
                 run: npx nx run-many -t lint test build -p tstl-plugin

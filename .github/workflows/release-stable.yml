@@ -27,6 +27,15 @@ jobs:
             -   name: Install dependencies
                 run: npm ci --legacy-peer-deps
 
+            -   name: Ensure stable is subset of beta
+                run: |
+                    COMMITS=$(git log stable --not beta --oneline)
+                    if [ -n "$COMMITS" ]; then
+                    echo "🚨 Commits in stable that are not in beta:"
+                    echo "$COMMITS"
+                    exit 1
+                    fi
+
             -   name: Set Nx Base and Head SHAs
                 uses: nrwl/nx-set-shas@v4
                 with:
