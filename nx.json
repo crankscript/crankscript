@@ -28,6 +28,7 @@
     },
     "release": {
         "projectsRelationship": "independent",
+        "releaseTagPatternCheckAllBranchesWhen": true,
         "projects": ["libs/cli", "libs/core", "libs/types"],
         "version": {
             "preVersionCommand": "npx nx run-many -t build && npx nx run-many -t post-build",
