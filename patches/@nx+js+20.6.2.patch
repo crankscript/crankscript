@@ -1,0 +1,13 @@
+diff --git a/node_modules/@nx/js/src/generators/release-version/release-version.js b/node_modules/@nx/js/src/generators/release-version/release-version.js
+index dde916e..ab9e65c 100644
+--- a/node_modules/@nx/js/src/generators/release-version/release-version.js
++++ b/node_modules/@nx/js/src/generators/release-version/release-version.js
+@@ -191,7 +191,7 @@ To fix this you will either need to add a package.json file at that location, or
+                         const releaseTagPattern = options.releaseGroup.releaseTagPattern;
+                         latestMatchingGitTag = await (0, git_1.getLatestGitTagForPattern)(releaseTagPattern, {
+                             projectName: project.name,
+-                        }, options.releaseGroup.releaseTagPatternCheckAllBranchesWhen);
++                        }, options.releaseGroup.releaseTagPatternCheckAllBranchesWhen, (0, semver_2.prerelease)(currentVersion ?? ''));
+                         if (!latestMatchingGitTag) {
+                             if (options.fallbackCurrentVersionResolver === 'disk') {
+                                 if (!currentVersionFromDisk &&
