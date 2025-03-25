@@ -27,6 +27,9 @@ jobs:
             -   name: Install dependencies
                 run: npm ci --legacy-peer-deps
 
+            -   name: 🔍 Confirm Nx version
+                run: npx nx --version
+
             -   name: Fetch beta branch
                 run: git fetch origin beta --depth=1
               

@@ -27,6 +27,9 @@ jobs:
             -   name: Install dependencies
                 run: npm ci --legacy-peer-deps
 
+            -   name: 🔍 Confirm Nx version
+                run: npx nx --version
+
             -   name: Set Nx Base and Head SHAs
                 uses: nrwl/nx-set-shas@v4
                 with:
