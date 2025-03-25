@@ -1,5 +1,5 @@
 diff --git a/node_modules/nx/src/command-line/release/utils/git.js b/node_modules/nx/src/command-line/release/utils/git.js
-index 17dcf63..530b745 100644
+index 17dcf63..176571c 100644
 --- a/node_modules/nx/src/command-line/release/utils/git.js
 +++ b/node_modules/nx/src/command-line/release/utils/git.js
 @@ -25,7 +25,7 @@ function escapeRegExp(string) {
@@ -11,14 +11,12 @@ index 17dcf63..530b745 100644
      /**
       * By default, we will try and resolve the latest match for the releaseTagPattern from the current branch,
       * falling back to all branches if no match is found on the current branch.
-@@ -102,8 +102,9 @@ async function getLatestGitTagForPattern(releaseTagPattern, additionalInterpolat
+@@ -102,7 +102,7 @@ async function getLatestGitTagForPattern(releaseTagPattern, additionalInterpolat
              ...additionalInterpolationData,
          });
          const tagRegexp = `^${escapeRegExp(interpolatedTagPattern)
 -            .replace('%v%', '(.+)')
 +            .replace('%v%', prerelease ? '(.+)' : '((?!.*-).+)')
              .replace('%p%', '(.+)')}`;
-+            console.log(tagRegexp, tags)
          const matchingSemverTags = tags.filter((tag) => 
          // Do the match against SEMVER_REGEX to ensure that we skip tags that aren't valid semver versions
-         !!tag.match(tagRegexp) &&
