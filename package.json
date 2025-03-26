@@ -6,7 +6,8 @@
         "prepare": "husky install",
         "crankscript-dev": "tsx --tsconfig libs/cli/tsconfig.json libs/cli/src/index.ts",
         "docker:env:linux": "docker run --rm -it --platform linux/amd64 -v \"$(pwd):/project\" -w /project -v /project/node_modules node:18 bash -c \"npm install && bash\"",
-        "postinstall": "patch-package"
+        "postinstall": "patch-package",
+        "commit": "CZ_SCOPE=`node --no-warnings scripts/scope.js` npx cz"
     },
     "author": {
         "name": "Alberto Piu"
@@ -54,6 +55,7 @@
         "@types/turndown": "^5.0.5",
         "@typescript-eslint/eslint-plugin": "^7.16.0",
         "@typescript-eslint/parser": "^7.16.0",
+        "commitlint-plugin-function-rules": "^4.0.1",
         "cz-conventional-changelog": "^3.3.0",
         "eslint": "~8.57.0",
         "eslint-config-prettier": "^9.0.0",
