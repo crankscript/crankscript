@@ -29,6 +29,27 @@ export const transformConstructor = (
 
     bodyStatements.push(...classInstanceFields);
 
+    const parameterAssignments = constructor?.parameters
+        .filter(param => param.name &&
+            param.modifiers &&
+            param.modifiers.length > 0)
+        .map(param => {
+            if (ts.isIdentifier(param.name)) {
+                const paramName = param.name.text;
+                return tstl.createAssignmentStatement(
+                    tstl.createTableIndexExpression(
+                        tstl.createIdentifier('self'),
+                        tstl.createStringLiteral(paramName)
+                    ),
+                    tstl.createIdentifier(paramName)
+                );
+            }
+            return undefined;
+        })
+        .filter((stmt): stmt is tstl.AssignmentStatement => stmt !== undefined);
+
+    bodyStatements.push(...parameterAssignments);
+
     if (constructor?.body) {
         const body = transformFunctionBodyContent(context, constructor.body);
 

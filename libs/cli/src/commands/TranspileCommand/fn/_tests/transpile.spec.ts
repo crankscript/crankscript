@@ -49,6 +49,15 @@ describe('transpile', () => {
                 'B.super.init(firstArgument,getString(nil) or "hello")'
             );
         });
+
+        it('should set instance properties in the constructor', () => {
+            expect(transformedLua).toContain(
+                'self.firstArgument = firstArgument'
+            );
+            expect(transformedLua).not.toContain(
+                'self.secondArgument = secondArgument'
+            );
+        });
     });
 
     describe('builtins', () => {
