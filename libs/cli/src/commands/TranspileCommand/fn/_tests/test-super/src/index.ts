@@ -11,7 +11,7 @@ class A {
 
 class B extends A {
     constructor(
-        firstArgument: number,
+        private readonly firstArgument: number,
         secondArgument: number,
         thirdArgument: number
     ) {
