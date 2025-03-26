@@ -35,20 +35,6 @@ jobs:
             -   name: 🔍 Confirm Nx version
                 run: npx nx --version
 
-            -   name: Fetch beta branch
-                run: git fetch origin beta --depth=1
-              
-            -   name: Ensure stable is a subset of beta
-                run: |
-                  COMMITS=$(git log HEAD --not origin/beta --oneline)
-                  if [ -n "$COMMITS" ]; then
-                    echo "🚨 Commits in stable that are not in beta:"
-                    echo "$COMMITS"
-                    exit 1
-                  else
-                    echo "✅ All commits in stable are also in beta."
-                  fi
-                    
             -   name: Set Nx Base and Head SHAs
                 uses: nrwl/nx-set-shas@v4
                 with:
