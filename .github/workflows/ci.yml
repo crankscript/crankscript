@@ -8,6 +8,7 @@ permissions:
 
 jobs:
     main:
+        name: Test packages
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout
