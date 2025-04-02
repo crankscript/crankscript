@@ -73,4 +73,19 @@ describe('transpile', () => {
             });
         });
     });
+
+
+    describe('static', () => {
+        const { result, transformedLua } = runTranspilation('static');
+
+        it('should transpile without errors', () => {
+            expect(result.diagnostics).toEqual([]);
+        });
+
+        it('should set static field on class', () => {
+            expect(transformedLua).toContain(
+                'A.staticField = "staticField"'
+            );
+        });
+    })
 });

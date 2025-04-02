@@ -1,6 +1,7 @@
 import * as ts from 'typescript';
 import { FunctionVisitor, TransformationContext } from 'typescript-to-lua';
 import * as tstl from 'typescript-to-lua';
+import { transformStaticPropertyDeclaration } from 'typescript-to-lua/dist/transformation/visitors/class/members/fields';
 import {
     getExtendedNode,
     isStaticNode,
@@ -56,6 +57,7 @@ export const getTransformClassDeclaration = (importMap: ImportMap) => {
 
         // Divide properties into static and non-static
         const instanceFields = properties.filter((prop) => !isStaticNode(prop));
+        const staticFields = properties.filter((prop) => isStaticNode(prop));
 
         const statements: tstl.Statement[] = [];
 
@@ -65,6 +67,16 @@ export const getTransformClassDeclaration = (importMap: ImportMap) => {
         // function X:init()
         //   X.super.init(self)
         // end
+
+        const staticFieldStatements = staticFields
+            .map((field) =>
+                transformStaticPropertyDeclaration(context, field, className)
+            )
+            .filter(
+                (stmt): stmt is tstl.AssignmentStatement => stmt !== undefined
+            );
+        statements.push(...staticFieldStatements);
+
         const constructor = declaration.members.find(
             (n): n is ts.ConstructorDeclaration =>
                 ts.isConstructorDeclaration(n) && n.body !== undefined

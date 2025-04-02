@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "outDir": "Source",
+        "strict": true,
+        "skipLibCheck": true,
+        "baseUrl": "./",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        },
+        "target": "esnext",
+        "module": "esnext"
+    },
+    "files": [
+        "../../../../../../../types/types/latest.d.ts"
+    ],
+    "include": [
+        "src/**/*.ts"
+    ]
+}
