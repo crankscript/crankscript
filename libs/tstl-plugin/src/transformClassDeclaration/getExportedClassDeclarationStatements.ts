@@ -3,7 +3,7 @@ import * as tstl from 'typescript-to-lua';
 
 export const getExportedClassDeclarationStatements = (
     className: tstl.Identifier,
-    declaration: ts.ClassLikeDeclaration
+    declaration: ts.ClassLikeDeclaration,
 ) => {
     if (
         'localSymbol' in declaration &&
@@ -21,9 +21,9 @@ export const getExportedClassDeclarationStatements = (
             tstl.createAssignmentStatement(
                 tstl.createTableIndexExpression(
                     tstl.createIdentifier('____exports'),
-                    tstl.createStringLiteral(escapedName)
+                    tstl.createStringLiteral(escapedName),
                 ),
-                className
+                className,
             ),
         ];
     }

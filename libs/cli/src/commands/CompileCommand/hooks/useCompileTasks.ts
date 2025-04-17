@@ -10,7 +10,7 @@ export const useCompileTasks = (pdcPath: string) => {
                 waitingDescription: 'Waiting to check for pdc binary...',
                 errorDescription: 'Could not find pdc binary',
                 runningDescription: 'Checking for pdc binary...',
-                finishedDescription: (result) =>
+                finishedDescription: result =>
                     `Found pdc binary at "${result}"`,
                 runner: async () => {
                     if (!existsSync(pdcPath)) {
@@ -32,6 +32,6 @@ export const useCompileTasks = (pdcPath: string) => {
                 ready: true,
             },
         ],
-        []
+        [],
     ) as CheckListItem<unknown>[];
 };

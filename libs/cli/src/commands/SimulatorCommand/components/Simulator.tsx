@@ -38,7 +38,7 @@ export const Simulator = ({
     const [hasChangedMessage, setHasChangedMessage] = useState(false);
     const transpileTasks = useTranspileTasks(path);
     const compileTasks = useCompileTasks(
-        getPdcPathFromEnvironment(environment)
+        getPdcPathFromEnvironment(environment),
     );
     const didRun = useRef(false);
 
@@ -87,7 +87,7 @@ export const Simulator = ({
                         setHasChanged(true);
                         setHasChangedMessage(true);
                         setIsWatching(false);
-                    }
+                    },
                 );
             }
         });

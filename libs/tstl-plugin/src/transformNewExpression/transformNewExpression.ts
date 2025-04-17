@@ -14,7 +14,7 @@ export const transformNewExpression = ((node, context) => {
         context,
         node.expression,
         node.arguments ?? [ts.factory.createTrue()],
-        signature
+        signature,
     );
     return tstl.createCallExpression(name, params);
 }) satisfies FunctionVisitor<ts.NewExpression>;

@@ -5,17 +5,11 @@
         "skipLibCheck": true,
         "baseUrl": "./",
         "paths": {
-            "@/*": [
-                "src/*"
-            ]
+            "@/*": ["src/*"]
         },
         "target": "esnext",
         "module": "esnext"
     },
-    "files": [
-        "../../../../../../../types/types/latest.d.ts"
-    ],
-    "include": [
-        "src/**/*.ts"
-    ]
+    "files": ["../../../../../../../types/types/latest.d.ts"],
+    "include": ["src/**/*.ts"]
 }

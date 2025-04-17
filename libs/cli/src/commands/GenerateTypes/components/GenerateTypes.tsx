@@ -17,12 +17,12 @@ export const GenerateTypes = ({ output, version, overwriteJson }: Props) => {
     const { html, fetchHtml } = useFetchHtml(fetchedVersion);
     const { definitions, parseDocumentation } = useParseDocumentation(
         html,
-        version
+        version,
     );
     const { generateTypeFile } = useGenerateTypeFile(
         output,
         definitions,
-        typeProvider
+        typeProvider,
     );
 
     const items = useMemo(() => {

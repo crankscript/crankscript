@@ -14,15 +14,11 @@
         "jsx": "react",
         "baseUrl": ".",
         "paths": {
-            "@/cli/*": [
-                "src/*"
-            ]
+            "@/cli/*": ["src/*"]
         }
     },
     "files": [],
-    "include": [
-        "src/**/*.ts"
-    ],
+    "include": ["src/**/*.ts"],
     "references": [
         {
             "path": "./tsconfig.lib.json"

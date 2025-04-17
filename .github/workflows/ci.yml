@@ -11,32 +11,32 @@ jobs:
         name: Test packages
         runs-on: ubuntu-latest
         steps:
-            -   name: Checkout
-                uses: actions/checkout@v4
-                with:
-                    fetch-depth: 0
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
-            -   name: Setup Node
-                uses: actions/setup-node@v4
-                with:
-                    node-version: 22
-                    cache: 'npm'
-                    registry-url: 'https://registry.npmjs.org'
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: 'npm'
+                  registry-url: 'https://registry.npmjs.org'
 
-            -   name: Install dependencies
-                run: npm ci --legacy-peer-deps
+            - name: Install dependencies
+              run: npm ci --legacy-peer-deps
 
-            -   name: Confirm Nx version
-                run: npx nx --version
+            - name: Confirm Nx version
+              run: npx nx --version
 
-            -   name: Set Nx Base and Head SHAs
-                uses: nrwl/nx-set-shas@v4
+            - name: Set Nx Base and Head SHAs
+              uses: nrwl/nx-set-shas@v4
 
-            -   name: CI tstl-plugin
-                run: npx nx run-many -t lint test build -p tstl-plugin
+            - name: CI tstl-plugin
+              run: npx nx run-many -t lint test build -p tstl-plugin
 
-            -   name: Move tstl-plugin build to CLI
-                run: npx nx run tstl-plugin:move-build-to-cli
+            - name: Move tstl-plugin build to CLI
+              run: npx nx run tstl-plugin:move-build-to-cli
 
-            -   name: CI affected projects
-                run: NODE_OPTIONS=--experimental-vm-modules npx nx affected -t lint test build --exclude=tstl-plugin
+            - name: CI affected projects
+              run: NODE_OPTIONS=--experimental-vm-modules npx nx affected -t lint test build --exclude=tstl-plugin

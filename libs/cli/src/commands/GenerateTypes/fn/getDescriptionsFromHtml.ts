@@ -28,7 +28,7 @@ export const getDescriptionsFromHtml = (html: string, version: string) => {
     const $ = load(html);
 
     const functionSignatures = $(
-        '[id^="m-"], [id^="f-"], [id^="c-"], [id^="v-"]'
+        '[id^="m-"], [id^="f-"], [id^="c-"], [id^="v-"]',
     ).toArray();
     const functions: FunctionDescription[] = [];
     const properties: PropertyDescription[] = [];
@@ -64,13 +64,13 @@ export const getDescriptionsFromHtml = (html: string, version: string) => {
         if (docsString.endsWith('</div>')) {
             docsString = docsString.slice(
                 0,
-                docsString.length - '</div>'.length
+                docsString.length - '</div>'.length,
             );
         }
 
         docsString = docsString.replace(
             /<a href="#/g,
-            '<a href="' + PlaydateSdkUrl + version + '#'
+            '<a href="' + PlaydateSdkUrl + version + '#',
         );
 
         docsString = turndown.turndown(docsString);

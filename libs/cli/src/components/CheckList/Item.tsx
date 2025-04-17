@@ -41,7 +41,7 @@ export const Item = <TResult,>({
     useEffect(() => {
         if (couldStartButNotReady) {
             interval.current = setInterval(() => {
-                setDotCount((count) => (count + 1) % 4);
+                setDotCount(count => (count + 1) % 4);
             }, 250);
         } else {
             if (interval.current) {
@@ -62,7 +62,7 @@ export const Item = <TResult,>({
         }
 
         runner()
-            .then((result) => {
+            .then(result => {
                 executed.current = true;
 
                 if (result === false) {
@@ -74,7 +74,7 @@ export const Item = <TResult,>({
                 setResult(result);
                 onFinish?.(result);
             })
-            .catch((reason) => {
+            .catch(reason => {
                 setfailedReason(reason.message);
             });
     }, [errorDescription, onFinish, runner, start]);

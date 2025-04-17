@@ -20,16 +20,16 @@ export const useParseDocumentation = (html: string | null, version: string) => {
 
                 const { functions, properties } = getDescriptionsFromHtml(
                     html,
-                    version
+                    version,
                 );
 
                 return getApiDefinitions(
                     functions,
                     properties,
-                    getFunctionTypeOverride(version)
+                    getFunctionTypeOverride(version),
                 );
             },
-            onFinish: (result) => {
+            onFinish: result => {
                 setResult(result);
             },
             ready: html !== null,

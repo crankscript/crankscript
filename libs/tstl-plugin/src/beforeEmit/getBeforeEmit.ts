@@ -5,7 +5,7 @@ import { ImportMap } from '../ImportMap';
 export const getBeforeEmit = (importMap: ImportMap) => {
     return ((_, __, ___, result) => {
         const importsString = importMap
-            .map((importString) => `import "CoreLibs/${importString}"`)
+            .map(importString => `import "CoreLibs/${importString}"`)
             .join('\n');
 
         if (importsString.trim() === '') {
@@ -14,7 +14,7 @@ export const getBeforeEmit = (importMap: ImportMap) => {
 
         result[0].code = withAutomaticImportWarning(
             importsString,
-            result[0].code
+            result[0].code,
         );
     }) satisfies Plugin['beforeEmit'];
 };

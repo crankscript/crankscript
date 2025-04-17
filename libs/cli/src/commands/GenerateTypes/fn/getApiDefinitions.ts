@@ -9,7 +9,7 @@ import {
 export const getApiDefinitions = (
     functions: FunctionDescription[],
     properties: PropertyDescription[],
-    functionTypeOverride: FunctionTypeOverrideMap
+    functionTypeOverride: FunctionTypeOverrideMap,
 ): ApiDefinitions => {
     const global: ApiObject = {
         functions: [],
@@ -20,7 +20,7 @@ export const getApiDefinitions = (
 
     const getOrCreateNamespace = (
         path: string[],
-        root: ApiObject
+        root: ApiObject,
     ): ApiObject => {
         return path.reduce((currentNamespace, ns) => {
             if (!currentNamespace.namespaces[ns]) {
@@ -35,7 +35,7 @@ export const getApiDefinitions = (
         }, root);
     };
 
-    functions.forEach((func) => {
+    functions.forEach(func => {
         const targetNamespace = getOrCreateNamespace(func.namespaces, global);
         if (func.hasSelf || functionTypeOverride[func.signature]?.isMethod) {
             targetNamespace.methods.push(func);
@@ -44,7 +44,7 @@ export const getApiDefinitions = (
         }
     });
 
-    properties.forEach((prop) => {
+    properties.forEach(prop => {
         const targetNamespace = getOrCreateNamespace(prop.namespaces, global);
         targetNamespace.properties.push(prop);
     });

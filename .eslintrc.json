@@ -1,23 +1,20 @@
 {
     "root": true,
-    "ignorePatterns": [
-        "**/*"
-    ],
+    "ignorePatterns": ["**/*"],
     "plugins": [
         "@nx",
         "unused-imports",
         "@typescript-eslint",
-        "import"
+        "import",
+        "prettier"
     ],
+    "extends": ["prettier"],
+    "rules": {
+        "prettier/prettier": "error"
+    },
     "overrides": [
         {
-            "files": [
-                "*.ts",
-                "*.tsx",
-                "*.js",
-                "*.jsx",
-                "*.cts"
-            ],
+            "files": ["*.ts", "*.tsx", "*.js", "*.jsx", "*.cts"],
             "rules": {
                 "@nx/enforce-module-boundaries": [
                     "error",
@@ -27,9 +24,7 @@
                         "depConstraints": [
                             {
                                 "sourceTag": "*",
-                                "onlyDependOnLibsWithTags": [
-                                    "*"
-                                ]
+                                "onlyDependOnLibsWithTags": ["*"]
                             }
                         ]
                     }
@@ -67,33 +62,17 @@
             }
         },
         {
-            "files": [
-                "*.ts",
-                "*.tsx",
-                "*.cts"
-            ],
-            "extends": [
-                "plugin:@nx/typescript"
-            ],
+            "files": ["*.ts", "*.tsx", "*.cts"],
+            "extends": ["plugin:@nx/typescript"],
             "rules": {}
         },
         {
-            "files": [
-                "*.js",
-                "*.jsx"
-            ],
-            "extends": [
-                "plugin:@nx/javascript"
-            ],
+            "files": ["*.js", "*.jsx"],
+            "extends": ["plugin:@nx/javascript"],
             "rules": {}
         },
         {
-            "files": [
-                "*.spec.ts",
-                "*.spec.tsx",
-                "*.spec.js",
-                "*.spec.jsx"
-            ],
+            "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
             "env": {
                 "jest": true
             },

@@ -113,7 +113,7 @@ namespace playdate {
     };
     type PlaydateGenericCollision<
         TType extends PlaydateCollisionResponse,
-        TExtra = {}
+        TExtra = {},
     > = {
         sprite: playdate.graphics.sprite;
         other: playdate.graphics.sprite;
@@ -361,7 +361,7 @@ namespace playdate {
      */
     export function setMenuImage(
         image: playdate.graphics.image | null,
-        xOffset?: number
+        xOffset?: number,
     ): void;
 
     /**
@@ -891,7 +891,7 @@ namespace playdate {
      */
     export function timeFromEpoch(
         seconds: number,
-        milliseconds: number
+        milliseconds: number,
     ): {
         year: number;
         month: number;
@@ -912,7 +912,7 @@ namespace playdate {
      */
     export function GMTTimeFromEpoch(
         seconds: number,
-        milliseconds: number
+        milliseconds: number,
     ): {
         year: number;
         month: number;
@@ -1065,7 +1065,7 @@ namespace playdate {
         r: number,
         g: number,
         b: number,
-        a: number
+        a: number,
     ): void;
 
     /**
@@ -1230,7 +1230,7 @@ namespace playdate {
          */
         addMenuItem(
             title: string,
-            callback: () => void
+            callback: () => void,
         ):
             | LuaMultiReturn<[playdate.menu.item, undefined]>
             | LuaMultiReturn<[null, string]>;
@@ -1255,7 +1255,7 @@ namespace playdate {
         addCheckmarkMenuItem(
             title: string,
             initialValue?: boolean = false,
-            callback: (value: boolean) => void
+            callback: (value: boolean) => void,
         ):
             | LuaMultiReturn<[playdate.menu.item, undefined]>
             | LuaMultiReturn<[null, string]>;
@@ -1283,7 +1283,7 @@ namespace playdate {
             title: string,
             options: TOptions,
             initalValue?: TOptions[number],
-            callback: () => void
+            callback: () => void,
         ):
             | LuaMultiReturn<[playdate.menu.item, undefined]>
             | LuaMultiReturn<[null, string]>;
@@ -1327,7 +1327,7 @@ namespace playdate {
          */
         export function push(
             handler: PlaydateInputHandler,
-            masksPreviousHandlers?: boolean
+            masksPreviousHandlers?: boolean,
         ): void;
 
         /**
@@ -1592,7 +1592,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1618,7 +1618,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1644,7 +1644,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1670,7 +1670,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1696,7 +1696,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1722,7 +1722,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1748,7 +1748,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1774,7 +1774,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1800,7 +1800,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1826,7 +1826,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1852,7 +1852,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1878,7 +1878,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1904,7 +1904,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1930,7 +1930,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1956,7 +1956,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -1982,7 +1982,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2008,7 +2008,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2034,7 +2034,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2060,7 +2060,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2086,7 +2086,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2112,7 +2112,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2138,7 +2138,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2164,7 +2164,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2190,7 +2190,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2216,7 +2216,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2242,7 +2242,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2268,7 +2268,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2294,7 +2294,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2320,7 +2320,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2348,7 +2348,7 @@ namespace playdate {
             c: number,
             d: number,
             a?: number,
-            p?: number
+            p?: number,
         ): void;
 
         /**
@@ -2376,7 +2376,7 @@ namespace playdate {
             c: number,
             d: number,
             a?: number,
-            p?: number
+            p?: number,
         ): void;
 
         /**
@@ -2404,7 +2404,7 @@ namespace playdate {
             c: number,
             d: number,
             a?: number,
-            p?: number
+            p?: number,
         ): void;
 
         /**
@@ -2432,7 +2432,7 @@ namespace playdate {
             c: number,
             d: number,
             a?: number,
-            p?: number
+            p?: number,
         ): void;
 
         /**
@@ -2459,7 +2459,7 @@ namespace playdate {
             b: number,
             c: number,
             d: number,
-            s?: number
+            s?: number,
         ): void;
 
         /**
@@ -2486,7 +2486,7 @@ namespace playdate {
             b: number,
             c: number,
             d: number,
-            s?: number
+            s?: number,
         ): void;
 
         /**
@@ -2513,7 +2513,7 @@ namespace playdate {
             b: number,
             c: number,
             d: number,
-            s?: number
+            s?: number,
         ): void;
 
         /**
@@ -2540,7 +2540,7 @@ namespace playdate {
             b: number,
             c: number,
             d: number,
-            s?: number
+            s?: number,
         ): void;
 
         /**
@@ -2566,7 +2566,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2592,7 +2592,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2618,7 +2618,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
 
         /**
@@ -2644,7 +2644,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ): void;
     }
 
@@ -2659,7 +2659,7 @@ namespace playdate {
         export function write(
             table: AnyTable,
             filename?: string,
-            prettyPrint?: boolean
+            prettyPrint?: boolean,
         ): void;
 
         /**
@@ -2697,7 +2697,7 @@ namespace playdate {
          */
         export function writeImage(
             image: playdate.graphics.image,
-            path: string
+            path: string,
         ): void;
 
         /**
@@ -2744,7 +2744,7 @@ namespace playdate {
          */
         export function open(
             path: string,
-            mode?: PlaydateFileOpenMode = PlaydateFileOpenMode.Read
+            mode?: PlaydateFileOpenMode = PlaydateFileOpenMode.Read,
         ): playdate.file.file;
 
         /**
@@ -2905,7 +2905,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-file.write)
              */
             write(
-                string: string
+                string: string,
             ):
                 | LuaMultiReturn<[number, undefined]>
                 | LuaMultiReturn<[0, string]>;
@@ -2934,7 +2934,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-file.read)
              */
             read(
-                numberOfBytes: number
+                numberOfBytes: number,
             ):
                 | LuaMultiReturn<[string, number]>
                 | LuaMultiReturn<[null, string]>;
@@ -2980,7 +2980,7 @@ namespace playdate {
             x1: number,
             y1: number,
             x2: number,
-            y2: number
+            y2: number,
         ): number;
 
         /**
@@ -2996,7 +2996,7 @@ namespace playdate {
             x1: number,
             y1: number,
             x2: number,
-            y2: number
+            y2: number,
         ): number;
 
         namespace affineTransform {
@@ -3013,7 +3013,7 @@ namespace playdate {
                 m21: number,
                 m22: number,
                 tx: number,
-                ty: number
+                ty: number,
             ): playdate.geometry.affineTransformTransform;
 
             export { _new as new };
@@ -3079,7 +3079,7 @@ namespace playdate {
              */
             translatedBy(
                 dx: number,
-                dy: number
+                dy: number,
             ): playdate.geometry.affineTransformTransform;
 
             /**
@@ -3104,7 +3104,7 @@ namespace playdate {
              */
             scaledBy(
                 sx: number,
-                sy?: number
+                sy?: number,
             ): playdate.geometry.affineTransformTransform;
 
             /**
@@ -3134,7 +3134,7 @@ namespace playdate {
             rotatedBy(
                 angle: number,
                 x?: number,
-                y?: number
+                y?: number,
             ): playdate.geometry.affineTransformTransform;
             /**
              * Returns a copy of the calling affine transform with a rotate transformation appended.
@@ -3145,7 +3145,7 @@ namespace playdate {
              */
             rotatedBy(
                 angle: number,
-                point?: playdate.geometry.point
+                point?: playdate.geometry.point,
             ): playdate.geometry.affineTransformTransform;
 
             /**
@@ -3162,7 +3162,7 @@ namespace playdate {
              */
             skewedBy(
                 sx: number,
-                sy: number
+                sy: number,
             ): playdate.geometry.affineTransformTransform;
 
             /**
@@ -3178,7 +3178,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.transformedPoint)
              */
             transformedPoint(
-                p: playdate.geometry.point
+                p: playdate.geometry.point,
             ): playdate.geometry.point;
 
             /**
@@ -3201,7 +3201,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.transformedLineSegment)
              */
             transformedLineSegment(
-                ls: playdate.geometry.lineSegmentnt
+                ls: playdate.geometry.lineSegmentnt,
             ): playdate.geometry.lineSegmentnt;
 
             /**
@@ -3231,7 +3231,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.affineTransform.transformedPolygon)
              */
             transformedPolygon(
-                p: playdate.geometry.polygon
+                p: playdate.geometry.polygon,
             ): playdate.geometry.polygon;
         }
 
@@ -3253,7 +3253,7 @@ namespace playdate {
                 radius: number,
                 startAngle: number,
                 endAngle: number,
-                direction?: boolean
+                direction?: boolean,
             ): playdate.geometry.arc;
 
             export { _new as new };
@@ -3295,7 +3295,7 @@ namespace playdate {
              */
             pointOnArc(
                 distance: number,
-                extend?: boolean
+                extend?: boolean,
             ): playdate.geometry.point;
         }
 
@@ -3311,7 +3311,7 @@ namespace playdate {
                 x1: number,
                 y1: number,
                 x2: number,
-                y2: number
+                y2: number,
             ): playdate.geometry.lineSegmentnt;
 
             export { _new as new };
@@ -3333,7 +3333,7 @@ namespace playdate {
                 x3: number,
                 y3: number,
                 x4: number,
-                y4: number
+                y4: number,
             ): LuaMultiReturn<[boolean, number]>;
         }
 
@@ -3387,7 +3387,7 @@ namespace playdate {
              */
             pointOnLine(
                 distance: number,
-                extend?: boolean
+                extend?: boolean,
             ): playdate.geometry.point;
 
             /**
@@ -3403,7 +3403,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.lineSegment.closestPointOnLineToPoint)
              */
             closestPointOnLineToPoint(
-                p: playdate.geometry.point
+                p: playdate.geometry.point,
             ): playdate.geometry.point;
 
             /**
@@ -3414,7 +3414,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.lineSegment.intersectsLineSegment)
              */
             intersectsLineSegment(
-                ls: playdate.geometry.lineSegmentnt
+                ls: playdate.geometry.lineSegmentnt,
             ):
                 | LuaMultiReturn<[false, undefined]>
                 | LuaMultiReturn<[true, playdate.geometry.point]>;
@@ -3429,7 +3429,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.lineSegment.intersectsPolygon)
              */
             intersectsPolygon(
-                poly: playdate.geometry.polygon
+                poly: playdate.geometry.polygon,
             ): LuaMultiReturn<[boolean, number]>;
 
             /**
@@ -3442,7 +3442,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.lineSegment.intersectsRect)
              */
             intersectsRect(
-                rect: playdate.geometry.rect
+                rect: playdate.geometry.rect,
             ): LuaMultiReturn<[boolean, number]>;
         }
 
@@ -3574,7 +3574,7 @@ namespace playdate {
              * @noSelf
              */
             export function _new(
-                numberOfVertices: number
+                numberOfVertices: number,
             ): playdate.geometry.polygon;
 
             export { _new as new };
@@ -3611,7 +3611,7 @@ namespace playdate {
              */
             containsPoint(
                 p: playdate.geometry.point,
-                fillRule?: PlaydatePolygonFill = PlaydatePolygonFill.EvenOdd
+                fillRule?: PlaydatePolygonFill = PlaydatePolygonFill.EvenOdd,
             ): boolean;
             /**
              * Returns a boolean value, true if the [point](https://sdk.play.date/2.6.0#C-geometry.point) _p_ or the point at _(x, y)_ is contained within the caller polygon.
@@ -3623,7 +3623,7 @@ namespace playdate {
             containsPoint(
                 x: number,
                 y: number,
-                fillRule?: PlaydatePolygonFill = PlaydatePolygonFill.EvenOdd
+                fillRule?: PlaydatePolygonFill = PlaydatePolygonFill.EvenOdd,
             ): boolean;
 
             /**
@@ -3682,7 +3682,7 @@ namespace playdate {
              */
             pointOnPolygon(
                 distance: number,
-                extend?: boolean
+                extend?: boolean,
             ): playdate.geometry.point;
 
             /**
@@ -3705,7 +3705,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 width: number,
-                height: number
+                height: number,
             ): playdate.geometry.rect;
 
             export { _new as new };
@@ -3727,7 +3727,7 @@ namespace playdate {
                 x2: number,
                 y2: number,
                 w2: number,
-                h2: number
+                h2: number,
             ):
                 | LuaMultiReturn<[number, number, number, number]>
                 | [number, number, number, number][];
@@ -3749,7 +3749,7 @@ namespace playdate {
                 x2: number,
                 y2: number,
                 w2: number,
-                h2: number
+                h2: number,
             ): [number, number, number, number][];
         }
 
@@ -3853,7 +3853,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 width: number,
-                height: number
+                height: number,
             ): boolean;
 
             /**
@@ -3893,7 +3893,7 @@ namespace playdate {
              */
             flipRelativeToRect(
                 r2: playdate.geometry.rect,
-                flip: PlaydateFlip
+                flip: PlaydateFlip,
             ): void;
         }
 
@@ -3907,7 +3907,7 @@ namespace playdate {
              */
             export function _new(
                 width: number,
-                height: number
+                height: number,
             ): playdate.geometry.size;
 
             export { _new as new };
@@ -3939,7 +3939,7 @@ namespace playdate {
              */
             export function _new(
                 x: number,
-                y: number
+                y: number,
             ): playdate.geometry.vector2D;
 
             export { _new as new };
@@ -3953,7 +3953,7 @@ namespace playdate {
              */
             export function newPolar(
                 length: number,
-                angle: number
+                angle: number,
             ): playdate.geometry.vector2D;
         }
 
@@ -4041,7 +4041,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-geometry.vector2D.projectedAlong)
              */
             projectedAlong(
-                v: playdate.geometry.vector2D
+                v: playdate.geometry.vector2D,
             ): playdate.geometry.vector2D;
 
             /**
@@ -4148,7 +4148,7 @@ namespace playdate {
          * @noSelf
          */
         export function imageSizeAtPath(
-            path: string
+            path: string,
         ): LuaMultiReturn<[number, number]>;
 
         /**
@@ -4166,7 +4166,7 @@ namespace playdate {
             image2: playdate.graphics.image,
             x2: number,
             y2: number,
-            flip2: PlaydateFlip
+            flip2: PlaydateFlip,
         ): boolean;
 
         /**
@@ -4259,8 +4259,8 @@ namespace playdate {
                 number,
                 number,
                 number,
-                number
-            ]
+                number,
+            ],
         ): void;
 
         /**
@@ -4278,7 +4278,7 @@ namespace playdate {
          */
         export function setDitherPattern(
             alpha: number,
-            ditherType?: PlaydateDitherType
+            ditherType?: PlaydateDitherType,
         ): void;
 
         /**
@@ -4296,7 +4296,7 @@ namespace playdate {
             x1: number,
             y1: number,
             x2: number,
-            y2: number
+            y2: number,
         ): void;
 
         /**
@@ -4360,7 +4360,7 @@ namespace playdate {
             x: number,
             y: number,
             w: number,
-            h: number
+            h: number,
         ): void;
 
         /**
@@ -4389,7 +4389,7 @@ namespace playdate {
             x: number,
             y: number,
             width: number,
-            height: number
+            height: number,
         ): void;
 
         /**
@@ -4417,7 +4417,7 @@ namespace playdate {
             y: number,
             w: number,
             h: number,
-            radius: number
+            radius: number,
         ): void;
 
         /**
@@ -4431,7 +4431,7 @@ namespace playdate {
          */
         export function drawRoundRect(
             r: playdate.geometry.rect,
-            radius: number
+            radius: number,
         ): void;
 
         /**
@@ -4448,7 +4448,7 @@ namespace playdate {
             y: number,
             w: number,
             h: number,
-            radius: number
+            radius: number,
         ): void;
 
         /**
@@ -4462,7 +4462,7 @@ namespace playdate {
          */
         export function fillRoundRect(
             r: playdate.geometry.rect,
-            radius: number
+            radius: number,
         ): void;
 
         /**
@@ -4490,7 +4490,7 @@ namespace playdate {
             y: number,
             radius: number,
             startAngle: number,
-            endAngle: number
+            endAngle: number,
         ): void;
 
         /**
@@ -4503,7 +4503,7 @@ namespace playdate {
         export function drawCircleAtPoint(
             x: number,
             y: number,
-            radius: number
+            radius: number,
         ): void;
 
         /**
@@ -4515,7 +4515,7 @@ namespace playdate {
          */
         export function drawCircleAtPoint(
             p: playdate.geometry.point,
-            radius: number
+            radius: number,
         ): void;
 
         /**
@@ -4531,7 +4531,7 @@ namespace playdate {
             x: number,
             y: number,
             width: number,
-            height: number
+            height: number,
         ): void;
 
         /**
@@ -4555,7 +4555,7 @@ namespace playdate {
         export function fillCircleAtPoint(
             x: number,
             y: number,
-            radius: number
+            radius: number,
         ): void;
 
         /**
@@ -4567,7 +4567,7 @@ namespace playdate {
          */
         export function fillCircleAtPoint(
             p: playdate.geometry.point,
-            radius: number
+            radius: number,
         ): void;
 
         /**
@@ -4583,7 +4583,7 @@ namespace playdate {
             x: number,
             y: number,
             width: number,
-            height: number
+            height: number,
         ): void;
 
         /**
@@ -4612,7 +4612,7 @@ namespace playdate {
             width: number,
             height: number,
             startAngle?: number,
-            endAngle?: number
+            endAngle?: number,
         ): void;
 
         /**
@@ -4627,7 +4627,7 @@ namespace playdate {
         export function drawEllipseInRect(
             rect: playdate.geometry.rect,
             startAngle?: number,
-            endAngle?: number
+            endAngle?: number,
         ): void;
 
         /**
@@ -4645,7 +4645,7 @@ namespace playdate {
             width: number,
             height: number,
             startAngle?: number,
-            endAngle?: number
+            endAngle?: number,
         ): void;
 
         /**
@@ -4660,7 +4660,7 @@ namespace playdate {
         export function fillEllipseInRect(
             rect: playdate.geometry.rect,
             startAngle?: number,
-            endAngle?: number
+            endAngle?: number,
         ): void;
 
         /**
@@ -4734,7 +4734,7 @@ namespace playdate {
             x2: number,
             y2: number,
             x3: number,
-            y3: number
+            y3: number,
         ): void;
 
         /**
@@ -4752,7 +4752,7 @@ namespace playdate {
             x2: number,
             y2: number,
             x3: number,
-            y3: number
+            y3: number,
         ): void;
 
         /**
@@ -4774,7 +4774,7 @@ namespace playdate {
             z: number,
             repeat: number,
             octaves?: number,
-            persistence?: number
+            persistence?: number,
         ): void;
 
         /**
@@ -4800,7 +4800,7 @@ namespace playdate {
             dz: number,
             repeat: number,
             octaves: number,
-            persistence?: number
+            persistence?: number,
         ): number[];
 
         /**
@@ -4831,7 +4831,7 @@ namespace playdate {
         export function generateQRCode(
             stringToEncode: string,
             desiredEdgeDimension: number,
-            callback: () => void
+            callback: () => void,
         ): playdate.graphics.image;
 
         /**
@@ -4861,7 +4861,7 @@ namespace playdate {
             startAmplitude: number,
             endAmplitude: number,
             period: number,
-            phaseShift?: number
+            phaseShift?: number,
         ): void;
 
         /**
@@ -4877,7 +4877,7 @@ namespace playdate {
             x: number,
             y: number,
             width: number,
-            height: number
+            height: number,
         ): void;
 
         /**
@@ -4915,7 +4915,7 @@ namespace playdate {
             x: number,
             y: number,
             width: number,
-            height: number
+            height: number,
         ): void;
 
         /**
@@ -4962,7 +4962,7 @@ namespace playdate {
          */
         export function setStencilImage(
             image: playdate.graphics.image,
-            tile?: boolean
+            tile?: boolean,
         ): void;
 
         /**
@@ -4981,8 +4981,8 @@ namespace playdate {
                 number,
                 number,
                 number,
-                number
-            ]
+                number,
+            ],
         ): void;
 
         /**
@@ -5000,7 +5000,7 @@ namespace playdate {
             row5: number,
             row6: number,
             row7: number,
-            row8: number
+            row8: number,
         ): number;
 
         /**
@@ -5012,7 +5012,7 @@ namespace playdate {
          */
         export function setStencilPattern(
             level: number,
-            ditherType?: PlaydateDitherType
+            ditherType?: PlaydateDitherType,
         ): void;
 
         /**
@@ -5142,7 +5142,7 @@ namespace playdate {
          * @noSelf
          */
         export function setStrokeLocation(
-            location: PlaydateStrokeLocation
+            location: PlaydateStrokeLocation,
         ): void;
 
         /**
@@ -5252,8 +5252,8 @@ namespace playdate {
                 number,
                 number,
                 number,
-                number
-            ]
+                number,
+            ],
         ): void;
 
         /**
@@ -5278,7 +5278,7 @@ namespace playdate {
          */
         export function setFont(
             font: playdate.graphics.font,
-            variant?: PlaydateFontVariant
+            variant?: PlaydateFontVariant,
         ): void;
 
         /**
@@ -5289,7 +5289,7 @@ namespace playdate {
          * @noSelf
          */
         export function getFont(
-            variant?: PlaydateFontVariant
+            variant?: PlaydateFontVariant,
         ): playdate.graphics.font;
 
         /**
@@ -5345,7 +5345,7 @@ namespace playdate {
          * @noSelf
          */
         export function getSystemFont(
-            variant?: PlaydateFontVariant
+            variant?: PlaydateFontVariant,
         ): playdate.graphics.font;
 
         /**
@@ -5414,7 +5414,7 @@ namespace playdate {
             fontFamily?: PlaydateFontFamily,
             leadingAdjustment?: number,
             wrapMode?: PlaydateWrapMode,
-            alignment?: PlaydateTextAlignment
+            alignment?: PlaydateTextAlignment,
         ): void;
 
         /**
@@ -5480,7 +5480,7 @@ namespace playdate {
             fontFamily?: PlaydateFontFamily,
             leadingAdjustment?: number,
             wrapMode?: PlaydateWrapMode,
-            alignment?: PlaydateTextAlignment
+            alignment?: PlaydateTextAlignment,
         ): void;
 
         /**
@@ -5510,7 +5510,7 @@ namespace playdate {
             language?: PlaydateLanguage,
             leadingAdjustment?: number,
             wrapMode?: PlaydateWrapMode,
-            alignment?: PlaydateTextAlignment
+            alignment?: PlaydateTextAlignment,
         ): void;
 
         /**
@@ -5535,7 +5535,7 @@ namespace playdate {
             key: string,
             rect: playdate.geometry.rect,
             language?: PlaydateLanguage,
-            leadingAdjustment?: number
+            leadingAdjustment?: number,
         ): void;
 
         /**
@@ -5556,7 +5556,7 @@ namespace playdate {
          */
         export function getLocalizedText(
             key: string,
-            language?: PlaydateLanguage
+            language?: PlaydateLanguage,
         ): string;
 
         /**
@@ -5571,7 +5571,7 @@ namespace playdate {
         export function getTextSize(
             str: string,
             fontFamily?: PlaydateFontFamily,
-            leadingAdjustment?: number
+            leadingAdjustment?: number,
         ): LuaMultiReturn<[number, number]>;
 
         /**
@@ -5594,7 +5594,7 @@ namespace playdate {
             x: number,
             y: number,
             alignment: PlaydateTextAlignment,
-            leadingAdjustment?: number
+            leadingAdjustment?: number,
         ): void;
 
         /**
@@ -5631,7 +5631,7 @@ namespace playdate {
             leadingAdjustment?: number,
             truncationString?: string,
             alignment?: PlaydateTextAlignment,
-            font?: playdate.graphics.font
+            font?: playdate.graphics.font,
         ): LuaMultiReturn<[number, number, boolean]>;
 
         /**
@@ -5665,7 +5665,7 @@ namespace playdate {
             leadingAdjustment?: number,
             truncationString?: string,
             alignment?: PlaydateTextAlignment,
-            font?: playdate.graphics.font
+            font?: playdate.graphics.font,
         ): LuaMultiReturn<[number, number, boolean]>;
 
         /**
@@ -5685,7 +5685,7 @@ namespace playdate {
             y: number,
             alignment: PlaydateTextAlignment,
             language?: PlaydateLanguage,
-            leadingAdjustment?: number
+            leadingAdjustment?: number,
         ): void;
 
         /**
@@ -5709,7 +5709,7 @@ namespace playdate {
             truncationString?: string,
             alignment?: PlaydateTextAlignment,
             font?: playdate.graphics.font,
-            language?: PlaydateLanguage
+            language?: PlaydateLanguage,
         ): LuaMultiReturn<[number, number, boolean]>;
 
         /**
@@ -5730,7 +5730,7 @@ namespace playdate {
             truncationString?: string,
             alignment?: PlaydateTextAlignment,
             font?: playdate.graphics.font,
-            language?: PlaydateLanguage
+            language?: PlaydateLanguage,
         ): LuaMultiReturn<[number, number, boolean]>;
 
         /**
@@ -5750,7 +5750,7 @@ namespace playdate {
             text: string,
             maxWidth: number,
             leadingAdjustment?: number,
-            font?: playdate.graphics.font
+            font?: playdate.graphics.font,
         ): LuaMultiReturn<[number, number]>;
 
         /**
@@ -5786,7 +5786,7 @@ namespace playdate {
             leadingAdjustment?: number,
             truncationString?: string,
             alignment?: PlaydateTextAlignment,
-            font?: playdate.graphics.font
+            font?: playdate.graphics.font,
         ): LuaMultiReturn<[playdate.graphics.image, boolean]>;
 
         namespace image {
@@ -5812,7 +5812,7 @@ namespace playdate {
             export function _new(
                 width: number,
                 height: number,
-                bgcolor?: PlaydateColor
+                bgcolor?: PlaydateColor,
             ): playdate.graphics.image;
 
             export { _new as new };
@@ -5838,7 +5838,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.load)
              */
             load(
-                path: string
+                path: string,
             ):
                 | LuaMultiReturn<[true, undefined]>
                 | LuaMultiReturn<[false, string]>;
@@ -5881,7 +5881,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 flip?: PlaydateFlip,
-                sourceRect?: playdate.geometry.rect
+                sourceRect?: playdate.geometry.rect,
             ): void;
             /**
              * Draws the image with its upper-left corner at location (_x_, _y_) or [playdate.geometry.point](https://sdk.play.date/2.6.0#C-geometry.point) _p_.
@@ -5906,7 +5906,7 @@ namespace playdate {
             draw(
                 p: playdate.geometry.point,
                 flip?: PlaydateFlip,
-                sourceRect?: playdate.geometry.rect
+                sourceRect?: playdate.geometry.rect,
             ): void;
 
             /**
@@ -5925,7 +5925,7 @@ namespace playdate {
                 y: number,
                 ax: number,
                 ay: number,
-                flip?: PlaydateFlip
+                flip?: PlaydateFlip,
             ): void;
 
             /**
@@ -5954,7 +5954,7 @@ namespace playdate {
              */
             drawIgnoringOffset(
                 p: playdate.geometry.point,
-                flip?: PlaydateFlip
+                flip?: PlaydateFlip,
             ): void;
 
             /**
@@ -5975,7 +5975,7 @@ namespace playdate {
              */
             sample(
                 x: number,
-                y: number
+                y: number,
             ): Omit<PlaydateColor, PlaydateColor.XOR>;
 
             /**
@@ -5988,7 +5988,7 @@ namespace playdate {
                 y: number,
                 angle: number,
                 scale?: number,
-                yscale?: number
+                yscale?: number,
             ): void;
 
             /**
@@ -6003,7 +6003,7 @@ namespace playdate {
             rotatedImage(
                 angle: number,
                 scale?: number,
-                yscale?: number
+                yscale?: number,
             ): playdate.graphics.image;
 
             /**
@@ -6015,7 +6015,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 scale: number,
-                yscale?: number
+                yscale?: number,
             ): void;
 
             /**
@@ -6025,7 +6025,7 @@ namespace playdate {
              */
             scaledImage(
                 scale: number,
-                yscale?: number
+                yscale?: number,
             ): playdate.graphics.image;
 
             /**
@@ -6036,7 +6036,7 @@ namespace playdate {
             drawWithTransform(
                 xform: playdate.geometry.affineTransformTransform,
                 x: number,
-                y: number
+                y: number,
             ): void;
 
             /**
@@ -6045,7 +6045,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.image.transformedImage)
              */
             transformedImage(
-                xform: playdate.geometry.affineTransformTransform
+                xform: playdate.geometry.affineTransformTransform,
             ): playdate.graphics.image;
 
             /**
@@ -6086,7 +6086,7 @@ namespace playdate {
                 dy: number,
                 z: number,
                 tiltAngle: number,
-                tile: number
+                tile: number,
             ): void;
 
             /**
@@ -6145,7 +6145,7 @@ namespace playdate {
                 y: number,
                 width: number,
                 height: number,
-                flip?: PlaydateFlip
+                flip?: PlaydateFlip,
             ): void;
             /**
              * Tiles the image into the given rectangle, using either listed dimensions or a [`playdate.geometry.rect`](https://sdk.play.date/2.6.0#C-geometry.rect) object, and the optional flip style.
@@ -6177,7 +6177,7 @@ namespace playdate {
                 ditherType: number,
                 flip?: PlaydateFlip,
                 xPhase?: number,
-                yPhase?: number
+                yPhase?: number,
             ): void;
 
             /**
@@ -6224,7 +6224,7 @@ namespace playdate {
                 ditherType: number,
                 padEdges?: number,
                 xPhase?: number,
-                yPhase?: number
+                yPhase?: number,
             ): playdate.graphics.image;
 
             /**
@@ -6240,7 +6240,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 alpha: number,
-                ditherType: number
+                ditherType: number,
             ): void;
 
             /**
@@ -6254,7 +6254,7 @@ namespace playdate {
              */
             fadedImage(
                 alpha: number,
-                ditherType: number
+                ditherType: number,
             ): playdate.graphics.image;
 
             /**
@@ -6285,7 +6285,7 @@ namespace playdate {
             blendWithImage(
                 image: playdate.graphics.image,
                 alpha: number,
-                ditherType: PlaydateDitherType
+                ditherType: PlaydateDitherType,
             ): playdate.graphics.image;
 
             /**
@@ -6309,7 +6309,7 @@ namespace playdate {
                 innerX: number,
                 innerY: number,
                 innerWidth: number,
-                innerHeight: number
+                innerHeight: number,
             ): playdate.graphics.nineSlice;
 
             export { _new as new };
@@ -6339,7 +6339,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 width: number,
-                height: number
+                height: number,
             ): void;
             /**
              * Draws the 9 slice image at the desired coordinates by stretching the defined region to achieve the width and height inputs.
@@ -6380,7 +6380,7 @@ namespace playdate {
                 export function _new(
                     delay?: number,
                     imageTable?: playdate.graphics.imagetable,
-                    shouldLoop?: boolean
+                    shouldLoop?: boolean,
                 ): playdate.graphics.animation.loop;
 
                 export { _new as new };
@@ -6450,7 +6450,7 @@ namespace playdate {
                     offDuration: number = 200,
                     loop: boolean = false,
                     cycles: number = 6,
-                    _default: boolean = true
+                    _default: boolean = true,
                 ): playdate.graphics.animation.blinker;
 
                 export { _new as new };
@@ -6496,7 +6496,7 @@ namespace playdate {
                     offDuration: number = 200,
                     loop: boolean = false,
                     cycles: number = 6,
-                    _default: boolean = true
+                    _default: boolean = true,
                 ): void;
 
                 /**
@@ -6568,13 +6568,13 @@ namespace playdate {
              * @noSelf
              */
             export function _new<
-                TSubject extends number | playdate.geometry.point
+                TSubject extends number | playdate.geometry.point,
             >(
                 duration: number,
                 startValue: TSubject,
                 endValue: TSubect,
                 easingFunction?: PlaydateEasingFunction,
-                startTimeOffset?: number
+                startTimeOffset?: number,
             ): playdate.graphics.animator<TSubject>;
 
             export { _new as new };
@@ -6613,7 +6613,7 @@ namespace playdate {
                 duration: number,
                 lineSegment: playdate.geometry.lineSegmentnt,
                 easingFunction?: PlaydateEasingFunction,
-                startTimeOffset?: number
+                startTimeOffset?: number,
             ): playdate.graphics.animator;
 
             export { _new as new };
@@ -6629,7 +6629,7 @@ namespace playdate {
                 duration: number,
                 arc: playdate.geometry.arc,
                 easingFunction?: PlaydateEasingFunction,
-                startTimeOffset?: number
+                startTimeOffset?: number,
             ): playdate.graphics.animator;
 
             export { _new as new };
@@ -6645,7 +6645,7 @@ namespace playdate {
                 duration: number,
                 polygon: playdate.geometry.polygon,
                 easingFunction?: PlaydateEasingFunction,
-                startTimeOffset?: number
+                startTimeOffset?: number,
             ): playdate.graphics.animator;
 
             export { _new as new };
@@ -6708,7 +6708,7 @@ namespace playdate {
                     | playdate.geometry.polygon
                 )[],
                 easingFunctions: PlaydateEasingFunction[],
-                startTimeOffset?: number
+                startTimeOffset?: number,
             ): playdate.graphics.animator;
 
             export { _new as new };
@@ -6806,7 +6806,7 @@ namespace playdate {
             export function _new(
                 count: number,
                 cellsWide?: number,
-                cellSize?: any
+                cellSize?: any,
             ): playdate.graphics.imagetable;
 
             export { _new as new };
@@ -6841,7 +6841,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.imagetable.load)
              */
             load(
-                path: string
+                path: string,
             ):
                 | LuaMultiReturn<[true, undefined]>
                 | LuaMultiReturn<[false, string]>;
@@ -6869,7 +6869,7 @@ namespace playdate {
                 n: number,
                 x: number,
                 y: number,
-                flip?: PlaydateFlip
+                flip?: PlaydateFlip,
             ): void;
         }
 
@@ -6920,7 +6920,7 @@ namespace playdate {
             draw(
                 x: number,
                 y: number,
-                sourceRect?: playdate.geometry.rect
+                sourceRect?: playdate.geometry.rect,
             ): void;
 
             /**
@@ -6931,7 +6931,7 @@ namespace playdate {
             drawIgnoringOffset(
                 x: number,
                 y: number,
-                sourceRect?: playdate.geometry.rect
+                sourceRect?: playdate.geometry.rect,
             ): void;
 
             /**
@@ -7020,7 +7020,7 @@ namespace playdate {
             export function _new(
                 image_or_tilemap?:
                     | playdate.graphics.image
-                    | playdate.graphics.tilemap
+                    | playdate.graphics.tilemap,
             ): playdate.graphics.sprite;
 
             export { _new as new };
@@ -7052,7 +7052,7 @@ namespace playdate {
                 leadingAdjustment?: number,
                 truncationString?: string,
                 alignment?: PlaydateTextAlignment,
-                font?: playdate.graphics.font
+                font?: playdate.graphics.font,
             ): playdate.graphics.sprite;
 
             /**
@@ -7089,7 +7089,7 @@ namespace playdate {
              * @noSelf
              */
             export function removeSprite(
-                sprite: playdate.graphics.sprite
+                sprite: playdate.graphics.sprite,
             ): void;
 
             /**
@@ -7114,8 +7114,8 @@ namespace playdate {
                     x: number,
                     y: number,
                     width: number,
-                    height: number
-                ) => void
+                    height: number,
+                ) => void,
             ): void;
 
             /**
@@ -7144,7 +7144,7 @@ namespace playdate {
                 width: number,
                 height: number,
                 startz: number,
-                endz: number
+                endz: number,
             ): void;
 
             /**
@@ -7157,7 +7157,7 @@ namespace playdate {
             export function setClipRectsInRange(
                 rect: playdate.geometry.rect,
                 startz: number,
-                endz: number
+                endz: number,
             ): void;
 
             /**
@@ -7169,7 +7169,7 @@ namespace playdate {
              */
             export function clearClipRectsInRange(
                 startz: number,
-                endz: number
+                endz: number,
             ): void;
 
             /**
@@ -7201,7 +7201,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 width: number,
-                height: number
+                height: number,
             ): void;
 
             /**
@@ -7225,7 +7225,7 @@ namespace playdate {
              * @noSelf
              */
             export function performOnAllSprites(
-                f: (sprite: playdate.graphics.sprite) => void
+                f: (sprite: playdate.graphics.sprite) => void,
             ): void;
 
             /**
@@ -7254,7 +7254,7 @@ namespace playdate {
              * @noSelf
              */
             export function removeSprites(
-                spriteArray: playdate.graphics.sprite[]
+                spriteArray: playdate.graphics.sprite[],
             ): void;
 
             /**
@@ -7277,7 +7277,7 @@ namespace playdate {
              */
             export function allOverlappingSprites(): [
                 playdate.graphics.sprite,
-                playdate.graphics.sprite
+                playdate.graphics.sprite,
             ][];
 
             /**
@@ -7289,7 +7289,7 @@ namespace playdate {
              */
             export function querySpritesAtPoint(
                 x: number,
-                y: number
+                y: number,
             ): playdate.graphics.sprite[];
 
             /**
@@ -7300,7 +7300,7 @@ namespace playdate {
              * @noSelf
              */
             export function querySpritesAtPoint(
-                p: playdate.geometry.point
+                p: playdate.geometry.point,
             ): playdate.graphics.sprite[];
 
             /**
@@ -7314,7 +7314,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 width: number,
-                height: number
+                height: number,
             ): playdate.graphics.sprite[];
 
             /**
@@ -7325,7 +7325,7 @@ namespace playdate {
              * @noSelf
              */
             export function querySpritesInRect(
-                rect: playdate.geometry.rect
+                rect: playdate.geometry.rect,
             ): playdate.graphics.sprite[];
 
             /**
@@ -7339,7 +7339,7 @@ namespace playdate {
                 x1: number,
                 y1: number,
                 x2: number,
-                y2: number
+                y2: number,
             ): playdate.graphics.sprite[];
 
             /**
@@ -7350,7 +7350,7 @@ namespace playdate {
              * @noSelf
              */
             export function querySpritesAlongLine(
-                lineSegment: playdate.geometry.lineSegmentnt
+                lineSegment: playdate.geometry.lineSegmentnt,
             ): playdate.graphics.sprite[];
 
             /**
@@ -7374,7 +7374,7 @@ namespace playdate {
                 x1: number,
                 y1: number,
                 x2: number,
-                y2: number
+                y2: number,
             ): PlaydateCollisionInfo;
 
             /**
@@ -7395,7 +7395,7 @@ namespace playdate {
              * @noSelf
              */
             export function querySpriteInfoAlongLine(
-                lineSegment: playdate.geometry.lineSegmentnt
+                lineSegment: playdate.geometry.lineSegmentnt,
             ): PlaydateCollisionInfo;
 
             /**
@@ -7410,7 +7410,7 @@ namespace playdate {
              * @noSelf
              */
             export function addEmptyCollisionSprite(
-                r: playdate.geometry.rect
+                r: playdate.geometry.rect,
             ): void;
 
             /**
@@ -7428,7 +7428,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 w: number,
-                h: number
+                h: number,
             ): void;
 
             /**
@@ -7456,7 +7456,7 @@ namespace playdate {
                 tilemap: playdate.graphics.tilemap,
                 emptyIDs: number[],
                 xOffset?: number,
-                yOffset?: number
+                yOffset?: number,
             ): void;
         }
 
@@ -7470,7 +7470,7 @@ namespace playdate {
                 image: playdate.graphics.image,
                 flip?: PlaydateFlip,
                 scale?: number,
-                yscale?: number
+                yscale?: number,
             ): void;
 
             /**
@@ -7688,7 +7688,7 @@ namespace playdate {
                 upperLeftX: number,
                 upperLeftY: number,
                 width: number,
-                height: number
+                height: number,
             ): void;
             /**
              * `setBounds(rect)` sets the bounds of the sprite with a [`playdate.geometry.rect`](https://sdk.play.date/2.6.0#C-geometry.rect) object.
@@ -7756,7 +7756,7 @@ namespace playdate {
             setAnimator(
                 animator: playdate.graphics.animator,
                 moveWithCollisions?: boolean,
-                removeOnCollision?: boolean
+                removeOnCollision?: boolean,
             ): void;
 
             /**
@@ -7775,7 +7775,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 width: number,
-                height: number
+                height: number,
             ): void;
             /**
              * Sets the clipping rectangle for the sprite, using separate parameters or a [`playdate.geometry.rect`](https://sdk.play.date/2.6.0#C-geometry.rect) object. Only areas within the rect will be drawn.
@@ -7798,7 +7798,7 @@ namespace playdate {
              */
             setStencilImage(
                 stencil: playdate.graphics.image,
-                tile?: boolean
+                tile?: boolean,
             ): void;
 
             /**
@@ -7808,7 +7808,7 @@ namespace playdate {
              */
             setStencilPattern(
                 level: number,
-                ditherType?: PlaydateDitherType = PlaydateDitherType.Bayer8x8
+                ditherType?: PlaydateDitherType = PlaydateDitherType.Bayer8x8,
             ): void;
 
             /**
@@ -7963,7 +7963,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 width: number,
-                height: number
+                height: number,
             ): void;
             /**
              * `setCollideRect()` marks the area of the sprite, relative to its own internal coordinate system, to be checked for collisions with other sprites' collide rects. Note that the coordinate space is relative to the top-left corner of the bounds, regardless of where the sprite’s [center/anchor](https://sdk.play.date/2.6.0#m-graphics.sprite.setCenter) is located.
@@ -8259,7 +8259,7 @@ namespace playdate {
              */
             moveWithCollisions(
                 goalX: number,
-                goalY: number
+                goalY: number,
             ): LuaMultiReturn<[number, number, PlaydateCollision[], number]>;
             /**
              * Moves the sprite towards _goalX_, _goalY_ or _goalPoint_ taking collisions into account, which means the sprite’s final position may not be the same as _goalX_, _goalY_ or _goalPoint_.
@@ -8408,7 +8408,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.moveWithCollisions)
              */
             moveWithCollisions(
-                goalPoint: playdate.geometry.point
+                goalPoint: playdate.geometry.point,
             ): LuaMultiReturn<[number, number, PlaydateCollision[], number]>;
 
             /**
@@ -8418,7 +8418,7 @@ namespace playdate {
              */
             checkCollisions(
                 x: number,
-                y: number
+                y: number,
             ): LuaMultiReturn<[number, number, PlaydateCollision[], number]>;
             /**
              * Returns the same values as [`moveWithCollisions()`](https://sdk.play.date/2.6.0#m-graphics.sprite.moveWithCollisions) but does not actually move the sprite.
@@ -8426,7 +8426,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-graphics.sprite.checkCollisions)
              */
             checkCollisions(
-                point: playdate.geometry.point
+                point: playdate.geometry.point,
             ): LuaMultiReturn<[number, number, PlaydateCollision[], number]>;
 
             /**
@@ -8456,7 +8456,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#c-graphics.sprite.collisionResponse)
              */
             collisionResponse(
-                other: playdate.graphics.sprite
+                other: playdate.graphics.sprite,
             ): PlaydateCollisionResponse;
         }
 
@@ -8494,7 +8494,7 @@ namespace playdate {
              * @noSelf
              */
             export function newFamily(
-                fontPaths: PlaydateFontFamilyPaths
+                fontPaths: PlaydateFontFamilyPaths,
             ): PlaydateFontFamily;
         }
 
@@ -8540,7 +8540,7 @@ namespace playdate {
                 height?: number,
                 leadingAdjustment?: number,
                 wrapMode?: PlaydateWrapMode,
-                alignment?: PlaydateTextAlignment
+                alignment?: PlaydateTextAlignment,
             ): void;
             /**
              * Draws a string at the specified _x, y_ coordinate using this particular font instance. (Compare to [playdate.graphics.drawText(text, x, y)](https://sdk.play.date/2.6.0#f-graphics.drawText), which draws the string with whatever the "current font" is, as defined by [playdate.graphics.setFont(font)](https://sdk.play.date/2.6.0#f-graphics.setFont)).
@@ -8580,7 +8580,7 @@ namespace playdate {
                 rect: playdate.geometry.rect,
                 leadingAdjustment?: number,
                 wrapMode?: PlaydateWrapMode,
-                alignment?: PlaydateTextAlignment
+                alignment?: PlaydateTextAlignment,
             ): void;
 
             /**
@@ -8597,7 +8597,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 alignment: PlaydateTextAlignment,
-                leadingAdjustment?: number
+                leadingAdjustment?: number,
             ): void;
 
             /**
@@ -8756,7 +8756,7 @@ namespace playdate {
          * @noSelf
          */
         export function setCapitalizationBehavior(
-            behavior: PlaydateCapitalizationBehavior
+            behavior: PlaydateCapitalizationBehavior,
         ): void;
 
         /**
@@ -8869,7 +8869,7 @@ namespace playdate {
              */
             export function _new(
                 nodeCount?: number,
-                coordinates?: [number, number][]
+                coordinates?: [number, number][],
             ): playdate.pathfinder.graph;
 
             export { _new as new };
@@ -8893,7 +8893,7 @@ namespace playdate {
                 width: number,
                 height: number,
                 allowDiagonals?: boolean,
-                includedNodes?: (1 | 0)[]
+                includedNodes?: (1 | 0)[],
             ): playdate.pathfinder.graph;
         }
 
@@ -8921,7 +8921,7 @@ namespace playdate {
                 y: number,
                 connectedNodes?: playdate.pathfinder.node[],
                 weights: number[],
-                addReciprocalConnections?: boolean
+                addReciprocalConnections?: boolean,
             ): void;
 
             /**
@@ -8950,7 +8950,7 @@ namespace playdate {
                 node: playdate.pathfinder.node,
                 connectedNodes?: playdate.pathfinder.node[],
                 weights: number[],
-                addReciprocalConnections?: boolean
+                addReciprocalConnections?: boolean,
             ): void;
 
             /**
@@ -9018,7 +9018,7 @@ namespace playdate {
                 fromNodeID: number,
                 toNodeID: number,
                 weight: number,
-                addReciprocalConnection: boolean
+                addReciprocalConnection: boolean,
             ): void;
 
             /**
@@ -9037,7 +9037,7 @@ namespace playdate {
              */
             removeAllConnectionsFromNodeWithID(
                 id: number,
-                removeIncoming?: boolean
+                removeIncoming?: boolean,
             ): void;
 
             /**
@@ -9054,9 +9054,9 @@ namespace playdate {
                 goalNode: playdate.pathfinder.node,
                 heuristicFunction?: (
                     startNode: playdate.pathfinder.node,
-                    goalNode: playdate.pathfinder.node
+                    goalNode: playdate.pathfinder.node,
                 ) => number,
-                findPathToGoalAdjacentNodes?: boolean
+                findPathToGoalAdjacentNodes?: boolean,
             ): playdate.pathfinder.node[] | null;
 
             /**
@@ -9069,9 +9069,9 @@ namespace playdate {
                 goalNodeID: number,
                 heuristicFunction?: (
                     startNode: playdate.pathfinder.node,
-                    goalNode: playdate.pathfinder.node
+                    goalNode: playdate.pathfinder.node,
                 ) => number,
-                findPathToGoalAdjacentNodes?: boolean
+                findPathToGoalAdjacentNodes?: boolean,
             ): playdate.pathfinder.node[] | null;
 
             /**
@@ -9099,7 +9099,7 @@ namespace playdate {
             addConnection(
                 node: playdate.pathfinder.node,
                 weight: number,
-                addReciprocalConnection: boolean
+                addReciprocalConnection: boolean,
             ): void;
 
             /**
@@ -9116,7 +9116,7 @@ namespace playdate {
             addConnections(
                 nodes: playdate.pathfinder.node[],
                 weights: number[],
-                addReciprocalConnections: boolean
+                addReciprocalConnections: boolean,
             ): void;
 
             /**
@@ -9132,7 +9132,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 weight: number,
-                addReciprocalConnection: boolean
+                addReciprocalConnection: boolean,
             ): void;
 
             /**
@@ -9149,7 +9149,7 @@ namespace playdate {
              */
             removeConnection(
                 node: playdate.pathfinder.node,
-                removeReciprocal?: boolean = false
+                removeReciprocal?: boolean = false,
             ): void;
 
             /**
@@ -9184,7 +9184,7 @@ namespace playdate {
          */
         export function writeToFile(
             image: playdate.graphics.image,
-            path: string
+            path: string,
         ): void;
 
         /**
@@ -9279,7 +9279,7 @@ namespace playdate {
          * @noSelf
          */
         export function getHeadphoneState(
-            changeCallback: ((headphone: boolean, mic: boolean) => void) | null
+            changeCallback: ((headphone: boolean, mic: boolean) => void) | null,
         ): LuaMultiReturn<[boolean, boolean]>;
 
         /**
@@ -9293,7 +9293,7 @@ namespace playdate {
          */
         export function setOutputsActive(
             headphones: boolean,
-            speaker: boolean
+            speaker: boolean,
         ): void;
 
         /**
@@ -9336,7 +9336,7 @@ namespace playdate {
              * @noSelf
              */
             export function _new(
-                sample: playdate.sound.sample
+                sample: playdate.sound.sample,
             ): playdate.sound.sampleplayer;
 
             export { _new as new };
@@ -9370,7 +9370,7 @@ namespace playdate {
                 when: number,
                 vol?: number,
                 rightvol?: number,
-                rate?: number
+                rate?: number,
             ): boolean;
 
             /**
@@ -9397,9 +9397,9 @@ namespace playdate {
             setLoopCallback<TArgument>(
                 callback: (
                     sample: playdate.sound.sample,
-                    arg: TArgument
+                    arg: TArgument,
                 ) => void,
-                arg?: TArgument
+                arg?: TArgument,
             ): void;
 
             /**
@@ -9437,7 +9437,7 @@ namespace playdate {
              */
             setFinishCallback<TArgument>(
                 func: (sample: playdate.sound.sample, arg: TArgument) => void,
-                arg?: TArgument
+                arg?: TArgument,
             ): void;
 
             /**
@@ -9508,7 +9508,7 @@ namespace playdate {
              * @noSelf
              */
             export function _new(
-                buffersize?: number
+                buffersize?: number,
             ): playdate.sound.fileplayer;
 
             export { _new as new };
@@ -9524,7 +9524,7 @@ namespace playdate {
              */
             export function _new(
                 path: string,
-                buffersize?: number
+                buffersize?: number,
             ): playdate.sound.fileplayer;
 
             export { _new as new };
@@ -9548,7 +9548,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.play)
              */
             play(
-                repeatCount?: number
+                repeatCount?: number,
             ):
                 | LuaMultiReturn<[true, undefined]>
                 | LuaMultiReturn<[false, string]>;
@@ -9589,9 +9589,9 @@ namespace playdate {
             setFinishCallback<TArgument>(
                 func: (
                     fileplayer: playdate.sound.fileplayer,
-                    arg: TArgument
+                    arg: TArgument,
                 ) => void,
-                arg?: TArgument
+                arg?: TArgument,
             ): void;
 
             /**
@@ -9630,9 +9630,9 @@ namespace playdate {
                 end?: number,
                 loopCallback?: (
                     fileplayer: playdate.sound.fileplayer,
-                    arg: TArgument
+                    arg: TArgument,
                 ) => void,
-                arg?: TArgument
+                arg?: TArgument,
             ): void;
 
             /**
@@ -9647,9 +9647,9 @@ namespace playdate {
             setLoopCallback<TArgument>(
                 callback: (
                     fileplayer: playdate.sound.fileplayer,
-                    arg: TArgument
+                    arg: TArgument,
                 ) => void,
-                arg?: TArgument
+                arg?: TArgument,
             ): void;
 
             /**
@@ -9658,7 +9658,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.fileplayer.setBufferSize)
              */
             setBufferSize(
-                seconds: number
+                seconds: number,
             ):
                 | LuaMultiReturn<[true, undefined]>
                 | LuaMultiReturn<[false, string]>;
@@ -9695,9 +9695,9 @@ namespace playdate {
                 fadeSeconds?: number,
                 fadeCallback?: (
                     fileplayer: playdate.sound.fileplayer,
-                    arg: TArgument
+                    arg: TArgument,
                 ) => void,
-                arg?: TArgument
+                arg?: TArgument,
             ): void;
 
             /**
@@ -9747,7 +9747,7 @@ namespace playdate {
                 seconds: number,
                 format?: PlaydateSoundFormat = PlaydateSoundFormat[
                     '16bitStereo'
-                ]
+                ],
             ): playdate.sound.sample;
 
             export { _new as new };
@@ -9761,7 +9761,7 @@ namespace playdate {
              */
             getSubsample(
                 startOffset: number,
-                endOffset: number
+                endOffset: number,
             ): playdate.sound.sample;
 
             /**
@@ -9816,7 +9816,7 @@ namespace playdate {
              */
             play(
                 repeatCount?: number,
-                rate?: number
+                rate?: number,
             ): playdate.sound.sampleplayer;
 
             /**
@@ -9828,7 +9828,7 @@ namespace playdate {
                 when: number,
                 vol?: number,
                 rightvol?: number,
-                rate?: number
+                rate?: number,
             ): playdate.sound.sampleplayer;
 
             /**
@@ -9947,7 +9947,7 @@ namespace playdate {
              * @noSelf
              */
             export function _new(
-                waveform?: PlaydateSoundWave
+                waveform?: PlaydateSoundWave,
             ): playdate.sound.synth;
 
             export { _new as new };
@@ -9962,7 +9962,7 @@ namespace playdate {
             export function _new(
                 sample: playdate.sound.sample,
                 sustainStart?: number,
-                sustainEnd?: number
+                sustainEnd?: number,
             ): playdate.sound.synth;
 
             export { _new as new };
@@ -10005,7 +10005,7 @@ namespace playdate {
                 pitch: number,
                 volume?: number,
                 length?: number,
-                when?: number
+                when?: number,
             ): boolean;
 
             /**
@@ -10017,7 +10017,7 @@ namespace playdate {
                 note: string,
                 volume?: number,
                 length?: number,
-                when?: number
+                when?: number,
             ): boolean;
 
             /**
@@ -10057,7 +10057,7 @@ namespace playdate {
                 attack: number,
                 decay: number,
                 sustain: number,
-                release: number
+                release: number,
             ): void;
 
             /**
@@ -10172,7 +10172,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.synth.setWaveform)
              */
             setWaveform(
-                waveform: PlaydateSoundWave | playdate.sound.sample
+                waveform: PlaydateSoundWave | playdate.sound.sample,
             ): void;
 
             /**
@@ -10197,7 +10197,7 @@ namespace playdate {
                 sample: playdate.sound.sample,
                 samplesize: number,
                 xsize: number,
-                ysize?: number
+                ysize?: number,
             ): void;
 
             /**
@@ -10214,7 +10214,7 @@ namespace playdate {
              */
             setParameterMod(
                 parameter: number,
-                signal: playdate.sound.signal | null
+                signal: playdate.sound.signal | null,
             ): void;
         }
 
@@ -10252,7 +10252,7 @@ namespace playdate {
              * @noSelf
              */
             export function _new(
-                type?: PlaydateSoundLfoType
+                type?: PlaydateSoundLfoType,
             ): playdate.sound.lfo;
 
             export { _new as new };
@@ -10361,7 +10361,7 @@ namespace playdate {
                 attack?: number,
                 decay: number,
                 sustain: number,
-                release?: number
+                release?: number,
             ): playdate.sound.envelope;
 
             export { _new as new };
@@ -10418,7 +10418,7 @@ namespace playdate {
             setRateScaling(
                 scaling: number,
                 start?: number | string = 'C1',
-                end?: number | string = 'C5'
+                end?: number | string = 'C5',
             ): void;
 
             /**
@@ -10637,7 +10637,7 @@ namespace playdate {
              * @noSelf
              */
             export function _new(
-                type: PlaydateSoundTwoPoleFilterType
+                type: PlaydateSoundTwoPoleFilterType,
             ): playdate.sound.twopolefilter;
 
             export { _new as new };
@@ -10867,7 +10867,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.sequence.play)
              */
             play(
-                finishCallback?: (sequence: playdate.sound.sequence) => void
+                finishCallback?: (sequence: playdate.sound.sequence) => void,
             ): void;
 
             /**
@@ -10927,7 +10927,7 @@ namespace playdate {
             setLoops(
                 startStep: number,
                 endStep: number,
-                loopCount?: number
+                loopCount?: number,
             ): void;
             /**
              * Same as above, with startStep set to 0 and endStep set to `sequence:getLength()`.
@@ -11003,7 +11003,7 @@ namespace playdate {
                 step: number,
                 note: number | string,
                 length: number,
-                velocity?: number = 1
+                velocity?: number = 1,
             ): void;
             /**
              * Adds a single note event to the track, letting you specify `step`, `note`, `length`, and `velocity` directly. The second format allows you to pack them into a table, using the format returned by [getNotes()](https://sdk.play.date/2.6.0#m-sound.track.getNotes). The `note` argument can be a MIDI note number or a note name like "Db3". `length` is the length of the note in steps, not time—​that is, it follows the sequence’s tempo. The default velocity is 1.0.
@@ -11030,7 +11030,7 @@ namespace playdate {
                     note: number | string;
                     length: number;
                     velocity: number;
-                }[]
+                }[],
             ): void;
 
             /**
@@ -11042,7 +11042,7 @@ namespace playdate {
              */
             getNotes(
                 step?: number,
-                endstep?: number
+                endstep?: number,
             ): {
                 step: number;
                 note: number | string;
@@ -11091,7 +11091,7 @@ namespace playdate {
              * [Read more](https://sdk.play.date/2.6.0#m-sound.track.setInstrument)
              */
             setInstrument(
-                inst: playdate.sound.instrument | playdate.sound.synth
+                inst: playdate.sound.instrument | playdate.sound.synth,
             ): void;
 
             /**
@@ -11132,7 +11132,7 @@ namespace playdate {
              * @noSelf
              */
             export function _new(
-                synth?: playdate.sound.synth
+                synth?: playdate.sound.synth,
             ): playdate.sound.instrument;
 
             export { _new as new };
@@ -11148,7 +11148,7 @@ namespace playdate {
                 v: playdate.sound.synth,
                 note?: number | string,
                 rangeend?: number | string,
-                transpose?: number
+                transpose?: number,
             ): void;
 
             /**
@@ -11181,7 +11181,7 @@ namespace playdate {
                 frequency: number | string,
                 vel?: number = 1.0,
                 length?: number,
-                when?: number
+                when?: number,
             ): void;
 
             /**
@@ -11193,7 +11193,7 @@ namespace playdate {
                 note: number,
                 vel?: number = 1.0,
                 length?: number,
-                when?: number
+                when?: number,
             ): void;
 
             /**
@@ -11312,7 +11312,7 @@ namespace playdate {
              */
             export function recordToSample(
                 buffer: playdate.sound.sample,
-                completionCallback: (sample: playdate.sound.sample) => void
+                completionCallback: (sample: playdate.sound.sample) => void,
             ): boolean;
 
             /**
@@ -11332,7 +11332,7 @@ namespace playdate {
              * @noSelf
              */
             export function startListening(
-                source?: 'headset' | 'device'
+                source?: 'headset' | 'device',
             ):
                 | LuaMultiReturn<[true, 'headset' | 'device']>
                 | LuaMultiReturn<[false, string]>;
@@ -11427,7 +11427,7 @@ namespace playdate {
          */
         export function _new(
             duration: number,
-            callback: (timer: playdate.timer) => void
+            callback: (timer: playdate.timer) => void,
         ): playdate.timer;
         /**
          * Returns a new playdate.timer that will run for _duration_ milliseconds. _callback_ is a function closure that will be called when the timer is complete.
@@ -11457,7 +11457,7 @@ namespace playdate {
          */
         export function performAfterDelay(
             delay: number,
-            callback: (timer: playdate.timer) => void
+            callback: (timer: playdate.timer) => void,
         ): void;
         /**
          * Performs the function _callback_ after _delay_ milliseconds. Accepts a variable number of arguments that will be passed to the callback function when it is called. If arguments are not provided, the timer itself will be passed to the callback instead.
@@ -11485,7 +11485,7 @@ namespace playdate {
             duration: number,
             startValue?: number = 0,
             endValue: number = 0,
-            easingFunction?: PlaydateEasingFunction
+            easingFunction?: PlaydateEasingFunction,
         ): playdate.timer;
 
         export { _new as new };
@@ -11498,7 +11498,7 @@ namespace playdate {
          * @noSelf
          */
         export function keyRepeatTimer(
-            callback: (timer: playdate.timer) => void
+            callback: (timer: playdate.timer) => void,
         ): void;
         /**
          * Calls `keyRepeatTimerWithDelay()` below with standard values of _delayAfterInitialFiring_ = 300 and _delayAfterSecondFiring_ = 100.
@@ -11522,7 +11522,7 @@ namespace playdate {
         export function keyRepeatTimerWithDelay(
             delayAfterInitialFiring: number,
             delayAfterSecondFiring: number,
-            callback: (timer: playdate.timer) => void
+            callback: (timer: playdate.timer) => void,
         ): void;
         /**
          * returns a timer that fires at key-repeat intervals. The function _callback_ will be called immediately, then again after _delayAfterInitialFiring_ milliseconds, then repeatedly at _delayAfterSecondFiring_ millisecond intervals.
@@ -11650,7 +11650,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ) => number;
         /**
          * Start value used when calculating _value_.
@@ -11747,7 +11747,7 @@ namespace playdate {
          */
         export function _new(
             duration: number,
-            callback: (timer: playdate.frametimer) => void
+            callback: (timer: playdate.frametimer) => void,
         ): void;
         /**
          * Returns a new playdate.frameTimer that will run for _duration_ frames. _callback_ is a function closure that will be called when the timer is complete.
@@ -11777,7 +11777,7 @@ namespace playdate {
          */
         export function performAfterDelay(
             delay: number,
-            callback: (timer: playdate.timer) => void
+            callback: (timer: playdate.timer) => void,
         ): void;
         /**
          * Performs the function _callback_ after the _delay_ number of frames. Accepts a variable number of arguments that will be passed to the callback function when it is called. If arguments are not provided, the timer itself will be passed to the callback instead.
@@ -11805,7 +11805,7 @@ namespace playdate {
             duration: number,
             startValue?: number = 0,
             endValue: number = 0,
-            easingFunction?: PlaydateEasingFunction
+            easingFunction?: PlaydateEasingFunction,
         ): playdate.frametimer;
 
         export { _new as new };
@@ -11932,7 +11932,7 @@ namespace playdate {
             t: number,
             b: number,
             c: number,
-            d: number
+            d: number,
         ) => number;
         /**
          * Number of frames to wait before starting the timer.
@@ -12027,7 +12027,7 @@ namespace playdate {
              */
             export function _new(
                 cellWidth: number,
-                cellHeight: number
+                cellHeight: number,
             ): playdate.ui.gridview;
 
             export { _new as new };
@@ -12056,7 +12056,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 width: number,
-                height: number
+                height: number,
             ): void;
 
             /**
@@ -12069,7 +12069,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 width: number,
-                height: number
+                height: number,
             ): void;
 
             /**
@@ -12081,7 +12081,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 width: number,
-                height: number
+                height: number,
             ): void;
 
             /**
@@ -12093,7 +12093,7 @@ namespace playdate {
                 x: number,
                 y: number,
                 width: number,
-                height: number
+                height: number,
             ): void;
 
             /**
@@ -12161,7 +12161,7 @@ namespace playdate {
                 left: number,
                 right: number,
                 top: number,
-                bottom: number
+                bottom: number,
             ): void;
 
             /**
@@ -12173,7 +12173,7 @@ namespace playdate {
                 left: number,
                 right: number,
                 top: number,
-                bottom: number
+                bottom: number,
             ): void;
 
             /**
@@ -12187,7 +12187,7 @@ namespace playdate {
                 section: number,
                 row: number,
                 column: number,
-                gridWidth?: number
+                gridWidth?: number,
             ): LuaMultiReturn<[number, number, number, number]>;
 
             /**
@@ -12206,7 +12206,7 @@ namespace playdate {
                 left: number,
                 right: number,
                 top: number,
-                bottom: number
+                bottom: number,
             ): void;
 
             /**
@@ -12269,7 +12269,7 @@ namespace playdate {
                 section: number,
                 row: number,
                 column: number,
-                animated?: boolean
+                animated?: boolean,
             ): void;
 
             /**
@@ -12281,7 +12281,7 @@ namespace playdate {
                 section: number,
                 row: number,
                 column: number,
-                animated?: boolean
+                animated?: boolean,
             ): void;
 
             /**
@@ -12336,7 +12336,7 @@ namespace playdate {
             selectNextRow(
                 wrapSelection: boolean,
                 scrollToSelection?: boolean = true,
-                animate?: boolean = true
+                animate?: boolean = true,
             ): void;
 
             /**
@@ -12347,7 +12347,7 @@ namespace playdate {
             selectPreviousRow(
                 wrapSelection: boolean,
                 scrollToSelection?: boolean = true,
-                animate?: boolean = true
+                animate?: boolean = true,
             ): void;
 
             /**
@@ -12362,7 +12362,7 @@ namespace playdate {
             selectNextColumn(
                 wrapSelection: boolean,
                 scrollToSelection?: boolean = true,
-                animate?: boolean = true
+                animate?: boolean = true,
             ): void;
 
             /**
@@ -12373,7 +12373,7 @@ namespace playdate {
             selectPreviousColumn(
                 wrapSelection: boolean,
                 scrollToSelection?: boolean = true,
-                animate?: boolean = true
+                animate?: boolean = true,
             ): void;
 
             /**
@@ -12405,7 +12405,7 @@ namespace playdate {
                 t: number,
                 b: number,
                 c: number,
-                d: number
+                d: number,
             ) => number;
             /**
              * For [easing functions](https://sdk.play.date/2.6.0#M-easingFunctions) that take additional amplitude and period arguments (such as _inOutElastic_), set these to the desired values.
@@ -12497,7 +12497,7 @@ namespace json {
     export function encodeToFile(
         file: playdate.file.file,
         pretty?: boolean,
-        table: AnyTable
+        table: AnyTable,
     ): void;
 
     /**
@@ -12514,6 +12514,6 @@ namespace json {
     export function encodeToFile(
         path: string,
         pretty?: boolean,
-        table: AnyTable
+        table: AnyTable,
     ): void;
 }

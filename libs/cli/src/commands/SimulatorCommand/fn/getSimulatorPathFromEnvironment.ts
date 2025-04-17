@@ -6,6 +6,6 @@ export const getSimulatorPathFromEnvironment = (environment: Environment) => {
     return join(
         environment.sdkPath.path,
         'bin',
-        appendExeOnWindows('PlaydateSimulator')
+        appendExeOnWindows('PlaydateSimulator'),
     );
 };

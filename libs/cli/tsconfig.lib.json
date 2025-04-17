@@ -3,22 +3,16 @@
     "compilerOptions": {
         "outDir": "../../dist/out-tsc",
         "declaration": true,
-        "types": [
-            "node"
-        ],
+        "types": ["node"],
         "module": "nodenext",
         "moduleResolution": "nodenext",
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
         "paths": {
-            "@/cli/*": [
-                "src/*"
-            ]
+            "@/cli/*": ["src/*"]
         }
     },
-    "include": [
-        "src/**/*.ts"
-    ],
+    "include": ["src/**/*.ts"],
     "exclude": [
         "jest.config.ts",
         "src/**/*.spec.ts",

@@ -3,17 +3,12 @@
     "compilerOptions": {
         "outDir": "../../dist/out-tsc",
         "module": "nodenext",
-        "types": [
-            "jest",
-            "node"
-        ],
+        "types": ["jest", "node"],
         "moduleResolution": "nodenext",
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
         "paths": {
-            "@/cli/*": [
-                "src/*"
-            ]
+            "@/cli/*": ["src/*"]
         }
     },
     "include": [
