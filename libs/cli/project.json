@@ -29,7 +29,5 @@
             }
         }
     },
-    "implicitDependencies": [
-        "tstl-plugin"
-    ]
+    "implicitDependencies": ["tstl-plugin"]
 }

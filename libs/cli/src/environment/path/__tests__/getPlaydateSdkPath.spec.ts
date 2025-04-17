@@ -14,7 +14,7 @@ describe('getPlaydateSdkPath', () => {
     it('should return false if the path is not available', () => {
         const environment = {};
         expect(() => getPlaydateSdkPath({ environment })).toThrow(
-            PlaydateSdkPathVariableNotSetError
+            PlaydateSdkPathVariableNotSetError,
         );
     });
 });

@@ -13,7 +13,7 @@ class B extends A {
     constructor(
         private readonly firstArgument: number,
         secondArgument: number,
-        thirdArgument: number
+        thirdArgument: number,
     ) {
         print(firstArgument);
         print(secondArgument);

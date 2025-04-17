@@ -12,7 +12,7 @@ Crankscript is a collection of tools that lets you write Playdate games in TypeS
 > Crankscript exists thanks to [this Playdate Dev Forum thread](https://devforum.play.date/t/playdate-sdk-with-typescript/). Special thanks to Andy for contributing the TypeScript-to-Lua plugin and the initial d.ts file, and to Orta for providing the require transformation code.
 
 > [!NOTE]
-> Crankscript is not affiliated with Playdate or Panic Inc. in any way. 
+> Crankscript is not affiliated with Playdate or Panic Inc. in any way.
 > The documentation excerpts present in this repository are owned by Panic Inc. and are provided here solely for reference
 > within the context of Playdate game development. I do not claim ownership of any part of the documentation.
 >
@@ -73,14 +73,17 @@ The package `@crankscript/core` provides a helper function which can do just tha
 To use the utility, simply wrap your update function with it.
 
 ```ts
-import { withReload } from "@crankscript/core";
+import { withReload } from '@crankscript/core';
 
-playdate.update = withReload(() => {
-    // Your update code here
-}, {
-    // It is possible to specify the interval in milliseconds
-    interval: 1000 // this is the default interval
-});
+playdate.update = withReload(
+    () => {
+        // Your update code here
+    },
+    {
+        // It is possible to specify the interval in milliseconds
+        interval: 1000, // this is the default interval
+    },
+);
 ```
 
 Please report any issues you encounter.

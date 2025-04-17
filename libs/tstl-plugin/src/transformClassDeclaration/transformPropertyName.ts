@@ -4,7 +4,7 @@ import { TransformationContext } from 'typescript-to-lua';
 
 export const transformPropertyName = (
     context: TransformationContext,
-    node: ts.PropertyName
+    node: ts.PropertyName,
 ) => {
     if (ts.isComputedPropertyName(node)) {
         return context.transformExpression(node.expression);

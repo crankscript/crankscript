@@ -13,7 +13,7 @@ export const getTransformCallExpression = (importMap: ImportMap) => {
             node.expression.escapedText === 'require'
         ) {
             const normalNode = context.superTransformExpression(
-                node
+                node,
             ) as unknown as {
                 expression: { text: string; originalName: string };
             };

@@ -15,8 +15,8 @@ export const getHtmlForVersion = async (version: string) => {
         return readFileSync(path, 'utf8');
     }
 
-    const html = await fetch(`https://sdk.play.date/${version}/`).then((res) =>
-        res.text()
+    const html = await fetch(`https://sdk.play.date/${version}/`).then(res =>
+        res.text(),
     );
 
     writeFileSync(path, html, 'utf8');

@@ -19,7 +19,7 @@ describe('beforeEmit', () => {
             undefined as unknown as Program,
             {},
             {} as unknown as EmitHost,
-            emitFile
+            emitFile,
         );
 
         return emitFile;

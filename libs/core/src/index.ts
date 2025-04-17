@@ -161,7 +161,7 @@ export const withReload = (update: () => void, options?: ReloadOptions) => {
 
     return () => {
         const elapsedSeconds = Math.floor(
-            playdate.getCurrentTimeMilliseconds() / interval
+            playdate.getCurrentTimeMilliseconds() / interval,
         );
 
         if (elapsedSeconds !== lastTime) {

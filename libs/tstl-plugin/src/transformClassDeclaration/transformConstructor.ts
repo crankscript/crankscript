@@ -12,7 +12,7 @@ export const transformConstructor = (
     context: TransformationContext,
     className: tstl.Identifier,
     instanceFields: ts.PropertyDeclaration[],
-    constructor: ts.ConstructorDeclaration
+    constructor: ts.ConstructorDeclaration,
 ): tstl.Statement | undefined => {
     const methodName = 'init';
     context.pushScope(ScopeType.Function);
@@ -20,28 +20,29 @@ export const transformConstructor = (
     const params = transformParameters(
         context,
         constructor?.parameters,
-        tstl.createIdentifier('self')
+        tstl.createIdentifier('self'),
     )[0];
     const classInstanceFields = transformClassInstanceFields(
         context,
-        instanceFields
+        instanceFields,
     );
 
     bodyStatements.push(...classInstanceFields);
 
     const parameterAssignments = constructor?.parameters
-        .filter(param => param.name &&
-            param.modifiers &&
-            param.modifiers.length > 0)
+        .filter(
+            param =>
+                param.name && param.modifiers && param.modifiers.length > 0,
+        )
         .map(param => {
             if (ts.isIdentifier(param.name)) {
                 const paramName = param.name.text;
                 return tstl.createAssignmentStatement(
                     tstl.createTableIndexExpression(
                         tstl.createIdentifier('self'),
-                        tstl.createStringLiteral(paramName)
+                        tstl.createStringLiteral(paramName),
                     ),
-                    tstl.createIdentifier(paramName)
+                    tstl.createIdentifier(paramName),
                 );
             }
             return undefined;
@@ -85,8 +86,8 @@ export const transformConstructor = (
     return tstl.createAssignmentStatement(
         tstl.createTableIndexExpression(
             className,
-            tstl.createStringLiteral(methodName)
+            tstl.createStringLiteral(methodName),
         ),
-        tstl.createFunctionExpression(tstl.createBlock(bodyStatements), params)
+        tstl.createFunctionExpression(tstl.createBlock(bodyStatements), params),
     );
 };

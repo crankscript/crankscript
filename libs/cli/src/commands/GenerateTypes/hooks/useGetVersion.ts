@@ -40,7 +40,7 @@ export const useGetVersion = (version: PlaydateSdkVersion) => {
             waitingDescription: `Waiting to fetch version`,
             runningDescription: 'Fetching version...',
             errorDescription: 'Failed to fetch version',
-            finishedDescription: (result) => `Fetched version ${result}`,
+            finishedDescription: result => `Fetched version ${result}`,
             runner: async () => {
                 let versionLiteral = version;
 
@@ -54,7 +54,7 @@ export const useGetVersion = (version: PlaydateSdkVersion) => {
 
                 return versionLiteral;
             },
-            onFinish: (result) => {
+            onFinish: result => {
                 setResult(result);
             },
         } satisfies CheckListItem<string>;

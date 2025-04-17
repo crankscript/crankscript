@@ -5,16 +5,10 @@
         "skipLibCheck": true,
         "baseUrl": "./",
         "paths": {
-            "@/*": [
-                "src/*"
-            ]
+            "@/*": ["src/*"]
         },
         "module": "Node16"
     },
-    "files": [
-        "../../../../../../../types/types/latest.d.ts"
-    ],
-    "include": [
-        "src/**/*.ts"
-    ]
+    "files": ["../../../../../../../types/types/latest.d.ts"],
+    "include": ["src/**/*.ts"]
 }

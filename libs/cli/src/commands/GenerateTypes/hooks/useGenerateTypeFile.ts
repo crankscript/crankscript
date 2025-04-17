@@ -21,7 +21,7 @@ import {
 export const useGenerateTypeFile = (
     path: string,
     definitions: ApiDefinitions | null,
-    typeProvider: ReturnType<typeof createTypeProvider> | null
+    typeProvider: ReturnType<typeof createTypeProvider> | null,
 ) => {
     const generateTypeFile = useMemo(() => {
         return {
@@ -51,7 +51,7 @@ export const useGenerateTypeFile = (
 
                 writeFileSync(
                     path,
-                    typeFile.getFullText().replace('*/', '*/\n')
+                    typeFile.getFullText().replace('*/', '*/\n'),
                 );
             },
             ready: definitions !== null && typeProvider !== null,
@@ -68,7 +68,7 @@ const generateNamespace = (
     incomingSubject: SourceFile | ModuleDeclaration,
     typeProvider: ReturnType<typeof createTypeProvider>,
     namespace: string,
-    name?: string
+    name?: string,
 ) => {
     let subject = incomingSubject;
     const fullNamespaceName = [namespace, name].filter(Boolean).join('.');
@@ -93,7 +93,7 @@ const generateNamespace = (
 
     for (const func of apiObject.functions) {
         const isFunctionNameReserved = TypescriptReservedNamed.includes(
-            func.name
+            func.name,
         );
         const resolvedName = `_${func.name}`;
         const parameters = typeProvider.getParameters(func);
@@ -105,7 +105,7 @@ const generateNamespace = (
             returnType: typeProvider.getFunctionReturnType(func),
             isExported: !!name,
             ...(typeProvider.getFunctionOverrideOptions(
-                func
+                func,
             ) as FunctionDeclarationStructure),
         });
 
@@ -139,7 +139,7 @@ const generateNamespace = (
                 parameters,
                 returnType: typeProvider.getFunctionReturnType(method),
                 ...(typeProvider.getFunctionOverrideOptions(
-                    method
+                    method,
                 ) as Partial<MethodDeclarationStructure>),
             });
         }
@@ -148,13 +148,13 @@ const generateNamespace = (
     const dynamicProperties = typeProvider
         .getDynamicProperties(`${namespace}.${name}`)
         .map(
-            (dynamicProperty) =>
+            dynamicProperty =>
                 ({
                     name: dynamicProperty.name,
                     docs: dynamicProperty.docs,
                     namespaces: namespace.split('.'),
                     signature: `${namespace}.${name}.${dynamicProperty.name}`,
-                } satisfies PropertyDescription)
+                } satisfies PropertyDescription),
         );
 
     for (const property of [...apiObject.properties, ...dynamicProperties]) {
@@ -187,7 +187,7 @@ const generateNamespace = (
             subject,
             typeProvider,
             fullNamespaceName,
-            eachNamespace[0]
+            eachNamespace[0],
         );
     }
 };

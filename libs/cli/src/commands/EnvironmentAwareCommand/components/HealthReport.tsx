@@ -31,7 +31,7 @@ const ColorMap = {
 
 export const HealthReport = ({ environment }: Props) => {
     const { health } = environment;
-    return Object.keys(health).map((eachKey) => {
+    return Object.keys(health).map(eachKey => {
         const healthKey = eachKey as keyof EnvironmentHealth;
         const keyHealth = health[healthKey];
 
@@ -49,7 +49,7 @@ export const HealthReport = ({ environment }: Props) => {
 
         if (health[healthKey].healthStatus === HealthCheckStatusType.Healthy) {
             message = SuccessMessages[healthKey][HealthCheckStatusType.Healthy](
-                health[healthKey].argument
+                health[healthKey].argument,
             );
             variant = 'success';
         }

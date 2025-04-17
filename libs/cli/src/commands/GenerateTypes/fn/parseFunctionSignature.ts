@@ -17,7 +17,7 @@ export const parseFunctionSignature = (signature: string) => {
         signature,
         name: functionName,
         namespaces,
-        parameters: params.map((eachParam) => ({
+        parameters: params.map(eachParam => ({
             name: eachParam.replace(/\[/g, '').replace(/]/g, '').trim(),
             required: !eachParam.includes('[') && !eachParam.includes(']'),
         })),

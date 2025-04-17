@@ -14,7 +14,7 @@ import { transformConstructor } from './transformConstructor';
 import { transformMethodDeclaration } from './transformMethodDeclaration';
 
 const hasSuperInfos = (
-    context: TransformationContext
+    context: TransformationContext,
 ): context is TransformationContext & {
     classSuperInfos?: [ClassSuperInfo];
 } => {
@@ -31,7 +31,7 @@ export const getTransformClassDeclaration = (importMap: ImportMap) => {
         } else {
             className = tstl.createIdentifier(
                 context.createTempName('class'),
-                declaration
+                declaration,
             );
         }
 
@@ -53,11 +53,11 @@ export const getTransformClassDeclaration = (importMap: ImportMap) => {
         // Get all properties with value
         const properties = declaration.members
             .filter(ts.isPropertyDeclaration)
-            .filter((member) => member.initializer);
+            .filter(member => member.initializer);
 
         // Divide properties into static and non-static
-        const instanceFields = properties.filter((prop) => !isStaticNode(prop));
-        const staticFields = properties.filter((prop) => isStaticNode(prop));
+        const instanceFields = properties.filter(prop => !isStaticNode(prop));
+        const staticFields = properties.filter(prop => isStaticNode(prop));
 
         const statements: tstl.Statement[] = [];
 
@@ -69,17 +69,17 @@ export const getTransformClassDeclaration = (importMap: ImportMap) => {
         // end
 
         const staticFieldStatements = staticFields
-            .map((field) =>
-                transformStaticPropertyDeclaration(context, field, className)
+            .map(field =>
+                transformStaticPropertyDeclaration(context, field, className),
             )
             .filter(
-                (stmt): stmt is tstl.AssignmentStatement => stmt !== undefined
+                (stmt): stmt is tstl.AssignmentStatement => stmt !== undefined,
             );
         statements.push(...staticFieldStatements);
 
         const constructor = declaration.members.find(
             (n): n is ts.ConstructorDeclaration =>
-                ts.isConstructorDeclaration(n) && n.body !== undefined
+                ts.isConstructorDeclaration(n) && n.body !== undefined,
         );
 
         if (!constructor) {
@@ -90,7 +90,7 @@ export const getTransformClassDeclaration = (importMap: ImportMap) => {
             context,
             className,
             instanceFields,
-            constructor
+            constructor,
         );
         if (transformedConstructor) {
             statements.push(transformedConstructor);
@@ -98,14 +98,14 @@ export const getTransformClassDeclaration = (importMap: ImportMap) => {
 
         const methods = declaration.members
             .filter(ts.isMethodDeclaration)
-            .map((method) =>
-                transformMethodDeclaration(context, method, className)
+            .map(method =>
+                transformMethodDeclaration(context, method, className),
             )
             .filter((method): method is tstl.Statement => method !== undefined);
         statements.push(...methods);
 
         statements.push(
-            ...getExportedClassDeclarationStatements(className, declaration)
+            ...getExportedClassDeclarationStatements(className, declaration),
         );
 
         return statements;

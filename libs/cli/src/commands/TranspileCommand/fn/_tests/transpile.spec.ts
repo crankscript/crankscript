@@ -10,7 +10,7 @@ const runTranspilation = (name: string) => {
     const lua = readFileSync(join(path, 'Source', 'main.lua'), 'utf-8');
     const transformedLua = lua
         .split('\n')
-        .map((line) => line.trim())
+        .map(line => line.trim())
         .join('');
 
     return {
@@ -46,16 +46,16 @@ describe('transpile', () => {
 
         it('should call the super constructor with the correct arguments', () => {
             expect(transformedLua).toContain(
-                'B.super.init(firstArgument,getString(nil) or "hello")'
+                'B.super.init(firstArgument,getString(nil) or "hello")',
             );
         });
 
         it('should set instance properties in the constructor', () => {
             expect(transformedLua).toContain(
-                'self.firstArgument = firstArgument'
+                'self.firstArgument = firstArgument',
             );
             expect(transformedLua).not.toContain(
-                'self.secondArgument = secondArgument'
+                'self.secondArgument = secondArgument',
             );
         });
     });
@@ -74,7 +74,6 @@ describe('transpile', () => {
         });
     });
 
-
     describe('static', () => {
         const { result, transformedLua } = runTranspilation('static');
 
@@ -83,9 +82,7 @@ describe('transpile', () => {
         });
 
         it('should set static field on class', () => {
-            expect(transformedLua).toContain(
-                'A.staticField = "staticField"'
-            );
+            expect(transformedLua).toContain('A.staticField = "staticField"');
         });
-    })
+    });
 });

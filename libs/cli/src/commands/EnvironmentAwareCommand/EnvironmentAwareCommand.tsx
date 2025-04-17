@@ -8,7 +8,7 @@ export abstract class EnvironmentAwareCommand extends RenderableCommand {
     private environment: Environment | undefined;
 
     protected abstract renderWithEnvironment(
-        environment: Environment
+        environment: Environment,
     ): JSX.Element;
 
     override render() {
@@ -24,7 +24,7 @@ export abstract class EnvironmentAwareCommand extends RenderableCommand {
 
         if (!environmentHealth.isHealthy) {
             this.renderElement(
-                <HealthReport environment={environmentHealth} />
+                <HealthReport environment={environmentHealth} />,
             );
 
             return;

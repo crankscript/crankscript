@@ -7,14 +7,14 @@ import { transformPropertyName } from './transformPropertyName';
 export const transformMethodDeclaration = (
     context: TransformationContext,
     node: ts.MethodDeclaration,
-    className: tstl.Identifier
+    className: tstl.Identifier,
 ): tstl.Statement | undefined => {
     const [functionExpression] = transformFunctionToExpression(context, node);
     return tstl.createAssignmentStatement(
         tstl.createTableIndexExpression(
             className,
-            transformPropertyName(context, node.name)
+            transformPropertyName(context, node.name),
         ),
-        functionExpression
+        functionExpression,
     );
 };

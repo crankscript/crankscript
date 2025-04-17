@@ -9,12 +9,8 @@
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true
     },
-    "files": [
-        "../types/types/latest.d.ts"
-    ],
-    "include": [
-        "src/**/*.ts"
-    ],
+    "files": ["../types/types/latest.d.ts"],
+    "include": ["src/**/*.ts"],
     "references": [
         {
             "path": "./tsconfig.lib.json"

@@ -5,7 +5,7 @@ import { ClassSuperInfo } from '../types';
 
 export const transformSuperExpression = ((
     expression,
-    context: TransformationContext & { classSuperInfos?: ClassSuperInfo[] }
+    context: TransformationContext & { classSuperInfos?: ClassSuperInfo[] },
 ) => {
     const superInfos = context.classSuperInfos;
     let superInfo: ClassSuperInfo | undefined = undefined;
@@ -17,6 +17,6 @@ export const transformSuperExpression = ((
 
     return lua.createTableIndexExpression(
         className,
-        lua.createStringLiteral('super')
+        lua.createStringLiteral('super'),
     );
 }) satisfies FunctionVisitor<ts.SuperExpression>;

@@ -18,7 +18,7 @@ export const useFetchHtml = (version: string | null) => {
 
                 return getHtmlForVersion(version);
             },
-            onFinish: (result) => {
+            onFinish: result => {
                 setHtml(result);
             },
             ready: version !== null,

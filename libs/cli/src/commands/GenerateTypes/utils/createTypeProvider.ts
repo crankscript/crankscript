@@ -105,7 +105,7 @@ export const createTypeProvider = (version: string) => {
         if (!fn) {
             const details = {
                 signature: func.signature,
-                parameters: func.parameters.map((p) => ({
+                parameters: func.parameters.map(p => ({
                     name: p.name,
                     type: 'any',
                 })),
@@ -142,10 +142,10 @@ export const createTypeProvider = (version: string) => {
 
     const getParameterDetails = (
         func: FunctionDescription,
-        parameter: string
+        parameter: string,
     ) => {
         const { parameters } = getFunctionDetails(func);
-        const param = parameters.find((p) => p.name === parameter);
+        const param = parameters.find(p => p.name === parameter);
 
         if (!param) {
             return {
@@ -158,7 +158,7 @@ export const createTypeProvider = (version: string) => {
     };
 
     const getParameters = (
-        func: FunctionDescription
+        func: FunctionDescription,
     ): FunctionDeclarationStructure['parameters'] => {
         const { overrideParameters = false, parameters } =
             getFunctionDetails(func);
@@ -172,12 +172,12 @@ export const createTypeProvider = (version: string) => {
         };
 
         if (overrideParameters) {
-            return parameters.map((details) => {
+            return parameters.map(details => {
                 return getParameterFromDetails(details);
             });
         }
 
-        return func.parameters.map((parameter) => {
+        return func.parameters.map(parameter => {
             const details = getParameterDetails(func, parameter.name);
 
             return {
@@ -192,7 +192,7 @@ export const createTypeProvider = (version: string) => {
 
         if ('overloads' in options && Array.isArray(options.overloads)) {
             return {
-                overloads: options.overloads.map((overload) => ({
+                overloads: options.overloads.map(overload => ({
                     ...overload,
                     docs: [func.docs],
                 })),
@@ -203,7 +203,7 @@ export const createTypeProvider = (version: string) => {
     };
 
     const getConstants = (fullNamespace: string) => {
-        return (provider.constants[fullNamespace] ?? []).map((constant) => {
+        return (provider.constants[fullNamespace] ?? []).map(constant => {
             return {
                 kind: StructureKind.VariableDeclaration,
                 name: typeof constant === 'string' ? constant : constant.name,

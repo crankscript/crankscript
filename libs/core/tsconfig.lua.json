@@ -10,14 +10,10 @@
         "outDir": "./",
         "declarationDir": "./src",
         "declaration": true,
-        "types": [
-            "lua-types/5.4"
-        ]
+        "types": ["lua-types/5.4"]
     },
     "include": ["src/index.ts"],
-    "files": [
-        "../types/types/latest.d.ts"
-    ],
+    "files": ["../types/types/latest.d.ts"],
     "exclude": [],
     "tstl": {
         "luaTarget": "5.4",
