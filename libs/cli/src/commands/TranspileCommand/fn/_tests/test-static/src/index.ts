@@ -1,5 +1,6 @@
 class A {
     static staticField = 'staticField';
+
     constructor() {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const someVar = 1;

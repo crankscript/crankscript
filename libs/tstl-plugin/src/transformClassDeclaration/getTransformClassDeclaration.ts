@@ -82,16 +82,21 @@ export const getTransformClassDeclaration = (importMap: ImportMap) => {
                 ts.isConstructorDeclaration(n) && n.body !== undefined,
         );
 
-        if (!constructor) {
-            return [];
-        }
+        const constructorToUse =
+            constructor ||
+            ts.factory.createConstructorDeclaration(
+                undefined,
+                [],
+                ts.factory.createBlock([], true),
+            );
 
         const transformedConstructor = transformConstructor(
             context,
             className,
             instanceFields,
-            constructor,
+            constructorToUse,
         );
+
         if (transformedConstructor) {
             statements.push(transformedConstructor);
         }
