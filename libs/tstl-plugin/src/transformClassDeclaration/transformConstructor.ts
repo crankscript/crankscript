@@ -1,12 +1,46 @@
 import * as ts from 'typescript';
 import { TransformationContext } from 'typescript-to-lua';
 import * as tstl from 'typescript-to-lua';
+import { transformInPrecedingStatementScope } from 'typescript-to-lua/dist/transformation/utils/preceding-statements';
 import { ScopeType } from 'typescript-to-lua/dist/transformation/utils/scope';
 import { transformClassInstanceFields } from 'typescript-to-lua/dist/transformation/visitors/class/members/fields';
 import {
     transformFunctionBodyContent,
     transformParameters,
 } from 'typescript-to-lua/dist/transformation/visitors/function';
+
+const transformParameterDefaultValue = (
+    context: TransformationContext,
+    paramName: tstl.Identifier,
+    value: ts.Expression,
+): tstl.Statement | undefined => {
+    if (!value) return undefined;
+
+    const { precedingStatements, result: parameterValue } =
+        transformInPrecedingStatementScope(context, () =>
+            context.transformExpression(value),
+        );
+
+    if (!tstl.isNilLiteral(parameterValue)) {
+        precedingStatements.push(
+            tstl.createAssignmentStatement(paramName, parameterValue),
+        );
+    }
+
+    if (precedingStatements.length === 0) return undefined;
+
+    const nilCondition = tstl.createBinaryExpression(
+        paramName,
+        tstl.createNilLiteral(),
+        tstl.SyntaxKind.EqualityOperator,
+    );
+
+    return tstl.createIfStatement(
+        nilCondition,
+        tstl.createBlock(precedingStatements),
+        undefined,
+    );
+};
 
 export const transformConstructor = (
     context: TransformationContext,
@@ -28,6 +62,25 @@ export const transformConstructor = (
     );
 
     bodyStatements.push(...classInstanceFields);
+
+    const defaultParamStatements = constructor?.parameters
+        .filter(param => param.initializer !== undefined)
+        .map(param => {
+            if (ts.isIdentifier(param.name) && param.initializer) {
+                const paramName = tstl.createIdentifier(param.name.text);
+
+                return transformParameterDefaultValue(
+                    context,
+                    paramName,
+                    param.initializer,
+                );
+            }
+
+            return undefined;
+        })
+        .filter((stmt): stmt is tstl.Statement => stmt !== undefined);
+
+    bodyStatements.push(...defaultParamStatements);
 
     const parameterAssignments = constructor?.parameters
         .filter(

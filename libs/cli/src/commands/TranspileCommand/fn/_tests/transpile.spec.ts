@@ -99,4 +99,28 @@ describe('transpile', () => {
             expect(transformedLua).toContain('class("A")');
         });
     });
+
+    describe('default parameters', () => {
+        const { result, transformedLua } =
+            runTranspilation('default-parameters');
+
+        it('should transpile without errors', () => {
+            expect(result.diagnostics).toEqual([]);
+        });
+
+        it('should transpile default class parameters', () => {
+            expect(transformedLua).toContain('if b == nil then');
+            expect(transformedLua).toContain('b = 5');
+        });
+
+        it('should transpile default function parameters', () => {
+            expect(transformedLua).toContain('if y == nil then');
+            expect(transformedLua).toContain('y = 5');
+        });
+
+        it('should transpile default method parameters', () => {
+            expect(transformedLua).toContain('if d == nil then');
+            expect(transformedLua).toContain('d = 5');
+        });
+    });
 });
