@@ -85,4 +85,18 @@ describe('transpile', () => {
             expect(transformedLua).toContain('A.staticField = "staticField"');
         });
     });
+
+    describe('implicit constructor', () => {
+        const { result, transformedLua } = runTranspilation(
+            'implicit-constructor',
+        );
+
+        it('should transpile without errors', () => {
+            expect(result.diagnostics).toEqual([]);
+        });
+
+        it('should transpile classes without a constructor', () => {
+            expect(transformedLua).toContain('class("A")');
+        });
+    });
 });

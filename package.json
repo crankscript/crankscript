@@ -9,7 +9,11 @@
         "postinstall": "patch-package",
         "commit": "npx cz",
         "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-        "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\""
+        "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+        "dev:build-plugin": "nx run tstl-plugin:build",
+        "dev:move-plugin": "nx run tstl-plugin:move-build-to-cli",
+        "dev:plugin": "npm run dev:build-plugin && npm run dev:move-plugin",
+        "dev:plugin:watch": "nodemon --watch libs/tstl-plugin/src --ext ts --exec \"npm run dev:plugin\""
     },
     "author": {
         "name": "Alberto Piu"
@@ -67,6 +71,7 @@
         "husky": "^8.0.0",
         "jest": "^29.7.0",
         "jest-environment-node": "^29.7.0",
+        "nodemon": "^3.1.9",
         "nx": "^20.6.2",
         "patch-package": "^8.0.0",
         "prettier": "^2.6.2",
