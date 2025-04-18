@@ -49,10 +49,11 @@ export type CheckListItem<TResult> = {
     runningDescription: string;
     waitingDescription: string;
     errorDescription: string;
-    finishedDescription: (result: TResult) => string;
+    finishedDescription: (result: TResult | false) => string;
     runner: () => Promise<TResult> | Promise<false>;
-    onFinish?: (result: TResult) => void;
+    onFinish?: (result: TResult | false) => void;
     ready?: boolean;
+    quitOnError?: boolean;
 };
 
 export interface ParameterDescription {

@@ -18,13 +18,14 @@ export const Item = <TResult,>({
         runner,
         onFinish,
         ready,
+        quitOnError = true,
     },
     start,
 }: ItemProps<TResult>) => {
     const executed = useRef(false);
     const interval = useRef<NodeJS.Timeout | null>(null);
     const [dotCount, setDotCount] = useState(0);
-    const [result, setResult] = useState<TResult | null>(null);
+    const [result, setResult] = useState<TResult | null | false>(null);
     const [failedReason, setfailedReason] = useState<string | null>(null);
     const hasResult = !failedReason && result !== null;
     const isRunning = !failedReason && !hasResult && start && ready !== false;
@@ -33,10 +34,10 @@ export const Item = <TResult,>({
         !failedReason && !hasResult && start && ready === false;
 
     useEffect(() => {
-        if (failedReason) {
+        if (failedReason && quitOnError) {
             process.exit();
         }
-    }, [failedReason]);
+    }, [failedReason, quitOnError]);
 
     useEffect(() => {
         if (couldStartButNotReady) {
@@ -76,6 +77,8 @@ export const Item = <TResult,>({
             })
             .catch(reason => {
                 setfailedReason(reason.message);
+                setResult(false);
+                onFinish?.(false);
             });
     }, [errorDescription, onFinish, runner, start]);
 

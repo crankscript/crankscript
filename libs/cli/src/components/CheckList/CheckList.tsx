@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { CheckListItem } from '@/cli/types.js';
 import { Item } from './Item.js';
 
-interface Props {
+export interface CheckListProps {
     items: CheckListItem<unknown>[];
-    onFinish?: () => void;
+    onFinish?: (hasFailure: boolean) => void;
 }
 
-export const CheckList = ({ items, onFinish }: Props) => {
+export const CheckList = ({ items, onFinish }: CheckListProps) => {
     const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+    const [hasFailure, setHasFailure] = useState(false);
 
     useEffect(() => {
         if (currentIndex === null && items.length > 0) {
@@ -20,7 +21,8 @@ export const CheckList = ({ items, onFinish }: Props) => {
         if (index + 1 < items.length) {
             setCurrentIndex(index + 1);
         } else {
-            onFinish?.();
+            onFinish?.(hasFailure);
+            setHasFailure(false);
         }
     };
 
@@ -32,6 +34,10 @@ export const CheckList = ({ items, onFinish }: Props) => {
                     item={{
                         ...item,
                         onFinish: (result: unknown) => {
+                            if (result === false) {
+                                setHasFailure(true);
+                            }
+
                             item?.onFinish?.(result);
                             handleFinish(index);
                         },

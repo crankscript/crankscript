@@ -27,5 +27,5 @@ export const New = ({ name, template }: Props) => {
         ];
     }, []) satisfies CheckListItem<unknown>[];
 
-    return <CheckList items={items} onFinish={process.exit} />;
+    return <CheckList items={items} onFinish={() => process.exit} />;
 };
