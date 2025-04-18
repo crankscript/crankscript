@@ -55,7 +55,7 @@ export const useGetVersion = (version: PlaydateSdkVersion) => {
                 return versionLiteral;
             },
             onFinish: result => {
-                setResult(result);
+                setResult(result === false ? null : result);
             },
         } satisfies CheckListItem<string>;
     }, []);

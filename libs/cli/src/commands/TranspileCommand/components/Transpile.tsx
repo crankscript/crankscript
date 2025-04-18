@@ -9,5 +9,5 @@ interface Props {
 export const Transpile = ({ path }: Props) => {
     const items = useTranspileTasks(path);
 
-    return <CheckList items={items} onFinish={process.exit} />;
+    return <CheckList items={items} onFinish={() => process.exit} />;
 };

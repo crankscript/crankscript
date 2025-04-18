@@ -30,7 +30,7 @@ export const useParseDocumentation = (html: string | null, version: string) => {
                 );
             },
             onFinish: result => {
-                setResult(result);
+                setResult(result === false ? null : result);
             },
             ready: html !== null,
         } satisfies CheckListItem<ApiDefinitions>;

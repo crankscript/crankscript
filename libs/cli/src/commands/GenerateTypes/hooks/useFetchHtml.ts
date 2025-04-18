@@ -19,7 +19,7 @@ export const useFetchHtml = (version: string | null) => {
                 return getHtmlForVersion(version);
             },
             onFinish: result => {
-                setHtml(result);
+                setHtml(result === false ? null : result);
             },
             ready: version !== null,
         } satisfies CheckListItem<string>;
