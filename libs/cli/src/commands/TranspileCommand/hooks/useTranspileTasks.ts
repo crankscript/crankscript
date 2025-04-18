@@ -27,6 +27,7 @@ export const useTranspileTasks = (path: string) => {
                     }
                 },
                 ready: true,
+                quitOnError: false,
             },
         ],
         [],

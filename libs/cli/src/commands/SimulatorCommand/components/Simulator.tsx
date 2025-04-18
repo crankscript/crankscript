@@ -13,7 +13,7 @@ import { getPdcPathFromEnvironment } from '@/cli/commands/CompileCommand/fn/getP
 import { useCompileTasks } from '@/cli/commands/CompileCommand/hooks/useCompileTasks.js';
 import { getSimulatorPathFromEnvironment } from '@/cli/commands/SimulatorCommand/fn/getSimulatorPathFromEnvironment.js';
 import { useTranspileTasks } from '@/cli/commands/TranspileCommand/hooks/useTranspileTasks.js';
-import { CheckList } from '@/cli/components/CheckList/index.js';
+import { CheckList, CheckListProps } from '@/cli/components/CheckList/index.js';
 import { Environment } from '@/cli/environment/dto/Environment.js';
 import { isMac, isWindows } from '@/cli/utils/platform.js';
 
@@ -41,6 +41,7 @@ export const Simulator = ({
         getPdcPathFromEnvironment(environment),
     );
     const didRun = useRef(false);
+    const [hasFailure, setHasFailure] = useState(false);
 
     useEffect(() => {
         if (hasChanged) {
@@ -48,50 +49,54 @@ export const Simulator = ({
         }
     }, [hasChanged, setHasChanged]);
 
-    const handleFinish = useCallback(() => {
-        if (didRun.current && recompileOnly) {
-            return;
-        }
-
-        didRun.current = true;
-
-        open('Game.pdx', {
-            background,
-            app: isMac
-                ? undefined
-                : {
-                      name: getSimulatorPathFromEnvironment(environment),
-                  },
-        }).then(() => {
-            if (!watch) {
-                if (!isWindows) {
-                    process.exit();
-                }
-
-                // Wait for the simulator to start
-                // See https://github.com/sindresorhus/open/issues/298
-                setTimeout(process.exit, 1000);
-            } else {
-                setHasChangedMessage(false);
-
-                if (watcher.current) {
-                    watcher.current.close();
-                }
-
-                setIsWatching(true);
-
-                watcher.current = watchDir(
-                    join(path, 'src'),
-                    { recursive: true },
-                    () => {
-                        setHasChanged(true);
-                        setHasChangedMessage(true);
-                        setIsWatching(false);
-                    },
-                );
+    const handleFinish = useCallback(
+        (hasFailure => {
+            setHasFailure(hasFailure);
+            if (didRun.current && recompileOnly) {
+                return;
             }
-        });
-    }, [watch, setHasChanged, setIsWatching]);
+
+            didRun.current = true;
+
+            open('Game.pdx', {
+                background,
+                app: isMac
+                    ? undefined
+                    : {
+                          name: getSimulatorPathFromEnvironment(environment),
+                      },
+            }).then(() => {
+                if (!watch) {
+                    if (!isWindows) {
+                        process.exit();
+                    }
+
+                    // Wait for the simulator to start
+                    // See https://github.com/sindresorhus/open/issues/298
+                    setTimeout(process.exit, 1000);
+                } else {
+                    setHasChangedMessage(false);
+
+                    if (watcher.current) {
+                        watcher.current.close();
+                    }
+
+                    setIsWatching(true);
+
+                    watcher.current = watchDir(
+                        join(path, 'src'),
+                        { recursive: true },
+                        () => {
+                            setHasChanged(true);
+                            setHasChangedMessage(true);
+                            setIsWatching(false);
+                        },
+                    );
+                }
+            });
+        }) satisfies CheckListProps['onFinish'],
+        [watch, setHasChanged, setIsWatching],
+    );
 
     const tasks = useMemo(() => {
         return [...transpileTasks, ...compileTasks];
@@ -101,9 +106,16 @@ export const Simulator = ({
         <>
             {!hasChanged && <CheckList items={tasks} onFinish={handleFinish} />}
             {isWatching && !hasChangedMessage && (
-                <StatusMessage variant="info">
-                    Watching for changes...
-                </StatusMessage>
+                <>
+                    {hasFailure && (
+                        <StatusMessage variant="warning">
+                            Some steps failed.
+                        </StatusMessage>
+                    )}
+                    <StatusMessage variant="info">
+                        Watching for changes...
+                    </StatusMessage>
+                </>
             )}
             {hasChangedMessage && (
                 <StatusMessage variant="info">Change detected</StatusMessage>

@@ -51,8 +51,9 @@ export type CheckListItem<TResult> = {
     errorDescription: string;
     finishedDescription: (result: TResult) => string;
     runner: () => Promise<TResult> | Promise<false>;
-    onFinish?: (result: TResult) => void;
+    onFinish?: (result: TResult | false) => void;
     ready?: boolean;
+    quitOnError?: boolean;
 };
 
 export interface ParameterDescription {
