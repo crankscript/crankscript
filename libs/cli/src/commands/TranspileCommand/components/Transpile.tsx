@@ -7,12 +7,14 @@ import { ValidatedExitPoint } from '../model/ValidatedExitPoint.js';
 interface Props {
     entryPoint: ValidatedEntryPoint;
     exitPoint: ValidatedExitPoint;
+    toybox?: string;
 }
 
-export const Transpile = ({ entryPoint, exitPoint }: Props) => {
+export const Transpile = ({ entryPoint, exitPoint, toybox }: Props) => {
     const items = useTranspileTasks({
         entryPoint,
         exitPoint,
+        toybox,
     });
 
     return <CheckList items={items} onFinish={() => process.exit} />;
