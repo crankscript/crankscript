@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs';
+import { mkdirSync } from 'node:fs';
 import { basename, dirname, join } from 'node:path';
 import * as tstl from 'typescript-to-lua';
 import { LuaTarget } from 'typescript-to-lua';
@@ -14,6 +16,12 @@ export const transpile = ({
     exitPoint: ValidatedExitPoint;
     buildMode?: tstl.BuildMode;
 }) => {
+    const exitDir = dirname(exitPoint.exitPath);
+
+    if (!existsSync(exitDir)) {
+        mkdirSync(exitDir, { recursive: true });
+    }
+
     return tstl.transpileProject(
         join(entryPoint.projectPath, 'tsconfig.json'),
         {

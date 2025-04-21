@@ -14,12 +14,13 @@ export const validateExitPoint = (input: {
         throw new Error(`"${resolvedPath}" is not a valid project path`);
     }
 
-    if (!existsSync(exitDir) || !statSync(exitDir).isDirectory()) {
-        throw new Error(
-            `"${exitDir}" is not a valid directory for the exit path`,
-        );
+    if (!existsSync(exitDir)) {
+        // Will be created
+    } else if (!statSync(exitDir).isDirectory()) {
+        throw new Error(`"${exitDir}" exists but is not a directory`);
     }
 
+    // Check if the parent directory is inside the project path
     if (!exitDir.startsWith(resolvedPath)) {
         throw new Error(`Exit path must be inside project path`);
     }
