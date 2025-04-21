@@ -4,10 +4,10 @@ import { ValidatedExitPoint } from '../model/ValidatedExitPoint.js';
 
 export const validateExitPoint = (input: {
     projectPath: string;
-    exitPath: string;
+    exitFile: string;
 }): ValidatedExitPoint => {
     const resolvedPath = resolve(input.projectPath);
-    const resolvedExit = resolve(input.exitPath);
+    const resolvedExit = resolve(input.exitFile);
     const exitDir = dirname(resolvedExit);
 
     if (!existsSync(resolvedPath) || !statSync(resolvedPath).isDirectory()) {
