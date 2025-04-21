@@ -4,13 +4,11 @@ import { ValidatedEntryPoint } from '@/cli/commands/TranspileCommand/model/Valid
 import { CheckList } from '@/cli/components/CheckList/index.js';
 interface Props {
     entryPoint: ValidatedEntryPoint;
-    library?: boolean;
 }
 
-export const Transpile = ({ entryPoint, library }: Props) => {
+export const Transpile = ({ entryPoint }: Props) => {
     const items = useTranspileTasks({
         entryPoint,
-        library,
     });
 
     return <CheckList items={items} onFinish={() => process.exit} />;

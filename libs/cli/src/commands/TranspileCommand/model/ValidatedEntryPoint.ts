@@ -1,4 +1,6 @@
 export type ValidatedEntryPoint = {
+    __validated: true;
+
     /**
      * The path to a directory containing a tsconfig.json file
      */

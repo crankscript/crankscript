@@ -22,6 +22,7 @@ export const validateEntryPoint = (input: {
     }
 
     return {
+        __validated: true,
         projectPath: resolvedPath,
         entryFile: resolvedEntry,
     } satisfies ValidatedEntryPoint;

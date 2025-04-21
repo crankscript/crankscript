@@ -12,6 +12,7 @@ import React, {
 import { getPdcPathFromEnvironment } from '@/cli/commands/CompileCommand/fn/getPdcPathFromEnvironment.js';
 import { useCompileTasks } from '@/cli/commands/CompileCommand/hooks/useCompileTasks.js';
 import { getSimulatorPathFromEnvironment } from '@/cli/commands/SimulatorCommand/fn/getSimulatorPathFromEnvironment.js';
+import { validateEntryPoint } from '@/cli/commands/TranspileCommand/fn/validateEntryPoint.js';
 import { useTranspileTasks } from '@/cli/commands/TranspileCommand/hooks/useTranspileTasks.js';
 import { CheckList, CheckListProps } from '@/cli/components/CheckList/index.js';
 import { Environment } from '@/cli/environment/dto/Environment.js';
@@ -36,7 +37,12 @@ export const Simulator = ({
     const [isWatching, setIsWatching] = useState(false);
     const [hasChanged, setHasChanged] = useState(false);
     const [hasChangedMessage, setHasChangedMessage] = useState(false);
-    const transpileTasks = useTranspileTasks({ path });
+    const transpileTasks = useTranspileTasks({
+        entryPoint: validateEntryPoint({
+            projectPath: path,
+            entryFile: join(path, 'src', 'index.ts'),
+        }),
+    });
     const compileTasks = useCompileTasks(
         getPdcPathFromEnvironment(environment),
     );

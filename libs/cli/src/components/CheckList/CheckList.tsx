@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CheckListItem } from '@/cli/types.js';
 import { Item } from './Item.js';
 
-export interface CheckListProps<TResult> {
+export interface CheckListProps<TResult = unknown> {
     items: CheckListItem<TResult>[];
     onFinish?: (hasFailure: boolean) => void;
 }

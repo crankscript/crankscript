@@ -23,10 +23,6 @@ export class TranspileCommand extends RenderableCommand {
         validator: t.isString(),
     });
 
-    library = Option.Boolean('--library', false, {
-        description: 'Transpile as a library',
-    });
-
     projectPath = projectPathOption;
 
     override render() {
@@ -35,11 +31,6 @@ export class TranspileCommand extends RenderableCommand {
             entryFile: this.entryFile,
         });
 
-        return (
-            <Transpile
-                entryPoint={validatedEntryPoint}
-                library={this.library}
-            />
-        );
+        return <Transpile entryPoint={validatedEntryPoint} />;
     }
 }

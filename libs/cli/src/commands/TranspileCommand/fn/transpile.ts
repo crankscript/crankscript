@@ -11,7 +11,6 @@ export const transpile = ({
     entryPoint: ValidatedEntryPoint;
     buildMode?: tstl.BuildMode;
 }) => {
-    console.log(join(entryPoint.projectPath, entryPoint.entryFile));
     return tstl.transpileProject(
         join(entryPoint.projectPath, 'tsconfig.json'),
         {

@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import * as tstl from 'typescript-to-lua';
 import { getErrorMessage } from '@/cli/commands/TranspileCommand/fn/getErrorMessage.js';
 import { transpile } from '@/cli/commands/TranspileCommand/fn/transpile.js';
 import { ValidatedEntryPoint } from '@/cli/commands/TranspileCommand/model/ValidatedEntryPoint.js';
@@ -7,10 +6,8 @@ import { CheckListItem } from '@/cli/types.js';
 
 export const useTranspileTasks = ({
     entryPoint,
-    library,
 }: {
     entryPoint: ValidatedEntryPoint;
-    library?: boolean;
 }) => {
     return useMemo(
         () => [
@@ -22,7 +19,6 @@ export const useTranspileTasks = ({
                 runner: async () => {
                     const result = transpile({
                         entryPoint,
-                        buildMode: library ? tstl.BuildMode.Library : undefined,
                     });
 
                     if (result.diagnostics.length > 0) {
