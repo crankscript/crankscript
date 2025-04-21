@@ -15,10 +15,12 @@ export const Item = <TResult,>({
         waitingDescription,
         errorDescription,
         finishedDescription,
+        skipDescription,
         runner,
         onFinish,
         ready,
         quitOnError = true,
+        skip,
     },
     start,
 }: ItemProps<TResult>) => {
@@ -27,8 +29,14 @@ export const Item = <TResult,>({
     const [dotCount, setDotCount] = useState(0);
     const [result, setResult] = useState<TResult | null | false>(null);
     const [failedReason, setfailedReason] = useState<string | null>(null);
+    const [isSkipped, setIsSkipped] = useState(false);
+
+    // Determine if the task should be skipped
+    const shouldSkip = typeof skip === 'function' ? skip() : skip === true;
+
     const hasResult = !failedReason && result !== null;
-    const isRunning = !failedReason && !hasResult && start && ready !== false;
+    const isRunning =
+        !failedReason && !hasResult && start && ready !== false && !shouldSkip;
     const isWaiting = !failedReason && !hasResult && (!start || !ready);
     const couldStartButNotReady =
         !failedReason && !hasResult && start && ready === false;
@@ -62,6 +70,15 @@ export const Item = <TResult,>({
             return;
         }
 
+        // If the task should be skipped, mark it as executed with a success result
+        if (shouldSkip) {
+            executed.current = true;
+            setIsSkipped(true);
+            setResult(true as TResult);
+            onFinish?.(true as TResult);
+            return;
+        }
+
         runner()
             .then(result => {
                 executed.current = true;
@@ -80,7 +97,7 @@ export const Item = <TResult,>({
                 setResult(false);
                 onFinish?.(false);
             });
-    }, [errorDescription, onFinish, runner, start]);
+    }, [errorDescription, onFinish, runner, start, shouldSkip]);
 
     let message = waitingDescription;
     let variant: StatusMessageProps['variant'] = 'info';
@@ -88,6 +105,9 @@ export const Item = <TResult,>({
     if (failedReason) {
         message = ` ${failedReason}`;
         variant = 'error';
+    } else if (isSkipped) {
+        message = skipDescription || 'Task skipped';
+        variant = 'info';
     } else if (isRunning) {
         message = runningDescription;
         variant = 'warning';
@@ -111,6 +131,8 @@ export const Item = <TResult,>({
                         ? 'gray'
                         : failedReason
                         ? 'red'
+                        : isSkipped
+                        ? 'gray'
                         : 'green'
                 }
             >

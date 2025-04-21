@@ -4,6 +4,7 @@ import React from 'react';
 import * as t from 'typanion';
 import { RenderableCommand } from '@/cli/commands/RenderableCommand.js';
 import { Transpile } from '@/cli/commands/TranspileCommand/components/Transpile.js';
+import { validateEntryPoint } from '@/cli/commands/TranspileCommand/fn/validateEntryPoint.js';
 
 export const projectPathOption = Option.String('-p,--path', process.cwd(), {
     description: `Where to find the project. Defaults to the current working directory ("${process.cwd()}")`,
@@ -17,9 +18,28 @@ export class TranspileCommand extends RenderableCommand {
         description: 'Transpile TypeScript files to Lua',
     });
 
+    entryFile = Option.String('-f,--file', 'src/index.ts', {
+        description: 'The entry point to transpile',
+        validator: t.isString(),
+    });
+
+    library = Option.Boolean('--library', false, {
+        description: 'Transpile as a library',
+    });
+
     projectPath = projectPathOption;
 
     override render() {
-        return <Transpile path={this.projectPath} />;
+        const validatedEntryPoint = validateEntryPoint({
+            projectPath: this.projectPath,
+            entryFile: this.entryFile,
+        });
+
+        return (
+            <Transpile
+                entryPoint={validatedEntryPoint}
+                library={this.library}
+            />
+        );
     }
 }

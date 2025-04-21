@@ -2,16 +2,18 @@ import { readFileSync } from 'fs';
 import { existsSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
-    FunctionDeclarationStructure,
     ParameterDeclarationStructure,
     StructureKind,
     VariableDeclarationStructure,
+    FunctionDeclarationStructure,
+    MethodDeclarationStructure,
+    FunctionDeclarationOverloadStructure,
+    MethodDeclarationOverloadStructure,
 } from 'ts-morph';
 import { DataFolder } from '@/cli/constants.js';
 import {
     FunctionDescription,
     FunctionDetails,
-    ParameterDetails,
     PropertyDescription,
     PropertyDetails,
     TypeProviderData,
@@ -106,7 +108,8 @@ export const createTypeProvider = (version: string) => {
             const details = {
                 signature: func.signature,
                 parameters: func.parameters.map(p => ({
-                    name: p.name,
+                    kind: StructureKind.Parameter,
+                    name: kebabToCamelCase(p.name),
                     type: 'any',
                 })),
                 returnType: 'any',
@@ -143,60 +146,83 @@ export const createTypeProvider = (version: string) => {
     const getParameterDetails = (
         func: FunctionDescription,
         parameter: string,
-    ) => {
-        const { parameters } = getFunctionDetails(func);
-        const param = parameters.find(p => p.name === parameter);
+    ): ParameterDeclarationStructure => {
+        const details = getFunctionDetails(func);
+        const param = details.parameters?.find(p => p.name === parameter);
 
         if (!param) {
             return {
-                name: parameter,
+                kind: StructureKind.Parameter,
+                name: kebabToCamelCase(parameter),
                 type: 'any',
-            } satisfies ParameterDetails;
+            };
         }
 
-        return param;
+        return {
+            ...param,
+            name: kebabToCamelCase(param.name),
+        };
     };
 
     const getParameters = (
         func: FunctionDescription,
-    ): FunctionDeclarationStructure['parameters'] => {
-        const { overrideParameters = false, parameters } =
-            getFunctionDetails(func);
-        const getParameterFromDetails = (parameter: ParameterDetails) => {
-            return {
-                kind: StructureKind.Parameter,
-                name: kebabToCamelCase(parameter.name),
-                type: parameter.type,
-                ...(parameter.overrideOptions ?? {}),
-            } satisfies ParameterDeclarationStructure;
-        };
+    ): ParameterDeclarationStructure[] => {
+        const details = getFunctionDetails(func);
 
-        if (overrideParameters) {
-            return parameters.map(details => {
-                return getParameterFromDetails(details);
-            });
+        if (details.overrideParameters && details.parameters) {
+            return details.parameters.map(param => ({
+                ...param,
+                name: kebabToCamelCase(param.name),
+            }));
         }
 
         return func.parameters.map(parameter => {
             const details = getParameterDetails(func, parameter.name);
 
             return {
+                ...details,
+                name: kebabToCamelCase(details.name),
                 hasQuestionToken: !parameter.required,
-                ...getParameterFromDetails(details),
-            } satisfies ParameterDeclarationStructure;
+            };
         });
     };
 
     const getFunctionOverrideOptions = (func: FunctionDescription) => {
-        const options = getFunctionDetails(func).overrideOptions ?? {};
+        const details = getFunctionDetails(func);
+        const options: Partial<
+            FunctionDeclarationStructure | MethodDeclarationStructure
+        > = {};
 
-        if ('overloads' in options && Array.isArray(options.overloads)) {
-            return {
-                overloads: options.overloads.map(overload => ({
-                    ...overload,
+        if (details.kind) {
+            options.kind = details.kind;
+        }
+
+        if (details.typeParameters) {
+            options.typeParameters = details.typeParameters;
+        }
+
+        if ('overloads' in details && Array.isArray(details.overloads)) {
+            if (details.kind === StructureKind.Method) {
+                options.overloads = details.overloads.map(overload => ({
+                    ...(overload as MethodDeclarationOverloadStructure),
+                    typeParameters: overload.typeParameters,
+                    parameters: overload.parameters?.map(param => ({
+                        ...param,
+                        name: kebabToCamelCase(param.name),
+                    })),
                     docs: [func.docs],
-                })),
-            };
+                }));
+            } else {
+                options.overloads = details.overloads.map(overload => ({
+                    ...(overload as FunctionDeclarationOverloadStructure),
+                    typeParameters: overload.typeParameters,
+                    parameters: overload.parameters?.map(param => ({
+                        ...param,
+                        name: kebabToCamelCase(param.name),
+                    })),
+                    docs: [func.docs],
+                }));
+            }
         }
 
         return options;

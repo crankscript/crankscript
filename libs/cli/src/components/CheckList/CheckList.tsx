@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { CheckListItem } from '@/cli/types.js';
 import { Item } from './Item.js';
 
-export interface CheckListProps {
-    items: CheckListItem<unknown>[];
+export interface CheckListProps<TResult> {
+    items: CheckListItem<TResult>[];
     onFinish?: (hasFailure: boolean) => void;
 }
 
-export const CheckList = ({ items, onFinish }: CheckListProps) => {
+export const CheckList = <TResult,>({
+    items,
+    onFinish,
+}: CheckListProps<TResult>) => {
     const [currentIndex, setCurrentIndex] = useState<number | null>(null);
     const [hasFailure, setHasFailure] = useState(false);
 
@@ -33,7 +36,7 @@ export const CheckList = ({ items, onFinish }: CheckListProps) => {
                     key={item.waitingDescription}
                     item={{
                         ...item,
-                        onFinish: (result: unknown) => {
+                        onFinish: (result: TResult | false) => {
                             if (result === false) {
                                 setHasFailure(true);
                             }

@@ -6,7 +6,9 @@ const testFolder = new URL('.', import.meta.url).pathname;
 
 const runTranspilation = (name: string) => {
     const path = join(testFolder, `test-${name}`);
-    const result = transpile(path);
+    const result = transpile({
+        path,
+    });
     const lua = readFileSync(join(path, 'Source', 'main.lua'), 'utf-8');
     const transformedLua = lua
         .split('\n')

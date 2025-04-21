@@ -1,9 +1,17 @@
 import { useMemo } from 'react';
+import * as tstl from 'typescript-to-lua';
 import { getErrorMessage } from '@/cli/commands/TranspileCommand/fn/getErrorMessage.js';
 import { transpile } from '@/cli/commands/TranspileCommand/fn/transpile.js';
+import { ValidatedEntryPoint } from '@/cli/commands/TranspileCommand/model/ValidatedEntryPoint.js';
 import { CheckListItem } from '@/cli/types.js';
 
-export const useTranspileTasks = (path: string) => {
+export const useTranspileTasks = ({
+    entryPoint,
+    library,
+}: {
+    entryPoint: ValidatedEntryPoint;
+    library?: boolean;
+}) => {
     return useMemo(
         () => [
             {
@@ -12,7 +20,10 @@ export const useTranspileTasks = (path: string) => {
                 runningDescription: 'Transpiling code...',
                 finishedDescription: () => 'Code transpiled',
                 runner: async () => {
-                    const result = transpile(path);
+                    const result = transpile({
+                        entryPoint,
+                        buildMode: library ? tstl.BuildMode.Library : undefined,
+                    });
 
                     if (result.diagnostics.length > 0) {
                         const errors = getErrorMessage(result.diagnostics);

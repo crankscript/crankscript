@@ -3,6 +3,8 @@ import {
     FunctionDeclarationStructure,
     MethodDeclarationStructure,
     ParameterDeclarationStructure,
+    PropertyDeclarationStructure,
+    VariableDeclarationStructure,
 } from 'ts-morph';
 import { Environment } from '@/cli/environment/dto/Environment.js';
 import { PlaydateSdkPath } from '@/cli/environment/path/dto/PlaydateSdkPath.js';
@@ -50,10 +52,12 @@ export type CheckListItem<TResult> = {
     waitingDescription: string;
     errorDescription: string;
     finishedDescription: (result: TResult | false) => string;
+    skipDescription?: string;
     runner: () => Promise<TResult> | Promise<false>;
     onFinish?: (result: TResult | false) => void;
     ready?: boolean;
     quitOnError?: boolean;
+    skip?: boolean | (() => boolean);
 };
 
 export interface ParameterDescription {
@@ -88,34 +92,24 @@ export interface ApiDefinitions {
     global: ApiObject;
 }
 
-export interface ParameterDetails {
-    name: string;
-    type: string;
-    overrideOptions?: Partial<
-        Omit<ParameterDeclarationStructure, 'kind' | 'name' | 'type'>
-    >;
-}
-
-export interface PropertyDetails {
+export interface PropertyDetails extends Partial<PropertyDeclarationStructure> {
     signature: string;
-    type: string;
-    isStatic?: boolean;
-    isReadOnly?: boolean;
 }
 
-export interface FunctionDetails {
+export type FunctionDetails = {
     signature: string;
     parameters: ParameterDetails[];
-    returnType: string;
     overrideParameters?: boolean;
-    overrideOptions?: Partial<
-        FunctionDeclarationStructure | MethodDeclarationStructure
-    >;
-}
+} & (
+    | Partial<FunctionDeclarationStructure>
+    | Partial<MethodDeclarationStructure>
+);
 
-export interface ConstantDefinition {
+export type ParameterDetails = ParameterDeclarationStructure;
+
+export interface ConstantDefinition
+    extends Partial<VariableDeclarationStructure> {
     name: string;
-    type: string;
 }
 
 export type TypeProviderData = {
@@ -124,6 +118,15 @@ export type TypeProviderData = {
     constants: Record<string, (ConstantDefinition | string)[]>;
     classes: Record<string, Partial<ClassDeclarationStructure>>;
     properties: Record<string, PropertyDetails>;
+    /**
+     * Properties that are described in prose rather than in formal API documentation.
+     * While 'properties' contains actual property definitions with their full path as the key,
+     * 'dynamicProperties' contains additional properties that belong to a parent namespace.
+     *
+     * For example, if the docs mention "You can access rect.x, rect.y" in prose,
+     * the key would be "playdate.geometry.rect" and the value would be the properties
+     * that should be added to that namespace.
+     */
     dynamicProperties: Record<
         string,
         Pick<PropertyDescription, 'name' | 'docs'>[]

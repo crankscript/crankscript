@@ -36,7 +36,7 @@ export const Simulator = ({
     const [isWatching, setIsWatching] = useState(false);
     const [hasChanged, setHasChanged] = useState(false);
     const [hasChangedMessage, setHasChangedMessage] = useState(false);
-    const transpileTasks = useTranspileTasks(path);
+    const transpileTasks = useTranspileTasks({ path });
     const compileTasks = useCompileTasks(
         getPdcPathFromEnvironment(environment),
     );

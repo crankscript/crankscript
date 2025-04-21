@@ -5,6 +5,7 @@ import {
     FunctionDeclarationStructure,
     MethodDeclarationStructure,
     ModuleDeclaration,
+    ModuleDeclarationKind,
     Project,
     SourceFile,
     VariableDeclarationKind,
@@ -46,8 +47,18 @@ export const useGenerateTypeFile = (
                 const globalNamespace = definitions.global;
 
                 typeFile.addStatements(typeProvider.getGlobalStatements());
+                const globalModule = typeFile.addModule({
+                    name: 'global',
+                    hasDeclareKeyword: true,
+                    declarationKind: ModuleDeclarationKind.Global,
+                });
 
-                generateNamespace(globalNamespace, typeFile, typeProvider, '');
+                generateNamespace(
+                    globalNamespace,
+                    globalModule,
+                    typeProvider,
+                    '',
+                );
 
                 writeFileSync(
                     path,
@@ -111,6 +122,7 @@ const generateNamespace = (
 
         if (isFunctionNameReserved) {
             subject.addExportDeclaration({
+                leadingTrivia: '/** @ts-ignore */\n',
                 namedExports: [
                     {
                         name: resolvedName,
@@ -126,6 +138,7 @@ const generateNamespace = (
     if (name && apiObject.methods.length > 0) {
         const typeClass = incomingSubject.addClass({
             name,
+            isExported: true,
             ...typeProvider.getClassOptions(fullNamespaceName),
         });
         propertiesSubject = typeClass;
@@ -166,7 +179,7 @@ const generateNamespace = (
                 docs: [property.docs],
                 type: propertyDetails.type,
                 isStatic: propertyDetails.isStatic,
-                isReadonly: propertyDetails.isReadOnly,
+                isReadonly: propertyDetails.isReadonly,
             });
         } else {
             subject.addVariableStatement({
