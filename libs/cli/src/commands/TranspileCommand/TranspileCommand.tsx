@@ -5,6 +5,7 @@ import * as t from 'typanion';
 import { RenderableCommand } from '@/cli/commands/RenderableCommand.js';
 import { Transpile } from '@/cli/commands/TranspileCommand/components/Transpile.js';
 import { validateEntryPoint } from '@/cli/commands/TranspileCommand/fn/validateEntryPoint.js';
+import { validateExitPoint } from './fn/validateExitPoint.js';
 
 export const projectPathOption = Option.String('-p,--path', process.cwd(), {
     description: `Where to find the project. Defaults to the current working directory ("${process.cwd()}")`,
@@ -18,8 +19,13 @@ export class TranspileCommand extends RenderableCommand {
         description: 'Transpile TypeScript files to Lua',
     });
 
-    entryFile = Option.String('-f,--file', 'src/index.ts', {
+    entryFile = Option.String('-i,--input', 'src/index.ts', {
         description: 'The entry point to transpile',
+        validator: t.isString(),
+    });
+
+    exitFile = Option.String('-o,--output', 'Source/main.lua', {
+        description: 'The output bundle',
         validator: t.isString(),
     });
 
@@ -31,6 +37,16 @@ export class TranspileCommand extends RenderableCommand {
             entryFile: this.entryFile,
         });
 
-        return <Transpile entryPoint={validatedEntryPoint} />;
+        const validatedExitPoint = validateExitPoint({
+            projectPath: this.projectPath,
+            exitFile: this.exitFile,
+        });
+
+        return (
+            <Transpile
+                entryPoint={validatedEntryPoint}
+                exitPoint={validatedExitPoint}
+            />
+        );
     }
 }

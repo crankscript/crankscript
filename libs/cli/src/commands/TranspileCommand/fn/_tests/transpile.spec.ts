@@ -2,6 +2,7 @@ import { readFileSync } from 'fs';
 import { join } from 'node:path';
 import { transpile } from '@/cli/commands/TranspileCommand/fn/transpile.js';
 import { validateEntryPoint } from '@/cli/commands/TranspileCommand/fn/validateEntryPoint.js';
+import { validateExitPoint } from '@/cli/commands/TranspileCommand/fn/validateExitPoint.js';
 
 const testFolder = new URL('.', import.meta.url).pathname;
 
@@ -11,6 +12,10 @@ const runTranspilation = (name: string) => {
         entryPoint: validateEntryPoint({
             projectPath: path,
             entryFile: join(path, 'src', 'index.ts'),
+        }),
+        exitPoint: validateExitPoint({
+            projectPath: path,
+            exitFile: join(path, 'Source', 'main.lua'),
         }),
     });
     const lua = readFileSync(join(path, 'Source', 'main.lua'), 'utf-8');

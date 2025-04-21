@@ -13,7 +13,8 @@
         "dev:build-plugin": "nx run tstl-plugin:build",
         "dev:move-plugin": "nx run tstl-plugin:move-build-to-cli",
         "dev:plugin": "npm run dev:build-plugin && npm run dev:move-plugin",
-        "dev:plugin:watch": "nodemon --watch libs/tstl-plugin/src --ext ts --exec \"npm run dev:plugin\""
+        "dev:plugin:watch": "nodemon --watch libs/tstl-plugin/src --ext ts --exec \"npm run dev:plugin\"",
+        "cli:test": "NODE_OPTIONS=--experimental-vm-modules npx nx run cli:test"
     },
     "author": {
         "name": "Alberto Piu"

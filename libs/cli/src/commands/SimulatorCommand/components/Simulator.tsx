@@ -17,6 +17,7 @@ import { useTranspileTasks } from '@/cli/commands/TranspileCommand/hooks/useTran
 import { CheckList, CheckListProps } from '@/cli/components/CheckList/index.js';
 import { Environment } from '@/cli/environment/dto/Environment.js';
 import { isMac, isWindows } from '@/cli/utils/platform.js';
+import { validateExitPoint } from '../../TranspileCommand/fn/validateExitPoint.js';
 
 interface Props {
     environment: Environment;
@@ -41,6 +42,10 @@ export const Simulator = ({
         entryPoint: validateEntryPoint({
             projectPath: path,
             entryFile: join(path, 'src', 'index.ts'),
+        }),
+        exitPoint: validateExitPoint({
+            projectPath: path,
+            exitFile: join(path, 'src', 'index.lua'),
         }),
     });
     const compileTasks = useCompileTasks(

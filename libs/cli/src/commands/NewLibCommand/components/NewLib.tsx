@@ -4,30 +4,30 @@ import { promisify } from 'node:util';
 import React, { useMemo } from 'react';
 import tiged from 'tiged';
 import { CheckList } from '@/cli/components/CheckList/index.js';
-import { CheckListItem, TemplateName } from '@/cli/types.js';
+import { CheckListItem, LibraryTemplateName } from '@/cli/types.js';
 
 const execPromise = promisify(exec);
 
 interface Props {
     name: string;
-    template: TemplateName;
+    template: LibraryTemplateName;
 }
 
-export const New = ({ name, template }: Props) => {
+export const NewLib = ({ name, template }: Props) => {
     const items = useMemo(() => {
         return [
             {
                 ready: true,
                 runner: async () => {
-                    const task = tiged(`crankscript/template-${template}`);
+                    const task = tiged(`crankscript/lib-template-${template}`);
 
                     await task.clone(name);
                 },
-                waitingDescription: `About to create a new project named "${name}" using the "${template}" template`,
-                runningDescription: `Creating a new project named "${name}" using the "${template}" template`,
+                waitingDescription: `About to create a new library named "${name}" using the "${template}" template`,
+                runningDescription: `Creating a new library named "${name}" using the "${template}" template`,
                 finishedDescription: () =>
-                    `Created a new project named "${name}" using the "${template}" template`,
-                errorDescription: `Failed to create project named "${name}" using the "${template}" template`,
+                    `Created a new library named "${name}" using the "${template}" template`,
+                errorDescription: `Failed to create library named "${name}" using the "${template}" template`,
             },
             {
                 ready: true,

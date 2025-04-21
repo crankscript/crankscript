@@ -104,15 +104,9 @@ declare global {
             crankUndocked: typeof crankUndocked;
         };
         type PlaydateFontFamily = {
-            [PlaydateFontVariant.Normal]: playdate.graphics.font;
-            [PlaydateFontVariant.Bold]: playdate.graphics.font;
-            [PlaydateFontVariant.Italic]: playdate.graphics.font;
+            [K in PlaydateFontVariant]: playdate.graphics.font;
         };
-        type PlaydateFontFamilyPaths = {
-            [PlaydateFontVariant.Normal]: string;
-            [PlaydateFontVariant.Bold]: string;
-            [PlaydateFontVariant.Italic]: string;
-        };
+        type PlaydateFontFamilyPaths = { [K in PlaydateFontVariant]: string };
         type PlaydateGenericCollision<
             TType extends PlaydateCollisionResponse,
             TExtra = {},

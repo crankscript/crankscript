@@ -139,3 +139,7 @@ export type FunctionTypeOverrideMap = Record<string, { isMethod: boolean }>;
 export enum TemplateName {
     Blank = 'blank',
 }
+
+export enum LibraryTemplateName {
+    Blank = 'blank',
+}
