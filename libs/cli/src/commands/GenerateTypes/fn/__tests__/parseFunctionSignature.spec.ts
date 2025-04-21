@@ -56,4 +56,22 @@ describe('parseFunctionSignature', () => {
         expect(parameters[1].name).toBe('optional');
         expect(parameters[1].required).toBe(false);
     });
+
+    it('should recognize required parameters after optional parameters', () => {
+        const signature =
+            'playdate.graphics.perlinArray(count, x, dx, [y, dy, z, dz, repeat, octaves, persistence])';
+        const { parameters } = parseFunctionSignature(signature);
+
+        expect(parameters).toHaveLength(10);
+        expect(parameters[0].required).toBe(true);
+        expect(parameters[1].required).toBe(true);
+        expect(parameters[2].required).toBe(true);
+        expect(parameters[3].required).toBe(false);
+        expect(parameters[4].required).toBe(false);
+        expect(parameters[5].required).toBe(false);
+        expect(parameters[6].required).toBe(false);
+        expect(parameters[7].required).toBe(false);
+        expect(parameters[8].required).toBe(false);
+        expect(parameters[9].required).toBe(false);
+    });
 });

@@ -1,9 +1,14 @@
 import { useMemo } from 'react';
 import { getErrorMessage } from '@/cli/commands/TranspileCommand/fn/getErrorMessage.js';
 import { transpile } from '@/cli/commands/TranspileCommand/fn/transpile.js';
+import { ValidatedEntryPoint } from '@/cli/commands/TranspileCommand/model/ValidatedEntryPoint.js';
 import { CheckListItem } from '@/cli/types.js';
 
-export const useTranspileTasks = (path: string) => {
+export const useTranspileTasks = ({
+    entryPoint,
+}: {
+    entryPoint: ValidatedEntryPoint;
+}) => {
     return useMemo(
         () => [
             {
@@ -12,7 +17,9 @@ export const useTranspileTasks = (path: string) => {
                 runningDescription: 'Transpiling code...',
                 finishedDescription: () => 'Code transpiled',
                 runner: async () => {
-                    const result = transpile(path);
+                    const result = transpile({
+                        entryPoint,
+                    });
 
                     if (result.diagnostics.length > 0) {
                         const errors = getErrorMessage(result.diagnostics);

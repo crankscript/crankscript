@@ -13,13 +13,22 @@ export const parseFunctionSignature = (signature: string) => {
     const namespaces = segments.slice(0, -1);
     const params = paramString.split(')')[0].split(',').filter(Boolean);
 
+    // Find if there's any optional parameter
+    const firstOptionalIndex = params.findIndex(
+        param => param.includes('[') || param.includes(']'),
+    );
+
     return {
         signature,
         name: functionName,
         namespaces,
-        parameters: params.map(eachParam => ({
+        parameters: params.map((eachParam, index) => ({
             name: eachParam.replace(/\[/g, '').replace(/]/g, '').trim(),
-            required: !eachParam.includes('[') && !eachParam.includes(']'),
+            // Parameter is not required if it has brackets or comes after an optional parameter
+            required:
+                firstOptionalIndex === -1
+                    ? !eachParam.includes('[') && !eachParam.includes(']')
+                    : index < firstOptionalIndex,
         })),
         hasSelf,
     } satisfies Omit<FunctionDescription, 'docs'>;

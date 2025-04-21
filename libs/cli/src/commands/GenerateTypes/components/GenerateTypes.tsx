@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { useFetchHtml } from '@/cli/commands/GenerateTypes/hooks/useFetchHtml.js';
+import { useFormatTypeFile } from '@/cli/commands/GenerateTypes/hooks/useFormatTypeFile.js';
 import { useGenerateTypeFile } from '@/cli/commands/GenerateTypes/hooks/useGenerateTypeFile.js';
 import { useGetVersion } from '@/cli/commands/GenerateTypes/hooks/useGetVersion.js';
 import { useParseDocumentation } from '@/cli/commands/GenerateTypes/hooks/useParseDocumentation.js';
@@ -24,6 +25,7 @@ export const GenerateTypes = ({ output, version, overwriteJson }: Props) => {
         definitions,
         typeProvider,
     );
+    const { formatTypeFile } = useFormatTypeFile(output);
 
     const items = useMemo(() => {
         return [
@@ -31,8 +33,9 @@ export const GenerateTypes = ({ output, version, overwriteJson }: Props) => {
             fetchHtml,
             parseDocumentation,
             generateTypeFile,
+            formatTypeFile,
         ] as CheckListItem<unknown>[];
-    }, [fetchedVersion, html, definitions, typeProvider]);
+    }, [fetchedVersion, html, definitions, typeProvider, formatTypeFile]);
 
     return (
         <CheckList

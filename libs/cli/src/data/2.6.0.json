@@ -2,7 +2,8 @@
     "globalStatements": [
         "/// <reference types=\"lua-types/5.4\" />",
         "// noinspection JSUnusedGlobalSymbols,JSDuplicatedDeclaration,ReservedWordAsName",
-        "\n/**\n * This TypeScript declaration file (`d.ts`) was automatically generated using documentation from the Playdate SDK,\n * specifically from \"Inside Playdate\" and \"Inside Playdate with C\".\n *\n * The documentation excerpts are owned by Panic Inc. and are provided here solely for reference within the context of\n * Playdate game development. I do not claim ownership of any part of the documentation.\n *\n * If you are using this file, you must also comply with the Playdate SDK license, available at\n * https://play.date/dev/sdk-license/.\n */\n"
+        "\n/**\n * This TypeScript declaration file (`d.ts`) was automatically generated using documentation from the Playdate SDK,\n * specifically from \"Inside Playdate\" and \"Inside Playdate with C\".\n *\n * The documentation excerpts are owned by Panic Inc. and are provided here solely for reference within the context of\n * Playdate game development. I do not claim ownership of any part of the documentation.\n *\n * If you are using this file, you must also comply with the Playdate SDK license, available at\n * https://play.date/dev/sdk-license/.\n */\n",
+        "import {PlaydateColor, PlaydateButton, PlaydateLanguage, PlaydateFlip, PlaydatePolygonFill, PlaydateDitherType, PlaydateLineCapStyle, PlaydateDrawMode, PlaydateStrokeLocation, PlaydateFontVariant, PlaydateTextAlignment, PlaydateCollisionResponse, PlaydateCapitalizationBehavior, PlaydateSoundFormat, PlaydateSoundWave, PlaydateSoundLfoType, PlaydateSoundTwoPoleFilterType, PlaydateFileOpenMode, PlaydateSeekWhence, PlaydateWrapMode} from '@crankscript/core';"
     ],
     "constants": {
         "playdate": [
@@ -113,7 +114,6 @@
         ]
     },
     "statements": [
-        "import {PlaydateColor, PlaydateButton, PlaydateLanguage, PlaydateFlip, PlaydatePolygonFill, PlaydateDitherType, PlaydateLineCapStyle, PlaydateDrawMode, PlaydateStrokeLocation, PlaydateFontVariant, PlaydateTextAlignment, PlaydateCollisionResponse, PlaydateCapitalizationBehavior, PlaydateSoundFormat, PlaydateSoundWave, PlaydateSoundLfoType, PlaydateSoundTwoPoleFilterType, PlaydateFileOpenMode, PlaydateSeekWhence, PlaydateWrapMode} from '@crankscript/core';",
         "type PlaydateInputHandler = { AButtonDown: typeof AButtonDown; AButtonHeld: typeof AButtonHeld; AButtonUp: typeof AButtonUp; BButtonDown: typeof BButtonDown; BButtonHeld: typeof BButtonHeld; BButtonUp: typeof BButtonUp; downButtonDown: typeof downButtonDown; downButtonUp: typeof downButtonUp; leftButtonDown: typeof leftButtonDown; leftButtonUp: typeof leftButtonUp; rightButtonDown: typeof rightButtonDown; rightButtonUp: typeof rightButtonUp; upButtonDown: typeof upButtonDown; upButtonUp: typeof upButtonUp; cranked: typeof cranked; crankDocked: typeof crankDocked; crankUndocked: typeof crankUndocked; };",
         "type PlaydateFontFamily = { [PlaydateFontVariant.Normal]: playdate.graphics.font; [PlaydateFontVariant.Bold]: playdate.graphics.font; [PlaydateFontVariant.Italic]: playdate.graphics.font; };",
         "type PlaydateFontFamilyPaths = { [PlaydateFontVariant.Normal]: string; [PlaydateFontVariant.Bold]: string; [PlaydateFontVariant.Italic]: string; };",
@@ -126,7 +126,12 @@
     ],
     "classes": {
         "playdate.graphics.animator": {
-            "typeParameters": "TSubject extends number | playdate.geometry.point"
+            "typeParameters": [
+                {
+                    "name": "TSubject",
+                    "constraint": "number | playdate.geometry.point"
+                }
+            ]
         }
     },
     "properties": {
@@ -195,7 +200,7 @@
         "playdate.timer.currentTime": {
             "signature": "playdate.timer.currentTime",
             "type": "number",
-            "isReadOnly": true
+            "isReadonly": true
         },
         "playdate.timer.delay": {
             "signature": "playdate.timer.delay",
@@ -212,7 +217,7 @@
         "playdate.timer.timeLeft": {
             "signature": "playdate.timer.timeLeft",
             "type": "number",
-            "isReadOnly": true
+            "isReadonly": true
         },
         "playdate.timer.paused": {
             "signature": "playdate.timer.paused",
@@ -293,7 +298,7 @@
         "playdate.ui.gridview.needsDisplay": {
             "signature": "playdate.ui.gridview.needsDisplay",
             "type": "boolean",
-            "isReadOnly": true
+            "isReadonly": true
         },
         "playdate.ui.gridview.backgroundImage": {
             "signature": "playdate.ui.gridview.backgroundImage",
@@ -302,7 +307,7 @@
         "playdate.ui.gridview.isScrolling": {
             "signature": "playdate.ui.gridview.isScrolling",
             "type": "boolean",
-            "isReadOnly": true
+            "isReadonly": true
         },
         "playdate.ui.gridview.scrollEasingFunction": {
             "signature": "playdate.ui.gridview.scrollEasingFunction",
@@ -343,32 +348,32 @@
         "playdate.geometry.rect.top": {
             "signature": "playdate.geometry.rect.top",
             "type": "number",
-            "isReadOnly": true
+            "isReadonly": true
         },
         "playdate.geometry.rect.bottom": {
             "signature": "playdate.geometry.rect.bottom",
             "type": "number",
-            "isReadOnly": true
+            "isReadonly": true
         },
         "playdate.geometry.rect.right": {
             "signature": "playdate.geometry.rect.right",
             "type": "number",
-            "isReadOnly": true
+            "isReadonly": true
         },
         "playdate.geometry.rect.left": {
             "signature": "playdate.geometry.rect.left",
             "type": "number",
-            "isReadOnly": true
+            "isReadonly": true
         },
         "playdate.geometry.rect.origin": {
             "signature": "playdate.geometry.rect.origin",
             "type": "LuaMultiReturn<[number, number]>",
-            "isReadOnly": true
+            "isReadonly": true
         },
         "playdate.geometry.rect.size": {
             "signature": "playdate.geometry.rect.size",
             "type": "LuaMultiReturn<[number, number]>",
-            "isReadOnly": true
+            "isReadonly": true
         }
     },
     "dynamicProperties": {
@@ -423,9 +428,7 @@
                 {
                     "name": "arg",
                     "type": "unknown[]",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "isRestParameter": true
                 }
             ],
             "returnType": "void"
@@ -1019,10 +1022,7 @@
                 },
                 {
                     "name": "initialValue",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "false"
-                    }
+                    "type": "boolean"
                 },
                 {
                     "name": "callback",
@@ -1033,9 +1033,12 @@
         },
         "playdate.menu:addOptionsMenuItem(title, options, [initalValue], callback)": {
             "signature": "playdate.menu:addOptionsMenuItem(title, options, [initalValue], callback)",
-            "overrideOptions": {
-                "typeParameters": "TOptions extends string[]"
-            },
+            "typeParameters": [
+                {
+                    "name": "TOptions",
+                    "constraint": "string[]"
+                }
+            ],
             "parameters": [
                 {
                     "name": "title",
@@ -2288,10 +2291,7 @@
                 },
                 {
                     "name": "mode",
-                    "type": "PlaydateFileOpenMode",
-                    "overrideOptions": {
-                        "initializer": "PlaydateFileOpenMode.Read"
-                    }
+                    "type": "PlaydateFileOpenMode"
                 }
             ],
             "returnType": "playdate.file.file"
@@ -2552,17 +2552,17 @@
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.geometry.affineTransformTransform"
+            "returnType": "playdate.geometry.affineTransform"
         },
         "playdate.geometry.affineTransform.new()": {
             "signature": "playdate.geometry.affineTransform.new()",
             "parameters": [],
-            "returnType": "playdate.geometry.affineTransformTransform"
+            "returnType": "playdate.geometry.affineTransform"
         },
         "playdate.geometry.affineTransform:copy()": {
             "signature": "playdate.geometry.affineTransform:copy()",
             "parameters": [],
-            "returnType": "playdate.geometry.affineTransformTransform"
+            "returnType": "playdate.geometry.affineTransform"
         },
         "playdate.geometry.affineTransform:invert()": {
             "signature": "playdate.geometry.affineTransform:invert()",
@@ -2579,7 +2579,7 @@
             "parameters": [
                 {
                     "name": "af",
-                    "type": "playdate.geometry.affineTransformTransform"
+                    "type": "playdate.geometry.affineTransform"
                 }
             ],
             "returnType": "void"
@@ -2610,7 +2610,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.geometry.affineTransformTransform"
+            "returnType": "playdate.geometry.affineTransform"
         },
         "playdate.geometry.affineTransform:scale(sx, [sy])": {
             "signature": "playdate.geometry.affineTransform:scale(sx, [sy])",
@@ -2638,7 +2638,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.geometry.affineTransformTransform"
+            "returnType": "playdate.geometry.affineTransform"
         },
         "playdate.geometry.affineTransform:rotate(angle, [x, y])": {
             "signature": "playdate.geometry.affineTransform:rotate(angle, [x, y])",
@@ -2688,7 +2688,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.geometry.affineTransformTransform"
+            "returnType": "playdate.geometry.affineTransform"
         },
         "playdate.geometry.affineTransform:rotatedBy(angle, [point])": {
             "signature": "playdate.geometry.affineTransform:rotatedBy(angle, [point])",
@@ -2702,7 +2702,7 @@
                     "type": "playdate.geometry.point"
                 }
             ],
-            "returnType": "playdate.geometry.affineTransformTransform"
+            "returnType": "playdate.geometry.affineTransform"
         },
         "playdate.geometry.affineTransform:skew(sx, sy)": {
             "signature": "playdate.geometry.affineTransform:skew(sx, sy)",
@@ -2730,7 +2730,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.geometry.affineTransformTransform"
+            "returnType": "playdate.geometry.affineTransform"
         },
         "playdate.geometry.affineTransform:transformPoint(p)": {
             "signature": "playdate.geometry.affineTransform:transformPoint(p)",
@@ -2771,7 +2771,7 @@
             "parameters": [
                 {
                     "name": "ls",
-                    "type": "playdate.geometry.lineSegmentnt"
+                    "type": "playdate.geometry.lineSegment"
                 }
             ],
             "returnType": "void"
@@ -2781,10 +2781,10 @@
             "parameters": [
                 {
                     "name": "ls",
-                    "type": "playdate.geometry.lineSegmentnt"
+                    "type": "playdate.geometry.lineSegment"
                 }
             ],
-            "returnType": "playdate.geometry.lineSegmentnt"
+            "returnType": "playdate.geometry.lineSegment"
         },
         "playdate.geometry.affineTransform:transformAABB(r)": {
             "signature": "playdate.geometry.affineTransform:transformAABB(r)",
@@ -2915,7 +2915,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.geometry.lineSegmentnt"
+            "returnType": "playdate.geometry.lineSegment"
         },
         "playdate.geometry.lineSegment.fast_intersection(x1, y1, x2, y2, x3, y3, x4, y4)": {
             "signature": "playdate.geometry.lineSegment.fast_intersection(x1, y1, x2, y2, x3, y3, x4, y4)",
@@ -2958,7 +2958,7 @@
         "playdate.geometry.lineSegment:copy()": {
             "signature": "playdate.geometry.lineSegment:copy()",
             "parameters": [],
-            "returnType": "playdate.geometry.lineSegmentnt"
+            "returnType": "playdate.geometry.lineSegment"
         },
         "playdate.geometry.lineSegment:unpack()": {
             "signature": "playdate.geometry.lineSegment:unpack()",
@@ -2996,7 +2996,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.geometry.lineSegmentnt"
+            "returnType": "playdate.geometry.lineSegment"
         },
         "playdate.geometry.lineSegment:midPoint()": {
             "signature": "playdate.geometry.lineSegment:midPoint()",
@@ -3037,7 +3037,7 @@
             "parameters": [
                 {
                     "name": "ls",
-                    "type": "playdate.geometry.lineSegmentnt"
+                    "type": "playdate.geometry.lineSegment"
                 }
             ],
             "returnType": "LuaMultiReturn<[false, undefined]> | LuaMultiReturn<[true, playdate.geometry.point]>"
@@ -3140,10 +3140,8 @@
             "parameters": [
                 {
                     "name": "coordinates",
-                    "type": "number",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "type": "number[]",
+                    "isRestParameter": true
                 }
             ],
             "returnType": "playdate.geometry.polygon"
@@ -3154,10 +3152,8 @@
             "parameters": [
                 {
                     "name": "points",
-                    "type": "playdate.geometry.point",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "type": "playdate.geometry.point[]",
+                    "isRestParameter": true
                 }
             ],
             "returnType": "playdate.geometry.polygon"
@@ -3196,10 +3192,7 @@
                 },
                 {
                     "name": "fillRule",
-                    "type": "PlaydatePolygonFill",
-                    "overrideOptions": {
-                        "initializer": "PlaydatePolygonFill.EvenOdd"
-                    }
+                    "type": "PlaydatePolygonFill"
                 }
             ],
             "returnType": "boolean"
@@ -3217,10 +3210,7 @@
                 },
                 {
                     "name": "fillRule",
-                    "type": "PlaydatePolygonFill",
-                    "overrideOptions": {
-                        "initializer": "PlaydatePolygonFill.EvenOdd"
-                    }
+                    "type": "PlaydatePolygonFill"
                 }
             ],
             "returnType": "boolean"
@@ -3916,7 +3906,7 @@
             "parameters": [
                 {
                     "name": "ls",
-                    "type": "playdate.geometry.lineSegmentnt"
+                    "type": "playdate.geometry.lineSegment"
                 }
             ],
             "returnType": "void"
@@ -4365,10 +4355,8 @@
             "parameters": [
                 {
                     "name": "coordinates",
-                    "type": "number",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "type": "number[]",
+                    "isRestParameter": true
                 }
             ],
             "returnType": "void"
@@ -4379,10 +4367,8 @@
             "parameters": [
                 {
                     "name": "coordinates",
-                    "type": "number",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "type": "number[]",
+                    "isRestParameter": true
                 }
             ],
             "returnType": "void"
@@ -4402,7 +4388,7 @@
             "parameters": [
                 {
                     "name": "rule",
-                    "type": "PlaydateFillRule"
+                    "type": "PlaydatePolygonFill"
                 }
             ],
             "returnType": "void"
@@ -5632,7 +5618,7 @@
             "parameters": [
                 {
                     "name": "xform",
-                    "type": "playdate.geometry.affineTransformTransform"
+                    "type": "playdate.geometry.affineTransform"
                 },
                 {
                     "name": "x",
@@ -5650,7 +5636,7 @@
             "parameters": [
                 {
                     "name": "xform",
-                    "type": "playdate.geometry.affineTransformTransform"
+                    "type": "playdate.geometry.affineTransform"
                 }
             ],
             "returnType": "playdate.graphics.image"
@@ -6078,38 +6064,23 @@
             "parameters": [
                 {
                     "name": "onDuration",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "200"
-                    }
+                    "type": "number"
                 },
                 {
                     "name": "offDuration",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "200"
-                    }
+                    "type": "number"
                 },
                 {
                     "name": "loop",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "false"
-                    }
+                    "type": "boolean"
                 },
                 {
                     "name": "cycles",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "6"
-                    }
+                    "type": "number"
                 },
                 {
                     "name": "_default",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "true"
-                    }
+                    "type": "boolean"
                 }
             ],
             "returnType": "playdate.graphics.animation.blinker"
@@ -6135,38 +6106,23 @@
             "parameters": [
                 {
                     "name": "onDuration",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "200"
-                    }
+                    "type": "number"
                 },
                 {
                     "name": "offDuration",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "200"
-                    }
+                    "type": "number"
                 },
                 {
                     "name": "loop",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "false"
-                    }
+                    "type": "boolean"
                 },
                 {
                     "name": "cycles",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "6"
-                    }
+                    "type": "number"
                 },
                 {
                     "name": "_default",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "true"
-                    }
+                    "type": "boolean"
                 }
             ],
             "returnType": "void"
@@ -6188,9 +6144,12 @@
         },
         "playdate.graphics.animator.new(duration, startValue, endValue, [easingFunction, [startTimeOffset]])": {
             "signature": "playdate.graphics.animator.new(duration, startValue, endValue, [easingFunction, [startTimeOffset]])",
-            "overrideOptions": {
-                "typeParameters": "TSubject extends number | playdate.geometry.point"
-            },
+            "typeParameters": [
+                {
+                    "name": "TSubject",
+                    "constraint": "number | playdate.geometry.point"
+                }
+            ],
             "parameters": [
                 {
                     "name": "duration",
@@ -6202,7 +6161,7 @@
                 },
                 {
                     "name": "endValue",
-                    "type": "TSubect"
+                    "type": "TSubject"
                 },
                 {
                     "name": "easingFunction",
@@ -6224,7 +6183,7 @@
                 },
                 {
                     "name": "lineSegment",
-                    "type": "playdate.geometry.lineSegmentnt"
+                    "type": "playdate.geometry.lineSegment"
                 },
                 {
                     "name": "easingFunction",
@@ -6235,7 +6194,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.graphics.animator"
+            "returnType": "playdate.graphics.animator<playdate.geometry.point>"
         },
         "playdate.graphics.animator.new(duration, arc, [easingFunction, [startTimeOffset]])": {
             "signature": "playdate.graphics.animator.new(duration, arc, [easingFunction, [startTimeOffset]])",
@@ -6257,7 +6216,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.graphics.animator"
+            "returnType": "playdate.graphics.animator<playdate.geometry.point>"
         },
         "playdate.graphics.animator.new(duration, polygon, [easingFunction, [startTimeOffset]])": {
             "signature": "playdate.graphics.animator.new(duration, polygon, [easingFunction, [startTimeOffset]])",
@@ -6279,7 +6238,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.graphics.animator"
+            "returnType": "playdate.graphics.animator<playdate.geometry.point>"
         },
         "playdate.graphics.animator.new(durations, parts, easingFunctions, [startTimeOffset])": {
             "signature": "playdate.graphics.animator.new(durations, parts, easingFunctions, [startTimeOffset])",
@@ -6290,7 +6249,7 @@
                 },
                 {
                     "name": "parts",
-                    "type": "(playdate.geometry.lineSegmentnt | playdate.geometry.arc | playdate.geometry.polygon)[]"
+                    "type": "(playdate.geometry.lineSegment | playdate.geometry.arc | playdate.geometry.polygon)[]"
                 },
                 {
                     "name": "easingFunctions",
@@ -6301,7 +6260,7 @@
                     "type": "number"
                 }
             ],
-            "returnType": "playdate.graphics.animator"
+            "returnType": "playdate.graphics.animator<playdate.geometry.point>"
         },
         "playdate.graphics.animator:currentValue()": {
             "signature": "playdate.graphics.animator:currentValue()",
@@ -6897,7 +6856,7 @@
             "parameters": [
                 {
                     "name": "lineSegment",
-                    "type": "playdate.geometry.lineSegmentnt"
+                    "type": "playdate.geometry.lineSegment"
                 }
             ],
             "returnType": "playdate.graphics.sprite[]"
@@ -6929,7 +6888,7 @@
             "parameters": [
                 {
                     "name": "lineSegment",
-                    "type": "playdate.geometry.lineSegmentnt"
+                    "type": "playdate.geometry.lineSegment"
                 }
             ],
             "returnType": "PlaydateCollisionInfo"
@@ -7319,7 +7278,7 @@
             "parameters": [
                 {
                     "name": "animator",
-                    "type": "playdate.graphics.animator"
+                    "type": "playdate.graphics.animator<playdate.geometry.point>"
                 },
                 {
                     "name": "moveWithCollisions",
@@ -7397,10 +7356,7 @@
                 },
                 {
                     "name": "ditherType",
-                    "type": "PlaydateDitherType",
-                    "overrideOptions": {
-                        "initializer": "PlaydateDitherType.Bayer8x8"
-                    }
+                    "type": "PlaydateDitherType"
                 }
             ],
             "returnType": "void"
@@ -8312,10 +8268,7 @@
                 },
                 {
                     "name": "removeReciprocal",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "false"
-                    }
+                    "type": "boolean"
                 }
             ],
             "returnType": "void"
@@ -8325,10 +8278,7 @@
             "parameters": [
                 {
                     "name": "removeIncoming",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "false"
-                    }
+                    "type": "boolean"
                 }
             ],
             "returnType": "void"
@@ -8522,9 +8472,11 @@
         },
         "playdate.sound.sampleplayer:setLoopCallback(callback, [arg])": {
             "signature": "playdate.sound.sampleplayer:setLoopCallback(callback, [arg])",
-            "overrideOptions": {
-                "typeParameters": "TArgument"
-            },
+            "typeParameters": [
+                {
+                    "name": "TArgument"
+                }
+            ],
             "parameters": [
                 {
                     "name": "callback",
@@ -8573,9 +8525,11 @@
         },
         "playdate.sound.sampleplayer:setFinishCallback(func, [arg])": {
             "signature": "playdate.sound.sampleplayer:setFinishCallback(func, [arg])",
-            "overrideOptions": {
-                "typeParameters": "TArgument"
-            },
+            "typeParameters": [
+                {
+                    "name": "TArgument"
+                }
+            ],
             "parameters": [
                 {
                     "name": "func",
@@ -8714,9 +8668,11 @@
         },
         "playdate.sound.fileplayer:setFinishCallback(func, [arg])": {
             "signature": "playdate.sound.fileplayer:setFinishCallback(func, [arg])",
-            "overrideOptions": {
-                "typeParameters": "TArgument"
-            },
+            "typeParameters": [
+                {
+                    "name": "TArgument"
+                }
+            ],
             "parameters": [
                 {
                     "name": "func",
@@ -8746,9 +8702,7 @@
         },
         "playdate.sound.fileplayer:setLoopRange(start, [end, [loopCallback, [arg]]])": {
             "signature": "playdate.sound.fileplayer:setLoopRange(start, [end, [loopCallback, [arg]]])",
-            "overrideOptions": {
-                "typeParameters": "TArgument"
-            },
+            "typeParameters": "TArgument",
             "parameters": [
                 {
                     "name": "start",
@@ -8771,9 +8725,11 @@
         },
         "playdate.sound.fileplayer:setLoopCallback(callback, [arg])": {
             "signature": "playdate.sound.fileplayer:setLoopCallback(callback, [arg])",
-            "overrideOptions": {
-                "typeParameters": "TArgument"
-            },
+            "typeParameters": [
+                {
+                    "name": "TArgument"
+                }
+            ],
             "parameters": [
                 {
                     "name": "callback",
@@ -8823,9 +8779,11 @@
         },
         "playdate.sound.fileplayer:setVolume(left, [right, [fadeSeconds, [fadeCallback, [arg]]]])": {
             "signature": "playdate.sound.fileplayer:setVolume(left, [right, [fadeSeconds, [fadeCallback, [arg]]]])",
-            "overrideOptions": {
-                "typeParameters": "TArgument"
-            },
+            "typeParameters": [
+                {
+                    "name": "TArgument"
+                }
+            ],
             "parameters": [
                 {
                     "name": "left",
@@ -8889,10 +8847,7 @@
                 },
                 {
                     "name": "format",
-                    "type": "PlaydateSoundFormat",
-                    "overrideOptions": {
-                        "initializer": "PlaydateSoundFormat['16bitStereo']"
-                    }
+                    "type": "PlaydateSoundFormat"
                 }
             ],
             "returnType": "playdate.sound.sample"
@@ -9437,10 +9392,8 @@
             "parameters": [
                 {
                     "name": "notes",
-                    "type": "number",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "type": "number[]",
+                    "isRestParameter": true
                 }
             ],
             "returnType": "void"
@@ -9625,17 +9578,11 @@
                 },
                 {
                     "name": "start",
-                    "type": "number | string",
-                    "overrideOptions": {
-                        "initializer": "'C1'"
-                    }
+                    "type": "number | string"
                 },
                 {
                     "name": "end",
-                    "type": "number | string",
-                    "overrideOptions": {
-                        "initializer": "'C5'"
-                    }
+                    "type": "number | string"
                 }
             ],
             "returnType": "void"
@@ -10228,14 +10175,12 @@
         },
         "playdate.sound.sequence:addTrack([track])": {
             "signature": "playdate.sound.sequence:addTrack([track])",
-            "overrideOptions": {
-                "overloads": [
-                    {
-                        "parameters": [],
-                        "returnType": "playdate.sound.track"
-                    }
-                ]
-            },
+            "overloads": [
+                {
+                    "parameters": [],
+                    "returnType": "playdate.sound.track"
+                }
+            ],
             "parameters": [
                 {
                     "name": "track",
@@ -10295,10 +10240,7 @@
                 },
                 {
                     "name": "velocity",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "1"
-                    }
+                    "type": "number"
                 }
             ],
             "returnType": "void"
@@ -10482,10 +10424,7 @@
                 },
                 {
                     "name": "vel",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "1.0"
-                    }
+                    "type": "number"
                 },
                 {
                     "name": "length",
@@ -10507,10 +10446,7 @@
                 },
                 {
                     "name": "vel",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "1.0"
-                    }
+                    "type": "number"
                 },
                 {
                     "name": "length",
@@ -10710,23 +10646,21 @@
         },
         "playdate.timer.new(duration, callback, ...)": {
             "signature": "playdate.timer.new(duration, callback, ...)",
-            "overrideOptions": {
-                "overloads": [
-                    {
-                        "parameters": [
-                            {
-                                "name": "duration",
-                                "type": "number"
-                            },
-                            {
-                                "name": "callback",
-                                "type": "(timer: playdate.timer) => void"
-                            }
-                        ],
-                        "returnType": "playdate.timer"
-                    }
-                ]
-            },
+            "overloads": [
+                {
+                    "parameters": [
+                        {
+                            "name": "duration",
+                            "type": "number"
+                        },
+                        {
+                            "name": "callback",
+                            "type": "(timer: playdate.timer) => void"
+                        }
+                    ],
+                    "returnType": "playdate.timer"
+                }
+            ],
             "overrideParameters": true,
             "parameters": [
                 {
@@ -10740,32 +10674,28 @@
                 {
                     "name": "args",
                     "type": "unknown[]",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "isRestParameter": true
                 }
             ],
             "returnType": "playdate.timer"
         },
         "playdate.timer.performAfterDelay(delay, callback, ...)": {
             "signature": "playdate.timer.performAfterDelay(delay, callback, ...)",
-            "overrideOptions": {
-                "overloads": [
-                    {
-                        "parameters": [
-                            {
-                                "name": "delay",
-                                "type": "number"
-                            },
-                            {
-                                "name": "callback",
-                                "type": "(timer: playdate.timer) => void"
-                            }
-                        ],
-                        "returnType": "void"
-                    }
-                ]
-            },
+            "overloads": [
+                {
+                    "parameters": [
+                        {
+                            "name": "delay",
+                            "type": "number"
+                        },
+                        {
+                            "name": "callback",
+                            "type": "(timer: playdate.timer) => void"
+                        }
+                    ],
+                    "returnType": "void"
+                }
+            ],
             "overrideParameters": true,
             "parameters": [
                 {
@@ -10779,9 +10709,7 @@
                 {
                     "name": "args",
                     "type": "unknown[]",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "isRestParameter": true
                 }
             ],
             "returnType": "void"
@@ -10795,17 +10723,11 @@
                 },
                 {
                     "name": "startValue",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "0"
-                    }
+                    "type": "number"
                 },
                 {
                     "name": "endValue",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "0"
-                    }
+                    "type": "number"
                 },
                 {
                     "name": "easingFunction",
@@ -10816,19 +10738,17 @@
         },
         "playdate.timer.keyRepeatTimer(callback, ...)": {
             "signature": "playdate.timer.keyRepeatTimer(callback, ...)",
-            "overrideOptions": {
-                "overloads": [
-                    {
-                        "parameters": [
-                            {
-                                "name": "callback",
-                                "type": "(timer: playdate.timer) => void"
-                            }
-                        ],
-                        "returnType": "void"
-                    }
-                ]
-            },
+            "overloads": [
+                {
+                    "parameters": [
+                        {
+                            "name": "callback",
+                            "type": "(timer: playdate.timer) => void"
+                        }
+                    ],
+                    "returnType": "void"
+                }
+            ],
             "overrideParameters": true,
             "parameters": [
                 {
@@ -10838,36 +10758,32 @@
                 {
                     "name": "args",
                     "type": "unknown[]",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "isRestParameter": true
                 }
             ],
             "returnType": "void"
         },
         "playdate.timer.keyRepeatTimerWithDelay(delayAfterInitialFiring, delayAfterSecondFiring, callback, ...)": {
             "signature": "playdate.timer.keyRepeatTimerWithDelay(delayAfterInitialFiring, delayAfterSecondFiring, callback, ...)",
-            "overrideOptions": {
-                "overloads": [
-                    {
-                        "parameters": [
-                            {
-                                "name": "delayAfterInitialFiring",
-                                "type": "number"
-                            },
-                            {
-                                "name": "delayAfterSecondFiring",
-                                "type": "number"
-                            },
-                            {
-                                "name": "callback",
-                                "type": "(timer: playdate.timer) => void"
-                            }
-                        ],
-                        "returnType": "void"
-                    }
-                ]
-            },
+            "overloads": [
+                {
+                    "parameters": [
+                        {
+                            "name": "delayAfterInitialFiring",
+                            "type": "number"
+                        },
+                        {
+                            "name": "delayAfterSecondFiring",
+                            "type": "number"
+                        },
+                        {
+                            "name": "callback",
+                            "type": "(timer: playdate.timer) => void"
+                        }
+                    ],
+                    "returnType": "void"
+                }
+            ],
             "overrideParameters": true,
             "parameters": [
                 {
@@ -10885,9 +10801,7 @@
                 {
                     "name": "args",
                     "type": "unknown[]",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "isRestParameter": true
                 }
             ],
             "returnType": "void"
@@ -10920,20 +10834,18 @@
         "playdate.timer.timerEndedCallback": {
             "signature": "playdate.timer.timerEndedCallback",
             "overrideParameters": true,
-            "overrideOptions": {
-                "overloads": [
-                    {
-                        "parameters": [
-                            {
-                                "name": "args",
-                                "type": "unknown[]",
-                                "isRestParameter": true
-                            }
-                        ],
-                        "returnType": "void"
-                    }
-                ]
-            },
+            "overloads": [
+                {
+                    "parameters": [
+                        {
+                            "name": "args",
+                            "type": "unknown[]",
+                            "isRestParameter": true
+                        }
+                    ],
+                    "returnType": "void"
+                }
+            ],
             "parameters": [
                 {
                     "name": "timer",
@@ -10945,20 +10857,18 @@
         "playdate.timer.updateCallback": {
             "signature": "playdate.timer.updateCallback",
             "overrideParameters": true,
-            "overrideOptions": {
-                "overloads": [
-                    {
-                        "parameters": [
-                            {
-                                "name": "args",
-                                "type": "unknown[]",
-                                "isRestParameter": true
-                            }
-                        ],
-                        "returnType": "void"
-                    }
-                ]
-            },
+            "overloads": [
+                {
+                    "parameters": [
+                        {
+                            "name": "args",
+                            "type": "unknown[]",
+                            "isRestParameter": true
+                        }
+                    ],
+                    "returnType": "void"
+                }
+            ],
             "parameters": [
                 {
                     "name": "timer",
@@ -10974,23 +10884,21 @@
         },
         "playdate.frameTimer.new(duration, callback, ...)": {
             "signature": "playdate.frameTimer.new(duration, callback, ...)",
-            "overrideOptions": {
-                "overloads": [
-                    {
-                        "parameters": [
-                            {
-                                "name": "duration",
-                                "type": "number"
-                            },
-                            {
-                                "name": "callback",
-                                "type": "(timer: playdate.frametimer) => void"
-                            }
-                        ],
-                        "returnType": "void"
-                    }
-                ]
-            },
+            "overloads": [
+                {
+                    "parameters": [
+                        {
+                            "name": "duration",
+                            "type": "number"
+                        },
+                        {
+                            "name": "callback",
+                            "type": "(timer: playdate.frameTimer) => void"
+                        }
+                    ],
+                    "returnType": "void"
+                }
+            ],
             "overrideParameters": true,
             "parameters": [
                 {
@@ -11004,32 +10912,28 @@
                 {
                     "name": "args",
                     "type": "unknown[]",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "isRestParameter": true
                 }
             ],
             "returnType": "void"
         },
         "playdate.frameTimer.performAfterDelay(delay, callback, ...)": {
             "signature": "playdate.frameTimer.performAfterDelay(delay, callback, ...)",
-            "overrideOptions": {
-                "overloads": [
-                    {
-                        "parameters": [
-                            {
-                                "name": "delay",
-                                "type": "number"
-                            },
-                            {
-                                "name": "callback",
-                                "type": "(timer: playdate.timer) => void"
-                            }
-                        ],
-                        "returnType": "void"
-                    }
-                ]
-            },
+            "overloads": [
+                {
+                    "parameters": [
+                        {
+                            "name": "delay",
+                            "type": "number"
+                        },
+                        {
+                            "name": "callback",
+                            "type": "(timer: playdate.timer) => void"
+                        }
+                    ],
+                    "returnType": "void"
+                }
+            ],
             "overrideParameters": true,
             "parameters": [
                 {
@@ -11043,9 +10947,7 @@
                 {
                     "name": "args",
                     "type": "unknown[]",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "isRestParameter": true
                 }
             ],
             "returnType": "void"
@@ -11059,29 +10961,23 @@
                 },
                 {
                     "name": "startValue",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "0"
-                    }
+                    "type": "number"
                 },
                 {
                     "name": "endValue",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "0"
-                    }
+                    "type": "number"
                 },
                 {
                     "name": "easingFunction",
                     "type": "PlaydateEasingFunction"
                 }
             ],
-            "returnType": "playdate.frametimer"
+            "returnType": "playdate.frameTimer"
         },
         "playdate.frameTimer.allTimers()": {
             "signature": "playdate.frameTimer.allTimers()",
             "parameters": [],
-            "returnType": "playdate.frametimer[]"
+            "returnType": "playdate.frameTimer[]"
         },
         "playdate.frameTimer:pause()": {
             "signature": "playdate.frameTimer:pause()",
@@ -11106,24 +11002,22 @@
         "playdate.frameTimer.timerEndedCallback": {
             "signature": "playdate.frameTimer.timerEndedCallback",
             "overrideParameters": true,
-            "overrideOptions": {
-                "overloads": [
-                    {
-                        "parameters": [
-                            {
-                                "name": "args",
-                                "type": "unknown[]",
-                                "isRestParameter": true
-                            }
-                        ],
-                        "returnType": "void"
-                    }
-                ]
-            },
+            "overloads": [
+                {
+                    "parameters": [
+                        {
+                            "name": "args",
+                            "type": "unknown[]",
+                            "isRestParameter": true
+                        }
+                    ],
+                    "returnType": "void"
+                }
+            ],
             "parameters": [
                 {
                     "name": "timer",
-                    "type": "playdate.frametimer"
+                    "type": "playdate.frameTimer"
                 }
             ],
             "returnType": "void"
@@ -11131,24 +11025,22 @@
         "playdate.frameTimer.updateCallback": {
             "signature": "playdate.frameTimer.updateCallback",
             "overrideParameters": true,
-            "overrideOptions": {
-                "overloads": [
-                    {
-                        "parameters": [
-                            {
-                                "name": "args",
-                                "type": "unknown[]",
-                                "isRestParameter": true
-                            }
-                        ],
-                        "returnType": "void"
-                    }
-                ]
-            },
+            "overloads": [
+                {
+                    "parameters": [
+                        {
+                            "name": "args",
+                            "type": "unknown[]",
+                            "isRestParameter": true
+                        }
+                    ],
+                    "returnType": "void"
+                }
+            ],
             "parameters": [
                 {
                     "name": "timer",
-                    "type": "playdate.frametimer"
+                    "type": "playdate.frameTimer"
                 }
             ],
             "returnType": "void"
@@ -11365,9 +11257,7 @@
                 {
                     "name": "numbers",
                     "type": "number[]",
-                    "overrideOptions": {
-                        "isRestParameter": true
-                    }
+                    "isRestParameter": true
                 }
             ],
             "returnType": "void"
@@ -11457,10 +11347,7 @@
             "parameters": [
                 {
                     "name": "height",
-                    "type": "number",
-                    "overrideOptions": {
-                        "initializer": "0"
-                    }
+                    "type": "number"
                 }
             ],
             "returnType": "void"
@@ -11669,17 +11556,11 @@
                 },
                 {
                     "name": "scrollToSelection",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "true"
-                    }
+                    "type": "boolean"
                 },
                 {
                     "name": "animate",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "true"
-                    }
+                    "type": "boolean"
                 }
             ],
             "returnType": "void"
@@ -11693,17 +11574,11 @@
                 },
                 {
                     "name": "scrollToSelection",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "true"
-                    }
+                    "type": "boolean"
                 },
                 {
                     "name": "animate",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "true"
-                    }
+                    "type": "boolean"
                 }
             ],
             "returnType": "void"
@@ -11717,17 +11592,11 @@
                 },
                 {
                     "name": "scrollToSelection",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "true"
-                    }
+                    "type": "boolean"
                 },
                 {
                     "name": "animate",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "true"
-                    }
+                    "type": "boolean"
                 }
             ],
             "returnType": "void"
@@ -11741,17 +11610,11 @@
                 },
                 {
                     "name": "scrollToSelection",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "true"
-                    }
+                    "type": "boolean"
                 },
                 {
                     "name": "animate",
-                    "type": "boolean",
-                    "overrideOptions": {
-                        "initializer": "true"
-                    }
+                    "type": "boolean"
                 }
             ],
             "returnType": "void"

@@ -1,12 +1,18 @@
 import { readFileSync } from 'fs';
 import { join } from 'node:path';
 import { transpile } from '@/cli/commands/TranspileCommand/fn/transpile.js';
+import { validateEntryPoint } from '@/cli/commands/TranspileCommand/fn/validateEntryPoint.js';
 
 const testFolder = new URL('.', import.meta.url).pathname;
 
 const runTranspilation = (name: string) => {
     const path = join(testFolder, `test-${name}`);
-    const result = transpile(path);
+    const result = transpile({
+        entryPoint: validateEntryPoint({
+            projectPath: path,
+            entryFile: join(path, 'src', 'index.ts'),
+        }),
+    });
     const lua = readFileSync(join(path, 'Source', 'main.lua'), 'utf-8');
     const transformedLua = lua
         .split('\n')
