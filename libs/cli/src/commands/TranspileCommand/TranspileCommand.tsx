@@ -24,8 +24,14 @@ export class TranspileCommand extends RenderableCommand {
         validator: t.isString(),
     });
 
-    exitFile = Option.String('-o,--output', 'Source/main.lua', {
+    exitFile = Option.String('-o,--output', 'Source/index.lua', {
         description: 'The output bundle',
+        validator: t.isString(),
+    });
+
+    toybox = Option.String('--toybox', {
+        description:
+            'Output a toybox compatible bundle which exports to this namespace',
         validator: t.isString(),
     });
 
@@ -46,6 +52,7 @@ export class TranspileCommand extends RenderableCommand {
             <Transpile
                 entryPoint={validatedEntryPoint}
                 exitPoint={validatedExitPoint}
+                toybox={this.toybox}
             />
         );
     }
