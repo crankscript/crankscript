@@ -45,7 +45,7 @@ export const Simulator = ({
         }),
         exitPoint: validateExitPoint({
             projectPath: path,
-            exitFile: join(path, 'src', 'index.lua'),
+            exitFile: join(path, 'Source', 'main.lua'),
         }),
     });
     const compileTasks = useCompileTasks(
