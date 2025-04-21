@@ -43,7 +43,7 @@ export const Item = <TResult,>({
 
     useEffect(() => {
         if (failedReason && quitOnError) {
-            process.exit();
+            process.exit(1);
         }
     }, [failedReason, quitOnError]);
 
