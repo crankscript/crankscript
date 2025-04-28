@@ -11,7 +11,7 @@ export const useFormatTypeFile = (path: string) => {
 
             try {
                 // Check if prettier is available
-                execSync('npx prettier --version', { stdio: 'ignore' });
+                execSync('pnpm exec prettier --version', { stdio: 'ignore' });
                 hasPrettier = true;
             } catch (error) {
                 // Prettier not available
@@ -19,7 +19,7 @@ export const useFormatTypeFile = (path: string) => {
 
             try {
                 // Check if eslint is available
-                execSync('npx eslint --version', { stdio: 'ignore' });
+                execSync('pnpm exec eslint --version', { stdio: 'ignore' });
                 hasEslint = true;
             } catch (error) {
                 // ESLint not available
@@ -39,14 +39,14 @@ export const useFormatTypeFile = (path: string) => {
                 try {
                     // Run prettier on the generated file if available
                     if (hasPrettier) {
-                        execSync(`npx prettier --write "${path}"`, {
+                        execSync(`pnpm exec prettier --write "${path}"`, {
                             stdio: 'ignore',
                         });
                     }
 
                     // Run eslint if available
                     if (hasEslint) {
-                        execSync(`npx eslint --fix "${path}"`, {
+                        execSync(`pnpm exec eslint --fix "${path}"`, {
                             stdio: 'ignore',
                         });
                     }

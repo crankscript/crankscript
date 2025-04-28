@@ -6,6 +6,7 @@ import { transpile } from '@/cli/commands/TranspileCommand/fn/transpile.js';
 import { ValidatedEntryPoint } from '@/cli/commands/TranspileCommand/model/ValidatedEntryPoint.js';
 import { ValidatedExitPoint } from '@/cli/commands/TranspileCommand/model/ValidatedExitPoint.js';
 import { CheckListItem } from '@/cli/types.js';
+import { TranspileMode } from '../types.js';
 
 const getToyboxTemplate = (
     namespace: string,
@@ -21,10 +22,12 @@ export const useTranspileTasks = ({
     entryPoint,
     exitPoint,
     toybox,
+    transpileMode = TranspileMode.Project,
 }: {
     entryPoint: ValidatedEntryPoint;
     exitPoint: ValidatedExitPoint;
     toybox?: string;
+    transpileMode?: TranspileMode;
 }) => {
     return useMemo(
         () => [
@@ -37,6 +40,7 @@ export const useTranspileTasks = ({
                     const result = transpile({
                         entryPoint,
                         exitPoint,
+                        transpileMode,
                     });
 
                     if (result.diagnostics.length > 0) {

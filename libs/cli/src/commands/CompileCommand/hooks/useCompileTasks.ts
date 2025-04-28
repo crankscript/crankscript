@@ -3,7 +3,12 @@ import { useMemo } from 'react';
 import { compile } from '@/cli/commands/CompileCommand/hooks/task/compile.js';
 import { CheckListItem } from '@/cli/types.js';
 
-export const useCompileTasks = (pdcPath: string) => {
+interface Props {
+    pdcPath: string;
+    outputPath?: string;
+}
+
+export const useCompileTasks = ({ pdcPath, outputPath }: Props) => {
     return useMemo(
         () => [
             {
@@ -27,7 +32,10 @@ export const useCompileTasks = (pdcPath: string) => {
                 runningDescription: 'Compiling lua code...',
                 finishedDescription: () => 'Lua code compiled',
                 runner: async () => {
-                    await compile({ pdcPath, target: process.cwd() });
+                    await compile({
+                        pdcPath,
+                        target: outputPath ?? process.cwd(),
+                    });
                 },
                 ready: true,
             },

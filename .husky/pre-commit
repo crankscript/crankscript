@@ -2,7 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 # Run prettier on staged files
-npx prettier --write .
+pnpm exec prettier --write .
 
 # Run eslint on staged files
-npx nx affected -t lint
+pnpm exec nx affected -t lint

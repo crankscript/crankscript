@@ -39,4 +39,9 @@ cli.register(TranspileCommand);
 cli.register(CompileCommand);
 cli.register(GenerateTypesCommand);
 cli.register(SimulatorCommand);
-cli.runExit(args);
+
+try {
+    cli.runExit(args);
+} catch (error) {
+    process.exit(1);
+}
