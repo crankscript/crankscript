@@ -5,16 +5,17 @@
     "scripts": {
         "prepare": "husky install",
         "crankscript-dev": "tsx --tsconfig libs/cli/tsconfig.json libs/cli/src/index.ts",
-        "docker:env:linux": "docker run --rm -it --platform linux/amd64 -v \"$(pwd):/project\" -w /project -v /project/node_modules node:18 bash -c \"npm install && bash\"",
-        "postinstall": "patch-package",
         "commit": "npx cz",
         "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
         "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
         "dev:build-plugin": "nx run tstl-plugin:build",
         "dev:move-plugin": "nx run tstl-plugin:move-build-to-cli",
-        "dev:plugin": "npm run dev:build-plugin && npm run dev:move-plugin",
-        "dev:plugin:watch": "nodemon --watch libs/tstl-plugin/src --ext ts --exec \"npm run dev:plugin\"",
-        "cli:test": "NODE_OPTIONS=--experimental-vm-modules npx nx run cli:test"
+        "dev:plugin": "pnpm dev:build-plugin && npm dev:move-plugin",
+        "dev:plugin:watch": "nodemon --watch libs/tstl-plugin/src --ext ts --exec \"pnpm dev:plugin\"",
+        "cli:test": "NODE_OPTIONS=--experimental-vm-modules pnpm exec nx run cli:test",
+        "changeset": "changeset",
+        "version-packages": "changeset version",
+        "publish-packages": "changeset publish"
     },
     "author": {
         "name": "Alberto Piu"
@@ -41,12 +42,15 @@
         "zod": "^3.23.8"
     },
     "devDependencies": {
+        "@changesets/changelog-github": "^0.5.1",
+        "@changesets/cli": "^2.29.2",
         "@commitlint/cli": "^19.5.0",
         "@commitlint/config-angular": "^19.5.0",
         "@commitlint/config-conventional": "^19.5.0",
         "@commitlint/config-nx-scopes": "^19.5.0",
         "@commitlint/cz-commitlint": "^19.5.0",
         "@commitlint/prompt-cli": "^19.5.0",
+        "@lbrto/eslint-config": "^0.0.1",
         "@nx/eslint": "20.6.2",
         "@nx/eslint-plugin": "20.6.2",
         "@nx/jest": "20.6.2",
@@ -94,5 +98,6 @@
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
         }
-    }
+    },
+    "packageManager": "pnpm@10.9.0"
 }

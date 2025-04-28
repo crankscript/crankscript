@@ -1,29 +1,26 @@
-name: CI
+name: Main
 
 on:
-    pull_request:
+    push:
+        branches:
+            - main
 
 permissions:
     contents: read
 
 jobs:
     main:
-        name: Test packages
+        name: Health check
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout
+            - name: Checkout repository
               uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
 
             - name: Setup Node
               uses: pnpm/action-setup@v4
 
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
-              
-            - name: Set Nx Base and Head SHAs
-              uses: nrwl/nx-set-shas@v4
 
             - name: CI tstl-plugin
               run: pnpm exec nx run-many -t lint test build -p tstl-plugin
@@ -31,5 +28,8 @@ jobs:
             - name: Move tstl-plugin build to CLI
               run: pnpm exec nx run tstl-plugin:move-build-to-cli
 
-            - name: CI affected projects
-              run: NODE_OPTIONS=--experimental-vm-modules pnpm exec nx affected -t lint test build --exclude=tstl-plugin
+            - name: Ensure all projects are healthy
+              run: NODE_OPTIONS=--experimental-vm-modules pnpm exec nx run-many -t lint test build --exclude=tstl-plugin
+
+            - name: Run post build on all projects
+              run: pnpm exec nx run-many -t post-build
