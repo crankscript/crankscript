@@ -28,8 +28,8 @@ jobs:
             - name: Move tstl-plugin build to CLI
               run: pnpm exec nx run tstl-plugin:move-build-to-cli
 
-            - name: CI affected projects
-              run: NODE_OPTIONS=--experimental-vm-modules pnpm exec nx affected -t lint test build --exclude=tstl-plugin
+            - name: Ensure all projects are healthy
+              run: NODE_OPTIONS=--experimental-vm-modules pnpm exec nx run-many -t lint test build --exclude=tstl-plugin
 
-            - name: Run post build on affected projects
-              run: pnpm exec nx affected -t post-build
+            - name: Run post build on all projects
+              run: pnpm exec nx run-many -t post-build

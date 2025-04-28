@@ -21,6 +21,9 @@ jobs:
 
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
+              
+            - name: Set Nx Base and Head SHAs
+              uses: nrwl/nx-set-shas@v4
 
             - name: CI tstl-plugin
               run: pnpm exec nx run-many -t lint test build -p tstl-plugin
