@@ -1,9 +1,9 @@
 import { StatusMessage, StatusMessageProps } from '@inkjs/ui';
 import { Text } from 'ink';
 import React, { useEffect, useRef, useState } from 'react';
+import { useCrankScriptContext } from '@/cli/commands/EnvironmentAwareCommand/contexts/CrankScriptContext.js';
 import { Spinner } from '@/cli/components/Spinner.js';
 import { CheckListItem } from '@/cli/types.js';
-
 export interface ItemProps<TResult> {
     item: CheckListItem<TResult>;
     start: boolean;
@@ -29,7 +29,9 @@ export const Item = <TResult,>({
     const [dotCount, setDotCount] = useState(0);
     const [result, setResult] = useState<TResult | null | false>(null);
     const [failedReason, setfailedReason] = useState<string | null>(null);
+    const [failedDetails, setFailedDetails] = useState<string | null>(null);
     const [isSkipped, setIsSkipped] = useState(false);
+    const { verbose } = useCrankScriptContext();
 
     // Determine if the task should be skipped
     const shouldSkip = typeof skip === 'function' ? skip() : skip === true;
@@ -92,8 +94,15 @@ export const Item = <TResult,>({
                 setResult(result);
                 onFinish?.(result);
             })
-            .catch(reason => {
-                setfailedReason(reason.message);
+            .catch((reason: unknown) => {
+                setfailedReason(
+                    reason instanceof Error ? reason.message : 'Unknown error',
+                );
+                setFailedDetails(
+                    reason instanceof Error && reason.stack
+                        ? reason.stack
+                        : null,
+                );
                 setResult(false);
                 onFinish?.(false);
             });
@@ -139,6 +148,9 @@ export const Item = <TResult,>({
                 {message}{' '}
                 {couldStartButNotReady &&
                     `— not ready yet${'.'.repeat(dotCount)}`}
+                {verbose && failedDetails && (
+                    <Text color="red">{failedDetails}</Text>
+                )}
             </Text>
         </StatusMessage>
     );

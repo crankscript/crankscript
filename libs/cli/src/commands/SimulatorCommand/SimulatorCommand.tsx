@@ -1,8 +1,13 @@
 import { Command, Option } from 'clipanion';
 import React from 'react';
+import * as t from 'typanion';
 import { EnvironmentAwareCommand } from '@/cli/commands/EnvironmentAwareCommand/index.js';
 import { Simulator } from '@/cli/commands/SimulatorCommand/components/Simulator.js';
-import { projectPathOption } from '@/cli/commands/TranspileCommand/index.js';
+import { TemporaryFolderCreator } from '@/cli/commands/SimulatorCommand/components/TemporaryFolderCreator.js';
+import {
+    defaultProjectPath,
+    projectPathOption,
+} from '@/cli/commands/TranspileCommand/index.js';
 import { Environment } from '@/cli/environment/dto/Environment.js';
 
 export class SimulatorCommand extends EnvironmentAwareCommand {
@@ -10,6 +15,11 @@ export class SimulatorCommand extends EnvironmentAwareCommand {
 
     static override usage = Command.Usage({
         description: 'Transpile, compile, and run the simulator',
+    });
+
+    file = Option.String({
+        name: 'file',
+        required: false,
     });
 
     watch = Option.Boolean('-w,--watch', false, {
@@ -25,17 +35,48 @@ export class SimulatorCommand extends EnvironmentAwareCommand {
         description: 'Do not bring simulator to foreground',
     });
 
+    additionalGlobs = Option.Array('-g,--additional-globs', [], {
+        description: 'Additional globs to watch for changes',
+        validator: t.isArray(t.isString()),
+    });
+
     projectPath = projectPathOption;
 
     override renderWithEnvironment(environment: Environment) {
-        return (
+        if (this.file && this.projectPath !== defaultProjectPath) {
+            throw new Error(
+                'Cannot provide a --path when running a single file',
+            );
+        }
+
+        if (this.additionalGlobs.length > 0 && !this.watch) {
+            throw new Error(
+                'Can only provide --additional-globs when watching for changes',
+            );
+        }
+
+        const content = (
             <Simulator
                 environment={environment}
                 path={this.projectPath}
                 watch={this.watch}
                 recompileOnly={this.recompileOnly}
                 background={this.background}
+                entryFile={this.file}
+                additionalGlobs={this.additionalGlobs}
             />
+        );
+
+        if (!this.file) {
+            return content;
+        }
+
+        return (
+            <>
+                <TemporaryFolderCreator entryFile={this.file}>
+                    {content}
+                </TemporaryFolderCreator>
+            </>
         );
     }
 }

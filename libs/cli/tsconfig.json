@@ -18,7 +18,10 @@
         }
     },
     "files": [],
-    "include": ["src/**/*.ts"],
+    "include": [
+        "src/**/*.ts",
+        "src/commands/EnvironmentAwareCommand/contexts/CrankScriptContext.tsx"
+    ],
     "references": [
         {
             "path": "./tsconfig.lib.json"

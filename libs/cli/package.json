@@ -13,6 +13,7 @@
         "@inkjs/ui": "^2.0.0",
         "@swc/helpers": "~0.5.11",
         "cheerio": "^1.0.0",
+        "chokidar": "^4.0.3",
         "clipanion": "^4.0.0-rc.4",
         "ink": "^5.0.1",
         "open": "^10.1.0",

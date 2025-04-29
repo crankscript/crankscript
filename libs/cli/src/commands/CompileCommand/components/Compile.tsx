@@ -10,7 +10,9 @@ interface Props {
 }
 
 export const Compile = ({ environment }: Props) => {
-    const items = useCompileTasks(getPdcPathFromEnvironment(environment));
+    const items = useCompileTasks({
+        pdcPath: getPdcPathFromEnvironment(environment),
+    });
 
     return <CheckList items={items} onFinish={() => process.exit} />;
 };

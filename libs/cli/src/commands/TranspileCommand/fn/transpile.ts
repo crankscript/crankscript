@@ -6,15 +6,16 @@ import { LuaTarget } from 'typescript-to-lua';
 import { RootFolder } from '@/cli/constants.js';
 import { ValidatedEntryPoint } from '../model/ValidatedEntryPoint.js';
 import { ValidatedExitPoint } from '../model/ValidatedExitPoint.js';
+import { TranspileMode } from '../types.js';
 
 export const transpile = ({
     entryPoint,
     exitPoint,
-    buildMode = tstl.BuildMode.Default,
+    transpileMode = TranspileMode.Project,
 }: {
     entryPoint: ValidatedEntryPoint;
     exitPoint: ValidatedExitPoint;
-    buildMode?: tstl.BuildMode;
+    transpileMode?: TranspileMode;
 }) => {
     const exitDir = dirname(exitPoint.exitPath);
 
@@ -22,10 +23,24 @@ export const transpile = ({
         mkdirSync(exitDir, { recursive: true });
     }
 
+    if (transpileMode === TranspileMode.File) {
+        return tstl.transpileFiles([entryPoint.entryFile], {
+            luaTarget: LuaTarget.Lua54,
+            outDir: dirname(exitPoint.exitPath),
+            luaBundle: basename(exitPoint.exitPath),
+            luaBundleEntry: join(entryPoint.entryFile),
+            skipLibCheck: true,
+            luaPlugins: [
+                {
+                    name: join(RootFolder, 'assets', 'index.js'),
+                },
+            ],
+        });
+    }
+
     return tstl.transpileProject(
         join(entryPoint.projectPath, 'tsconfig.json'),
         {
-            buildMode,
             luaTarget: LuaTarget.Lua54,
             outDir: dirname(exitPoint.exitPath),
             luaBundle: basename(exitPoint.exitPath),

@@ -26,22 +26,6 @@
             "inputs": ["production", "^production"]
         }
     },
-    "release": {
-        "projectsRelationship": "independent",
-        "releaseTagPatternCheckAllBranchesWhen": true,
-        "projects": ["libs/cli", "libs/core", "libs/types"],
-        "version": {
-            "preVersionCommand": "npx nx run-many -t build && npx nx run-many -t post-build",
-            "conventionalCommits": true
-        },
-        "changelog": {
-            "workspaceChangelog": false,
-            "projectChangelogs": {
-                "createRelease": "github",
-                "file": false
-            }
-        }
-    },
     "plugins": [
         {
             "plugin": "@nx/eslint/plugin",

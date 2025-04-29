@@ -7,10 +7,15 @@ import { Transpile } from '@/cli/commands/TranspileCommand/components/Transpile.
 import { validateEntryPoint } from '@/cli/commands/TranspileCommand/fn/validateEntryPoint.js';
 import { validateExitPoint } from './fn/validateExitPoint.js';
 
-export const projectPathOption = Option.String('-p,--path', process.cwd(), {
-    description: `Where to find the project. Defaults to the current working directory ("${process.cwd()}")`,
-    validator: t.isString(),
-});
+export const defaultProjectPath = process.cwd();
+export const projectPathOption = Option.String(
+    '-p,--path',
+    defaultProjectPath,
+    {
+        description: `Where to find the project. Defaults to the current working directory ("${defaultProjectPath}")`,
+        validator: t.isString(),
+    },
+);
 
 export class TranspileCommand extends RenderableCommand {
     static override paths = [['transpile']];
