@@ -9,6 +9,14 @@ export const transformMethodDeclaration = (
     node: ts.MethodDeclaration,
     className: tstl.Identifier,
 ): tstl.Statement | undefined => {
+    if (
+        node.modifiers?.some(
+            modifier => modifier.kind === ts.SyntaxKind.AbstractKeyword,
+        )
+    ) {
+        return undefined;
+    }
+
     const [functionExpression] = transformFunctionToExpression(context, node);
     return tstl.createAssignmentStatement(
         tstl.createTableIndexExpression(

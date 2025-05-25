@@ -134,4 +134,12 @@ describe('transpile', () => {
             expect(transformedLua).toContain('d = 5');
         });
     });
+
+    describe('abstract modifier', () => {
+        const { result } = runTranspilation('abstract');
+
+        it('should transpile without errors', () => {
+            expect(result.diagnostics).toEqual([]);
+        });
+    });
 });
