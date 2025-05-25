@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "outDir": "Source",
+        "strict": true,
+        "skipLibCheck": true,
+        "baseUrl": "./",
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "module": "Node16"
+    },
+    "files": ["../../../../../../../types/types/latest.d.ts"],
+    "include": ["src/**/*.ts"]
+}
