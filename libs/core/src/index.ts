@@ -148,6 +148,12 @@ export enum PlaydateWrapMode {
     Word = playdate.graphics.kWrapWord,
 }
 
+export enum PlaydateNetworkStatus {
+    NotConnected = playdate.network.kStatusNotConnected,
+    Connected = playdate.network.kStatusConnected,
+    NotAvailable = playdate.network.kStatusNotAvailable,
+}
+
 let lastTime = -1;
 const { second, minute, hour, day, month, year } =
     playdate.file.modtime('main.pdz');

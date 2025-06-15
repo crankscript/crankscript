@@ -40,7 +40,8 @@
         "turndown": "^7.2.0",
         "typanion": "^3.14.0",
         "typescript-to-lua": "^1.27.0",
-        "zod": "^3.23.8"
+        "zod": "^3.23.8",
+        "zx": "^8.5.4"
     },
     "devDependencies": {
         "@changesets/changelog-github": "^0.5.1",

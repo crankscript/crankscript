@@ -41,7 +41,6 @@
         }
     ],
     "neverConnectToCloud": true,
-    "useLegacyCache": true,
     "cli": {
         "packageManager": "pnpm"
     }
