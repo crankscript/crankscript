@@ -1,5 +1,11 @@
 # crankscript
 
+## 0.16.1
+
+### Patch Changes
+
+-   [`a10781b`](https://github.com/crankscript/crankscript/commit/a10781ba378686468d51dda68b65480b7af56934) Thanks [@alberteddu](https://github.com/alberteddu)! - fix bug where keyboard must be always imported
+
 ## 0.16.0
 
 ### Minor Changes

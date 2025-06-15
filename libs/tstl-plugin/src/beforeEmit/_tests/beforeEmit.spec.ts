@@ -25,12 +25,6 @@ describe('beforeEmit', () => {
         return emitFile;
     };
 
-    it('should not add automatic imports if there are none', () => {
-        const result = runBeforeEmit(code);
-
-        expect(result[0].code).toBe(code);
-    });
-
     it('should add automatic imports', () => {
         importMap.add('graphics');
 
