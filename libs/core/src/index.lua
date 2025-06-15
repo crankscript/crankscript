@@ -1,5 +1,4 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
-import "CoreLibs/keyboard"
 local ____exports = {}
 ____exports.PlaydateColor = PlaydateColor or ({})
 ____exports.PlaydateColor.Black = playdate.graphics.kColorBlack
@@ -201,6 +200,13 @@ ____exports.PlaydateWrapMode.Character = playdate.graphics.kWrapCharacter
 ____exports.PlaydateWrapMode[____exports.PlaydateWrapMode.Character] = "Character"
 ____exports.PlaydateWrapMode.Word = playdate.graphics.kWrapWord
 ____exports.PlaydateWrapMode[____exports.PlaydateWrapMode.Word] = "Word"
+____exports.PlaydateNetworkStatus = PlaydateNetworkStatus or ({})
+____exports.PlaydateNetworkStatus.NotConnected = playdate.network.kStatusNotConnected
+____exports.PlaydateNetworkStatus[____exports.PlaydateNetworkStatus.NotConnected] = "NotConnected"
+____exports.PlaydateNetworkStatus.Connected = playdate.network.kStatusConnected
+____exports.PlaydateNetworkStatus[____exports.PlaydateNetworkStatus.Connected] = "Connected"
+____exports.PlaydateNetworkStatus.NotAvailable = playdate.network.kStatusNotAvailable
+____exports.PlaydateNetworkStatus[____exports.PlaydateNetworkStatus.NotAvailable] = "NotAvailable"
 local lastTime = -1
 local ____playdate_file_modtime_result_0 = playdate.file.modtime("main.pdz")
 local second = ____playdate_file_modtime_result_0.second
