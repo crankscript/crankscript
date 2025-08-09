@@ -1,5 +1,11 @@
 # @crankscript/types
 
+## 1.1.0
+
+### Minor Changes
+
+-   [`111f7f8`](https://github.com/crankscript/crankscript/commit/111f7f89dda1976bf12411ed56e62e849453abe3) Thanks [@alberteddu](https://github.com/alberteddu)! - add types for 2.7.5 and fix 2.7.4
+
 ## 1.0.0
 
 ### Minor Changes
