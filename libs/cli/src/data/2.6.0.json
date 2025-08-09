@@ -4879,7 +4879,7 @@
             "parameters": [
                 {
                     "name": "fontFamily",
-                    "type": "PlaydateFontVariant"
+                    "type": "PlaydateFontFamily"
                 }
             ],
             "returnType": "void"
