@@ -1,4 +1,4 @@
-<h1 align="center">Crankscript</h1>
+<h1 align="center">CrankScript</h1>
 
 <p align="center">
   <img src="https://github.com/crankscript/crankscript/actions/workflows/ci.yml/badge.svg" alt="CI">
