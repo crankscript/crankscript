@@ -33,3 +33,6 @@ jobs:
 
             - name: CI affected projects
               run: NODE_OPTIONS=--experimental-vm-modules pnpm exec nx affected -t lint test build --exclude=tstl-plugin
+
+            - name: Lua runtime tests
+              run: pnpm run crankscript-dev test --path playdate-tests

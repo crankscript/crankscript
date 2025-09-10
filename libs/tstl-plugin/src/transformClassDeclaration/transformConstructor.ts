@@ -135,6 +135,17 @@ export const transformConstructor = (
             return [...previous, current];
         }, [] as tstl.Statement[]);
     }
+
+    bodyStatements.push(
+        tstl.createAssignmentStatement(
+            tstl.createTableIndexExpression(
+                tstl.createIdentifier('self'),
+                tstl.createStringLiteral('constructor'),
+            ),
+            className,
+        ),
+    );
+
     context.popScope();
     return tstl.createAssignmentStatement(
         tstl.createTableIndexExpression(

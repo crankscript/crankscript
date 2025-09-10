@@ -64,6 +64,7 @@ export class SimulatorCommand extends EnvironmentAwareCommand {
                 background={this.background}
                 entryFile={this.file}
                 additionalGlobs={this.additionalGlobs}
+                watchEntryFileOnly={!!this.file}
             />
         );
 

@@ -10,12 +10,21 @@ const hasStderr = (e: unknown): e is { stderr: string } => {
 
 export const compile = async ({
     pdcPath,
-    target,
+    target = '',
+    sourceName,
+    targetName,
+    path = process.cwd(),
 }: {
     pdcPath: string;
-    target: string;
+    target?: string;
+    sourceName?: string;
+    targetName?: string;
+    path?: string;
 }) => {
-    const args = [join(target, 'Source'), join(target, 'Game.pdx')];
+    const args = [
+        join(path, target, sourceName ?? 'Source'),
+        join(path, target, targetName ?? 'Game.pdx'),
+    ];
 
     try {
         return execPromise(`${pdcPath} ${args.join(' ')}`);

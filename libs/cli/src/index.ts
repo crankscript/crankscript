@@ -9,6 +9,7 @@ import { GenerateTypesCommand } from '@/cli/commands/GenerateTypes/index.js';
 import { NewCommand } from '@/cli/commands/NewCommand/NewCommand.js';
 import { NewLibCommand } from '@/cli/commands/NewLibCommand/index.js';
 import { SimulatorCommand } from '@/cli/commands/SimulatorCommand/index.js';
+import { TestCommand } from '@/cli/commands/TestCommand/index.js';
 import { TranspileCommand } from '@/cli/commands/TranspileCommand/index.js';
 import { RootFolder } from '@/cli/constants.js';
 
@@ -39,6 +40,7 @@ cli.register(TranspileCommand);
 cli.register(CompileCommand);
 cli.register(GenerateTypesCommand);
 cli.register(SimulatorCommand);
+cli.register(TestCommand);
 
 try {
     cli.runExit(args);

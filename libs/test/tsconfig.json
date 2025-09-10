@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "lib": ["ES2022"],
+        "module": "commonjs",
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitOverride": true,
+        "skipLibCheck": false,
+        "noPropertyAccessFromIndexSignature": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "outDir": "./",
+        "declarationDir": "./Source",
+        "declaration": true,
+        "types": ["lua-types/5.4"]
+    },
+    "include": ["src/**/*.ts"],
+    "files": ["node_modules/@crankscript/types/types/2.7.5.d.ts"],
+    "exclude": [],
+    "tstl": {
+        "luaTarget": "5.4"
+    }
+}

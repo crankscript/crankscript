@@ -1,3 +1,4 @@
+import { StatusMessage } from '@inkjs/ui';
 import React, { useEffect, useState } from 'react';
 import { CheckListItem } from '@/cli/types.js';
 import { Item } from './Item.js';
@@ -5,11 +6,22 @@ import { Item } from './Item.js';
 export interface CheckListProps<TResult = unknown> {
     items: CheckListItem<TResult>[];
     onFinish?: (hasFailure: boolean) => void;
+    display?:
+        | 'silent'
+        | Pick<
+              CheckListItem<TResult>,
+              | 'finishedDescription'
+              | 'skipDescription'
+              | 'errorDescription'
+              | 'waitingDescription'
+              | 'runningDescription'
+          >;
 }
 
 export const CheckList = <TResult,>({
     items,
     onFinish,
+    display,
 }: CheckListProps<TResult>) => {
     const [currentIndex, setCurrentIndex] = useState<number | null>(null);
     const [hasFailure, setHasFailure] = useState(false);
@@ -33,6 +45,7 @@ export const CheckList = <TResult,>({
         <>
             {items.map((item, index) => (
                 <Item
+                    visible={!display && display !== 'silent'}
                     key={item.waitingDescription}
                     item={{
                         ...item,
@@ -48,6 +61,11 @@ export const CheckList = <TResult,>({
                     start={index === currentIndex}
                 />
             ))}
+            {display && display !== 'silent' && (
+                <StatusMessage variant="success">
+                    {display?.finishedDescription(true as TResult)}
+                </StatusMessage>
+            )}
         </>
     );
 };

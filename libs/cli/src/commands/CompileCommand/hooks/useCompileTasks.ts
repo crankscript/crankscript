@@ -6,9 +6,18 @@ import { CheckListItem } from '@/cli/types.js';
 interface Props {
     pdcPath: string;
     outputPath?: string;
+    sourceName?: string;
+    targetName?: string;
+    path?: string;
 }
 
-export const useCompileTasks = ({ pdcPath, outputPath }: Props) => {
+export const useCompileTasks = ({
+    pdcPath,
+    outputPath,
+    sourceName,
+    targetName,
+    path,
+}: Props) => {
     return useMemo(
         () => [
             {
@@ -34,7 +43,10 @@ export const useCompileTasks = ({ pdcPath, outputPath }: Props) => {
                 runner: async () => {
                     await compile({
                         pdcPath,
-                        target: outputPath ?? process.cwd(),
+                        target: outputPath,
+                        sourceName,
+                        targetName,
+                        path,
                     });
                 },
                 ready: true,

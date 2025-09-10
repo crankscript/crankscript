@@ -57,7 +57,7 @@ describe('transpile', () => {
 
         it('should call the super constructor with the correct arguments', () => {
             expect(transformedLua).toContain(
-                'B.super.init(firstArgument,getString(nil) or "hello")',
+                'B.super.init(self,firstArgument,getString(nil) or "hello")',
             );
         });
 
