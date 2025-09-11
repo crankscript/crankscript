@@ -34,5 +34,58 @@ jobs:
             - name: CI affected projects
               run: NODE_OPTIONS=--experimental-vm-modules pnpm exec nx affected -t lint test build --exclude=tstl-plugin
 
-            - name: Lua runtime tests
-              run: pnpm run crankscript-dev test --path playdate-tests
+    lua-runtime-tests:
+        name: Lua runtime tests
+        runs-on: ubuntu-latest
+        container: node:20
+        timeout-minutes: 10
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Setup Node
+              uses: pnpm/action-setup@v4
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Build tstl-plugin
+              run: pnpm exec nx run tstl-plugin:build
+
+            - name: Move tstl-plugin build to CLI
+              run: pnpm exec nx run tstl-plugin:move-build-to-cli
+
+            - name: Build CLI
+              run: NODE_OPTIONS=--experimental-vm-modules pnpm exec nx run cli:build
+
+            - name: Install headless dependencies
+              run: apt-get update && apt-get install -y xvfb libgtk-3-0 sudo libwebkit2gtk-4.0 libwebkit2gtk-4.0-dev libsdl2-dev pulseaudio
+
+            - name: Setup audio sink
+              run: |
+                  export HOME="/config"
+                  pulseaudio -D --exit-idle-time=-1
+                  pactl load-module module-null-sink sink_name=SpeakerOutput sink_properties=device.description="Dummy_Output"
+
+            - name: Setup Playdate SDK
+              run: |
+                  wget -q https://download.panic.com/playdate_sdk/Linux/PlaydateSDK-2.7.4.tar.gz
+                  tar -xzf PlaydateSDK-2.7.4.tar.gz
+                  echo "PLAYDATE_SDK_PATH=$(pwd)/PlaydateSDK-2.7.4" >> $GITHUB_ENV
+
+            - name: Create simulator ini
+              run: |
+                  export PD_INI_DIR="/config/.config/Playdate Simulator"
+                  mkdir -p "$PD_INI_DIR"
+                  export PD_INI_FILE="$PD_INI_DIR/Playdate Simulator.ini"
+                  echo "ShowPerfWarning=0" > $PD_INI_FILE
+                  echo "ShowElist=0" >> $PD_INI_FILE
+                  echo "LastRelease=$(cat PlaydateSDK-*/VERSION.txt)" >> $PD_INI_FILE
+
+            - name: Run Lua runtime tests
+              run: |
+                  export HOME="/config"
+                  export PLAYDATE_SDK_PATH=$(pwd)/PlaydateSDK-2.7.4
+                  xvfb-run -a pnpm run crankscript-dev test --path playdate-tests
