@@ -22,7 +22,7 @@ export const useTranspileTasks = ({
     entryPoint,
     exitPoint,
     toybox,
-    transpileMode = TranspileMode.Project,
+    transpileMode,
 }: {
     entryPoint: ValidatedEntryPoint;
     exitPoint: ValidatedExitPoint;

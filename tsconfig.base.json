@@ -21,5 +21,5 @@
             "@crankscript/types": ["libs/types/src/index.ts"]
         }
     },
-    "exclude": ["node_modules", "tmp", "example"]
+    "exclude": ["node_modules", "tmp", "examples", "playdate-tests"]
 }

@@ -13,7 +13,6 @@ import { useCompileTasks } from '../../CompileCommand/hooks/useCompileTasks.js';
 import { validateEntryPoint } from '../../TranspileCommand/fn/validateEntryPoint.js';
 import { validateExitPoint } from '../../TranspileCommand/fn/validateExitPoint.js';
 import { useTranspileTasks } from '../../TranspileCommand/hooks/useTranspileTasks.js';
-import { TranspileMode } from '../../TranspileCommand/types.js';
 import { getSimulatorPathFromEnvironment } from '../fn/getSimulatorPathFromEnvironment.js';
 
 interface Props {
@@ -27,6 +26,10 @@ interface Props {
     gameOutputPath?: string;
     requireWithinProjectPath?: boolean;
     additionalGlobs?: string[];
+    targetName?: string;
+    sourceName?: string;
+    watchEntryFileOnly?: boolean;
+    preventAutoQuit?: boolean;
 }
 
 export const useSimulatorTasks = ({
@@ -40,6 +43,10 @@ export const useSimulatorTasks = ({
     gameOutputPath,
     requireWithinProjectPath = true,
     additionalGlobs = [],
+    sourceName,
+    targetName,
+    watchEntryFileOnly = false,
+    preventAutoQuit = false,
 }: Props) => {
     const [isWatching, setIsWatching] = useState(false);
     const [hasChanged, setHasChanged] = useState(false);
@@ -62,17 +69,21 @@ export const useSimulatorTasks = ({
         exitPoint: validateExitPoint({
             projectPath: path,
             exitFile: join(
-                ...(luaOutputPath ? [luaOutputPath] : [path, 'Source']),
+                ...(luaOutputPath
+                    ? [luaOutputPath, sourceName ?? 'Source']
+                    : [path, sourceName ?? 'Source']),
                 'main.lua',
             ),
             requireWithinProjectPath,
         }),
-        transpileMode: entryFile ? TranspileMode.File : TranspileMode.Project,
     });
 
     const compileTasks = useCompileTasks({
         pdcPath: getPdcPathFromEnvironment(environment),
         outputPath: gameOutputPath,
+        sourceName,
+        targetName,
+        path,
     });
 
     const handleFinish = useCallback(
@@ -80,29 +91,40 @@ export const useSimulatorTasks = ({
             setHasFailure(hasFailure);
 
             if (didRun.current && recompileOnly) {
+                if (watchForChanges) {
+                    setHasChangedMessage(false);
+                    setIsWatching(true);
+                }
                 return;
             }
 
             didRun.current = true;
 
-            open(join(gameOutputPath ?? process.cwd(), 'Game.pdx'), {
+            open(join(path, gameOutputPath ?? '', targetName ?? 'Game.pdx'), {
                 background,
                 app: isMac
                     ? undefined
                     : {
                           name: getSimulatorPathFromEnvironment(environment),
                       },
-            }).then(() => {
-                if (!watchForChanges) {
-                    if (!isWindows) {
-                        process.exit();
+            })
+                .then(() => {
+                    if (!watchForChanges && !preventAutoQuit) {
+                        if (!isWindows) {
+                            process.exit();
+                        }
+                        setTimeout(process.exit, 1000);
+                    } else {
+                        setHasChangedMessage(false);
+                        setIsWatching(true);
                     }
-                    setTimeout(process.exit, 1000);
-                } else {
-                    setHasChangedMessage(false);
-                    setIsWatching(true);
-                }
-            });
+                })
+                .catch(() => {
+                    if (watchForChanges) {
+                        setHasChangedMessage(false);
+                        setIsWatching(true);
+                    }
+                });
         }) satisfies CheckListProps['onFinish'],
         [
             watchForChanges,
@@ -110,11 +132,13 @@ export const useSimulatorTasks = ({
             gameOutputPath,
             environment,
             background,
+            preventAutoQuit,
         ],
     );
 
     useFileWatcher({
-        watchPath: entryFile ? entryFile : join(path, 'src'),
+        watchPath:
+            entryFile && watchEntryFileOnly ? entryFile : join(path, 'src'),
         enabled: isWatching,
         onChange: () => {
             setHasChanged(true);

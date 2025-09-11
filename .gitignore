@@ -45,3 +45,10 @@ Thumbs.db
 
 libs/cli/assets/*
 !libs/cli/assets/package.json
+
+examples/**/Source/**
+examples/**/Test.pdx
+examples/**/TestSource
+playdate-tests/**/TestSource
+playdate-tests/**/Test.pdx
+playdate-tests/pdxinfo

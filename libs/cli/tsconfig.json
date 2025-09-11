@@ -15,7 +15,8 @@
         "baseUrl": ".",
         "paths": {
             "@/cli/*": ["src/*"]
-        }
+        },
+        "isolatedModules": true
     },
     "files": [],
     "include": [

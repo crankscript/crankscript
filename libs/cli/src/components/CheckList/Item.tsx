@@ -7,6 +7,7 @@ import { CheckListItem } from '@/cli/types.js';
 export interface ItemProps<TResult> {
     item: CheckListItem<TResult>;
     start: boolean;
+    visible?: boolean;
 }
 
 export const Item = <TResult,>({
@@ -23,6 +24,7 @@ export const Item = <TResult,>({
         skip,
     },
     start,
+    visible = true,
 }: ItemProps<TResult>) => {
     const executed = useRef(false);
     const interval = useRef<NodeJS.Timeout | null>(null);
@@ -32,10 +34,7 @@ export const Item = <TResult,>({
     const [failedDetails, setFailedDetails] = useState<string | null>(null);
     const [isSkipped, setIsSkipped] = useState(false);
     const { verbose } = useCrankScriptContext();
-
-    // Determine if the task should be skipped
     const shouldSkip = typeof skip === 'function' ? skip() : skip === true;
-
     const hasResult = !failedReason && result !== null;
     const isRunning =
         !failedReason && !hasResult && start && ready !== false && !shouldSkip;
@@ -127,6 +126,10 @@ export const Item = <TResult,>({
 
     if (isRunning) {
         return <Spinner label={message} />;
+    }
+
+    if (!visible && !failedReason) {
+        return null;
     }
 
     return (

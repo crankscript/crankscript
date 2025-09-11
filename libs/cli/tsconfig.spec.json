@@ -5,7 +5,9 @@
         "module": "nodenext",
         "types": ["jest", "node"],
         "moduleResolution": "nodenext",
+        "declaration": true,
         "allowSyntheticDefaultImports": true,
+        "isolatedModules": true,
         "baseUrl": ".",
         "paths": {
             "@/cli/*": ["src/*"]

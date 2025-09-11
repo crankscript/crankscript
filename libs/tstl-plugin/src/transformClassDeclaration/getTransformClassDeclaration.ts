@@ -110,6 +110,31 @@ export const getTransformClassDeclaration = (importMap: ImportMap) => {
         statements.push(...methods);
 
         statements.push(
+            tstl.createAssignmentStatement(
+                tstl.createTableIndexExpression(
+                    className,
+                    tstl.createStringLiteral('constructor'),
+                ),
+                className,
+            ),
+        );
+
+        if (extension) {
+            const superClassName = context.transformExpression(
+                extension.expression,
+            );
+            statements.push(
+                tstl.createAssignmentStatement(
+                    tstl.createTableIndexExpression(
+                        className,
+                        tstl.createStringLiteral('____super'),
+                    ),
+                    superClassName,
+                ),
+            );
+        }
+
+        statements.push(
             ...getExportedClassDeclarationStatements(className, declaration),
         );
 

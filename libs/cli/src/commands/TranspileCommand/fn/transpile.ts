@@ -11,7 +11,7 @@ import { TranspileMode } from '../types.js';
 export const transpile = ({
     entryPoint,
     exitPoint,
-    transpileMode = TranspileMode.Project,
+    transpileMode,
 }: {
     entryPoint: ValidatedEntryPoint;
     exitPoint: ValidatedExitPoint;
@@ -23,7 +23,13 @@ export const transpile = ({
         mkdirSync(exitDir, { recursive: true });
     }
 
-    if (transpileMode === TranspileMode.File) {
+    const actualTranspileMode =
+        transpileMode ||
+        (existsSync(join(entryPoint.projectPath, 'tsconfig.json'))
+            ? TranspileMode.Project
+            : TranspileMode.File);
+
+    if (actualTranspileMode === TranspileMode.File) {
         return tstl.transpileFiles([entryPoint.entryFile], {
             luaTarget: LuaTarget.Lua54,
             outDir: dirname(exitPoint.exitPath),

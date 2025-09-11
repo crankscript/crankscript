@@ -51,6 +51,7 @@ export class TranspileCommand extends RenderableCommand {
         const validatedExitPoint = validateExitPoint({
             projectPath: this.projectPath,
             exitFile: this.exitFile,
+            requireWithinProjectPath: false,
         });
 
         return (

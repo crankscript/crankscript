@@ -14,6 +14,7 @@ interface Props {
     background?: boolean;
     entryFile?: string;
     additionalGlobs?: string[];
+    watchEntryFileOnly?: boolean;
 }
 
 export const Simulator = ({
@@ -24,6 +25,7 @@ export const Simulator = ({
     background = false,
     entryFile,
     additionalGlobs = [],
+    watchEntryFileOnly = false,
 }: Props) => {
     const temporaryFolder = entryFile
         ? createTemporaryFolderPathFromEntryFile(entryFile)
@@ -31,7 +33,7 @@ export const Simulator = ({
     const gameOutputPath = entryFile ? temporaryFolder : undefined;
     const luaOutputPath = entryFile
         ? temporaryFolder
-            ? join(temporaryFolder, 'Source')
+            ? join(temporaryFolder)
             : undefined
         : undefined;
     const projectPath = entryFile && temporaryFolder ? temporaryFolder : path;
@@ -54,6 +56,7 @@ export const Simulator = ({
         luaOutputPath,
         requireWithinProjectPath: !entryFile,
         additionalGlobs,
+        watchEntryFileOnly,
     });
 
     return (
