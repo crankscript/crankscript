@@ -1,6 +1,6 @@
 {
     "name": "crankscript",
-    "version": "0.18.0",
+    "version": "0.18.1",
     "scripts": {
         "dev": "tsx src/index.ts",
         "build": "tsx scripts/build.mts",

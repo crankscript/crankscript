@@ -1,5 +1,11 @@
 # crankscript
 
+## 0.18.1
+
+### Patch Changes
+
+- [#74](https://github.com/crankscript/crankscript/pull/74) [`4ba2ed1`](https://github.com/crankscript/crankscript/commit/4ba2ed125663c86f224bca0f953ae9a6d02e712e) Thanks [@alberteddu](https://github.com/alberteddu)! - update ink and react
+
 ## 0.18.0
 
 ### Minor Changes
