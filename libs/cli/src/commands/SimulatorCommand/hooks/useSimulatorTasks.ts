@@ -1,19 +1,15 @@
 import { join } from 'node:path';
 import open from 'open';
-import { useCallback, useEffect, useMemo } from 'react';
-import { useState } from 'react';
-import { useRef } from 'react';
-import { CheckListProps } from '@/cli/components/CheckList/CheckList.js';
-import { Environment } from '@/cli/environment/dto/Environment.js';
-import { isWindows } from '@/cli/utils/platform.js';
-import { isMac } from '@/cli/utils/platform.js';
-import { useFileWatcher } from './useFileWatcher.js';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { Environment } from '@/cli/environment/dto/Environment.js';
+import { isMac, isWindows } from '@/cli/utils/platform.js';
 import { getPdcPathFromEnvironment } from '../../CompileCommand/fn/getPdcPathFromEnvironment.js';
 import { useCompileTasks } from '../../CompileCommand/hooks/useCompileTasks.js';
 import { validateEntryPoint } from '../../TranspileCommand/fn/validateEntryPoint.js';
 import { validateExitPoint } from '../../TranspileCommand/fn/validateExitPoint.js';
 import { useTranspileTasks } from '../../TranspileCommand/hooks/useTranspileTasks.js';
 import { getSimulatorPathFromEnvironment } from '../fn/getSimulatorPathFromEnvironment.js';
+import { useFileWatcher } from './useFileWatcher.js';
 
 interface Props {
     path: string;
@@ -58,7 +54,7 @@ export const useSimulatorTasks = ({
         if (hasChanged) {
             setHasChanged(false);
         }
-    }, [hasChanged, setHasChanged]);
+    }, [hasChanged]);
 
     const transpileTasks = useTranspileTasks({
         entryPoint: validateEntryPoint({
@@ -87,7 +83,7 @@ export const useSimulatorTasks = ({
     });
 
     const handleFinish = useCallback(
-        (hasFailure => {
+        (hasFailure: boolean) => {
             setHasFailure(hasFailure);
 
             if (didRun.current && recompileOnly) {
@@ -125,14 +121,16 @@ export const useSimulatorTasks = ({
                         setIsWatching(true);
                     }
                 });
-        }) satisfies CheckListProps['onFinish'],
+        },
         [
-            watchForChanges,
-            recompileOnly,
-            gameOutputPath,
-            environment,
             background,
+            environment,
+            gameOutputPath,
+            path,
             preventAutoQuit,
+            recompileOnly,
+            targetName,
+            watchForChanges,
         ],
     );
 

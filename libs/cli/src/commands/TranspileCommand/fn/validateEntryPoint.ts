@@ -1,6 +1,6 @@
 import { existsSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { ValidatedEntryPoint } from '../model/ValidatedEntryPoint.js';
+import type { ValidatedEntryPoint } from '../model/ValidatedEntryPoint.js';
 
 export const validateEntryPoint = ({
     projectPath,

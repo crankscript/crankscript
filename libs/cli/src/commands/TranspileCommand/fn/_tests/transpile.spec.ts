@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { transpile } from '@/cli/commands/TranspileCommand/fn/transpile.js';
 import { validateEntryPoint } from '@/cli/commands/TranspileCommand/fn/validateEntryPoint.js';
@@ -21,7 +21,7 @@ const runTranspilation = (name: string) => {
     const lua = readFileSync(join(path, 'Source', 'main.lua'), 'utf-8');
     const transformedLua = lua
         .split('\n')
-        .map(line => line.trim())
+        .map((line) => line.trim())
         .join('');
 
     return {

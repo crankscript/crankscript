@@ -3,6 +3,7 @@ import { functionTypeOverrides } from '@/cli/commands/GenerateTypes/utils/functi
 export const getFunctionTypeOverride = (version: string) => {
     return (
         functionTypeOverrides[version] ??
+        // biome-ignore lint/complexity/useLiteralKeys: otherwise TypeScript will complain
         functionTypeOverrides['defaultVersion']
     );
 };

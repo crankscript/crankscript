@@ -1,6 +1,6 @@
 import { StatusMessage } from '@inkjs/ui';
 import React, { useEffect, useState } from 'react';
-import { CheckListItem } from '@/cli/types.js';
+import type { CheckListItem } from '@/cli/types.js';
 import { Item } from './Item.js';
 
 export interface CheckListProps<TResult = unknown> {

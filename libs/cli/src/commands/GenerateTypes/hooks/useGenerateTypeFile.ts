@@ -1,18 +1,18 @@
 import { writeFileSync } from 'node:fs';
 import { useMemo } from 'react';
 import {
-    ClassDeclaration,
-    FunctionDeclarationStructure,
-    MethodDeclarationStructure,
-    ModuleDeclaration,
+    type ClassDeclaration,
+    type FunctionDeclarationStructure,
+    type MethodDeclarationStructure,
+    type ModuleDeclaration,
     ModuleDeclarationKind,
     Project,
-    SourceFile,
+    type SourceFile,
     VariableDeclarationKind,
 } from 'ts-morph';
-import { createTypeProvider } from '@/cli/commands/GenerateTypes/utils/createTypeProvider.js';
+import type { createTypeProvider } from '@/cli/commands/GenerateTypes/utils/createTypeProvider.js';
 import { TypescriptReservedNamed } from '@/cli/constants.js';
-import {
+import type {
     ApiDefinitions,
     ApiObject,
     CheckListItem,
@@ -67,7 +67,7 @@ export const useGenerateTypeFile = (
             },
             ready: definitions !== null && typeProvider !== null,
         } satisfies CheckListItem<void>;
-    }, [definitions, typeProvider]);
+    }, [definitions, typeProvider, path]);
 
     return {
         generateTypeFile,
@@ -161,13 +161,13 @@ const generateNamespace = (
     const dynamicProperties = typeProvider
         .getDynamicProperties(`${namespace}.${name}`)
         .map(
-            dynamicProperty =>
+            (dynamicProperty) =>
                 ({
                     name: dynamicProperty.name,
                     docs: dynamicProperty.docs,
                     namespaces: namespace.split('.'),
                     signature: `${namespace}.${name}.${dynamicProperty.name}`,
-                } satisfies PropertyDescription),
+                }) satisfies PropertyDescription,
         );
 
     for (const property of [...apiObject.properties, ...dynamicProperties]) {

@@ -1,6 +1,6 @@
-import { Server } from 'http';
+import type { Server } from 'node:http';
 import cors from 'cors';
-import express, { Request, Response } from 'express';
+import express, { type Request, type Response } from 'express';
 
 export interface TestLine {
     type: 'log' | 'error' | 'info' | 'result';
@@ -125,18 +125,18 @@ export class TestServer {
         });
 
         // API endpoint for React app to get test state
-        this.app.get('/api/test-results', (req: Request, res: Response) => {
+        this.app.get('/api/test-results', (_req: Request, res: Response) => {
             res.json(this.testState);
         });
 
         // Health check endpoint
-        this.app.get('/health', (req: Request, res: Response) => {
+        this.app.get('/health', (_req: Request, res: Response) => {
             res.json({ status: 'ok', timestamp: new Date().toISOString() });
         });
     }
 
     public start(port = 9844): Promise<void> {
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
             this.server = this.app.listen(port, () => {
                 resolve();
             });
@@ -144,7 +144,7 @@ export class TestServer {
     }
 
     public stop(): Promise<void> {
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
             if (this.server) {
                 this.server.close(() => {
                     resolve();
@@ -178,7 +178,7 @@ export class TestServer {
     private addTestResult(result: TestResult): void {
         // Find the current suite and add the test result
         const currentSuite = this.testState.suites.find(
-            s => s.status === 'running',
+            (s) => s.status === 'running',
         );
         if (currentSuite) {
             currentSuite.tests.push(result);
@@ -228,7 +228,7 @@ export class TestServer {
             case 'suite-end':
                 {
                     const endingSuite = this.suiteStack.find(
-                        s =>
+                        (s) =>
                             s.name === message.data.suiteName &&
                             s.status === 'running',
                     );
@@ -252,7 +252,7 @@ export class TestServer {
                             : undefined;
                     if (currentSuite) {
                         const existingTest = currentSuite.tests.find(
-                            t => t.test === message.data.testName,
+                            (t) => t.test === message.data.testName,
                         );
                         if (existingTest) {
                             existingTest.startTime = new Date().toISOString();
@@ -286,7 +286,7 @@ export class TestServer {
                             : undefined;
                     if (suiteWithTest) {
                         const test = suiteWithTest.tests.find(
-                            t => t.test === resultTestName,
+                            (t) => t.test === resultTestName,
                         );
                         if (test) {
                             test.result = result as 'passed' | 'failed';
@@ -316,7 +316,7 @@ export class TestServer {
                 {
                     this.testState.status = 'completed';
                     this.testState.endTime = new Date().toISOString();
-                    this.testState.suites.forEach(s => {
+                    this.testState.suites.forEach((s) => {
                         if (s.status === 'running') {
                             s.status = 'completed';
                             s.endTime = new Date().toISOString();
@@ -332,11 +332,11 @@ export class TestServer {
                         typeof data === 'string' ? data : data.testName || '';
                     const logTestName = data.testName;
                     const currentTest = this.testState.suites
-                        .flatMap(s => s.tests)
-                        .find(t => t.test === logTestName);
+                        .flatMap((s) => s.tests)
+                        .find((t) => t.test === logTestName);
                     if (currentTest) {
                         const isDuplicate = currentTest.lines.some(
-                            line =>
+                            (line) =>
                                 line.type === 'log' && line.content === logData,
                         );
                         if (!isDuplicate) {

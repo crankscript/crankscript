@@ -1,4 +1,4 @@
-import {
+import type {
     ClassDeclarationStructure,
     PropertyDeclarationStructure,
 } from 'ts-morph';

@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { getApiDefinitions } from '@/cli/commands/GenerateTypes/fn/getApiDefinitions.js';
 import { getDescriptionsFromHtml } from '@/cli/commands/GenerateTypes/fn/getDescriptionsFromHtml.js';
 import { getFunctionTypeOverride } from '@/cli/commands/GenerateTypes/fn/getFunctionTypeOverride.js';
-import { CheckListItem, ApiDefinitions } from '@/cli/types.js';
+import type { ApiDefinitions, CheckListItem } from '@/cli/types.js';
 
 export const useParseDocumentation = (html: string | null, version: string) => {
     const [result, setResult] = useState<ApiDefinitions | null>(null);
@@ -29,12 +29,12 @@ export const useParseDocumentation = (html: string | null, version: string) => {
                     getFunctionTypeOverride(version),
                 );
             },
-            onFinish: result => {
+            onFinish: (result) => {
                 setResult(result === false ? null : result);
             },
             ready: html !== null,
         } satisfies CheckListItem<ApiDefinitions>;
-    }, [html]);
+    }, [html, version]);
 
     return {
         definitions: result,

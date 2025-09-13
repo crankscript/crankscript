@@ -1,10 +1,10 @@
 import { Command, Option } from 'clipanion';
 import React from 'react';
 import * as t from 'typanion';
-import { Environment } from '@/cli/environment/dto/Environment.js';
+import type { Environment } from '@/cli/environment/dto/Environment.js';
+import { EnvironmentAwareCommand } from '../EnvironmentAwareCommand/index.js';
 import { Test } from './components/Test.js';
 import { OutputFormat } from './types.js';
-import { EnvironmentAwareCommand } from '../EnvironmentAwareCommand/index.js';
 
 export class TestCommand extends EnvironmentAwareCommand {
     static override paths = [['test']];

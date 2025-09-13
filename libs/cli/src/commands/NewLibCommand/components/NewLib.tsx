@@ -4,7 +4,7 @@ import { promisify } from 'node:util';
 import React, { useMemo } from 'react';
 import tiged from 'tiged';
 import { CheckList } from '@/cli/components/CheckList/index.js';
-import { CheckListItem, LibraryTemplateName } from '@/cli/types.js';
+import type { CheckListItem, LibraryTemplateName } from '@/cli/types.js';
 
 const execPromise = promisify(exec);
 

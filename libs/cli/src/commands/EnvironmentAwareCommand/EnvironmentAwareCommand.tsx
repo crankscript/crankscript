@@ -1,11 +1,11 @@
 import { StatusMessage } from '@inkjs/ui';
 import { Option } from 'clipanion';
 import { Text } from 'ink';
-import React, { JSX } from 'react';
+import React, { type JSX } from 'react';
 import { HealthReport } from '@/cli/commands/EnvironmentAwareCommand/components/HealthReport.js';
 import { RenderableCommand } from '@/cli/commands/RenderableCommand.js';
 import { createEnvironment } from '@/cli/environment/createEnvironment.js';
-import { Environment } from '@/cli/environment/dto/Environment.js';
+import type { Environment } from '@/cli/environment/dto/Environment.js';
 import { CrankScriptProvider } from './contexts/CrankScriptContext.js';
 
 export abstract class EnvironmentAwareCommand extends RenderableCommand {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { TestServer, TestState } from '../server/TestServer.js';
+import { TestServer, type TestState } from '../server/TestServer.js';
 
 export const useTestServer = () => {
     const serverRef = useRef<TestServer | null>(null);
@@ -8,7 +8,7 @@ export const useTestServer = () => {
     useEffect(() => {
         serverRef.current = new TestServer();
 
-        serverRef.current.setStateChangeCallback(state => {
+        serverRef.current.setStateChangeCallback((state) => {
             setTestState(state);
         });
 

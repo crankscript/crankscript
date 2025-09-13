@@ -1,6 +1,6 @@
 import { StatusMessage } from '@inkjs/ui';
 import { Text } from 'ink';
-import React, { Component, ReactNode } from 'react';
+import React, { Component, type ReactNode } from 'react';
 
 interface State {
     error?: Error;

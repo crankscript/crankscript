@@ -5,7 +5,7 @@ import { useGenerateTypeFile } from '@/cli/commands/GenerateTypes/hooks/useGener
 import { useGetVersion } from '@/cli/commands/GenerateTypes/hooks/useGetVersion.js';
 import { useParseDocumentation } from '@/cli/commands/GenerateTypes/hooks/useParseDocumentation.js';
 import { CheckList } from '@/cli/components/CheckList/index.js';
-import { CheckListItem, PlaydateSdkVersion } from '@/cli/types.js';
+import type { CheckListItem, PlaydateSdkVersion } from '@/cli/types.js';
 
 interface Props {
     output: string;
@@ -35,7 +35,13 @@ export const GenerateTypes = ({ output, version, overwriteJson }: Props) => {
             generateTypeFile,
             formatTypeFile,
         ] as CheckListItem<unknown>[];
-    }, [fetchedVersion, html, definitions, typeProvider, formatTypeFile]);
+    }, [
+        formatTypeFile,
+        getVersion,
+        parseDocumentation,
+        generateTypeFile,
+        fetchHtml,
+    ]);
 
     return (
         <CheckList

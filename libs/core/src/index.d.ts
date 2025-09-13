@@ -2,41 +2,35 @@ export declare enum PlaydateColor {
     Black,
     White,
     Clear,
-    XOR,
+    XOR
 }
-
 export declare enum PlaydateFlip {
     Unflipped,
     FlippedX,
     FlippedY,
-    FlippedXY,
+    FlippedXY
 }
-
 export declare enum PlaydatePolygonFill {
     NonZero,
-    EvenOdd,
+    EvenOdd
 }
-
 export declare enum PlaydateButton {
     Left,
     Right,
     Up,
     Down,
     B,
-    A,
+    A
 }
-
 export declare enum PlaydateLanguage {
     English,
-    Japanese,
+    Japanese
 }
-
 export declare enum PlaydateFileOpenMode {
     Read,
     Write,
-    Append,
+    Append
 }
-
 export declare enum PlaydateDitherType {
     None,
     DiagonalLine,
@@ -48,15 +42,13 @@ export declare enum PlaydateDitherType {
     Bayer8x8,
     FloydSteinberg,
     Burkes,
-    Atkinson,
+    Atkinson
 }
-
 export declare enum PlaydateLineCapStyle {
     Butt,
     Square,
-    Round,
+    Round
 }
-
 export declare enum PlaydateDrawMode {
     Copy,
     WhiteTransparent,
@@ -65,47 +57,40 @@ export declare enum PlaydateDrawMode {
     FillBlack,
     XOR,
     NXOR,
-    Inverted,
+    Inverted
 }
-
 export declare enum PlaydateStrokeLocation {
     Centered,
     Inside,
-    Outside,
+    Outside
 }
-
 export declare enum PlaydateFontVariant {
     Normal,
     Bold,
-    Italic,
+    Italic
 }
-
 export declare enum PlaydateTextAlignment {
     Left,
     Right,
-    Center,
+    Center
 }
-
 export declare enum PlaydateCollisionResponse {
     Slide,
     Freeze,
     Overlap,
-    Bounce,
+    Bounce
 }
-
 export declare enum PlaydateCapitalizationBehavior {
     Normal,
     Words,
-    Sentences,
+    Sentences
 }
-
 export declare enum PlaydateSoundFormat {
     '8bitMono',
     '8bitStereo',
     '16bitMono',
-    '16bitStereo',
+    '16bitStereo'
 }
-
 export declare enum PlaydateSoundWave {
     Square,
     Triangle,
@@ -114,18 +99,16 @@ export declare enum PlaydateSoundWave {
     Sawtooth,
     POPhase,
     PODigital,
-    POVosim,
+    POVosim
 }
-
 export declare enum PlaydateSoundLfoType {
     Square,
     Triangle,
     Sine,
     SampleAndHold,
     SawtoothUp,
-    SawtoothDown,
+    SawtoothDown
 }
-
 export declare enum PlaydateSoundTwoPoleFilterType {
     LowPass,
     HighPass,
@@ -133,32 +116,24 @@ export declare enum PlaydateSoundTwoPoleFilterType {
     Notch,
     PEQ,
     LowShelf,
-    HighShelf,
+    HighShelf
 }
-
 export declare enum PlaydateSeekWhence {
     Set,
     FromCurrent,
-    FromEnd,
+    FromEnd
 }
-
 export declare enum PlaydateWrapMode {
     Clip,
     Character,
-    Word,
+    Word
 }
-
 export declare enum PlaydateNetworkStatus {
     NotConnected,
     Connected,
-    NotAvailable,
+    NotAvailable
 }
-
 export interface ReloadOptions {
     interval?: number;
 }
-
-export declare const withReload: (
-    update: () => void,
-    options?: ReloadOptions,
-) => () => void;
+export declare const withReload: (update: () => void, options?: ReloadOptions) => () => void;

@@ -3,7 +3,7 @@ import React from 'react';
 import { getPdcPathFromEnvironment } from '@/cli/commands/CompileCommand/fn/getPdcPathFromEnvironment.js';
 import { useCompileTasks } from '@/cli/commands/CompileCommand/hooks/useCompileTasks.js';
 import { CheckList } from '@/cli/components/CheckList/index.js';
-import { Environment } from '@/cli/environment/dto/Environment.js';
+import type { Environment } from '@/cli/environment/dto/Environment.js';
 
 interface Props {
     environment: Environment;

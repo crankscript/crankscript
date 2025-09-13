@@ -1,6 +1,6 @@
 import { execSync } from 'node:child_process';
 import { useMemo } from 'react';
-import { CheckListItem } from '@/cli/types.js';
+import type { CheckListItem } from '@/cli/types.js';
 
 export const useFormatTypeFile = (path: string) => {
     const formatTypeFile = useMemo(() => {
@@ -13,7 +13,7 @@ export const useFormatTypeFile = (path: string) => {
                 // Check if prettier is available
                 execSync('pnpm exec prettier --version', { stdio: 'ignore' });
                 hasPrettier = true;
-            } catch (error) {
+            } catch (_error) {
                 // Prettier not available
             }
 
@@ -21,7 +21,7 @@ export const useFormatTypeFile = (path: string) => {
                 // Check if eslint is available
                 execSync('pnpm exec eslint --version', { stdio: 'ignore' });
                 hasEslint = true;
-            } catch (error) {
+            } catch (_error) {
                 // ESLint not available
             }
 

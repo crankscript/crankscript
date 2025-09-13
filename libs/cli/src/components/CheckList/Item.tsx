@@ -1,9 +1,9 @@
-import { StatusMessage, StatusMessageProps } from '@inkjs/ui';
+import { StatusMessage, type StatusMessageProps } from '@inkjs/ui';
 import { Text } from 'ink';
 import React, { useEffect, useRef, useState } from 'react';
 import { useCrankScriptContext } from '@/cli/commands/EnvironmentAwareCommand/contexts/CrankScriptContext.js';
 import { Spinner } from '@/cli/components/Spinner.js';
-import { CheckListItem } from '@/cli/types.js';
+import type { CheckListItem } from '@/cli/types.js';
 export interface ItemProps<TResult> {
     item: CheckListItem<TResult>;
     start: boolean;
@@ -51,7 +51,7 @@ export const Item = <TResult,>({
     useEffect(() => {
         if (couldStartButNotReady) {
             interval.current = setInterval(() => {
-                setDotCount(count => (count + 1) % 4);
+                setDotCount((count) => (count + 1) % 4);
             }, 250);
         } else {
             if (interval.current) {
@@ -81,7 +81,7 @@ export const Item = <TResult,>({
         }
 
         runner()
-            .then(result => {
+            .then((result) => {
                 executed.current = true;
 
                 if (result === false) {
@@ -105,7 +105,7 @@ export const Item = <TResult,>({
                 setResult(false);
                 onFinish?.(false);
             });
-    }, [errorDescription, onFinish, runner, start, shouldSkip]);
+    }, [errorDescription, onFinish, runner, start, shouldSkip, ready]);
 
     let message = waitingDescription;
     let variant: StatusMessageProps['variant'] = 'info';
@@ -140,12 +140,12 @@ export const Item = <TResult,>({
                     isRunning
                         ? 'yellow'
                         : isWaiting
-                        ? 'gray'
-                        : failedReason
-                        ? 'red'
-                        : isSkipped
-                        ? 'gray'
-                        : 'green'
+                          ? 'gray'
+                          : failedReason
+                            ? 'red'
+                            : isSkipped
+                              ? 'gray'
+                              : 'green'
                 }
             >
                 {message}{' '}

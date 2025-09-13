@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { getHtmlForVersion } from '@/cli/commands/GenerateTypes/fn/getHtmlForVersion.js';
-import { CheckListItem } from '@/cli/types.js';
+import type { CheckListItem } from '@/cli/types.js';
 
 export const useFetchHtml = (version: string | null) => {
     const [html, setHtml] = useState<string | null>(null);
@@ -18,7 +18,7 @@ export const useFetchHtml = (version: string | null) => {
 
                 return getHtmlForVersion(version);
             },
-            onFinish: result => {
+            onFinish: (result) => {
                 setHtml(result === false ? null : result);
             },
             ready: version !== null,

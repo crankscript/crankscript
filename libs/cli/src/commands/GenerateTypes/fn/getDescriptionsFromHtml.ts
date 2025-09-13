@@ -2,16 +2,17 @@ import { load } from 'cheerio';
 import Turndown from 'turndown';
 import { PlaydateSdkUrl } from '@/cli/commands/GenerateTypes/constants.js';
 import { parseFunctionSignature } from '@/cli/commands/GenerateTypes/fn/parseFunctionSignature.js';
-import { FunctionDescription, PropertyDescription } from '@/cli/types.js';
+import type { FunctionDescription, PropertyDescription } from '@/cli/types.js';
 
 const extractFunctionCalls = (input: string) => {
     const functionCallRegex =
         /([a-zA-Z_]\w*(\.[a-zA-Z_]\w*)*(?::[a-zA-Z_]\w*)?)\s*(\([^)]*\))?/g;
     const matches: string[] = [];
-    let match;
+    let match: RegExpExecArray | null = functionCallRegex.exec(input);
 
-    while ((match = functionCallRegex.exec(input)) !== null) {
+    while (match !== null) {
         matches.push(match[0].trim());
+        match = functionCallRegex.exec(input);
     }
 
     return matches;
@@ -70,7 +71,7 @@ export const getDescriptionsFromHtml = (html: string, version: string) => {
 
         docsString = docsString.replace(
             /<a href="#/g,
-            '<a href="' + PlaydateSdkUrl + version + '#',
+            `<a href="${PlaydateSdkUrl}${version}#`,
         );
 
         docsString = turndown.turndown(docsString);
@@ -107,7 +108,7 @@ export const getDescriptionsFromHtml = (html: string, version: string) => {
                         ...description,
                         docs,
                     });
-                } catch (e) {
+                } catch (_error) {
                     // Ignore
                 }
             }

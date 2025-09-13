@@ -1,10 +1,10 @@
-import { StatusMessage, StatusMessageProps } from '@inkjs/ui';
-import { Text, TextProps } from 'ink';
+import { StatusMessage, type StatusMessageProps } from '@inkjs/ui';
+import { Text, type TextProps } from 'ink';
 import React from 'react';
-import { PlaydateSdkPath } from '@/cli/environment/path/dto/PlaydateSdkPath.js';
+import type { PlaydateSdkPath } from '@/cli/environment/path/dto/PlaydateSdkPath.js';
 import {
-    EnvironmentHealth,
-    EnvironmentHealthResult,
+    type EnvironmentHealth,
+    type EnvironmentHealthResult,
     HealthCheckStatusType,
 } from '@/cli/types.js';
 
@@ -31,7 +31,7 @@ const ColorMap = {
 
 export const HealthReport = ({ environment }: Props) => {
     const { health } = environment;
-    return Object.keys(health).map(eachKey => {
+    return Object.keys(health).map((eachKey) => {
         const healthKey = eachKey as keyof EnvironmentHealth;
         const keyHealth = health[healthKey];
 

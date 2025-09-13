@@ -1,10 +1,9 @@
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
-import { join } from 'path';
-import { relative } from 'path';
-import { Environment } from '@/cli/environment/dto/Environment.js';
-import { CheckListItem } from '@/cli/types.js';
-import { useTestFiles } from './useTestFiles.js';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { join, relative } from 'node:path';
+import type { Environment } from '@/cli/environment/dto/Environment.js';
+import type { CheckListItem } from '@/cli/types.js';
 import { useSimulatorTasks } from '../../SimulatorCommand/hooks/useSimulatorTasks.js';
+import { useTestFiles } from './useTestFiles.js';
 
 export const useTestTasks = ({
     environment,
@@ -27,7 +26,7 @@ export const useTestTasks = ({
             const testFilePath = join(path, 'src', 'test.ts');
             const sourceDir = join(path, 'TestSource');
             const importStatements = testFiles
-                .map(testFile => {
+                .map((testFile) => {
                     const relativePath = relative(join(path, 'src'), testFile);
                     return `import './${relativePath}';`;
                 })
@@ -49,8 +48,7 @@ export const useTestTasks = ({
                 startIndex + startMarker.length,
             );
             const afterImports = currentContent.substring(endIndex);
-            const newContent =
-                beforeImports + '\n' + importStatements + '\n' + afterImports;
+            const newContent = `${beforeImports}\n${importStatements}\n${afterImports}`;
 
             writeFileSync(testFilePath, newContent, 'utf-8');
 

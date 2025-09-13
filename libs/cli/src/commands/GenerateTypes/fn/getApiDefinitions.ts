@@ -1,9 +1,9 @@
-import {
+import type {
     ApiDefinitions,
-    FunctionDescription,
     ApiObject,
-    PropertyDescription,
+    FunctionDescription,
     FunctionTypeOverrideMap,
+    PropertyDescription,
 } from '@/cli/types.js';
 
 export const getApiDefinitions = (
@@ -35,7 +35,7 @@ export const getApiDefinitions = (
         }, root);
     };
 
-    functions.forEach(func => {
+    functions.forEach((func) => {
         const targetNamespace = getOrCreateNamespace(func.namespaces, global);
         if (func.hasSelf || functionTypeOverride[func.signature]?.isMethod) {
             targetNamespace.methods.push(func);
@@ -44,7 +44,7 @@ export const getApiDefinitions = (
         }
     });
 
-    properties.forEach(prop => {
+    properties.forEach((prop) => {
         const targetNamespace = getOrCreateNamespace(prop.namespaces, global);
         targetNamespace.properties.push(prop);
     });
