@@ -11,6 +11,7 @@ class A {
 
 class B extends A {
     constructor(
+        // biome-ignore lint/correctness/noUnusedPrivateClassMembers: needed for the test
         private readonly firstArgument: number,
         secondArgument: number,
         thirdArgument: number,

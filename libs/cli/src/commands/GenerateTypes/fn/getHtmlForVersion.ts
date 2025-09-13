@@ -1,5 +1,4 @@
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
-import { mkdirSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -15,7 +14,7 @@ export const getHtmlForVersion = async (version: string) => {
         return readFileSync(path, 'utf8');
     }
 
-    const html = await fetch(`https://sdk.play.date/${version}/`).then(res =>
+    const html = await fetch(`https://sdk.play.date/${version}/`).then((res) =>
         res.text(),
     );
 

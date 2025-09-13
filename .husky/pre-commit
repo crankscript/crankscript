@@ -1,8 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# Run prettier on staged files
-pnpm exec prettier --write .
-
-# Run eslint on staged files
-pnpm exec nx affected -t lint
+# Run linting on staged files only
+pnpm exec lint-staged

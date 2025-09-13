@@ -3,6 +3,9 @@
     "version": "0.3.0",
     "license": "MIT",
     "scripts": {
+        "build": "tstl -p tsconfig.lua.json && mkdir -p ../../dist/libs/core && cp -r ./src ../../dist/libs/core/ && cp ./package.json ../../dist/libs/core/",
+        "test": "echo 'No tests for core package'",
+        "lint": "echo 'No linting for core package'",
         "compile": "tstl -p tsconfig.lua.json"
     },
     "dependencies": {

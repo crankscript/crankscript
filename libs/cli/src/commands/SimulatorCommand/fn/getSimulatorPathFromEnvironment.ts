@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { Environment } from '@/cli/environment/dto/Environment.js';
+import type { Environment } from '@/cli/environment/dto/Environment.js';
 import { appendExeOnWindows } from '@/cli/utils/appendExeOnWindows.js';
 
 export const getSimulatorPathFromEnvironment = (environment: Environment) => {

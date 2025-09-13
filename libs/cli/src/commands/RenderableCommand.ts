@@ -1,6 +1,6 @@
 import { Command } from 'clipanion';
 import { render } from 'ink';
-import { JSX } from 'react';
+import type { JSX } from 'react';
 
 export abstract class RenderableCommand extends Command {
     protected abstract render(): JSX.Element;

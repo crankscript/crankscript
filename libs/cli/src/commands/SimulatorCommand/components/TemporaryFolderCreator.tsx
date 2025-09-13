@@ -1,7 +1,7 @@
 import { mkdirSync } from 'node:fs';
-import React, { useMemo, ReactNode, useState } from 'react';
+import React, { type ReactNode, useMemo, useState } from 'react';
 import { CheckList } from '@/cli/components/CheckList/index.js';
-import { CheckListItem } from '@/cli/types.js';
+import type { CheckListItem } from '@/cli/types.js';
 import { useCrankScriptContext } from '../../EnvironmentAwareCommand/contexts/CrankScriptContext.js';
 import { createTemporaryFolderPathFromEntryFile } from '../fn/createTemporaryFolderPathFromEntryFile.js';
 
@@ -39,7 +39,7 @@ export const TemporaryFolderCreator = ({ entryFile, children }: Props) => {
                 },
             },
         ] satisfies CheckListItem<unknown>[];
-    }, [created]);
+    }, [temporaryFolder, verbose]);
 
     return (
         <>

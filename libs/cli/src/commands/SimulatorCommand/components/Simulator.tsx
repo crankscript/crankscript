@@ -1,8 +1,8 @@
-import { join } from 'path';
+import { join } from 'node:path';
 import { StatusMessage } from '@inkjs/ui';
 import React from 'react';
 import { CheckList } from '@/cli/components/CheckList/index.js';
-import { Environment } from '@/cli/environment/dto/Environment.js';
+import type { Environment } from '@/cli/environment/dto/Environment.js';
 import { createTemporaryFolderPathFromEntryFile } from '../fn/createTemporaryFolderPathFromEntryFile.js';
 import { useSimulatorTasks } from '../hooks/useSimulatorTasks.js';
 

@@ -1,11 +1,11 @@
 import {
-    Spinner as InkUiSpinner,
-    SpinnerProps,
-    extendTheme,
     defaultTheme,
+    extendTheme,
+    Spinner as InkUiSpinner,
+    type SpinnerProps,
     ThemeProvider,
 } from '@inkjs/ui';
-import { TextProps } from 'ink';
+import type { TextProps } from 'ink';
 import React from 'react';
 
 const SpinnerTheme = extendTheme(defaultTheme, {

@@ -1,6 +1,6 @@
-import { createHash } from 'crypto';
-import { tmpdir } from 'os';
-import { join } from 'path';
+import { createHash } from 'node:crypto';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 export const createTemporaryFolderPathFromEntryFile = (
     entryFilePath: string,

@@ -1,8 +1,9 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "outDir": "../../dist/out-tsc",
+        "outDir": "../../dist/libs/tstl-plugin",
         "declaration": true,
+        "rootDir": "src",
         "types": ["node"]
     },
     "include": ["src/**/*.ts"],

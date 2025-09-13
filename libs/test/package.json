@@ -6,7 +6,7 @@
     "type": "commonjs",
     "description": "The CrankScript testing library",
     "scripts": {
-        "prebuild": "tsx --tsconfig ../cli/tsconfig.json ../cli/src/index.ts transpile --input ./src/import.ts",
+        "prebuild": "tsx --tsconfig ../cli/tsconfig.json ../cli/src/index.ts transpile --library --input ./src/import.ts",
         "build": "mkdir -p ../../dist/libs/test && cp -r ./Source ../../dist/libs/test/Source && cp ./package.json ../../dist/libs/test/package.json"
     },
     "dependencies": {
@@ -17,6 +17,6 @@
     "peerDependencies": {
         "lua-types": "*"
     },
-    "types": "./Source/index.d.ts",
-    "main": "./Source/index"
+    "types": "./Source/src/import.d.ts",
+    "main": "./Source/src/import"
 }

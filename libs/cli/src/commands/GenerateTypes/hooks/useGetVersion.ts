@@ -2,8 +2,8 @@ import { useCallback, useMemo, useState } from 'react';
 import { PlaydateSdkUrl } from '@/cli/commands/GenerateTypes/constants.js';
 import { createTypeProvider } from '@/cli/commands/GenerateTypes/utils/createTypeProvider.js';
 import {
-    CheckListItem,
-    PlaydateSdkVersion,
+    type CheckListItem,
+    type PlaydateSdkVersion,
     PlaydateSdkVersionIdentifier,
 } from '@/cli/types.js';
 
@@ -40,7 +40,7 @@ export const useGetVersion = (version: PlaydateSdkVersion) => {
             waitingDescription: `Waiting to fetch version`,
             runningDescription: 'Fetching version...',
             errorDescription: 'Failed to fetch version',
-            finishedDescription: result => `Fetched version ${result}`,
+            finishedDescription: (result) => `Fetched version ${result}`,
             runner: async () => {
                 let versionLiteral = version;
 
@@ -54,11 +54,11 @@ export const useGetVersion = (version: PlaydateSdkVersion) => {
 
                 return versionLiteral;
             },
-            onFinish: result => {
+            onFinish: (result) => {
                 setResult(result === false ? null : result);
             },
         } satisfies CheckListItem<string>;
-    }, []);
+    }, [fetchLastVersion, validateVersion, version]);
 
     return {
         fetchedVersion: result,

@@ -1,10 +1,10 @@
 import { Box, Text } from 'ink';
 import React from 'react';
-import { TestResult } from './TestResult.js';
-import {
-    TestSuite as TestSuiteType,
+import type {
     TestResult as TestResultType,
+    TestSuite as TestSuiteType,
 } from '../server/TestServer.js';
+import { TestResult } from './TestResult.js';
 
 interface TestSuiteProps {
     suite: TestSuiteType;
@@ -18,7 +18,7 @@ export const TestSuite: React.FC<TestSuiteProps> = ({ suite, depth }) => {
 
     const getAllTestsFromSuite = (suite: TestSuiteType): TestResultType[] => {
         const allTests = [...suite.tests];
-        suite.children.forEach(child => {
+        suite.children.forEach((child) => {
             allTests.push(...getAllTestsFromSuite(child));
         });
         return allTests;
@@ -26,7 +26,7 @@ export const TestSuite: React.FC<TestSuiteProps> = ({ suite, depth }) => {
 
     const isAnyChildRunning = (suite: TestSuiteType): boolean => {
         if (suite.status === 'running') return true;
-        return suite.children.some(child => isAnyChildRunning(child));
+        return suite.children.some((child) => isAnyChildRunning(child));
     };
 
     const getSuiteStatus = () => {
@@ -39,7 +39,7 @@ export const TestSuite: React.FC<TestSuiteProps> = ({ suite, depth }) => {
             return 'PASS';
         }
 
-        return allTests.every(test => test.result === 'passed')
+        return allTests.every((test) => test.result === 'passed')
             ? 'PASS'
             : 'FAIL';
     };
@@ -54,7 +54,7 @@ export const TestSuite: React.FC<TestSuiteProps> = ({ suite, depth }) => {
             return 'green';
         }
 
-        return allTests.every(test => test.result === 'passed')
+        return allTests.every((test) => test.result === 'passed')
             ? 'green'
             : 'red';
     };
@@ -72,14 +72,14 @@ export const TestSuite: React.FC<TestSuiteProps> = ({ suite, depth }) => {
                 </Text>
             </Box>
 
-            {suite.tests.map(test => (
+            {suite.tests.map((test) => (
                 <Box key={`${suite.name}-${test.test}`}>
                     <Text>{indentation} </Text>
                     <TestResult test={test} suiteName={suite.name} />
                 </Box>
             ))}
 
-            {suite.children.map(childSuite => (
+            {suite.children.map((childSuite) => (
                 <TestSuite
                     key={childSuite.name}
                     suite={childSuite}

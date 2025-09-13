@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs';
 import { useMemo } from 'react';
 import { compile } from '@/cli/commands/CompileCommand/hooks/task/compile.js';
-import { CheckListItem } from '@/cli/types.js';
+import type { CheckListItem } from '@/cli/types.js';
 
 interface Props {
     pdcPath: string;
@@ -24,7 +24,7 @@ export const useCompileTasks = ({
                 waitingDescription: 'Waiting to check for pdc binary...',
                 errorDescription: 'Could not find pdc binary',
                 runningDescription: 'Checking for pdc binary...',
-                finishedDescription: result =>
+                finishedDescription: (result) =>
                     `Found pdc binary at "${result}"`,
                 runner: async () => {
                     if (!existsSync(pdcPath)) {
@@ -52,6 +52,6 @@ export const useCompileTasks = ({
                 ready: true,
             },
         ],
-        [],
+        [pdcPath, outputPath, sourceName, targetName, path],
     ) as CheckListItem<unknown>[];
 };

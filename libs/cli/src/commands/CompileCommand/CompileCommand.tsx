@@ -2,7 +2,7 @@ import { Command } from 'clipanion';
 import React from 'react';
 import { Compile } from '@/cli/commands/CompileCommand/components/Compile.js';
 import { EnvironmentAwareCommand } from '@/cli/commands/EnvironmentAwareCommand/index.js';
-import { Environment } from '@/cli/environment/dto/Environment.js';
+import type { Environment } from '@/cli/environment/dto/Environment.js';
 
 export class CompileCommand extends EnvironmentAwareCommand {
     static override paths = [['compile']];

@@ -1,6 +1,6 @@
 import { Box, Text } from 'ink';
 import React from 'react';
-import { TestLine as TestLineType } from '../server/TestServer.js';
+import type { TestLine as TestLineType } from '../server/TestServer.js';
 
 interface TestLineProps {
     line: TestLineType;

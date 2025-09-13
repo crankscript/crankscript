@@ -1,9 +1,9 @@
-import { FunctionDescription } from '@/cli/types.js';
+import type { FunctionDescription } from '@/cli/types.js';
 
 export const parseFunctionSignature = (signature: string) => {
     const normalizedSignature = signature.includes('(')
         ? signature
-        : signature + '()';
+        : `${signature}()`;
 
     const [fullyQualifiedName, paramString] = normalizedSignature.split('(');
     const hasSelf = fullyQualifiedName.includes(':');
@@ -15,7 +15,7 @@ export const parseFunctionSignature = (signature: string) => {
 
     // Find if there's any optional parameter
     const firstOptionalIndex = params.findIndex(
-        param => param.includes('[') || param.includes(']'),
+        (param) => param.includes('[') || param.includes(']'),
     );
 
     return {

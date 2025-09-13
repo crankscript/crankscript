@@ -3,10 +3,10 @@ import { basename, dirname, join } from 'node:path';
 import { useMemo } from 'react';
 import { getErrorMessage } from '@/cli/commands/TranspileCommand/fn/getErrorMessage.js';
 import { transpile } from '@/cli/commands/TranspileCommand/fn/transpile.js';
-import { ValidatedEntryPoint } from '@/cli/commands/TranspileCommand/model/ValidatedEntryPoint.js';
-import { ValidatedExitPoint } from '@/cli/commands/TranspileCommand/model/ValidatedExitPoint.js';
-import { CheckListItem } from '@/cli/types.js';
-import { TranspileMode } from '../types.js';
+import type { ValidatedEntryPoint } from '@/cli/commands/TranspileCommand/model/ValidatedEntryPoint.js';
+import type { ValidatedExitPoint } from '@/cli/commands/TranspileCommand/model/ValidatedExitPoint.js';
+import type { CheckListItem } from '@/cli/types.js';
+import type { TranspileMode } from '../types.js';
 
 const getToyboxTemplate = (
     namespace: string,
@@ -23,11 +23,13 @@ export const useTranspileTasks = ({
     exitPoint,
     toybox,
     transpileMode,
+    library,
 }: {
     entryPoint: ValidatedEntryPoint;
     exitPoint: ValidatedExitPoint;
     toybox?: string;
     transpileMode?: TranspileMode;
+    library?: boolean;
 }) => {
     return useMemo(
         () => [
@@ -41,6 +43,7 @@ export const useTranspileTasks = ({
                         entryPoint,
                         exitPoint,
                         transpileMode,
+                        library,
                     });
 
                     if (result.diagnostics.length > 0) {
@@ -86,6 +89,6 @@ export const useTranspileTasks = ({
                   ]
                 : []),
         ],
-        [toybox],
+        [entryPoint, exitPoint, toybox, transpileMode, library],
     ) as CheckListItem<unknown>[];
 };

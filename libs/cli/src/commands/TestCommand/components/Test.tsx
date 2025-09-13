@@ -1,18 +1,18 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { StatusMessage } from '@inkjs/ui';
 import { Box } from 'ink';
 import React, { useEffect, useRef } from 'react';
 import { CheckList } from '@/cli/components/CheckList/index.js';
-import { Environment } from '@/cli/environment/dto/Environment.js';
-import { TestSuite } from './TestSuite.js';
-import { TestSummary } from './TestSummary.js';
+import type { Environment } from '@/cli/environment/dto/Environment.js';
 import { useTestServer } from '../hooks/useTestServer.js';
 import { useTestTasks } from '../hooks/useTestTasks.js';
-import { OutputFormat } from '../types.js';
 import type {
-    TestSuite as TestSuiteType,
     TestResult,
+    TestSuite as TestSuiteType,
 } from '../server/TestServer.js';
+import { OutputFormat } from '../types.js';
+import { TestSuite } from './TestSuite.js';
+import { TestSummary } from './TestSummary.js';
 
 interface JsonSafeTestSuite {
     name: string;
@@ -32,7 +32,9 @@ const removeCircularReferences = (suite: TestSuiteType): JsonSafeTestSuite => {
         testCount: suite.testCount,
         status: suite.status,
         tests: suite.tests,
-        children: suite.children.map(child => removeCircularReferences(child)),
+        children: suite.children.map((child) =>
+            removeCircularReferences(child),
+        ),
         depth: suite.depth,
         startTime: suite.startTime,
         endTime: suite.endTime,
@@ -69,7 +71,7 @@ export const Test = ({
         if (format === OutputFormat.Pretty) {
             process.stdout.write('\x1Bc');
         }
-    }, []);
+    }, [format]);
 
     useEffect(() => {
         if (hasChanged) {
@@ -79,7 +81,7 @@ export const Test = ({
 
             resetTestState();
         }
-    }, [hasChanged]);
+    }, [hasChanged, format, resetTestState]);
 
     useEffect(() => {
         if (!watch && compilationFinishedRef.current && testState) {
@@ -91,7 +93,7 @@ export const Test = ({
                 if (format === OutputFormat.Json) {
                     const jsonSafeTestState = {
                         ...testState,
-                        suites: testState.suites.map(suite =>
+                        suites: testState.suites.map((suite) =>
                             removeCircularReferences(suite),
                         ),
                     };
@@ -140,7 +142,7 @@ export const Test = ({
                     {testState && (
                         <Box flexDirection="column">
                             <TestSummary testState={testState} />
-                            {testState.suites.map(suite => (
+                            {testState.suites.map((suite) => (
                                 <TestSuite key={suite.name} suite={suite} />
                             ))}
                         </Box>

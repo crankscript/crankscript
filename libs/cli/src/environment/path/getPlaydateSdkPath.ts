@@ -22,6 +22,7 @@ export const getPlaydateSdkPath = (input: {
     }
 
     return PlaydateSdkPath.fromString(
+        // biome-ignore lint/complexity/useLiteralKeys: otherwise TypeScript will complain
         environment['PLAYDATE_SDK_PATH'] as string,
     );
 };

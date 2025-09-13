@@ -1,17 +1,16 @@
-import { readFileSync } from 'fs';
-import { existsSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
-    ParameterDeclarationStructure,
+    type FunctionDeclarationOverloadStructure,
+    type FunctionDeclarationStructure,
+    type MethodDeclarationOverloadStructure,
+    type MethodDeclarationStructure,
+    type ParameterDeclarationStructure,
     StructureKind,
-    VariableDeclarationStructure,
-    FunctionDeclarationStructure,
-    MethodDeclarationStructure,
-    FunctionDeclarationOverloadStructure,
-    MethodDeclarationOverloadStructure,
+    type VariableDeclarationStructure,
 } from 'ts-morph';
 import { DataFolder } from '@/cli/constants.js';
-import {
+import type {
     FunctionDescription,
     FunctionDetails,
     PropertyDescription,
@@ -107,7 +106,7 @@ export const createTypeProvider = (version: string) => {
         if (!fn) {
             const details = {
                 signature: func.signature,
-                parameters: func.parameters.map(p => ({
+                parameters: func.parameters.map((p) => ({
                     kind: StructureKind.Parameter,
                     name: kebabToCamelCase(p.name),
                     type: 'any',
@@ -148,7 +147,7 @@ export const createTypeProvider = (version: string) => {
         parameter: string,
     ): ParameterDeclarationStructure => {
         const details = getFunctionDetails(func);
-        const param = details.parameters?.find(p => p.name === parameter);
+        const param = details.parameters?.find((p) => p.name === parameter);
 
         if (!param) {
             return {
@@ -170,13 +169,13 @@ export const createTypeProvider = (version: string) => {
         const details = getFunctionDetails(func);
 
         if (details.overrideParameters && details.parameters) {
-            return details.parameters.map(param => ({
+            return details.parameters.map((param) => ({
                 ...param,
                 name: kebabToCamelCase(param.name),
             }));
         }
 
-        return func.parameters.map(parameter => {
+        return func.parameters.map((parameter) => {
             const details = getParameterDetails(func, parameter.name);
 
             return {
@@ -203,20 +202,20 @@ export const createTypeProvider = (version: string) => {
 
         if ('overloads' in details && Array.isArray(details.overloads)) {
             if (details.kind === StructureKind.Method) {
-                options.overloads = details.overloads.map(overload => ({
+                options.overloads = details.overloads.map((overload) => ({
                     ...(overload as MethodDeclarationOverloadStructure),
                     typeParameters: overload.typeParameters,
-                    parameters: overload.parameters?.map(param => ({
+                    parameters: overload.parameters?.map((param) => ({
                         ...param,
                         name: kebabToCamelCase(param.name),
                     })),
                     docs: [func.docs],
                 }));
             } else {
-                options.overloads = details.overloads.map(overload => ({
+                options.overloads = details.overloads.map((overload) => ({
                     ...(overload as FunctionDeclarationOverloadStructure),
                     typeParameters: overload.typeParameters,
-                    parameters: overload.parameters?.map(param => ({
+                    parameters: overload.parameters?.map((param) => ({
                         ...param,
                         name: kebabToCamelCase(param.name),
                     })),
@@ -229,7 +228,7 @@ export const createTypeProvider = (version: string) => {
     };
 
     const getConstants = (fullNamespace: string) => {
-        return (provider.constants[fullNamespace] ?? []).map(constant => {
+        return (provider.constants[fullNamespace] ?? []).map((constant) => {
             return {
                 kind: StructureKind.VariableDeclaration,
                 name: typeof constant === 'string' ? constant : constant.name,
@@ -239,7 +238,7 @@ export const createTypeProvider = (version: string) => {
     };
 
     const save = () => {
-        const contents = JSON.stringify(provider, null, 4) + '\n';
+        const contents = `${JSON.stringify(provider, null, 4)}\n`;
 
         writeFileSync(path, contents, 'utf-8');
     };

@@ -1,4 +1,4 @@
-import { PlaydateSdkPath } from '../path/dto/PlaydateSdkPath.js';
+import type { PlaydateSdkPath } from '../path/dto/PlaydateSdkPath.js';
 
 export class Environment {
     sdkPath: PlaydateSdkPath;

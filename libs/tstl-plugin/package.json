@@ -2,9 +2,14 @@
     "name": "@crankscript/tstl-library",
     "version": "0.0.1",
     "scripts": {
-        "move-build-to-dist": "[ -d ../../dist/libs/cli/assets ] && cp -r ../../dist/libs/tstl-plugin/src/* ../../dist/libs/cli/assets/",
-        "move-build-to-cli": "cp -r ../../dist/libs/tstl-plugin/src/* ../../libs/cli/assets/",
-        "post-build": "npm run move-build-to-dist"
+        "build": "tsc --project tsconfig.lib.json",
+        "build-dev": "tsc --project tsconfig.lib.json",
+        "test": "jest",
+        "lint": "eslint src --ext .ts",
+        "postbuild": "mkdir -p ../../dist/libs/cli/assets && cp -r ../../dist/libs/tstl-plugin/* ../../dist/libs/cli/assets/",
+        "postbuild-dev": "cp -r ../../dist/libs/tstl-plugin/* ../../libs/cli/assets/",
+        "dev:plugin": "pnpm run build-dev",
+        "dev:plugin:watch": "nodemon --watch src --ext ts --exec \"pnpm dev:plugin\""
     },
     "dependencies": {
         "@swc/helpers": "~0.5.11",

@@ -8,7 +8,7 @@ import {
     defaultProjectPath,
     projectPathOption,
 } from '@/cli/commands/TranspileCommand/index.js';
-import { Environment } from '@/cli/environment/dto/Environment.js';
+import type { Environment } from '@/cli/environment/dto/Environment.js';
 
 export class SimulatorCommand extends EnvironmentAwareCommand {
     static override paths = [['simulator']];
@@ -73,11 +73,9 @@ export class SimulatorCommand extends EnvironmentAwareCommand {
         }
 
         return (
-            <>
-                <TemporaryFolderCreator entryFile={this.file}>
-                    {content}
-                </TemporaryFolderCreator>
-            </>
+            <TemporaryFolderCreator entryFile={this.file}>
+                {content}
+            </TemporaryFolderCreator>
         );
     }
 }

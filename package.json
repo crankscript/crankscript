@@ -6,13 +6,10 @@
         "prepare": "husky install",
         "crankscript-dev": "tsx --tsconfig libs/cli/tsconfig.json libs/cli/src/index.ts",
         "commit": "pnpm exec cz",
-        "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-        "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
-        "dev:build-plugin": "pnpm exec nx run tstl-plugin:build",
-        "dev:move-plugin": "pnpm exec nx run tstl-plugin:move-build-to-cli",
-        "dev:plugin": "pnpm dev:build-plugin && pnpm dev:move-plugin",
-        "dev:plugin:watch": "nodemon --watch libs/tstl-plugin/src --ext ts --exec \"pnpm dev:plugin\"",
-        "cli:test": "NODE_OPTIONS=--experimental-vm-modules pnpm exec nx run cli:test",
+        "build": "rm -rf dist && pnpm -r build",
+        "lint": "biome check . --write",
+        "test": "pnpm -r test",
+        "pretest": "pnpm -r build-dev",
         "changeset": "changeset",
         "version-packages": "changeset version",
         "publish-packages": "changeset publish"
@@ -44,20 +41,14 @@
         "zx": "^8.5.4"
     },
     "devDependencies": {
+        "@biomejs/biome": "2.2.4",
         "@changesets/changelog-github": "^0.5.1",
         "@changesets/cli": "^2.29.2",
         "@commitlint/cli": "^19.5.0",
         "@commitlint/config-angular": "^19.5.0",
         "@commitlint/config-conventional": "^19.5.0",
-        "@commitlint/config-nx-scopes": "^19.5.0",
         "@commitlint/cz-commitlint": "^19.5.0",
         "@commitlint/prompt-cli": "^19.5.0",
-        "@lbrto/eslint-config": "^0.0.1",
-        "@nx/eslint": "20.6.2",
-        "@nx/eslint-plugin": "20.6.2",
-        "@nx/jest": "20.6.2",
-        "@nx/js": "20.6.2",
-        "@nx/workspace": "20.6.2",
         "@swc-node/register": "~1.9.1",
         "@swc/cli": "~0.3.12",
         "@swc/core": "~1.5.7",
@@ -68,22 +59,14 @@
         "@types/jest": "^29.5.12",
         "@types/node": "18.19.54",
         "@types/turndown": "^5.0.5",
-        "@typescript-eslint/eslint-plugin": "^7.16.0",
-        "@typescript-eslint/parser": "^7.16.0",
         "commitlint-plugin-function-rules": "^4.0.1",
         "cz-conventional-changelog": "^3.3.0",
-        "eslint": "~8.57.0",
-        "eslint-config-prettier": "^9.0.0",
-        "eslint-plugin-import": "^2.30.0",
-        "eslint-plugin-prettier": "^4.2.1",
-        "eslint-plugin-unused-imports": "^4.1.4",
         "husky": "^8.0.0",
         "jest": "^29.7.0",
         "jest-environment-node": "^29.7.0",
+        "lint-staged": "^16.1.6",
         "nodemon": "^3.1.9",
-        "nx": "^20.6.2",
         "patch-package": "^8.0.0",
-        "prettier": "^2.6.2",
         "ts-jest": "^29.2.5",
         "ts-jest-resolver": "^2.0.1",
         "ts-node": "10.9.1",
@@ -95,13 +78,15 @@
         "src/",
         "assets/"
     ],
-    "nx": {
-        "includedScripts": []
-    },
     "config": {
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
         }
+    },
+    "lint-staged": {
+        "*.{ts,tsx,js,jsx,json}": [
+            "biome check --write"
+        ]
     },
     "packageManager": "pnpm@10.9.0"
 }

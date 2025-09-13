@@ -1,12 +1,13 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "outDir": "../../dist/out-tsc",
+        "outDir": "../../dist/libs/cli/src",
         "declaration": true,
         "types": ["node"],
         "module": "nodenext",
         "moduleResolution": "nodenext",
         "allowSyntheticDefaultImports": true,
+        "rootDir": "src",
         "baseUrl": ".",
         "paths": {
             "@/cli/*": ["src/*"]

@@ -1,4 +1,4 @@
-import {
+import type {
     ClassDeclarationStructure,
     FunctionDeclarationStructure,
     MethodDeclarationStructure,
@@ -6,8 +6,8 @@ import {
     PropertyDeclarationStructure,
     VariableDeclarationStructure,
 } from 'ts-morph';
-import { Environment } from '@/cli/environment/dto/Environment.js';
-import { PlaydateSdkPath } from '@/cli/environment/path/dto/PlaydateSdkPath.js';
+import type { Environment } from '@/cli/environment/dto/Environment.js';
+import type { PlaydateSdkPath } from '@/cli/environment/path/dto/PlaydateSdkPath.js';
 
 export enum PlaydateSdkVersionIdentifier {
     Latest = 'latest',

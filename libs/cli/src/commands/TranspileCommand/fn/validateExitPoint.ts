@@ -1,6 +1,6 @@
 import { existsSync, statSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
-import { ValidatedExitPoint } from '../model/ValidatedExitPoint.js';
+import { dirname, resolve } from 'node:path';
+import type { ValidatedExitPoint } from '../model/ValidatedExitPoint.js';
 
 export const validateExitPoint = ({
     projectPath,

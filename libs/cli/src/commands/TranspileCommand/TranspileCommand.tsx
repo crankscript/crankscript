@@ -40,6 +40,10 @@ export class TranspileCommand extends RenderableCommand {
         validator: t.isString(),
     });
 
+    library = Option.Boolean('--library', false, {
+        description: 'Build as a library',
+    });
+
     projectPath = projectPathOption;
 
     override render() {
@@ -59,6 +63,7 @@ export class TranspileCommand extends RenderableCommand {
                 entryPoint={validatedEntryPoint}
                 exitPoint={validatedExitPoint}
                 toybox={this.toybox}
+                library={this.library}
             />
         );
     }

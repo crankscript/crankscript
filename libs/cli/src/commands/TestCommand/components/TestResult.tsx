@@ -1,8 +1,8 @@
 import { Box, Text } from 'ink';
 import React from 'react';
-import { TestLine } from './TestLine.js';
-import { TestResult as TestResultType } from '../server/TestServer.js';
+import type { TestResult as TestResultType } from '../server/TestServer.js';
 import { formatTestError } from '../utils/formatTestError.js';
+import { TestLine } from './TestLine.js';
 
 interface TestResultProps {
     test: TestResultType;
@@ -12,7 +12,7 @@ interface TestResultProps {
 export const TestResult: React.FC<TestResultProps> = ({ test, suiteName }) => {
     const errorLine =
         test.result === 'failed'
-            ? test.lines.find(line => line.type === 'error')
+            ? test.lines.find((line) => line.type === 'error')
             : null;
 
     return (

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { readFileSync } from 'fs';
+import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Builtins, Cli } from 'clipanion';
 import { CompileCommand } from '@/cli/commands/CompileCommand/index.js';
@@ -27,7 +27,7 @@ const cli = new Cli({
     binaryVersion: packageJson.version,
 });
 
-process.on('SIGINT', function () {
+process.on('SIGINT', () => {
     process.exit();
 });
 
@@ -44,6 +44,6 @@ cli.register(TestCommand);
 
 try {
     cli.runExit(args);
-} catch (error) {
+} catch (_error) {
     process.exit(1);
 }

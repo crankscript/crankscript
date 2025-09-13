@@ -1,6 +1,9 @@
-import { EnvironmentHealthResult, HealthCheckStatusType } from '../types.js';
+import {
+    type EnvironmentHealthResult,
+    HealthCheckStatusType,
+} from '../types.js';
 import { Environment } from './dto/Environment.js';
-import { PlaydateSdkPath } from './path/dto/PlaydateSdkPath.js';
+import type { PlaydateSdkPath } from './path/dto/PlaydateSdkPath.js';
 import { getPlaydateSdkPath } from './path/getPlaydateSdkPath.js';
 
 /**
@@ -19,7 +22,7 @@ export const createEnvironment = (input?: {
 
     try {
         sdkPath = getPlaydateSdkPath({ environment });
-    } catch (error) {
+    } catch (_error) {
         return {
             isHealthy: false,
             health: {

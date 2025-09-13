@@ -1,4 +1,4 @@
-import { FunctionTypeOverrideMap } from '@/cli/types.js';
+import type { FunctionTypeOverrideMap } from '@/cli/types.js';
 
 export const functionTypeOverrides: Record<string, FunctionTypeOverrideMap> = {
     defaultVersion: {

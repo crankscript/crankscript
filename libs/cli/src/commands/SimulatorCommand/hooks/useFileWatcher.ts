@@ -1,4 +1,4 @@
-import { FSWatcher, watch } from 'chokidar';
+import { type FSWatcher, watch } from 'chokidar';
 import { useEffect, useRef } from 'react';
 
 export const useFileWatcher = (options: {
@@ -38,5 +38,10 @@ export const useFileWatcher = (options: {
             watcher.current = null;
             started.current = false;
         };
-    }, [options.enabled, options.watchPath, options.onChange]);
+    }, [
+        options.enabled,
+        options.watchPath,
+        options.onChange,
+        options.additionalGlobs,
+    ]);
 };

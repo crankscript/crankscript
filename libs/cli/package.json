@@ -3,7 +3,9 @@
     "version": "0.17.0",
     "scripts": {
         "dev": "tsx src/index.ts",
-        "post-build": "tsc-alias --project tsconfig.json"
+        "build": "tsx scripts/build.mts",
+        "test": "NODE_OPTIONS=\"--experimental-vm-modules --no-warnings\" pnpm exec jest",
+        "lint": "eslint src --ext .ts,.tsx"
     },
     "bin": {
         "crankscript": "./src/index.js"

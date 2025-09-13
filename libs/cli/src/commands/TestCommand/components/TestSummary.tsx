@@ -1,6 +1,6 @@
 import { Box, Text } from 'ink';
 import React from 'react';
-import { TestState } from '../server/TestServer.js';
+import type { TestState } from '../server/TestServer.js';
 
 interface TestSummaryProps {
     testState: TestState;
