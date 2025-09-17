@@ -4,31 +4,17 @@ import type { CheckListItem } from '@/cli/types.js';
 
 export const useFormatTypeFile = (path: string) => {
     const formatTypeFile = useMemo(() => {
-        // Check if prettier and eslint are available
-        const checkToolsAvailability = () => {
-            let hasPrettier = false;
-            let hasEslint = false;
-
+        // Check if biome is available
+        const checkBiomeAvailability = () => {
             try {
-                // Check if prettier is available
-                execSync('pnpm exec prettier --version', { stdio: 'ignore' });
-                hasPrettier = true;
+                execSync('pnpm exec biome --version', { stdio: 'ignore' });
+                return true;
             } catch (_error) {
-                // Prettier not available
+                return false;
             }
-
-            try {
-                // Check if eslint is available
-                execSync('pnpm exec eslint --version', { stdio: 'ignore' });
-                hasEslint = true;
-            } catch (_error) {
-                // ESLint not available
-            }
-
-            return { hasPrettier, hasEslint };
         };
 
-        const { hasPrettier, hasEslint } = checkToolsAvailability();
+        const hasBiome = checkBiomeAvailability();
 
         return {
             waitingDescription: 'Waiting to format the type file...',
@@ -37,16 +23,14 @@ export const useFormatTypeFile = (path: string) => {
             runningDescription: 'Formatting the type file...',
             runner: async () => {
                 try {
-                    // Run prettier on the generated file if available
-                    if (hasPrettier) {
-                        execSync(`pnpm exec prettier --write "${path}"`, {
+                    if (hasBiome) {
+                        // Format and lint the file using Biome
+                        execSync(`pnpm exec biome format --write "${path}"`, {
                             stdio: 'ignore',
                         });
-                    }
 
-                    // Run eslint if available
-                    if (hasEslint) {
-                        execSync(`pnpm exec eslint --fix "${path}"`, {
+                        // Apply safe fixes using Biome linter
+                        execSync(`pnpm exec biome lint --write "${path}"`, {
                             stdio: 'ignore',
                         });
                     }
@@ -58,8 +42,7 @@ export const useFormatTypeFile = (path: string) => {
                 }
             },
             ready: true,
-            // Skip only if both tools are unavailable
-            skip: !hasPrettier && !hasEslint,
+            skip: !hasBiome,
         } satisfies CheckListItem<boolean>;
     }, [path]);
 

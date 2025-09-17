@@ -2,5 +2,7 @@
 
 // Run this example with `crankscript simulator examples/hello-world.ts`
 playdate.update = () => {
-    playdate.graphics.drawText('Hello, World...', 30, 10);
+    playdate.graphics.clear(playdate.graphics.kColorBlack);
+    playdate.graphics.setImageDrawMode(playdate.graphics.kDrawModeFillWhite);
+    playdate.graphics.drawText('Hello, World!', 10, 10);
 };

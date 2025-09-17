@@ -18,7 +18,6 @@ export class Example2 extends Example {
 export class BaseClass {
     public title: string;
     protected type: string = 'base';
-    private _id: number = 1;
     static className: string = 'BaseClass';
 
     constructor(title: string = 'Base') {
@@ -42,7 +41,8 @@ export class BaseClass {
     }
 
     static getClassName(): string {
-        return (this as any).className;
+        // biome-ignore lint/complexity/noThisInStatic: Required for the test
+        return this.className;
     }
 
     static create(title: string): BaseClass {
@@ -70,6 +70,10 @@ export class MiddleClass extends BaseClass {
 
     getParentDescription(): string {
         return super.getDescription();
+    }
+
+    static getClassName(): string {
+        return MiddleClass.className;
     }
 
     static create(title: string): MiddleClass {
@@ -105,6 +109,10 @@ export class DerivedClass extends MiddleClass {
 
     getBaseDescription(): string {
         return super.getParentDescription();
+    }
+
+    static getClassName(): string {
+        return DerivedClass.className;
     }
 }
 

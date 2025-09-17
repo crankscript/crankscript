@@ -12,28 +12,28 @@
  * https://play.date/dev/sdk-license/.
  */
 
-import {
-    PlaydateColor,
+import type {
     PlaydateButton,
-    PlaydateLanguage,
-    PlaydateFlip,
-    PlaydatePolygonFill,
-    PlaydateDitherType,
-    PlaydateLineCapStyle,
-    PlaydateDrawMode,
-    PlaydateStrokeLocation,
-    PlaydateFontVariant,
-    PlaydateTextAlignment,
-    PlaydateCollisionResponse,
     PlaydateCapitalizationBehavior,
+    PlaydateCollisionResponse,
+    PlaydateColor,
+    PlaydateDitherType,
+    PlaydateDrawMode,
+    PlaydateFileOpenMode,
+    PlaydateFlip,
+    PlaydateFontVariant,
+    PlaydateLanguage,
+    PlaydateLineCapStyle,
+    PlaydateNetworkStatus,
+    PlaydatePolygonFill,
+    PlaydateSeekWhence,
     PlaydateSoundFormat,
-    PlaydateSoundWave,
     PlaydateSoundLfoType,
     PlaydateSoundTwoPoleFilterType,
-    PlaydateFileOpenMode,
-    PlaydateSeekWhence,
+    PlaydateSoundWave,
+    PlaydateStrokeLocation,
+    PlaydateTextAlignment,
     PlaydateWrapMode,
-    PlaydateNetworkStatus,
 } from '@crankscript/core';
 
 declare global {
@@ -2709,7 +2709,7 @@ declare global {
             export function _delete(filename?: string): boolean;
 
             /** @ts-ignore */
-            export { _delete as delete };
+            export type { _delete as delete };
 
             /**
              * Saves a [playdate.graphics.image](https://sdk.play.date/2.7.5#C-graphics.image) to a file. If _path_ doesn’t contain a folder name, the image is stored in a folder named "images".
@@ -2837,7 +2837,7 @@ declare global {
             export function _delete(path: string, recursive?: boolean): boolean;
 
             /** @ts-ignore */
-            export { _delete as delete };
+            export type { _delete as delete };
 
             /**
              * Returns the size of the file at the given path.
@@ -3044,7 +3044,7 @@ declare global {
                 ): playdate.geometry.affineTransform;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Returns a new playdate.geometry.affineTransform that is the identity transform.
@@ -3056,7 +3056,7 @@ declare global {
                 export function _new(): playdate.geometry.affineTransform;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class affineTransform {
@@ -3271,7 +3271,7 @@ declare global {
                 ): playdate.geometry.arc;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class arc {
@@ -3326,7 +3326,7 @@ declare global {
                 ): playdate.geometry.lineSegment;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * For use in inner loops where speed is the priority.
@@ -3461,7 +3461,7 @@ declare global {
                 ): playdate.geometry.point;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class point {
@@ -3528,7 +3528,7 @@ declare global {
                 ): playdate.geometry.polygon;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * `new(x1, y1, x2, y2, ..., xn, yn)` returns a new playdate.geometry.polygon with vertices _(x1, y1)_ through _(xn, yn)_. The Lua function `table.unpack()` can be used to turn an array into function arguments.
@@ -3554,7 +3554,7 @@ declare global {
                 ): playdate.geometry.polygon;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * `new(x1, y1, x2, y2, ..., xn, yn)` returns a new playdate.geometry.polygon with vertices _(x1, y1)_ through _(xn, yn)_. The Lua function `table.unpack()` can be used to turn an array into function arguments.
@@ -3580,7 +3580,7 @@ declare global {
                 ): playdate.geometry.polygon;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class polygon {
@@ -3700,7 +3700,7 @@ declare global {
                 ): playdate.geometry.rect;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * For use in inner loops where speed is the priority. About 3x faster than [intersection](https://sdk.play.date/2.7.5#m-geometry.rect.intersection).
@@ -3910,7 +3910,7 @@ declare global {
                 ): playdate.geometry.size;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class size {
@@ -3942,7 +3942,7 @@ declare global {
                 ): playdate.geometry.vector2D;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Returns a new playdate.geometry.vector2D. Angles should be specified in degrees. Zero degrees represents the top of the circle.
@@ -5802,7 +5802,7 @@ declare global {
                 ): playdate.graphics.image;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Returns a [playdate.graphics.image](https://sdk.play.date/2.7.5#C-graphics.image) object from the data at _path_. If there is no file at _path_, the function returns nil and a second value describing the error.
@@ -5814,7 +5814,7 @@ declare global {
                 export function _new(path: string): playdate.graphics.image;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class image {
@@ -6278,7 +6278,7 @@ declare global {
                 ): playdate.graphics.nineSlice;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class nineSlice {
@@ -6350,7 +6350,7 @@ declare global {
                     ): playdate.graphics.animation.loop;
 
                     /** @ts-ignore */
-                    export { _new as new };
+                    export type { _new as new };
                 }
 
                 export class loop {
@@ -6420,7 +6420,7 @@ declare global {
                     ): playdate.graphics.animation.blinker;
 
                     /** @ts-ignore */
-                    export { _new as new };
+                    export type { _new as new };
 
                     /**
                      * Updates the state of all valid blinkers by calling [:update()](https://sdk.play.date/2.7.5#m-graphics.animation.blinker.update) on each.
@@ -6541,7 +6541,7 @@ declare global {
                 ): playdate.graphics.animator<TSubject>;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Creates a new Animator that will animate along the provided [playdate.geometry.lineSegment](https://sdk.play.date/2.7.5#C-geometry.lineSegment)
@@ -6581,7 +6581,7 @@ declare global {
                 ): playdate.graphics.animator<playdate.geometry.point>;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Creates a new Animator that will animate along the provided [playdate.geometry.arc](https://sdk.play.date/2.7.5#C-geometry.arc)
@@ -6598,7 +6598,7 @@ declare global {
                 ): playdate.graphics.animator<playdate.geometry.point>;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Creates a new Animator that will animate along the provided [playdate.geometry.polygon](https://sdk.play.date/2.7.5#C-geometry.polygon)
@@ -6615,7 +6615,7 @@ declare global {
                 ): playdate.graphics.animator<playdate.geometry.point>;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Creates a new Animator that will animate along each of the items in the _parts_ array in order, which should be comprised of [playdate.geometry.lineSegment](https://sdk.play.date/2.7.5#C-geometry.lineSegment), [playdate.geometry.arc](https://sdk.play.date/2.7.5#C-geometry.arc), or [playdate.geometry.polygon](https://sdk.play.date/2.7.5#C-geometry.polygon) objects.
@@ -6679,7 +6679,7 @@ declare global {
                 ): playdate.graphics.animator<playdate.geometry.point>;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class animator<
@@ -6762,7 +6762,7 @@ declare global {
                 ): playdate.graphics.imagetable;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Returns an empty image table for loading images into via [imagetable:load()](https://sdk.play.date/2.7.5#m-graphics.imagetable.load) or setting already-loaded images into with [imagetable:setImage()](https://sdk.play.date/2.7.5#m-graphics.imagetable.setImage). If set, _cellsWide_ is used to locate images by x,y position. The optional _cellSize_ argument gives the allocation size for the images, if [load()](https://sdk.play.date/2.7.5#m-graphics.imagetable.load) will be used. (This is a weird technical detail, so ask us if you need guidance here.)
@@ -6778,7 +6778,7 @@ declare global {
                 ): playdate.graphics.imagetable;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class imagetable {
@@ -6848,7 +6848,7 @@ declare global {
                 export function _new(): playdate.graphics.tilemap;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class tilemap {
@@ -6978,7 +6978,7 @@ declare global {
                 ): playdate.graphics.sprite;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Important
@@ -8383,7 +8383,7 @@ declare global {
                 export function _new(path: string): playdate.graphics.font;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Returns a font family table from the font files specified in _fontPaths_. _fontPaths_ should be a table with the following format:
@@ -8566,7 +8566,7 @@ declare global {
                 export function _new(path: string): playdate.graphics.video;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class video {
@@ -8795,7 +8795,7 @@ declare global {
                 ): playdate.network.http;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * `playdate.network.http.new()` will automatically request access if needed (and note that `new()` only creates an object for connecting, doesn’t open the connection until `get()` or `post()` is called) but if you want to present the access dialog ahead of time you can use this function. Notably, this lets you request access to all HTTP servers by leaving the `server` field empty, or all subdomains of a domain by passing in the parent. Note that this function uses a coroutine `yield()` to pause the runtime while the permission dialog is up, so it can’t be called immediately at startup, must be called from a `playdate.update()` context
@@ -8954,7 +8954,7 @@ declare global {
                 ): playdate.network.tcp;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * `playdate.network.tcp.new()` will automatically request access if needed (and note that `new()` only creates an object for connecting, doesn’t open the connection until `open()` is called) but if you want to present the access dialog ahead of time you can use this function. Notably, this lets you request access to all servers by leaving the `server` field empty, or all subdomains of a domain by passing in the parent. Access to all ports on a given server can be requested by leaving `port` empty. Note that this function uses a coroutine `yield()` to pause the runtime while the permission dialog is up, so it can’t be called immediately at startup, must be called from a `playdate.update()` context
@@ -9066,7 +9066,7 @@ declare global {
                 ): playdate.pathfinder.graph;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Convenience function that returns a new [playdate.pathfinder.graph](https://sdk.play.date/2.7.5#C-playdate.pathfinder.graph) object containing nodes for for each grid position, even if not connected to any other nodes. This allows for easier graph modification once the graph is generated. Weights for connections between nodes are set to 10 for horizontal and vertical connections and 14 for diagonal connections (if included), as this tends to produce nicer paths than using uniform weights. Nodes have their indexes set from 1 to _width_ \* _height_, and have their _x, y_ values set appropriately for the node’s position.
@@ -9501,7 +9501,7 @@ declare global {
                 export function _new(path: string): playdate.sound.sampleplayer;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Returns a new playdate.sound.sampleplayer object for playing the given [sample](https://sdk.play.date/2.7.5#C-sound.sample).
@@ -9515,7 +9515,7 @@ declare global {
                 ): playdate.sound.sampleplayer;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class sampleplayer {
@@ -9673,7 +9673,7 @@ declare global {
                 ): playdate.sound.fileplayer;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Returns a fileplayer object for streaming samples from the file at _path_. Note that the file isn’t loaded until [playdate.sound.fileplayer:play()](https://sdk.play.date/2.7.5#m-sound.fileplayer.play) or [playdate.sound.fileplayer:setBufferSize()](https://sdk.play.date/2.7.5#m-sound.fileplayer.setBufferSize) is called, in order to reduce initialization overhead.
@@ -9690,7 +9690,7 @@ declare global {
                 ): playdate.sound.fileplayer;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class fileplayer {
@@ -9880,7 +9880,7 @@ declare global {
                 export function _new(path: string): playdate.sound.sample;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Returns a new playdate.sound.sample object, with a buffer size of _seconds_ in the given format. If _format_ is not specified, it defaults to [playdate.sound.kFormat16bitStereo](https://sdk.play.date/2.7.5#m-sound.sample.getFormat). When used with playdate.sound.sample:load(), this allows you to swap in a different sample without re-allocating the buffer, which could lead to memory fragmentation.
@@ -9895,7 +9895,7 @@ declare global {
                 ): playdate.sound.sample;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class sample {
@@ -9987,7 +9987,7 @@ declare global {
                 export function _new(): playdate.sound.channel;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class channel {
@@ -10078,7 +10078,7 @@ declare global {
                 ): playdate.sound.synth;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Returns a new synth object to play a [Sample](https://sdk.play.date/2.7.5#C-sound.sample). Sample data must be uncompressed PCM, not ADPCM. An optional sustain region (measured in sample frames) defines a loop to play while the note is active. When the note ends, if an envelope has been set on the synth and the sustain range goes to the end of the sample (i.e. there’s no release section of the sample after the sustain range) then the sustain section continues looping during the envelope release; otherwise it plays through the end of the sample and stops. As a convenience, if `sustainStart` is greater than zero and `sustainEnd` isn’t given, it will be set to the length of the sample.
@@ -10094,7 +10094,7 @@ declare global {
                 ): playdate.sound.synth;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class synth {
@@ -10360,7 +10360,7 @@ declare global {
                 ): playdate.sound.lfo;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class lfo {
@@ -10460,7 +10460,7 @@ declare global {
                 ): playdate.sound.envelope;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class envelope {
@@ -10565,7 +10565,7 @@ declare global {
                 export function _new(): playdate.sound.bitcrusher;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class bitcrusher {
@@ -10618,7 +10618,7 @@ declare global {
                 export function _new(): playdate.sound.ringmod;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class ringmod {
@@ -10659,7 +10659,7 @@ declare global {
                 export function _new(): playdate.sound.onepolefilter;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class onepolefilter {
@@ -10716,7 +10716,7 @@ declare global {
                 ): playdate.sound.twopolefilter;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class twopolefilter {
@@ -10781,7 +10781,7 @@ declare global {
                 export function _new(): playdate.sound.overdrive;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class overdrive {
@@ -10840,7 +10840,7 @@ declare global {
                 export function _new(length: number): playdate.sound.delayline;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class delayline {
@@ -10918,7 +10918,7 @@ declare global {
                 ): playdate.sound.sequence;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class sequence {
@@ -11039,7 +11039,7 @@ declare global {
                 export function _new(): playdate.sound.track;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class track {
@@ -11175,7 +11175,7 @@ declare global {
                 ): playdate.sound.instrument;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class instrument {
@@ -11273,7 +11273,7 @@ declare global {
                 export function _new(): playdate.sound.controlsignal;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
             }
 
             export class controlsignal {
@@ -11482,7 +11482,7 @@ declare global {
             ): playdate.timer;
 
             /** @ts-ignore */
-            export { _new as new };
+            export type { _new as new };
 
             /**
              * Performs the function _callback_ after _delay_ milliseconds. Accepts a variable number of arguments that will be passed to the callback function when it is called. If arguments are not provided, the timer itself will be passed to the callback instead.
@@ -11525,7 +11525,7 @@ declare global {
             ): playdate.timer;
 
             /** @ts-ignore */
-            export { _new as new };
+            export type { _new as new };
 
             /**
              * Calls `keyRepeatTimerWithDelay()` below with standard values of _delayAfterInitialFiring_ = 300 and _delayAfterSecondFiring_ = 100.
@@ -11803,7 +11803,7 @@ declare global {
             ): void;
 
             /** @ts-ignore */
-            export { _new as new };
+            export type { _new as new };
 
             /**
              * Performs the function _callback_ after the _delay_ number of frames. Accepts a variable number of arguments that will be passed to the callback function when it is called. If arguments are not provided, the timer itself will be passed to the callback instead.
@@ -11846,7 +11846,7 @@ declare global {
             ): playdate.frameTimer;
 
             /** @ts-ignore */
-            export { _new as new };
+            export type { _new as new };
 
             /**
              * Returns an array listing all running frameTimers.
@@ -12065,7 +12065,7 @@ declare global {
                 ): playdate.ui.gridview;
 
                 /** @ts-ignore */
-                export { _new as new };
+                export type { _new as new };
 
                 /**
                  * Returns the current height of the section headers.

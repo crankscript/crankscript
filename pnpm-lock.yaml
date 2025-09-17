@@ -229,14 +229,14 @@ importers:
   libs/test:
     dependencies:
       '@crankscript/core':
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: workspace:*
+        version: link:../core
       '@crankscript/types':
-        specifier: 1.1.0
-        version: 1.1.0(@crankscript/core@0.3.0)
+        specifier: workspace:*
+        version: link:../types
       crankscript:
-        specifier: 0.18.0
-        version: 0.18.0(@types/react@19.1.13)
+        specifier: 0.18.1
+        version: 0.18.1(@types/react@19.1.13)
       lua-types:
         specifier: '*'
         version: 2.13.1
@@ -263,10 +263,6 @@ importers:
         version: 2.13.1
 
 packages:
-
-  '@alcalzone/ansi-tokenize@0.1.3':
-    resolution: {integrity: sha512-3yWxPTq3UQ/FY9p1ErPxIyfT64elWaMvM9lIHnaqpyft63tkxodF5aUElYHrdisWve5cETkh1+KBw1yJuW0aRw==}
-    engines: {node: '>=14.13.1'}
 
   '@alcalzone/ansi-tokenize@0.2.0':
     resolution: {integrity: sha512-qI/5TaaaCZE4yeSZ83lu0+xi1r88JSxUjnH4OP/iZF7+KKZ75u3ee5isd0LxX+6N8U0npL61YrpbthILHB6BnA==}
@@ -650,11 +646,6 @@ packages:
 
   '@crankscript/core@0.3.0':
     resolution: {integrity: sha512-+2rVziFpFE1ldlJK9h7NiH0pFpTZ4MSasdR1YzDMR3TMMDX0XgAvP2OsUJDHmcQPIM8J3GKkCukPaDc68TL6ig==}
-
-  '@crankscript/types@1.1.0':
-    resolution: {integrity: sha512-S8BXuNFzx6ij1OQiOiV8WCp3gIAYVLPM3RZj55vVaKOAj+HCtdQTLBXUrN8y9IipJ5Q1h7dVLU//HJTs8kGFyA==}
-    peerDependencies:
-      '@crankscript/core': '*'
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -1950,8 +1941,8 @@ packages:
       typescript:
         optional: true
 
-  crankscript@0.18.0:
-    resolution: {integrity: sha512-koin3vpuAXJsc5Sxz1RmqLeoil1rk/s4I4G6iXu30Okdk6RjooysTxJSxPM0ZBq8ap6lqcKWZdJRpCfGJ/7yig==}
+  crankscript@0.18.1:
+    resolution: {integrity: sha512-JLaRBx+07se+xAUDqpUPy2Er+TEsxYz+zTOBJ0YbEVB32XzWQDHtvN1eS9jz83pK8KgcEN+i1LAn/JbsO8Sv5w==}
     hasBin: true
 
   create-jest@29.7.0:
@@ -2241,9 +2232,6 @@ packages:
   es-set-tostringtag@2.1.0:
     resolution: {integrity: sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==}
     engines: {node: '>= 0.4'}
-
-  es-toolkit@1.36.0:
-    resolution: {integrity: sha512-5lpkRpDELuTSeAL//Rcg5urg+K/yOD1BobJSiNeCc89snMqgrhckmj8jdljqraDbpREiXTNW311RN518eVHBng==}
 
   es-toolkit@1.39.10:
     resolution: {integrity: sha512-E0iGnTtbDhkeczB0T+mxmoVlT4YNweEKBLq7oaU4p11mecdsZpNWOglI4895Vh4usbQ+LsJiuLuI2L0Vdmfm2w==}
@@ -2730,19 +2718,6 @@ packages:
       ink: '>=4.0.0'
       react: '>=18.0.0'
 
-  ink@5.2.0:
-    resolution: {integrity: sha512-gHzSBBvsh/1ZYuGi+aKzU7RwnYIr6PSz56or9T90i4DDS99euhN7nYKOMR3OTev0dKIB6Zod3vSapYzqoilQcg==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      '@types/react': '>=18.0.0'
-      react: '>=18.0.0'
-      react-devtools-core: ^4.19.1
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      react-devtools-core:
-        optional: true
-
   ink@6.3.0:
     resolution: {integrity: sha512-2CbJAa7XeziZYe6pDS5RVLirRY28iSGMQuEV8jRU5NQsONQNfcR/BZHHc9vkMg2lGYTHTM2pskxC1YmY28p6bQ==}
     engines: {node: '>=20'}
@@ -2819,11 +2794,6 @@ packages:
   is-gzip@1.0.0:
     resolution: {integrity: sha512-rcfALRIb1YewtnksfRIHGcIY93QnK8BIQ/2c9yDYcG/Y6+vRoJuTWBmmSEbyLLYtXm7q35pHOHbZFQBaLrhlWQ==}
     engines: {node: '>=0.10.0'}
-
-  is-in-ci@1.0.0:
-    resolution: {integrity: sha512-eUuAjybVTHMYWm/U+vBO1sY/JOCgoPCXRxzdju0K+K0BiGW0SChEL1MLC0PoCIR1OlPo5YAp8HuQoUlsWEICwg==}
-    engines: {node: '>=18'}
-    hasBin: true
 
   is-in-ci@2.0.0:
     resolution: {integrity: sha512-cFeerHriAnhrQSbpAxL37W1wcJKUUX07HyLWZCW1URJT/ra3GyUTzBgUnh24TMVfNTV2Hij2HLxkPHFZfOZy5w==}
@@ -3259,10 +3229,6 @@ packages:
   longest@2.0.1:
     resolution: {integrity: sha512-Ajzxb8CM6WAnFjgiloPsI3bF+WCxcvhdIG3KNA2KN962+tdBsHcuQ4k4qX/EcS/2CRkcc0iAkR956Nib6aXU/Q==}
     engines: {node: '>=0.10.0'}
-
-  loose-envify@1.4.0:
-    resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
-    hasBin: true
 
   lowdb@1.0.0:
     resolution: {integrity: sha512-2+x8esE/Wb9SQ1F9IHaYWfsC9FIecLOPrK4g17FGEayjUWH172H6nwicRovGvSE2CPZouc2MCIqCI7h9d+GftQ==}
@@ -3850,21 +3816,11 @@ packages:
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
 
-  react-reconciler@0.29.2:
-    resolution: {integrity: sha512-zZQqIiYgDCTP/f1N/mAR10nJGrPD2ZR+jDSEsKWJHYC7Cm2wodlwbR3upZRdC3cjIjSlTLNVyO7Iu0Yy7t2AYg==}
-    engines: {node: '>=0.10.0'}
-    peerDependencies:
-      react: ^18.3.1
-
   react-reconciler@0.32.0:
     resolution: {integrity: sha512-2NPMOzgTlG0ZWdIf3qG+dcbLSoAc/uLfOwckc3ofy5sSK0pLJqnQLpUFxvGcN2rlXSjnVtGeeFLNimCQEj5gOQ==}
     engines: {node: '>=0.10.0'}
     peerDependencies:
       react: ^19.1.0
-
-  react@18.3.1:
-    resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
-    engines: {node: '>=0.10.0'}
 
   react@19.1.1:
     resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
@@ -4009,9 +3965,6 @@ packages:
 
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
-
-  scheduler@0.23.2:
-    resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
 
   scheduler@0.26.0:
     resolution: {integrity: sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA==}
@@ -4679,11 +4632,6 @@ packages:
 
 snapshots:
 
-  '@alcalzone/ansi-tokenize@0.1.3':
-    dependencies:
-      ansi-styles: 6.2.1
-      is-fullwidth-code-point: 4.0.0
-
   '@alcalzone/ansi-tokenize@0.2.0':
     dependencies:
       ansi-styles: 6.2.1
@@ -5231,11 +5179,6 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@crankscript/types@1.1.0(@crankscript/core@0.3.0)':
-    dependencies:
-      '@crankscript/core': 0.3.0
-      lua-types: 2.13.1
-
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
@@ -5335,14 +5278,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.3':
     optional: true
-
-  '@inkjs/ui@2.0.0(ink@5.2.0(@types/react@19.1.13)(react@18.3.1))':
-    dependencies:
-      chalk: 5.4.1
-      cli-spinners: 3.2.0
-      deepmerge: 4.3.1
-      figures: 6.1.0
-      ink: 5.2.0(@types/react@19.1.13)(react@18.3.1)
 
   '@inkjs/ui@2.0.0(ink@6.3.0(@types/react@19.1.13)(react@19.1.1))':
     dependencies:
@@ -6711,18 +6646,18 @@ snapshots:
     optionalDependencies:
       typescript: 5.7.3
 
-  crankscript@0.18.0(@types/react@19.1.13):
+  crankscript@0.18.1(@types/react@19.1.13):
     dependencies:
-      '@inkjs/ui': 2.0.0(ink@5.2.0(@types/react@19.1.13)(react@18.3.1))
+      '@inkjs/ui': 2.0.0(ink@6.3.0(@types/react@19.1.13)(react@19.1.1))
       '@swc/helpers': 0.5.17
       cheerio: 1.0.0
       chokidar: 4.0.3
       clipanion: 4.0.0-rc.4(typanion@3.14.0)
       cors: 2.8.5
       express: 5.1.0
-      ink: 5.2.0(@types/react@19.1.13)(react@18.3.1)
+      ink: 6.3.0(@types/react@19.1.13)(react@19.1.1)
       open: 10.1.1
-      react: 18.3.1
+      react: 19.1.1
       tiged: 3.0.0-rc.0
       ts-morph: 23.0.0
       turndown: 7.2.0
@@ -6992,8 +6927,6 @@ snapshots:
       get-intrinsic: 1.3.0
       has-tostringtag: 1.0.2
       hasown: 2.0.2
-
-  es-toolkit@1.36.0: {}
 
   es-toolkit@1.39.10: {}
 
@@ -7606,39 +7539,6 @@ snapshots:
       ink: 6.3.0(@types/react@19.1.13)(react@19.1.1)
       react: 19.1.1
 
-  ink@5.2.0(@types/react@19.1.13)(react@18.3.1):
-    dependencies:
-      '@alcalzone/ansi-tokenize': 0.1.3
-      ansi-escapes: 7.0.0
-      ansi-styles: 6.2.1
-      auto-bind: 5.0.1
-      chalk: 5.4.1
-      cli-boxes: 3.0.0
-      cli-cursor: 4.0.0
-      cli-truncate: 4.0.0
-      code-excerpt: 4.0.0
-      es-toolkit: 1.36.0
-      indent-string: 5.0.0
-      is-in-ci: 1.0.0
-      patch-console: 2.0.0
-      react: 18.3.1
-      react-reconciler: 0.29.2(react@18.3.1)
-      scheduler: 0.23.2
-      signal-exit: 3.0.7
-      slice-ansi: 7.1.0
-      stack-utils: 2.0.6
-      string-width: 7.2.0
-      type-fest: 4.40.1
-      widest-line: 5.0.0
-      wrap-ansi: 9.0.0
-      ws: 8.18.1
-      yoga-layout: 3.2.1
-    optionalDependencies:
-      '@types/react': 19.1.13
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-
   ink@6.3.0(@types/react@19.1.13)(react@19.1.1):
     dependencies:
       '@alcalzone/ansi-tokenize': 0.2.0
@@ -7739,8 +7639,6 @@ snapshots:
       is-extglob: 2.1.1
 
   is-gzip@1.0.0: {}
-
-  is-in-ci@1.0.0: {}
 
   is-in-ci@2.0.0: {}
 
@@ -8350,10 +8248,6 @@ snapshots:
 
   longest@2.0.1: {}
 
-  loose-envify@1.4.0:
-    dependencies:
-      js-tokens: 4.0.0
-
   lowdb@1.0.0:
     dependencies:
       graceful-fs: 4.2.11
@@ -8855,20 +8749,10 @@ snapshots:
 
   react-is@18.3.1: {}
 
-  react-reconciler@0.29.2(react@18.3.1):
-    dependencies:
-      loose-envify: 1.4.0
-      react: 18.3.1
-      scheduler: 0.23.2
-
   react-reconciler@0.32.0(react@19.1.1):
     dependencies:
       react: 19.1.1
       scheduler: 0.26.0
-
-  react@18.3.1:
-    dependencies:
-      loose-envify: 1.4.0
 
   react@19.1.1: {}
 
@@ -9008,10 +8892,6 @@ snapshots:
   safe-stable-stringify@2.5.0: {}
 
   safer-buffer@2.1.2: {}
-
-  scheduler@0.23.2:
-    dependencies:
-      loose-envify: 1.4.0
 
   scheduler@0.26.0: {}
 

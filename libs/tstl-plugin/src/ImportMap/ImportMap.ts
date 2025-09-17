@@ -1,10 +1,7 @@
 export class ImportMap {
     private imports = new Set<string>();
 
-    constructor() {
-        // Needed for now: https://github.com/crankscript/crankscript/issues/67
-        this.add('keyboard');
-    }
+    constructor() {}
 
     toArray() {
         return Array.from(this.imports);
