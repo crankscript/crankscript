@@ -17,7 +17,8 @@
         "pretest": "pnpm -r build-dev",
         "changeset": "changeset",
         "version-packages": "changeset version",
-        "publish-packages": "changeset publish"
+        "publish-packages": "changeset publish",
+        "ship": "tsx scripts/ship.ts"
     },
     "author": {
         "name": "Alberto Piu"
@@ -70,6 +71,7 @@
         "jest": "^29.7.0",
         "jest-environment-node": "^29.7.0",
         "lint-staged": "^16.1.6",
+        "marked-terminal": "^7.3.0",
         "nodemon": "^3.1.9",
         "patch-package": "^8.0.0",
         "ts-jest": "^29.2.5",

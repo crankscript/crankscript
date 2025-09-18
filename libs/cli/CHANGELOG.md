@@ -1,5 +1,11 @@
 # crankscript
 
+## 0.18.2
+
+### Patch Changes
+
+- [#77](https://github.com/crankscript/crankscript/pull/77) [`a9c82c2`](https://github.com/crankscript/crankscript/commit/a9c82c258c2a97ee578d1f52a57ffb46cecb5a3b) Thanks [@alberteddu](https://github.com/alberteddu)! - Fixed a bug that would prevent simulating a single file
+
 ## 0.18.1
 
 ### Patch Changes

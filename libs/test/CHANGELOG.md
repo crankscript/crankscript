@@ -1,5 +1,14 @@
 # @crankscript/test
 
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies [[`a9c82c2`](https://github.com/crankscript/crankscript/commit/a9c82c258c2a97ee578d1f52a57ffb46cecb5a3b), [`a9c82c2`](https://github.com/crankscript/crankscript/commit/a9c82c258c2a97ee578d1f52a57ffb46cecb5a3b), [`a9c82c2`](https://github.com/crankscript/crankscript/commit/a9c82c258c2a97ee578d1f52a57ffb46cecb5a3b), [`a9c82c2`](https://github.com/crankscript/crankscript/commit/a9c82c258c2a97ee578d1f52a57ffb46cecb5a3b)]:
+  - @crankscript/core@0.3.1
+  - @crankscript/types@2.0.0
+  - crankscript@0.18.2
+
 ## 0.1.1
 
 ### Patch Changes

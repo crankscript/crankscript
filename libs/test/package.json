@@ -1,6 +1,6 @@
 {
     "name": "@crankscript/test",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "author": "Alberto Piu",
     "license": "MIT",
     "type": "commonjs",
@@ -12,7 +12,7 @@
     "dependencies": {
         "@crankscript/core": "workspace:*",
         "@crankscript/types": "workspace:*",
-        "crankscript": "0.18.1"
+        "crankscript": "workspace:*"
     },
     "peerDependencies": {
         "lua-types": "*"

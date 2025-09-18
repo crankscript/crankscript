@@ -1,6 +1,6 @@
 {
     "name": "@crankscript/core",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "license": "MIT",
     "scripts": {
         "build": "tstl -p tsconfig.lua.json && echo 'import \"CoreLibs/keyboard\"' | cat - ./src/index.lua > ./src/index.lua.tmp && mv ./src/index.lua.tmp ./src/index.lua && mkdir -p ../../dist/libs/core && cp -r ./src ../../dist/libs/core/ && cp ./package.json ../../dist/libs/core/",

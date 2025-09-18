@@ -1,6 +1,6 @@
 {
     "name": "@crankscript/types",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "scripts": {
         "build": "mkdir -p ../../dist/libs/types && cp -r ./types ../../dist/libs/types/ && cp ./package.json ../../dist/libs/types/",
         "test": "echo 'No tests for types package'",
