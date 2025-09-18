@@ -1,8 +1,8 @@
 import { cranktest } from '../../../libs/test/src/import';
 import { BaseClass, MiddleClass, ParameterClass } from '../shared-test-classes';
 
-cranktest('Constructor patterns', suite => {
-    suite.spec('should handle default parameters', predict => {
+cranktest('Constructor patterns', (suite) => {
+    suite.spec('should handle default parameters', (predict) => {
         const base1 = new BaseClass();
         const base2 = new BaseClass('Custom');
 
@@ -10,7 +10,7 @@ cranktest('Constructor patterns', suite => {
         predict.equals(base2.title, 'Custom');
     });
 
-    suite.spec('should handle multiple parameters with defaults', predict => {
+    suite.spec('should handle multiple parameters with defaults', (predict) => {
         const middle1 = new MiddleClass();
         const middle2 = new MiddleClass('Custom');
         const middle3 = new MiddleClass('Custom', 5);
@@ -25,7 +25,7 @@ cranktest('Constructor patterns', suite => {
         predict.equals(middle3.level, 5);
     });
 
-    suite.spec('should handle constructor parameter shorthand', predict => {
+    suite.spec('should handle constructor parameter shorthand', (predict) => {
         const param = new ParameterClass('test', 42, false);
 
         predict.equals(param.publicProp, 'test');
@@ -35,7 +35,7 @@ cranktest('Constructor patterns', suite => {
 
     suite.spec(
         'should handle constructor parameter shorthand with defaults',
-        predict => {
+        (predict) => {
             const param = new ParameterClass('test', 42);
 
             predict.equals(param.publicProp, 'test');

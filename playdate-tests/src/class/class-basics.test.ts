@@ -1,34 +1,34 @@
 import {
+    BaseClass,
+    DerivedClass,
     Example,
     Example2,
-    BaseClass,
     MiddleClass,
-    DerivedClass,
 } from '@/shared-test-classes';
 import { cranktest } from '../../../libs/test/src/import';
 
 cranktest('Class basics', () => {
-    cranktest('Basic class functionality', suite => {
-        suite.spec('should create an instance', predict => {
+    cranktest('Basic class functionality', (suite) => {
+        suite.spec('should create an instance', (predict) => {
             const example = new Example();
             predict.equals(example.title, 'Example');
         });
 
-        suite.spec('should create an instance of a subclass', predict => {
+        suite.spec('should create an instance of a subclass', (predict) => {
             const example = new Example2();
             predict.equals(example.title, 'Example2');
         });
 
         suite.spec(
             'should be able to check for the type of an instance',
-            predict => {
+            (predict) => {
                 const example = new Example();
                 predict.isTrue(example instanceof Example);
                 predict.isFalse(example instanceof Example2);
             },
         );
 
-        suite.spec('should support extended instanceof checks', predict => {
+        suite.spec('should support extended instanceof checks', (predict) => {
             const base = new BaseClass();
             const middle = new MiddleClass();
             const derived = new DerivedClass();
@@ -47,8 +47,8 @@ cranktest('Class basics', () => {
         });
     });
 
-    cranktest('Multi-level inheritance', suite => {
-        suite.spec('should work with three-level inheritance', predict => {
+    cranktest('Multi-level inheritance', (suite) => {
+        suite.spec('should work with three-level inheritance', (predict) => {
             const derived = new DerivedClass('Multi', 7, 'test');
 
             predict.equals(derived.title, 'Multi');
@@ -57,7 +57,7 @@ cranktest('Class basics', () => {
             predict.equals(derived.getType(), 'derived');
         });
 
-        suite.spec('should support instanceof at all levels', predict => {
+        suite.spec('should support instanceof at all levels', (predict) => {
             const derived = new DerivedClass();
 
             predict.isTrue(derived instanceof DerivedClass);
@@ -65,7 +65,7 @@ cranktest('Class basics', () => {
             predict.isTrue(derived instanceof BaseClass);
         });
 
-        suite.spec('should call methods from any level', predict => {
+        suite.spec('should call methods from any level', (predict) => {
             const derived = new DerivedClass('Multi', 7, 'test');
 
             predict.equals(derived.getTitle(), 'Multi');

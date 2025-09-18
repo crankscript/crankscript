@@ -7,7 +7,14 @@
     },
     "files": {
         "ignoreUnknown": false,
-        "includes": ["libs/cli/src/**/*", "libs/cli/scripts/**/*"]
+        "includes": [
+            "libs/cli/src/**/*",
+            "libs/cli/scripts/**/*",
+            "playdate-tests/src/**/*",
+            "libs/types/types/**/*.d.ts",
+            "examples/**/*.ts",
+            "scripts/**/*.ts"
+        ]
     },
     "formatter": {
         "enabled": true,
@@ -24,6 +31,9 @@
                     "level": "error",
                     "options": {}
                 }
+            },
+            "suspicious": {
+                "noTsIgnore": "off"
             }
         }
     },

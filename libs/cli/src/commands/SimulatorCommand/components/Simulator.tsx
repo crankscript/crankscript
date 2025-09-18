@@ -30,7 +30,7 @@ export const Simulator = ({
     const temporaryFolder = entryFile
         ? createTemporaryFolderPathFromEntryFile(entryFile)
         : undefined;
-    const gameOutputPath = entryFile ? temporaryFolder : undefined;
+    const gameOutputPath = entryFile ? '' : undefined;
     const luaOutputPath = entryFile
         ? temporaryFolder
             ? join(temporaryFolder)

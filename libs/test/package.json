@@ -10,8 +10,8 @@
         "build": "mkdir -p ../../dist/libs/test && cp -r ./Source ../../dist/libs/test/Source && cp ./package.json ../../dist/libs/test/package.json"
     },
     "dependencies": {
-        "@crankscript/core": "0.3.0",
-        "@crankscript/types": "1.1.0",
+        "@crankscript/core": "workspace:*",
+        "@crankscript/types": "workspace:*",
         "crankscript": "0.18.1"
     },
     "peerDependencies": {

@@ -40,8 +40,8 @@ class ConcreteChildWithFieldOverride extends AbstractBase {
     }
 }
 
-cranktest('Abstract class field initialization', suite => {
-    suite.spec('should initialize fields from abstract parent', predict => {
+cranktest('Abstract class field initialization', (suite) => {
+    suite.spec('should initialize fields from abstract parent', (predict) => {
         const child = new ConcreteChild();
 
         predict.equals(child.getAbstractCount(), 100);
@@ -49,28 +49,28 @@ cranktest('Abstract class field initialization', suite => {
 
     suite.spec(
         'should handle constructor override of parent field',
-        predict => {
+        (predict) => {
             const child = new ConcreteChild();
 
             predict.equals(child.getBaseField(), 'overridden-in-constructor');
         },
     );
 
-    suite.spec('should handle child field initializer override', predict => {
+    suite.spec('should handle child field initializer override', (predict) => {
         const child = new ConcreteChildWithFieldOverride();
 
         predict.equals(child.getBaseField(), 'child-override-value');
         predict.equals(child.getAbstractCount(), 100);
     });
 
-    suite.spec('should support instanceof with abstract parent', predict => {
+    suite.spec('should support instanceof with abstract parent', (predict) => {
         const child = new ConcreteChild();
 
         predict.isTrue(child instanceof ConcreteChild);
         predict.isTrue(child instanceof AbstractBase);
     });
 
-    suite.spec('should call methods from abstract parent', predict => {
+    suite.spec('should call methods from abstract parent', (predict) => {
         const child = new ConcreteChild();
 
         predict.equals(child.getAbstractCount(), 100);
