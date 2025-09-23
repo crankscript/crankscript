@@ -84,6 +84,11 @@ Please report any issues you encounter.
 > Crankscript exists thanks to [this Playdate Dev Forum thread](https://devforum.play.date/t/playdate-sdk-with-typescript/). Special thanks to Andy for contributing the TypeScript-to-Lua plugin and the initial d.ts file, and to Orta for providing the require transformation code.
 
 > [!NOTE]
+> This repository uses a headless Playdate Simulator to run the Lua test suite.
+> The CI configuration is based on the clever [workflow file](https://github.com/samdze/playdate-nim/blob/main/.github/workflows/build.yml) from 
+> [@samdze](https://github.com/samdze)'s [playdate-nim](https://github.com/samdze/playdate-nim).
+
+> [!NOTE]
 > Crankscript is not affiliated with Playdate or Panic Inc. in any way.
 > The documentation excerpts present in this repository are owned by Panic Inc. and are provided here solely for reference
 > within the context of Playdate game development. I do not claim ownership of any part of the documentation.
