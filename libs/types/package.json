@@ -1,6 +1,6 @@
 {
     "name": "@crankscript/types",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "scripts": {
         "prebuild": "tsx scripts/validate-types.ts",
         "build": "mkdir -p ../../dist/libs/types && cp -r ./types ../../dist/libs/types/ && cp ./package.json ../../dist/libs/types/",

@@ -1,5 +1,13 @@
 # @crankscript/test
 
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies [[`1209a46`](https://github.com/crankscript/crankscript/commit/1209a46535cd75c0c15fdbe9077dbfdf73739649)]:
+  - @crankscript/types@2.1.0
+  - crankscript@0.19.0
+
 ## 0.1.2
 
 ### Patch Changes

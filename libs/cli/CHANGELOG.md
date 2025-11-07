@@ -1,5 +1,11 @@
 # crankscript
 
+## 0.19.0
+
+### Minor Changes
+
+- [#79](https://github.com/crankscript/crankscript/pull/79) [`1209a46`](https://github.com/crankscript/crankscript/commit/1209a46535cd75c0c15fdbe9077dbfdf73739649) Thanks [@alberteddu](https://github.com/alberteddu)! - add types for 3.0.1
+
 ## 0.18.2
 
 ### Patch Changes
