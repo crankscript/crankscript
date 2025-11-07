@@ -34,7 +34,7 @@ jobs:
     lua-runtime-tests:
         name: Lua runtime tests
         runs-on: ubuntu-latest
-        container: node:20
+        container: ubuntu:24.04
         timeout-minutes: 10
         steps:
             - name: Checkout
@@ -42,8 +42,13 @@ jobs:
               with:
                   fetch-depth: 0
 
-            - name: Setup Node
-              uses: pnpm/action-setup@v4
+            - name: Install Node.js and pnpm
+              run: |
+                  apt-get update
+                  apt-get install -y curl ca-certificates
+                  curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+                  apt-get install -y nodejs
+                  npm install -g pnpm
 
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
@@ -51,8 +56,16 @@ jobs:
             - name: Build tstl-plugin and move to CLI
               run: pnpm --filter @crankscript/tstl-library build-dev
 
+            - name: Detect latest Playdate SDK version
+              id: detect-version
+              run: |
+                  # Find all version files in types folder, exclude latest.d.ts
+                  VERSION=$(ls libs/types/types/*.d.ts | grep -v latest.d.ts | sed 's|libs/types/types/||' | sed 's|\.d\.ts||' | sort -V | tail -n 1)
+                  echo "version=$VERSION" >> $GITHUB_OUTPUT
+                  echo "Detected latest Playdate SDK version: $VERSION"
+
             - name: Install headless dependencies
-              run: apt-get update && apt-get install -y xvfb libgtk-3-0 sudo libwebkit2gtk-4.0 libwebkit2gtk-4.0-dev libsdl2-dev pulseaudio
+              run: apt-get update && apt-get install -y wget xvfb libgtk-3-0 sudo libwebkit2gtk-4.1 libsdl2-dev pulseaudio
 
             - name: Setup audio sink
               run: |
@@ -62,9 +75,10 @@ jobs:
 
             - name: Setup Playdate SDK
               run: |
-                  wget -q https://download.panic.com/playdate_sdk/Linux/PlaydateSDK-2.7.5.tar.gz
-                  tar -xzf PlaydateSDK-2.7.5.tar.gz
-                  echo "PLAYDATE_SDK_PATH=$(pwd)/PlaydateSDK-2.7.5" >> $GITHUB_ENV
+                  VERSION="${{ steps.detect-version.outputs.version }}"
+                  wget -q "https://download.panic.com/playdate_sdk/Linux/PlaydateSDK-${VERSION}.tar.gz"
+                  tar -xzf "PlaydateSDK-${VERSION}.tar.gz"
+                  echo "PLAYDATE_SDK_PATH=$(pwd)/PlaydateSDK-${VERSION}" >> $GITHUB_ENV
 
             - name: Create simulator ini
               run: |
@@ -77,6 +91,7 @@ jobs:
 
             - name: Run Lua runtime tests
               run: |
+                  VERSION="${{ steps.detect-version.outputs.version }}"
                   export HOME="/config"
-                  export PLAYDATE_SDK_PATH=$(pwd)/PlaydateSDK-2.7.5
+                  export PLAYDATE_SDK_PATH=$(pwd)/PlaydateSDK-${VERSION}
                   xvfb-run -a pnpm run crankscript-dev test --path playdate-tests

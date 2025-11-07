@@ -2,6 +2,7 @@
     "name": "@crankscript/types",
     "version": "2.0.0",
     "scripts": {
+        "prebuild": "tsx scripts/validate-types.ts",
         "build": "mkdir -p ../../dist/libs/types && cp -r ./types ../../dist/libs/types/ && cp ./package.json ../../dist/libs/types/",
         "test": "echo 'No tests for types package'",
         "lint": "echo 'No linting for types package'"
