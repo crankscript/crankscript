@@ -40,6 +40,17 @@ export class SimulatorCommand extends EnvironmentAwareCommand {
         validator: t.isArray(t.isString()),
     });
 
+    entryPoint = Option.String('-e,--entry-point', {
+        description:
+            'Specify the entry point. The output file will still be named main.lua',
+        validator: t.isString(),
+    });
+
+    exitPointFilename = Option.String('-o,--exit-point-filename', 'main.lua', {
+        description: 'Specify the exit point filename.',
+        validator: t.isString(),
+    });
+
     projectPath = projectPathOption;
 
     override renderWithEnvironment(environment: Environment) {
@@ -62,9 +73,11 @@ export class SimulatorCommand extends EnvironmentAwareCommand {
                 watch={this.watch}
                 recompileOnly={this.recompileOnly}
                 background={this.background}
-                entryFile={this.file}
+                isolatedFile={this.file}
                 additionalGlobs={this.additionalGlobs}
                 watchEntryFileOnly={!!this.file}
+                entryPoint={this.entryPoint}
+                exitPointFilename={this.exitPointFilename}
             />
         );
 
