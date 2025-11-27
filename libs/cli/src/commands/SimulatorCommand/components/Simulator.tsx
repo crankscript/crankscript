@@ -12,9 +12,11 @@ interface Props {
     watch?: boolean;
     recompileOnly?: boolean;
     background?: boolean;
-    entryFile?: string;
+    isolatedFile?: string;
     additionalGlobs?: string[];
     watchEntryFileOnly?: boolean;
+    entryPoint?: string;
+    exitPointFilename?: string;
 }
 
 export const Simulator = ({
@@ -23,20 +25,23 @@ export const Simulator = ({
     watch = false,
     recompileOnly = false,
     background = false,
-    entryFile,
+    isolatedFile,
     additionalGlobs = [],
     watchEntryFileOnly = false,
+    entryPoint,
+    exitPointFilename,
 }: Props) => {
-    const temporaryFolder = entryFile
-        ? createTemporaryFolderPathFromEntryFile(entryFile)
+    const temporaryFolder = isolatedFile
+        ? createTemporaryFolderPathFromEntryFile(isolatedFile)
         : undefined;
-    const gameOutputPath = entryFile ? '' : undefined;
-    const luaOutputPath = entryFile
+    const gameOutputPath = isolatedFile ? '' : undefined;
+    const luaOutputPath = isolatedFile
         ? temporaryFolder
             ? join(temporaryFolder)
             : undefined
         : undefined;
-    const projectPath = entryFile && temporaryFolder ? temporaryFolder : path;
+    const projectPath =
+        isolatedFile && temporaryFolder ? temporaryFolder : path;
 
     const {
         tasks,
@@ -51,12 +56,14 @@ export const Simulator = ({
         watchForChanges: watch,
         recompileOnly,
         background,
-        entryFile,
+        entryFile: isolatedFile,
         gameOutputPath,
         luaOutputPath,
-        requireWithinProjectPath: !entryFile,
+        requireWithinProjectPath: !isolatedFile,
         additionalGlobs,
         watchEntryFileOnly,
+        entryPoint,
+        exitPointFilename,
     });
 
     return (

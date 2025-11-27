@@ -35,7 +35,9 @@ export const validateExitPoint = ({
     }
 
     if (requireWithinProjectPath && !exitDir.startsWith(resolvedPath)) {
-        throw new Error(`Exit path must be inside project path`);
+        throw new Error(
+            `Exit path "${resolvedExit}" must be inside project path "${resolvedPath}"`,
+        );
     }
 
     return {

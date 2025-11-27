@@ -26,6 +26,8 @@ interface Props {
     sourceName?: string;
     watchEntryFileOnly?: boolean;
     preventAutoQuit?: boolean;
+    entryPoint?: string;
+    exitPointFilename?: string;
 }
 
 export const useSimulatorTasks = ({
@@ -43,6 +45,8 @@ export const useSimulatorTasks = ({
     targetName,
     watchEntryFileOnly = false,
     preventAutoQuit = false,
+    entryPoint,
+    exitPointFilename = 'main.lua',
 }: Props) => {
     const [isWatching, setIsWatching] = useState(false);
     const [hasChanged, setHasChanged] = useState(false);
@@ -59,7 +63,7 @@ export const useSimulatorTasks = ({
     const transpileTasks = useTranspileTasks({
         entryPoint: validateEntryPoint({
             projectPath: path,
-            entryFile: entryFile ?? join(path, 'src', 'index.ts'),
+            entryFile: entryFile ?? entryPoint ?? join(path, 'src', 'index.ts'),
             requireWithinProjectPath,
         }),
         exitPoint: validateExitPoint({
@@ -68,7 +72,7 @@ export const useSimulatorTasks = ({
                 ...(luaOutputPath
                     ? [luaOutputPath, sourceName ?? 'Source']
                     : [path, sourceName ?? 'Source']),
-                'main.lua',
+                exitPointFilename,
             ),
             requireWithinProjectPath,
         }),
