@@ -1,5 +1,13 @@
 # crankscript
 
+## 0.19.1
+
+### Patch Changes
+
+- [#81](https://github.com/crankscript/crankscript/pull/81) [`27022a4`](https://github.com/crankscript/crankscript/commit/27022a41052ed6c472d8fe37dc9d5138a61e1a70) Thanks [@alberteddu](https://github.com/alberteddu)! - lock @inkjs/ui
+
+- [#83](https://github.com/crankscript/crankscript/pull/83) [`553d58b`](https://github.com/crankscript/crankscript/commit/553d58bb65cf2c6addda60a567773c4bbe627279) Thanks [@alberteddu](https://github.com/alberteddu)! - accept entry and exit point when simulating
+
 ## 0.19.0
 
 ### Minor Changes
