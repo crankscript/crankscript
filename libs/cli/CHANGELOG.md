@@ -1,5 +1,11 @@
 # crankscript
 
+## 0.19.2
+
+### Patch Changes
+
+- [#87](https://github.com/crankscript/crankscript/pull/87) [`6235cb6`](https://github.com/crankscript/crankscript/commit/6235cb6423484c0015c77992810dd7b96367ac83) Thanks [@alberteddu](https://github.com/alberteddu)! - Improve type generation
+
 ## 0.19.1
 
 ### Patch Changes

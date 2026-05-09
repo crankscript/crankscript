@@ -1,5 +1,17 @@
 # @crankscript/test
 
+## 0.2.0
+
+### Minor Changes
+
+- [#87](https://github.com/crankscript/crankscript/pull/87) [`6235cb6`](https://github.com/crankscript/crankscript/commit/6235cb6423484c0015c77992810dd7b96367ac83) Thanks [@alberteddu](https://github.com/alberteddu)! - Allow equals to compare tables
+
+### Patch Changes
+
+- Updated dependencies [[`6235cb6`](https://github.com/crankscript/crankscript/commit/6235cb6423484c0015c77992810dd7b96367ac83), [`6235cb6`](https://github.com/crankscript/crankscript/commit/6235cb6423484c0015c77992810dd7b96367ac83)]:
+  - crankscript@0.19.2
+  - @crankscript/types@2.2.0
+
 ## 0.1.4
 
 ### Patch Changes

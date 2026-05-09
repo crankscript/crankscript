@@ -1,5 +1,11 @@
 # @crankscript/types
 
+## 2.2.0
+
+### Minor Changes
+
+- [#87](https://github.com/crankscript/crankscript/pull/87) [`6235cb6`](https://github.com/crankscript/crankscript/commit/6235cb6423484c0015c77992810dd7b96367ac83) Thanks [@alberteddu](https://github.com/alberteddu)! - Add types for 3.0.6
+
 ## 2.1.0
 
 ### Minor Changes
