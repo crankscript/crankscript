@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 interface TypeFile {
@@ -64,17 +64,14 @@ async function main() {
 }
 
 function getVersionFiles(typesDir: string): TypeFile[] {
-    const files = [
-        '2.6.0.d.ts',
-        '2.7.4.d.ts',
-        '2.7.5.d.ts',
-        '2.7.6.d.ts',
-        '3.0.1.d.ts',
-    ];
-
+    const files = readdirSync(typesDir).filter(file => file.endsWith('.d.ts'));
     const versionFiles: TypeFile[] = [];
 
     for (const file of files) {
+        if (file === 'latest.d.ts') {
+            continue;
+        };
+
         const filePath = join(typesDir, file);
         if (existsSync(filePath)) {
             const content = readFileSync(filePath, 'utf-8');

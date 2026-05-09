@@ -5,6 +5,10 @@ import { cranktest } from '../../libs/test/src/cranktest';
 
 cranktest('Constants', (suite) => {
     // @crankscript-constant-tests-start
+    suite.spec('global', (t) => {
+        t.equals(kTextAlignment, { left: 0, right: 1, center: 2 });
+    });
+
     suite.spec('playdate', (t) => {
         t.equals(playdate.kButtonA, 32);
         t.equals(playdate.kButtonB, 16);
