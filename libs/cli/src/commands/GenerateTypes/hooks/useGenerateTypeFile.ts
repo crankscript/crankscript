@@ -90,7 +90,7 @@ const generateNamespace = (
         });
     }
 
-    if (name === 'playdate') {
+    if (namespace === '') {
         subject.addStatements(typeProvider.getStatements());
     }
 

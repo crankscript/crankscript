@@ -2,7 +2,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const jsonPath = join(__dirname, '../libs/cli/src/data/2.7.6.json');
+const jsonPath = join(__dirname, '../libs/cli/src/data/3.0.6.json');
 const data = JSON.parse(readFileSync(jsonPath, 'utf8'));
 
 const generateConstantTests = () => {
@@ -18,11 +18,11 @@ const generateConstantTests = () => {
                 typeof constant === 'string' ? constant : constant.name;
             const expectedValue =
                 typeof constant === 'string' ? '0' : constant.type;
-            const fullPath = `${namespace}.${name}`;
+            const fullPath = namespace ? `${namespace}.${name}` : name;
             assertions.push(`        t.equals(${fullPath}, ${expectedValue});`);
         }
 
-        testCases.push(`    suite.spec('${namespace}', (t) => {
+        testCases.push(`    suite.spec('${namespace || 'global'}', (t) => {
 ${assertions.join('\n')}
     });`);
     }

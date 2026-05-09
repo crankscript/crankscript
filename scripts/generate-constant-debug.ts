@@ -2,7 +2,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const jsonPath = join(__dirname, '../libs/cli/src/data/2.7.6.json');
+const jsonPath = join(__dirname, '../libs/cli/src/data/3.0.6.json');
 const data = JSON.parse(readFileSync(jsonPath, 'utf8'));
 
 const generateConstantDebugCode = () => {
@@ -16,7 +16,7 @@ const generateConstantDebugCode = () => {
         if (!Array.isArray(constants)) continue;
 
         collectStatements.push(`    results['${namespace}'] = [];`);
-        printStatements.push(`    print('=== ${namespace} ===');`);
+        printStatements.push(`    print('=== ${namespace || 'global'} ===');`);
 
         for (const constant of constants) {
             const name =
@@ -24,7 +24,7 @@ const generateConstantDebugCode = () => {
             const expectedType =
                 typeof constant === 'string' ? '0' : constant.type;
 
-            const fullPath = `${namespace}.${name}`;
+            const fullPath = namespace ? `${namespace}.${name}` : name;
             printStatements.push(
                 `    print('${name} =', ${fullPath}, '(expected: ${expectedType})');`,
             );
