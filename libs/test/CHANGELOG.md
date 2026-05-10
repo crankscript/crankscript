@@ -1,5 +1,13 @@
 # @crankscript/test
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @crankscript/types@2.2.1
+  - crankscript@0.19.3
+
 ## 0.2.0
 
 ### Minor Changes

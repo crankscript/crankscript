@@ -1,5 +1,11 @@
 # crankscript
 
+## 0.19.3
+
+### Patch Changes
+
+- Use const enums
+
 ## 0.19.2
 
 ### Patch Changes

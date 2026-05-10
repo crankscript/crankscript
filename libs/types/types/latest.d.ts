@@ -16,28 +16,28 @@
 export {};
 
 declare global {
-    enum PlaydateColor {
+    const enum PlaydateColor {
         Black = 0,
         White = 1,
         Clear = 2,
         XOR = 3,
     }
-    enum PlaydatePrintableColor {
+    const enum PlaydatePrintableColor {
         Black = 0,
         White = 1,
         Clear = 2,
     }
-    enum PlaydateFlip {
+    const enum PlaydateFlip {
         Unflipped = 0,
         FlippedX = 1,
         FlippedY = 2,
         FlippedXY = 3,
     }
-    enum PlaydatePolygonFill {
+    const enum PlaydatePolygonFill {
         NonZero = 0,
         EvenOdd = 1,
     }
-    enum PlaydateButton {
+    const enum PlaydateButton {
         Left = 1,
         Right = 2,
         Up = 4,
@@ -45,16 +45,16 @@ declare global {
         B = 16,
         A = 32,
     }
-    enum PlaydateLanguage {
+    const enum PlaydateLanguage {
         English = 0,
         Japanese = 1,
     }
-    enum PlaydateFileOpenMode {
+    const enum PlaydateFileOpenMode {
         Read = 3,
         Write = 4,
         Append = 8,
     }
-    enum PlaydateDitherType {
+    const enum PlaydateDitherType {
         None = 0,
         DiagonalLine = 1,
         VerticalLine = 2,
@@ -67,12 +67,12 @@ declare global {
         Burkes = 9,
         Atkinson = 10,
     }
-    enum PlaydateLineCapStyle {
+    const enum PlaydateLineCapStyle {
         Butt = 0,
         Square = 1,
         Round = 2,
     }
-    enum PlaydateDrawMode {
+    const enum PlaydateDrawMode {
         Copy = 0,
         WhiteTransparent = 1,
         BlackTransparent = 2,
@@ -82,44 +82,44 @@ declare global {
         NXOR = 6,
         Inverted = 7,
     }
-    enum PlaydateStrokeLocation {
+    const enum PlaydateStrokeLocation {
         Centered = 0,
         Inside = 1,
         Outside = 2,
     }
-    enum PlaydateFontVariant {
+    const enum PlaydateFontVariant {
         Normal = 0,
         Bold = 1,
         Italic = 2,
     }
-    enum PlaydateAlignment {
+    const enum PlaydateAlignment {
         Left = 33554432,
         Right = 33554434,
         Center = 33554433,
     }
-    enum PlaydateTextAlignment {
+    const enum PlaydateTextAlignment {
         Left = 0,
         Right = 1,
         Center = 2,
     }
-    enum PlaydateCollisionResponse {
+    const enum PlaydateCollisionResponse {
         Slide = 0,
         Freeze = 1,
         Overlap = 2,
         Bounce = 3,
     }
-    enum PlaydateCapitalizationBehavior {
+    const enum PlaydateCapitalizationBehavior {
         Normal = 1,
         Words = 2,
         Sentences = 3,
     }
-    enum PlaydateSoundFormat {
+    const enum PlaydateSoundFormat {
         '8bitMono' = 0,
         '8bitStereo' = 1,
         '16bitMono' = 2,
         '16bitStereo' = 3,
     }
-    enum PlaydateSoundWave {
+    const enum PlaydateSoundWave {
         Square = 0,
         Triangle = 1,
         Sine = 2,
@@ -129,7 +129,7 @@ declare global {
         PODigital = 6,
         POVosim = 7,
     }
-    enum PlaydateSoundLfoType {
+    const enum PlaydateSoundLfoType {
         Square = 0,
         Triangle = 1,
         Sine = 2,
@@ -137,7 +137,7 @@ declare global {
         SawtoothUp = 4,
         SawtoothDown = 5,
     }
-    enum PlaydateSoundTwoPoleFilterType {
+    const enum PlaydateSoundTwoPoleFilterType {
         LowPass = 0,
         HighPass = 1,
         BandPass = 2,
@@ -146,17 +146,17 @@ declare global {
         LowShelf = 5,
         HighShelf = 6,
     }
-    enum PlaydateSeekWhence {
+    const enum PlaydateSeekWhence {
         Set = 0,
         FromCurrent = 1,
         FromEnd = 2,
     }
-    enum PlaydateWrapMode {
+    const enum PlaydateWrapMode {
         Clip = 16777216,
         Character = 16777217,
         Word = 16777218,
     }
-    enum PlaydateNetworkStatus {
+    const enum PlaydateNetworkStatus {
         NotConnected = 0,
         Connected = 1,
         NotAvailable = 2,
@@ -326,266 +326,6 @@ declare global {
     function where(): string;
 
     namespace playdate {
-        enum PlaydateColor {
-            Black = 0,
-            White = 1,
-            Clear = 2,
-            XOR = 3,
-        }
-        enum PlaydatePrintableColor {
-            Black = 0,
-            White = 1,
-            Clear = 2,
-        }
-        enum PlaydateFlip {
-            Unflipped = 0,
-            FlippedX = 1,
-            FlippedY = 2,
-            FlippedXY = 3,
-        }
-        enum PlaydatePolygonFill {
-            NonZero = 0,
-            EvenOdd = 1,
-        }
-        enum PlaydateButton {
-            Left = 1,
-            Right = 2,
-            Up = 4,
-            Down = 8,
-            B = 16,
-            A = 32,
-        }
-        enum PlaydateLanguage {
-            English = 0,
-            Japanese = 1,
-        }
-        enum PlaydateFileOpenMode {
-            Read = 3,
-            Write = 4,
-            Append = 8,
-        }
-        enum PlaydateDitherType {
-            None = 0,
-            DiagonalLine = 1,
-            VerticalLine = 2,
-            HorizontalLine = 3,
-            Screen = 4,
-            Bayer2x2 = 5,
-            Bayer4x4 = 6,
-            Bayer8x8 = 7,
-            FloydSteinberg = 8,
-            Burkes = 9,
-            Atkinson = 10,
-        }
-        enum PlaydateLineCapStyle {
-            Butt = 0,
-            Square = 1,
-            Round = 2,
-        }
-        enum PlaydateDrawMode {
-            Copy = 0,
-            WhiteTransparent = 1,
-            BlackTransparent = 2,
-            FillWhite = 3,
-            FillBlack = 4,
-            XOR = 5,
-            NXOR = 6,
-            Inverted = 7,
-        }
-        enum PlaydateStrokeLocation {
-            Centered = 0,
-            Inside = 1,
-            Outside = 2,
-        }
-        enum PlaydateFontVariant {
-            Normal = 0,
-            Bold = 1,
-            Italic = 2,
-        }
-        enum PlaydateAlignment {
-            Left = 33554432,
-            Right = 33554434,
-            Center = 33554433,
-        }
-        enum PlaydateTextAlignment {
-            Left = 0,
-            Right = 1,
-            Center = 2,
-        }
-        enum PlaydateCollisionResponse {
-            Slide = 0,
-            Freeze = 1,
-            Overlap = 2,
-            Bounce = 3,
-        }
-        enum PlaydateCapitalizationBehavior {
-            Normal = 1,
-            Words = 2,
-            Sentences = 3,
-        }
-        enum PlaydateSoundFormat {
-            '8bitMono' = 0,
-            '8bitStereo' = 1,
-            '16bitMono' = 2,
-            '16bitStereo' = 3,
-        }
-        enum PlaydateSoundWave {
-            Square = 0,
-            Triangle = 1,
-            Sine = 2,
-            Noise = 3,
-            Sawtooth = 4,
-            POPhase = 5,
-            PODigital = 6,
-            POVosim = 7,
-        }
-        enum PlaydateSoundLfoType {
-            Square = 0,
-            Triangle = 1,
-            Sine = 2,
-            SampleAndHold = 3,
-            SawtoothUp = 4,
-            SawtoothDown = 5,
-        }
-        enum PlaydateSoundTwoPoleFilterType {
-            LowPass = 0,
-            HighPass = 1,
-            BandPass = 2,
-            Notch = 3,
-            PEQ = 4,
-            LowShelf = 5,
-            HighShelf = 6,
-        }
-        enum PlaydateSeekWhence {
-            Set = 0,
-            FromCurrent = 1,
-            FromEnd = 2,
-        }
-        enum PlaydateWrapMode {
-            Clip = 16777216,
-            Character = 16777217,
-            Word = 16777218,
-        }
-        enum PlaydateNetworkStatus {
-            NotConnected = 0,
-            Connected = 1,
-            NotAvailable = 2,
-        }
-        type PlaydateInputHandler = {
-            AButtonDown: typeof playdate.AButtonDown;
-            AButtonHeld: typeof playdate.AButtonHeld;
-            AButtonUp: typeof playdate.AButtonUp;
-            BButtonDown: typeof playdate.BButtonDown;
-            BButtonHeld: typeof playdate.BButtonHeld;
-            BButtonUp: typeof playdate.BButtonUp;
-            downButtonDown: typeof playdate.downButtonDown;
-            downButtonUp: typeof playdate.downButtonUp;
-            leftButtonDown: typeof playdate.leftButtonDown;
-            leftButtonUp: typeof playdate.leftButtonUp;
-            rightButtonDown: typeof playdate.rightButtonDown;
-            rightButtonUp: typeof playdate.rightButtonUp;
-            upButtonDown: typeof playdate.upButtonDown;
-            upButtonUp: typeof playdate.upButtonUp;
-            cranked: typeof playdate.cranked;
-            crankDocked: typeof playdate.crankDocked;
-            crankUndocked: typeof playdate.crankUndocked;
-        };
-        type PlaydateFontFamily = {
-            [K in PlaydateFontVariant]: playdate.graphics.font;
-        };
-        type PlaydateFontFamilyPaths = { [K in PlaydateFontVariant]: string };
-        type PlaydateGenericCollision<
-            TType extends PlaydateCollisionResponse,
-            TExtra = Record<string, unknown>,
-        > = {
-            sprite: playdate.graphics.sprite;
-            other: playdate.graphics.sprite;
-            type: TType;
-            overlaps: boolean;
-            ti: number;
-            move: playdate.geometry.vector2D;
-            normal: playdate.geometry.vector2D;
-            touch: playdate.geometry.point;
-            spriteRect: playdate.geometry.rect;
-            otherRect: playdate.geometry.rect;
-        } & TExtra;
-        type PlaydateCollision =
-            | PlaydateGenericCollision<
-                  typeof playdate.graphics.sprite.kCollisionTypeOverlap
-              >
-            | PlaydateGenericCollision<
-                  typeof playdate.graphics.sprite.kCollisionTypeFreeze
-              >
-            | PlaydateGenericCollision<
-                  typeof playdate.graphics.sprite.kCollisionTypeBounce,
-                  { bounce: playdate.geometry.point }
-              >
-            | PlaydateGenericCollision<
-                  typeof playdate.graphics.sprite.kCollisionTypeSlide,
-                  { slide: playdate.geometry.point }
-              >;
-        type PlaydateEasingFunction =
-            | typeof playdate.easingFunctions.linear
-            | typeof playdate.easingFunctions.inQuad
-            | typeof playdate.easingFunctions.outQuad
-            | typeof playdate.easingFunctions.inOutQuad
-            | typeof playdate.easingFunctions.outInQuad
-            | typeof playdate.easingFunctions.inCubic
-            | typeof playdate.easingFunctions.outCubic
-            | typeof playdate.easingFunctions.inOutCubic
-            | typeof playdate.easingFunctions.outInCubic
-            | typeof playdate.easingFunctions.inQuart
-            | typeof playdate.easingFunctions.outQuart
-            | typeof playdate.easingFunctions.inOutQuart
-            | typeof playdate.easingFunctions.outInQuart
-            | typeof playdate.easingFunctions.inQuint
-            | typeof playdate.easingFunctions.outQuint
-            | typeof playdate.easingFunctions.inOutQuint
-            | typeof playdate.easingFunctions.outInQuint
-            | typeof playdate.easingFunctions.inSine
-            | typeof playdate.easingFunctions.outSine
-            | typeof playdate.easingFunctions.inOutSine
-            | typeof playdate.easingFunctions.outInSine
-            | typeof playdate.easingFunctions.inExpo
-            | typeof playdate.easingFunctions.outExpo
-            | typeof playdate.easingFunctions.inOutExpo
-            | typeof playdate.easingFunctions.outInExpo
-            | typeof playdate.easingFunctions.inCirc
-            | typeof playdate.easingFunctions.outCirc
-            | typeof playdate.easingFunctions.inOutCirc
-            | typeof playdate.easingFunctions.outInCirc
-            | typeof playdate.easingFunctions.inElastic
-            | typeof playdate.easingFunctions.outElastic
-            | typeof playdate.easingFunctions.inOutElastic
-            | typeof playdate.easingFunctions.outInElastic
-            | typeof playdate.easingFunctions.inBack
-            | typeof playdate.easingFunctions.outBack
-            | typeof playdate.easingFunctions.inOutBack
-            | typeof playdate.easingFunctions.outInBack
-            | typeof playdate.easingFunctions.outBounce
-            | typeof playdate.easingFunctions.inBounce
-            | typeof playdate.easingFunctions.inOutBounce
-            | typeof playdate.easingFunctions.outInBounce;
-        type PlaydateCollisionInfo = {
-            sprite: playdate.graphics.sprite;
-            entryPoint: playdate.geometry.point;
-            exitPoint: playdate.geometry.point;
-            ti1: number;
-            ti2: number;
-        };
-        type PlaydateAudioSource =
-            | playdate.sound.fileplayer
-            | playdate.sound.sampleplayer
-            | playdate.sound.synth
-            | playdate.sound.instrument;
-        type PlaydateSoundEffect =
-            | playdate.sound.bitcrusher
-            | playdate.sound.twopolefilter
-            | playdate.sound.onepolefilter
-            | playdate.sound.ringmod
-            | playdate.sound.overdrive
-            | playdate.sound.delayline;
-
         export const kButtonA: 32;
         export const kButtonB: 16;
         export const kButtonDown: 8;
@@ -12895,266 +12635,6 @@ declare global {
     }
 
     namespace json {
-        enum PlaydateColor {
-            Black = 0,
-            White = 1,
-            Clear = 2,
-            XOR = 3,
-        }
-        enum PlaydatePrintableColor {
-            Black = 0,
-            White = 1,
-            Clear = 2,
-        }
-        enum PlaydateFlip {
-            Unflipped = 0,
-            FlippedX = 1,
-            FlippedY = 2,
-            FlippedXY = 3,
-        }
-        enum PlaydatePolygonFill {
-            NonZero = 0,
-            EvenOdd = 1,
-        }
-        enum PlaydateButton {
-            Left = 1,
-            Right = 2,
-            Up = 4,
-            Down = 8,
-            B = 16,
-            A = 32,
-        }
-        enum PlaydateLanguage {
-            English = 0,
-            Japanese = 1,
-        }
-        enum PlaydateFileOpenMode {
-            Read = 3,
-            Write = 4,
-            Append = 8,
-        }
-        enum PlaydateDitherType {
-            None = 0,
-            DiagonalLine = 1,
-            VerticalLine = 2,
-            HorizontalLine = 3,
-            Screen = 4,
-            Bayer2x2 = 5,
-            Bayer4x4 = 6,
-            Bayer8x8 = 7,
-            FloydSteinberg = 8,
-            Burkes = 9,
-            Atkinson = 10,
-        }
-        enum PlaydateLineCapStyle {
-            Butt = 0,
-            Square = 1,
-            Round = 2,
-        }
-        enum PlaydateDrawMode {
-            Copy = 0,
-            WhiteTransparent = 1,
-            BlackTransparent = 2,
-            FillWhite = 3,
-            FillBlack = 4,
-            XOR = 5,
-            NXOR = 6,
-            Inverted = 7,
-        }
-        enum PlaydateStrokeLocation {
-            Centered = 0,
-            Inside = 1,
-            Outside = 2,
-        }
-        enum PlaydateFontVariant {
-            Normal = 0,
-            Bold = 1,
-            Italic = 2,
-        }
-        enum PlaydateAlignment {
-            Left = 33554432,
-            Right = 33554434,
-            Center = 33554433,
-        }
-        enum PlaydateTextAlignment {
-            Left = 0,
-            Right = 1,
-            Center = 2,
-        }
-        enum PlaydateCollisionResponse {
-            Slide = 0,
-            Freeze = 1,
-            Overlap = 2,
-            Bounce = 3,
-        }
-        enum PlaydateCapitalizationBehavior {
-            Normal = 1,
-            Words = 2,
-            Sentences = 3,
-        }
-        enum PlaydateSoundFormat {
-            '8bitMono' = 0,
-            '8bitStereo' = 1,
-            '16bitMono' = 2,
-            '16bitStereo' = 3,
-        }
-        enum PlaydateSoundWave {
-            Square = 0,
-            Triangle = 1,
-            Sine = 2,
-            Noise = 3,
-            Sawtooth = 4,
-            POPhase = 5,
-            PODigital = 6,
-            POVosim = 7,
-        }
-        enum PlaydateSoundLfoType {
-            Square = 0,
-            Triangle = 1,
-            Sine = 2,
-            SampleAndHold = 3,
-            SawtoothUp = 4,
-            SawtoothDown = 5,
-        }
-        enum PlaydateSoundTwoPoleFilterType {
-            LowPass = 0,
-            HighPass = 1,
-            BandPass = 2,
-            Notch = 3,
-            PEQ = 4,
-            LowShelf = 5,
-            HighShelf = 6,
-        }
-        enum PlaydateSeekWhence {
-            Set = 0,
-            FromCurrent = 1,
-            FromEnd = 2,
-        }
-        enum PlaydateWrapMode {
-            Clip = 16777216,
-            Character = 16777217,
-            Word = 16777218,
-        }
-        enum PlaydateNetworkStatus {
-            NotConnected = 0,
-            Connected = 1,
-            NotAvailable = 2,
-        }
-        type PlaydateInputHandler = {
-            AButtonDown: typeof playdate.AButtonDown;
-            AButtonHeld: typeof playdate.AButtonHeld;
-            AButtonUp: typeof playdate.AButtonUp;
-            BButtonDown: typeof playdate.BButtonDown;
-            BButtonHeld: typeof playdate.BButtonHeld;
-            BButtonUp: typeof playdate.BButtonUp;
-            downButtonDown: typeof playdate.downButtonDown;
-            downButtonUp: typeof playdate.downButtonUp;
-            leftButtonDown: typeof playdate.leftButtonDown;
-            leftButtonUp: typeof playdate.leftButtonUp;
-            rightButtonDown: typeof playdate.rightButtonDown;
-            rightButtonUp: typeof playdate.rightButtonUp;
-            upButtonDown: typeof playdate.upButtonDown;
-            upButtonUp: typeof playdate.upButtonUp;
-            cranked: typeof playdate.cranked;
-            crankDocked: typeof playdate.crankDocked;
-            crankUndocked: typeof playdate.crankUndocked;
-        };
-        type PlaydateFontFamily = {
-            [K in PlaydateFontVariant]: playdate.graphics.font;
-        };
-        type PlaydateFontFamilyPaths = { [K in PlaydateFontVariant]: string };
-        type PlaydateGenericCollision<
-            TType extends PlaydateCollisionResponse,
-            TExtra = Record<string, unknown>,
-        > = {
-            sprite: playdate.graphics.sprite;
-            other: playdate.graphics.sprite;
-            type: TType;
-            overlaps: boolean;
-            ti: number;
-            move: playdate.geometry.vector2D;
-            normal: playdate.geometry.vector2D;
-            touch: playdate.geometry.point;
-            spriteRect: playdate.geometry.rect;
-            otherRect: playdate.geometry.rect;
-        } & TExtra;
-        type PlaydateCollision =
-            | PlaydateGenericCollision<
-                  typeof playdate.graphics.sprite.kCollisionTypeOverlap
-              >
-            | PlaydateGenericCollision<
-                  typeof playdate.graphics.sprite.kCollisionTypeFreeze
-              >
-            | PlaydateGenericCollision<
-                  typeof playdate.graphics.sprite.kCollisionTypeBounce,
-                  { bounce: playdate.geometry.point }
-              >
-            | PlaydateGenericCollision<
-                  typeof playdate.graphics.sprite.kCollisionTypeSlide,
-                  { slide: playdate.geometry.point }
-              >;
-        type PlaydateEasingFunction =
-            | typeof playdate.easingFunctions.linear
-            | typeof playdate.easingFunctions.inQuad
-            | typeof playdate.easingFunctions.outQuad
-            | typeof playdate.easingFunctions.inOutQuad
-            | typeof playdate.easingFunctions.outInQuad
-            | typeof playdate.easingFunctions.inCubic
-            | typeof playdate.easingFunctions.outCubic
-            | typeof playdate.easingFunctions.inOutCubic
-            | typeof playdate.easingFunctions.outInCubic
-            | typeof playdate.easingFunctions.inQuart
-            | typeof playdate.easingFunctions.outQuart
-            | typeof playdate.easingFunctions.inOutQuart
-            | typeof playdate.easingFunctions.outInQuart
-            | typeof playdate.easingFunctions.inQuint
-            | typeof playdate.easingFunctions.outQuint
-            | typeof playdate.easingFunctions.inOutQuint
-            | typeof playdate.easingFunctions.outInQuint
-            | typeof playdate.easingFunctions.inSine
-            | typeof playdate.easingFunctions.outSine
-            | typeof playdate.easingFunctions.inOutSine
-            | typeof playdate.easingFunctions.outInSine
-            | typeof playdate.easingFunctions.inExpo
-            | typeof playdate.easingFunctions.outExpo
-            | typeof playdate.easingFunctions.inOutExpo
-            | typeof playdate.easingFunctions.outInExpo
-            | typeof playdate.easingFunctions.inCirc
-            | typeof playdate.easingFunctions.outCirc
-            | typeof playdate.easingFunctions.inOutCirc
-            | typeof playdate.easingFunctions.outInCirc
-            | typeof playdate.easingFunctions.inElastic
-            | typeof playdate.easingFunctions.outElastic
-            | typeof playdate.easingFunctions.inOutElastic
-            | typeof playdate.easingFunctions.outInElastic
-            | typeof playdate.easingFunctions.inBack
-            | typeof playdate.easingFunctions.outBack
-            | typeof playdate.easingFunctions.inOutBack
-            | typeof playdate.easingFunctions.outInBack
-            | typeof playdate.easingFunctions.outBounce
-            | typeof playdate.easingFunctions.inBounce
-            | typeof playdate.easingFunctions.inOutBounce
-            | typeof playdate.easingFunctions.outInBounce;
-        type PlaydateCollisionInfo = {
-            sprite: playdate.graphics.sprite;
-            entryPoint: playdate.geometry.point;
-            exitPoint: playdate.geometry.point;
-            ti1: number;
-            ti2: number;
-        };
-        type PlaydateAudioSource =
-            | playdate.sound.fileplayer
-            | playdate.sound.sampleplayer
-            | playdate.sound.synth
-            | playdate.sound.instrument;
-        type PlaydateSoundEffect =
-            | playdate.sound.bitcrusher
-            | playdate.sound.twopolefilter
-            | playdate.sound.onepolefilter
-            | playdate.sound.ringmod
-            | playdate.sound.overdrive
-            | playdate.sound.delayline;
-
         /**
          * Takes the JSON encoded string and converts it to a Lua table.
          *

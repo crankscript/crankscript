@@ -53,5 +53,17 @@
                 "organizeImports": "on"
             }
         }
-    }
+    },
+    "overrides": [
+        {
+            "includes": ["libs/types/types/**/*.d.ts"],
+            "linter": {
+                "rules": {
+                    "suspicious": {
+                        "noConstEnum": "off"
+                    }
+                }
+            }
+        }
+    ]
 }

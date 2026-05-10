@@ -90,7 +90,7 @@ const generateNamespace = (
         });
     }
 
-    if (namespace === '') {
+    if (namespace === '' && !name) {
         subject.addStatements(typeProvider.getStatements());
     }
 
